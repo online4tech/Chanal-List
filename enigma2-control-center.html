@@ -91,7 +91,7 @@
     .tool-foot{display:flex;align-items:center;justify-content:space-between;margin-top:9px;gap:6px}
     .tool-group{font-size:8px;color:#7c91b1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .copy-mini{border:1px solid rgba(97,231,245,.22);background:rgba(97,231,245,.08);color:#9deff4;border-radius:7px;padding:3px 7px;font-size:8px}
-    .copy-mini:hover{background:rgba(97,231,245,.16)}
+    .copy-mini:hover{background:rgba(97,231,245,.16)}.copy-mini:disabled{opacity:.42;cursor:not-allowed;border-color:rgba(182,196,220,.1);background:rgba(255,255,255,.025);color:#77859d}
     .empty{grid-column:1/-1;min-height:190px;display:grid;place-items:center;text-align:center;color:#8494b0;border:1px dashed rgba(173,196,235,.16);border-radius:17px;font-size:12px;padding:20px}
     .details{padding:19px;display:flex;flex-direction:column;gap:17px}
     .detail-head{display:flex;align-items:center;justify-content:space-between}
@@ -119,10 +119,66 @@
     .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(15px);opacity:0;pointer-events:none;background:#122b3a;border:1px solid rgba(97,231,245,.3);color:#c4fbff;border-radius:11px;padding:9px 16px;font-size:11px;transition:.2s;z-index:30}
     .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
     .mobile-fallback{display:none}
+    .mobile-fallback{display:none!important}
     @media(max-width:1100px){
       body{overflow:auto}
-      .shell{display:none}
-      .mobile-fallback{display:block;width:100%;height:100vh;border:0;background:#080d1b}
+      html,body,#root{height:auto;min-height:100%}
+      .shell{display:flex;height:auto;min-height:100vh;overflow:visible}
+      .topbar{height:auto;min-height:74px;padding:12px 18px;grid-template-columns:1fr auto 1fr;gap:12px}
+      .workspace{flex:1;min-height:0;overflow:visible;grid-template-columns:220px minmax(0,1fr);grid-template-rows:minmax(620px,auto) auto;gap:12px;padding:12px}
+      .rail,.main,.details{overflow:visible;min-height:0}
+      .rail{max-height:calc(100vh - 110px);overflow:auto}
+      .main{min-height:620px}
+      .tool-grid{grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible}
+      .details{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:14px}
+      .detail-head,.hint{grid-column:1/-1}
+      .detail-hero{grid-row:span 2}
+    }
+    @media(max-width:680px){
+      .topbar{display:grid;grid-template-columns:1fr auto;padding:12px 14px;gap:8px}
+      .brand-mark{width:38px;height:38px;border-radius:12px;font-size:18px}
+      .brand-name{font-size:14px}
+      .brand-sub{font-size:8px}
+      .head-title{grid-column:1/-1;grid-row:2;text-align:right;font-size:15px;padding:4px 2px 2px}
+      .head-title small{font-size:9px}
+      .profile-copy{display:none}
+      .avatar{width:35px;height:35px}
+      .workspace{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto;gap:10px;padding:10px}
+      .rail{max-height:none;overflow:hidden;padding:12px}
+      .rail-head{padding:2px 5px 10px}
+      .category-list{display:flex;gap:8px;overflow-x:auto;overflow-y:hidden;padding:2px 1px 8px;scrollbar-width:thin}
+      .category-card{flex:0 0 175px;min-height:62px;padding:8px}
+      .cat-icon{width:34px;height:34px}
+      .cat-copy b{font-size:10px}
+      .cat-copy small{font-size:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .cat-num{font-size:9px}
+      .main{min-height:650px;padding:14px 12px}
+      .main-heading h1{font-size:20px}
+      .main-heading p{font-size:10px;line-height:1.7}
+      .live-dot{font-size:9px;padding:5px 8px}
+      .search-wrap{margin-top:13px}
+      .search{height:45px;font-size:11px;padding-right:42px}
+      .crumbs{margin:12px 0 10px;font-size:9px}
+      .subcats{padding-bottom:11px}
+      .subcat{font-size:9px;padding:6px 10px}
+      .tool-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+      .tool-card{min-height:125px;padding:10px}
+      .tool-name{font-size:10px}
+      .tool-desc{font-size:8px}
+      .tool-status{font-size:7px}
+      .copy-mini{font-size:8px;padding:4px 6px}
+      .details{grid-column:auto;display:flex;padding:14px;gap:13px}
+      .detail-head,.hint{grid-column:auto}
+      .detail-hero{grid-row:auto}
+      .command-actions{flex-wrap:wrap}
+      .action-btn{min-width:28%}
+    }
+    @media(max-width:390px){
+      .tool-grid{grid-template-columns:minmax(0,1fr)}
+      .tool-card{min-height:112px}
+      .main-heading h1{font-size:18px}
+      .live-dot{font-size:8px}
+      .category-card{flex-basis:158px}
     }
     @media(min-width:1101px) and (max-height:720px){
       .workspace{padding-top:12px;padding-bottom:12px;gap:12px}
@@ -163,7 +219,7 @@
         description: object ? (raw.description || raw.summary || "") : "",
         path: object ? (raw.path || raw.file || "") : "",
         installCommand: object ? (raw.installCommand || raw.install_command || raw.command || "") : "",
-        commandVerified: object ? raw.commandVerified === true || raw.command_verified === true : false,
+        commandVerified: object ? !!(raw.installCommand || raw.install_command || raw.command) : false,
         updateCommand: object ? (raw.updateCommand || raw.update_command || "") : "",
         removeCommand: object ? (raw.removeCommand || raw.remove_command || "") : "",
         status: object ? (raw.status || "") : ""
@@ -333,7 +389,7 @@
                 <span className="tool-name">{item.name}</span>
                 <span className="tool-desc">{item.description || item.sectionTitle || item.groupDescription || "عنصر مدرج في مكتبة Online4Tech"}</span>
                 <span className="tool-foot"><span className="tool-group">{item.sectionTitle}</span>
-                  {item.installCommand && item.commandVerified && <span className="copy-mini" onClick={e=>{e.stopPropagation();copyCommand(item.installCommand);}}>نسخ الأمر</span>}
+                  <button type="button" className="copy-mini" disabled={!item.installCommand || !item.commandVerified} title={item.installCommand ? "نسخ أمر العنصر" : "لم يُضف أمر لهذا العنصر في ملف البيانات"} onClick={e=>{e.stopPropagation();copyCommand(item.installCommand);}}>نسخ الأمر</button>
                 </span>
               </button>) : <div className="empty">مفيش عناصر مطابقة للبحث أو التصنيف ده.</div>}
             </div>
