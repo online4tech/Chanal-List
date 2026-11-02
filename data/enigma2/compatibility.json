@@ -1,0 +1,15 @@
+{
+  "status": "not-verified",
+  "checkedAt": null,
+  "note": "ملف emeeeel.txt لا يحتوي على بيانات توافق موثقة لكل عنصر حسب موديل الجهاز وصورة Enigma2 وإصدار Python.",
+  "requiredFields": [
+    "receiverModel",
+    "imageName",
+    "imageVersion",
+    "pythonVersion",
+    "architecture",
+    "lastTestedAt",
+    "testResult"
+  ],
+  "rule": "لا يتم تحويل حالة أي عنصر إلى متوافق إلا بعد اختبار فعلي موثق على جهاز وصورة محددين."
+}
