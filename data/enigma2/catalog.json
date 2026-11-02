@@ -52,8 +52,8 @@
   "publishingPolicy": {
     "commandsPublished": false,
     "directExecution": false,
-    "defaultItemStatus": "needs-review",
-    "note": "الفهرس تعريفي فقط. أوامر shell وأوامر الحذف وروابط التنفيذ المباشر غير منشورة."
+    "defaultItemStatus": "accepted-for-catalog",
+    "note": "تم قبول العناصر المدرجة للفهرسة والتصفح فقط. هذا لا يثبت سلامة الروابط أو توافق الإضافات؛ التوافق يظل غير متحقق منه. أوامر shell وأوامر الحذف وروابط التنفيذ المباشر غير منشورة."
   },
   "excludedSections": [
     "softcams"
