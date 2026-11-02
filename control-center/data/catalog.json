@@ -335,6 +335,601 @@
           "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/skins-for-dreambox/Brushedalu-HD.sh | /bin/sh",
           "path": "https://github.com/emilnabil/download-plugins/tree/main/skins-for-dreambox",
           "status": "available"
+        },
+        {
+          "name": "Aglare-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/aglare/raw/refs/heads/main/skins-aglare-fhd.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/aglare/raw/refs/heads/main/skins-aglare-fhd.sh",
+          "status": "available"
+        },
+        {
+          "name": "Areadeltasat_fhd",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emil237/skins-enigma2/raw/refs/heads/main/ATV/skins_areadeltasat_fhd_dragon_1_9_Poster_Backdrop.sh -O - | /bin/sh",
+          "path": "https://github.com/emil237/skins-enigma2/raw/refs/heads/main/ATV/skins_areadeltasat_fhd_dragon_1_9_Poster_Backdrop.sh",
+          "status": "available"
+        },
+        {
+          "name": "Barby-Black-py3-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/script/SKIN-Barby-Black-py3-fhd.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/script/SKIN-Barby-Black-py3-fhd.sh",
+          "status": "available"
+        },
+        {
+          "name": "Barby-Green-py3-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/script/SKIN-Barby-Green-py3-FHD.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/script/SKIN-Barby-Green-py3-FHD.sh",
+          "status": "available"
+        },
+        {
+          "name": "Barby-purple-py3-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/script/SKIN-Barby-purple-py3-fhd.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/script/SKIN-Barby-purple-py3-fhd.sh",
+          "status": "available"
+        },
+        {
+          "name": "Barby-py3-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/script/SKIN-Barby-py3-fhd.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/script/SKIN-Barby-py3-fhd.sh",
+          "status": "available"
+        },
+        {
+          "name": "BLACKNEON-XP-FHD-V2_ArabicDiscription",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/skins-openatv/raw/refs/heads/main/skin-BLACKNEON-XP-FHD-v2_arabicdiscription.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/skins-openatv/raw/refs/heads/main/skin-BLACKNEON-XP-FHD-v2_arabicdiscription.sh",
+          "status": "available"
+        },
+        {
+          "name": "CineView-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/skin-cineview/CineView.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/skin-cineview/CineView.sh",
+          "status": "available"
+        },
+        {
+          "name": "Fury-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/islam-2412/IPKS/refs/heads/main/fury/installer.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/islam-2412/IPKS/refs/heads/main/fury/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Gradient-fhd",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/skins-gradient-fhd.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/skins-gradient-fhd.sh",
+          "status": "available"
+        },
+        {
+          "name": "Maxy-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/popking159/skins/refs/heads/main/maxyatv/installer.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/popking159/skins/refs/heads/main/maxyatv/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Mohammed Skin",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/mido00020/MohammedSkin/main/installer.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/mido00020/MohammedSkin/main/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Full HD Glass17",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget http://dreambox4u.com/emilnabil237/skins/skin-fullhdglass17/installer.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/skins/skin-fullhdglass17/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "MyMetrixLiteBackup",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MyMetrixLiteBackup.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MyMetrixLiteBackup.sh",
+          "status": "available"
+        },
+        {
+          "name": "MetrixFHD-Extraevent-PosterXD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/skins/openatv/SKIN-MetrixFHD-OpenATV-Extraevent-PosterX.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/skins/openatv/SKIN-MetrixFHD-OpenATV-Extraevent-PosterX.sh",
+          "status": "available"
+        },
+        {
+          "name": "MetrixPoster-By_MNASR",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/MetrixPoster-By_MNASR/installer.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/MetrixPoster-By_MNASR/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "malek-fhd",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emil237/skins-enigma2/main/ATV/skins-malek-fhd_2.2_py3.11.2-py3.12.1.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emil237/skins-enigma2/main/ATV/skins-malek-fhd_2.2_py3.11.2-py3.12.1.sh",
+          "status": "available"
+        },
+        {
+          "name": "Nacht_1.7.3",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/SKIN-ATV-nacht_1.7.3.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/SKIN-ATV-nacht_1.7.3.sh",
+          "status": "available"
+        },
+        {
+          "name": "Nacht_7.1",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/skins/openatv/nacht_7.1.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/skins/openatv/nacht_7.1.sh",
+          "status": "available"
+        },
+        {
+          "name": "Op-Artkoala-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/skins/openatv/skins-op-artkoala.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/skins/openatv/skins-op-artkoala.sh",
+          "status": "available"
+        },
+        {
+          "name": "Ozeta-Xtra",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/SKIN-ATV-ozeta-xtra.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/SKIN-ATV-ozeta-xtra.sh",
+          "status": "available"
+        },
+        {
+          "name": "Premium-Magenta-Fhd",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/skins/script/SKIN-egami-premium-fhd-py3.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/skins/script/SKIN-egami-premium-fhd-py3.sh",
+          "status": "available"
+        },
+        {
+          "name": "Premium-Black-Fhd",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/skins/script/SKIN-egami-premium--black-fhd-py3.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/skins/script/SKIN-egami-premium--black-fhd-py3.sh",
+          "status": "available"
+        },
+        {
+          "name": "Premium-Blue-Fhd",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/skins/script/SKIN-egami-premium--blue-fhd-py3.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/skins/script/SKIN-egami-premium--blue-fhd-py3.sh",
+          "status": "available"
+        },
+        {
+          "name": "XDreamy-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openatv_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/Insprion80/Skins/main/xDreamy/installer.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/Insprion80/Skins/main/xDreamy/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "TeamNitro Control",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: teamnitro_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://gitlab.com/emilnabil1/teamnitro/-/raw/main/SKIN-teamnitro.sh -O - | /bin/sh",
+          "path": "https://gitlab.com/emilnabil1/teamnitro/-/raw/main/SKIN-teamnitro.sh",
+          "status": "available"
+        },
+        {
+          "name": "AlAyam-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: teamnitro_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/biko-73/TeamNitro/main/script/installerAL.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/biko-73/TeamNitro/main/script/installerAL.sh",
+          "status": "available"
+        },
+        {
+          "name": "Desert-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: teamnitro_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://gitlab.com/emilnabil1/teamnitro/-/raw/main/installer-skin-desert.sh -O - | /bin/sh",
+          "path": "https://gitlab.com/emilnabil1/teamnitro/-/raw/main/installer-skin-desert.sh",
+          "status": "available"
+        },
+        {
+          "name": "BoHLALA-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: teamnitro_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://gitlab.com/emilnabil1/teamnitro/-/raw/main/installer.sh -O - | /bin/sh",
+          "path": "https://gitlab.com/emilnabil1/teamnitro/-/raw/main/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Dragon-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: teamnitro_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/biko-73/TeamNitro/main/script/installerD.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/biko-73/TeamNitro/main/script/installerD.sh",
+          "status": "available"
+        },
+        {
+          "name": "NitroAdvance-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: teamnitro_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/biko-73/TeamNitro/main/script/installerN.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/biko-73/TeamNitro/main/script/installerN.sh",
+          "status": "available"
+        },
+        {
+          "name": "Klll-Pro-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: teamnitro_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/biko-73/zelda77/main/installer.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/biko-73/zelda77/main/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Aglare-fhd",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openbh_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/aglare/raw/refs/heads/main/skins-aglare-fhd-pli.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/aglare/raw/refs/heads/main/skins-aglare-fhd-pli.sh",
+          "status": "available"
+        },
+        {
+          "name": "BlackShadow_X2P_OBH",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openbh_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/skins-obh/raw/refs/heads/main/BlackShadow_X2P_OBH_5.0.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/skins-obh/raw/refs/heads/main/BlackShadow_X2P_OBH_5.0.sh",
+          "status": "available"
+        },
+        {
+          "name": "EclipseFHD_OBH",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openbh_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/skins-obh/raw/refs/heads/main/EclipseFHD_OBH_5.0.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/skins-obh/raw/refs/heads/main/EclipseFHD_OBH_5.0.sh",
+          "status": "available"
+        },
+        {
+          "name": "EclipseFire_OBH",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openbh_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/skins-obh/raw/refs/heads/main/EclipseFire_OBH_5.0.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/skins-obh/raw/refs/heads/main/EclipseFire_OBH_5.0.sh",
+          "status": "available"
+        },
+        {
+          "name": "MX_BlackSea",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openbh_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/skins/obh/skins-MX_BlackSea.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/skins/obh/skins-MX_BlackSea.sh",
+          "status": "available"
+        },
+        {
+          "name": "MX-Sline-Black-Red-Gradient",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openbh_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/skins/obh/mx-sline-black-red-gradient_py3.12.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/skins/obh/mx-sline-black-red-gradient_py3.12.sh",
+          "status": "available"
+        },
+        {
+          "name": "MX_GrayDots_X2B_OBH",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openbh_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/skins-obh/raw/refs/heads/main/MX_GrayDots_X2B_OBH_5.0.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/skins-obh/raw/refs/heads/main/MX_GrayDots_X2B_OBH_5.0.sh",
+          "status": "available"
+        },
+        {
+          "name": "MX_GreenDots_OBH",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openbh_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/skins-obh/raw/refs/heads/main/MX_GreenDots_OBH_5.0.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/skins-obh/raw/refs/heads/main/MX_GreenDots_OBH_5.0.sh",
+          "status": "available"
+        },
+        {
+          "name": "MX_HQ7_OBH",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openbh_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/skins-obh/raw/refs/heads/main/MX_HQ7_OBH_5.0.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/skins-obh/raw/refs/heads/main/MX_HQ7_OBH_5.0.sh",
+          "status": "available"
+        },
+        {
+          "name": "MX_Maestra_Black_OBH",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openbh_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/skins-obh/raw/refs/heads/main/MX_Maestra_Black_OBH_5.0.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/skins-obh/raw/refs/heads/main/MX_Maestra_Black_OBH_5.0.sh",
+          "status": "available"
+        },
+        {
+          "name": "MX_Maestra2b_weather",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openbh_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/skins-obh/raw/refs/heads/main/MX_Maestra2b_weather_5.0.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/skins-obh/raw/refs/heads/main/MX_Maestra2b_weather_5.0.sh",
+          "status": "available"
+        },
+        {
+          "name": "MX_Sline-Blue",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openbh_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/skins/obh/MX_Sline-Blue_OBH_5.4_py3.12_py3.12.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/skins/obh/MX_Sline-Blue_OBH_5.4_py3.12_py3.12.sh",
+          "status": "available"
+        },
+        {
+          "name": "Mx-Sline-Glass-Gradient",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openbh_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/skins-obh/raw/refs/heads/main/skins-mx-sline-glass-gradient.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/skins-obh/raw/refs/heads/main/skins-mx-sline-glass-gradient.sh",
+          "status": "available"
+        },
+        {
+          "name": "MX_Sline-Red_X2",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openbh_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/skins/obh/MX_Sline-Red_X2_py3.12.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/skins/obh/MX_Sline-Red_X2_py3.12.sh",
+          "status": "available"
+        },
+        {
+          "name": "OpenBhGreenFHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openbh_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/skins/obh/skin_OpenBhGreenFHD.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/skins/obh/skin_OpenBhGreenFHD.sh",
+          "status": "available"
+        },
+        {
+          "name": "Waves4_Fire_weather_OBH",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openbh_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/skins-obh/raw/refs/heads/main/Waves4_Fire_weather_OBH_5.0.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/skins-obh/raw/refs/heads/main/Waves4_Fire_weather_OBH_5.0.sh",
+          "status": "available"
+        },
+        {
+          "name": "Waves4_weather_OBH",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openbh_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/skins-obh/raw/refs/heads/main/Waves4_weather_OBH_5.0.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/skins-obh/raw/refs/heads/main/Waves4_weather_OBH_5.0.sh",
+          "status": "available"
+        },
+        {
+          "name": "Youchie-OBH-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openbh_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/skins-obh/refs/heads/main/skin-Youchie-OBH-FHD.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emilnabil/skins-obh/refs/heads/main/skin-Youchie-OBH-FHD.sh",
+          "status": "available"
+        },
+        {
+          "name": "BARDO-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openpli_py3_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emil237/skins-enigma2/refs/heads/main/pli/Skin-bardo-fhd_3.7.2.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emil237/skins-enigma2/refs/heads/main/pli/Skin-bardo-fhd_3.7.2.sh",
+          "status": "available"
+        },
+        {
+          "name": "BLACKNEON-XP_Mod_M-Nasr",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openpli_py3_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/skins/pli9x/Skin-BLACKNEON-XP_mod_mnasr-pli9x.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/skins/pli9x/Skin-BLACKNEON-XP_mod_mnasr-pli9x.sh",
+          "status": "available"
+        },
+        {
+          "name": "malek-fhd",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openpli_py3_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emil237/skins-enigma2/main/pli/Skin-malek-fhd_1.2.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emil237/skins-enigma2/main/pli/Skin-malek-fhd_1.2.sh",
+          "status": "available"
+        },
+        {
+          "name": "Ozeta-Xtra",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openpli_py3_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/SKIN-PLI-ozeta-xtra.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/SKIN-PLI-ozeta-xtra.sh",
+          "status": "available"
+        },
+        {
+          "name": "Youchie-PLI-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openpli_py3_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/skins-openpli-9x/refs/heads/main/skin-Youchie-PLI-FHD.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emilnabil/skins-openpli-9x/refs/heads/main/skin-Youchie-PLI-FHD.sh",
+          "status": "available"
+        },
+        {
+          "name": "estuary-1080-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openspa_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://gitlab.com/elbrins/skins/-/raw/main/Spa/Skin-estuary-1080.sh -O - | /bin/sh",
+          "path": "https://gitlab.com/elbrins/skins/-/raw/main/Spa/Skin-estuary-1080.sh",
+          "status": "available"
+        },
+        {
+          "name": "Skyline",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openspa_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/skins-spa/raw/refs/heads/main/skin-Skyline.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/skins-spa/raw/refs/heads/main/skin-Skyline.sh",
+          "status": "available"
+        },
+        {
+          "name": "E2-darkos-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openvix_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/skins/openvix/skins-e2-darkos.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/skins/openvix/skins-e2-darkos.sh",
+          "status": "available"
+        },
+        {
+          "name": "Magic-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openvix_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/skins/openvix/skins-openvix-magic-fhd.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/skins/openvix/skins-openvix-magic-fhd.sh",
+          "status": "available"
+        },
+        {
+          "name": "Vixbmc-1080-Confluence-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openvix_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/skins/openvix/skins-openvix-vixbmc-1080-confluence.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/skins/openvix/skins-openvix-vixbmc-1080-confluence.sh",
+          "status": "available"
+        },
+        {
+          "name": "Bluemetal-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openpli_py2_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emil237/skins-enigma2/refs/heads/main/pli/Skin-bluemetal-fhd.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emil237/skins-enigma2/refs/heads/main/pli/Skin-bluemetal-fhd.sh",
+          "status": "available"
+        },
+        {
+          "name": "CH.LEAGUE-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openpli_py2_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/SKIN-PLI-CH.LEAGUE-FHD.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/SKIN-PLI-CH.LEAGUE-FHD.sh",
+          "status": "available"
+        },
+        {
+          "name": "Maxy-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openpli_py2_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/skins/script/skins-Maxy-FHD.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/skins/script/skins-Maxy-FHD.sh",
+          "status": "available"
+        },
+        {
+          "name": "QATAR-2022-V3-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openpli_py2_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/SKIN-PLI-QATAR-2022-V3-FHD.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/SKIN-PLI-QATAR-2022-V3-FHD.sh",
+          "status": "available"
+        },
+        {
+          "name": "SPIDERMAN-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openpli_py2_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/SKIN-PLI-SPIDERMAN-FHD.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/SKIN-PLI-SPIDERMAN-FHD.sh",
+          "status": "available"
+        },
+        {
+          "name": "WAR-S-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openpli_py2_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/SKIN-PLI-WAR-S-FHD.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/SKIN-PLI-WAR-S-FHD.sh",
+          "status": "available"
+        },
+        {
+          "name": "BLACKSKY-S-HD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openpli_py2_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emil237/skins-enigma2/main/pli/SKIN-BLACKSKY-S-HD-MOD-By-Muaath.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emil237/skins-enigma2/main/pli/SKIN-BLACKSKY-S-HD-MOD-By-Muaath.sh",
+          "status": "available"
+        },
+        {
+          "name": "BATMAN-MP-HD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openpli_py2_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emil237/skins-enigma2/main/pli/SKIN-BATMAN-MP-HD-By-Muaath.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emil237/skins-enigma2/main/pli/SKIN-BATMAN-MP-HD-By-Muaath.sh",
+          "status": "available"
+        },
+        {
+          "name": "TOKYO2020-FHD",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: openpli_py2_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emil237/skins-enigma2/main/pli/SKIN-TOKYO2020-FHD-By-Muaath.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emil237/skins-enigma2/main/pli/SKIN-TOKYO2020-FHD-By-Muaath.sh",
+          "status": "available"
+        },
+        {
+          "name": "display-oe-a-lcdskin-1",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: display_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-1.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-1.sh",
+          "status": "available"
+        },
+        {
+          "name": "display-oe-a-lcdskin-2",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: display_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-2.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-2.sh",
+          "status": "available"
+        },
+        {
+          "name": "display-oe-a-lcdskin-3",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: display_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-3.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-3.sh",
+          "status": "available"
+        },
+        {
+          "name": "display-oe-a-lcdskin-4",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: display_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-4.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-4.sh",
+          "status": "available"
+        },
+        {
+          "name": "display-oe-a-lcdskin-5",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: display_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-5.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-5.sh",
+          "status": "available"
+        },
+        {
+          "name": "display-oe-a-lcdskin-6",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: display_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-6.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-6.sh",
+          "status": "available"
+        },
+        {
+          "name": "display-oe-a-lcdskin-7",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: display_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-7.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-7.sh",
+          "status": "available"
+        },
+        {
+          "name": "display-oe-a-lcdskin-8",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: display_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-8.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-8.sh",
+          "status": "available"
+        },
+        {
+          "name": "display-oe-a-lcdskin-9",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: display_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-9.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-9.sh",
+          "status": "available"
+        },
+        {
+          "name": "display-oe-a-lcdskin-10",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: display_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-10.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-10.sh",
+          "status": "available"
+        },
+        {
+          "name": "display-oe-a-lcdskin-11",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: display_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-11.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-11.sh",
+          "status": "available"
+        },
+        {
+          "name": "display-oe-a-lcdskin-12",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: display_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-12.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-12.sh",
+          "status": "available"
+        },
+        {
+          "name": "display-oe-a-lcdskin-13",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: display_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-13.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/Display-Skin/display-oe-a-lcdskin-13.sh",
+          "status": "available"
+        },
+        {
+          "name": "Abstract",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: plugin-xtreamity_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/plugins/xtreamity/installer-skin-abstract.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/plugins/xtreamity/installer-skin-abstract.sh",
+          "status": "available"
+        },
+        {
+          "name": "qatar2022",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: plugin-xtreamity_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/plugins/xtreamity/installer-skin-qatar.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/plugins/xtreamity/installer-skin-qatar.sh",
+          "status": "available"
+        },
+        {
+          "name": "Toys",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: plugin-xtreamity_skins. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/plugins/xtreamity/installer-skin-toys.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/plugins/xtreamity/installer-skin-toys.sh",
+          "status": "available"
         }
       ]
     },
@@ -345,6 +940,349 @@
           "description": "أداة متخصصة لإدارة البيكونات وتحديد مسارها وتثبيتها تلقائياً. | المطور: emilnabil",
           "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/setpicon/installer.sh -O - | /bin/sh",
           "path": "https://github.com/emilnabil/download-plugins/tree/main/setpicon",
+          "status": "available"
+        },
+        {
+          "name": "Intelsat 31.5W",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/intelsat_31.5w/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/intelsat_31.5w/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Hispasat 30.0W",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/hispasat_30.0w/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/hispasat_30.0w/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Intelsat 27.5W",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/intelsat_27.5w/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/intelsat_27.5w/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Intelsat 24.5W",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/intelsat_24.5w/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/intelsat_24.5w/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "SES 4 22.0W",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/ses4_22.0w/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/ses4_22.0w/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "NSS 7 20.0W",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/nss7_20.0w/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/nss7_20.0w/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Telstar 15.0W",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/telstar_15.0w/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/telstar_15.0w/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Express 14W",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/express_14w/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/express_14w/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Express 11.0W-14.0W",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/express_11.0w-14.0w/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/express_11.0w-14.0w/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Nilesat 7W-8W",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/nilesat/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/nilesat/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Eutelsat 5.0W",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/eutelsat_5.0w/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/eutelsat_5.0w/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Amos 4.0W",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/amos_4.0w/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/amos_4.0w/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "ABS 3.0W",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/abs_3.0w/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/abs_3.0w/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Thor 0.8W",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/thor_0.8w/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/thor_0.8w/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "BulgariaSat 1.9E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/bulgariasat_1.9e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/bulgariasat_1.9e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Eutelsat 3.0E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/eutelsat_3.0e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/eutelsat_3.0e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Astra 4.8E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/astra_4.8e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/astra_4.8e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Eutelsat 7.0E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/eutelsat_7.0e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/eutelsat_7.0e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Eutelsat 9.0E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/eutelsat_9.0e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/eutelsat_9.0e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Eutelsat 10.0E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/eutelsat_10.0e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/eutelsat_10.0e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Hotbird 13.0E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/hotbird_13.0e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/hotbird_13.0e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Eutelsat 16.0E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/eutelsat_16.0e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/eutelsat_16.0e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Astra 19.2E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/astra_19.2e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/astra_19.2e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Eutelsat 21.6E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/eutelsat_21.6e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/eutelsat_21.6e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Astra 23.5E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/astra_23.5e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/astra_23.5e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Eshail 25.5E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/eshail_25.5e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/eshail_25.5e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Badr 26.0E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/badr_26.0e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/badr_26.0e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Astra 28.2E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/astra_28.2e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/astra_28.2e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Arabsat 30.5E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/arabsat_30.5e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/arabsat_30.5e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Astra 31.5E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/astra_31.5e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/astra_31.5e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Intelsat 33.0E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/eutelsat-intelsat_33.0e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/eutelsat-intelsat_33.0e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Eutelsat 36.0E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/eutelsat_36.0e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/eutelsat_36.0e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Hellas-Sat 39.0E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/hellas-sat_39.0e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/hellas-sat_39.0e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Turksat 42.0E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/turksat_42.0e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/turksat_42.0e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "AzerSpace 45.0E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/azerspace_45.0e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/azerspace_45.0e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "AzerSpace 46.0E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/azerspace_46.0e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/azerspace_46.0e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Turksat 50.0E-57E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/turksat_50.0e_56.0e_57e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/turksat_50.0e_56.0e_57e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Belintersat 51.5E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/belintersat_51.5e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/belintersat_51.5e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "TurkmenAlem 52.0E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/turkmenalem_52.0e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/turkmenalem_52.0e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Yahsat 52.5E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/alyahsat_52.5e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/alyahsat_52.5e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Express 53.0E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/express_53.0e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/express_53.0e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Yamal 54.9E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/gsat-yamal_54.9e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/gsat-yamal_54.9e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Intelsat 60.0E-68.0E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/intelsat_60.0e_66.0e_68.0e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/intelsat_60.0e_66.0e_68.0e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Intelsat 62.0E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/intelsat_62.0e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/intelsat_62.0e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Eutelsat 70.0E-75.0E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/eutelsat_70.0e_74.9e_75.0e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/eutelsat_70.0e_74.9e_75.0e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Intelsat 72.1E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/Intelsat_72.1e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/Intelsat_72.1e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "ABS 75.0E",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://dreambox4u.com/emilnabil237/picons/abs_75.0e/installer.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/picons/abs_75.0e/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Picons Other",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emil237/picon-other/main/installer.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emil237/picon-other/main/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "Chocholousek Picons",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: picons. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/s3n0/e2plugins/raw/master/ChocholousekPicons/online-setup -O - | /bin/sh",
+          "path": "https://github.com/s3n0/e2plugins/raw/master/ChocholousekPicons/online-setup",
           "status": "available"
         }
       ]
@@ -711,23 +1649,742 @@
           "install": "wget -O /tmp/channels_backup_openATV_Enigma2-Chanal-List-BYRomeh.tar.gz https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh/raw/main/channels_backup_openATV_Enigma2-Chanal-List-BYRomeh.tar.gz",
           "path": "https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh/blob/main/channels_backup_openATV_Enigma2-Chanal-List-BYRomeh.tar.gz",
           "status": "available"
+        },
+        {
+          "name": "Backup-my-Channels",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: backup. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. تحقق من وجود مساحة تخزين كافية ومسار الحفظ.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/Create-My-backup-shannels.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/Create-My-backup-shannels.sh",
+          "status": "available"
+        },
+        {
+          "name": "Full-Backup-Image",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: backup. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. تحقق من وجود مساحة تخزين كافية ومسار الحفظ.",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/fullbackup/main/fullbackup-vu4k-encrypt.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emilnabil/fullbackup/main/fullbackup-vu4k-encrypt.sh",
+          "status": "available"
+        },
+        {
+          "name": "Backup-hotkey",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: backup. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. تحقق من وجود مساحة تخزين كافية ومسار الحفظ.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/backup-hotkey.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/backup-hotkey.sh",
+          "status": "available"
+        },
+        {
+          "name": "Backup-network",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: backup. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. تحقق من وجود مساحة تخزين كافية ومسار الحفظ.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/backup-network.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/backup-network.sh",
+          "status": "available"
+        },
+        {
+          "name": "Backup-tuner",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: backup. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. تحقق من وجود مساحة تخزين كافية ومسار الحفظ.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/backup-tuner.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/backup-tuner.sh",
+          "status": "available"
+        },
+        {
+          "name": "Backup-my-bouquetmakerxtream",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: backup. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. تحقق من وجود مساحة تخزين كافية ومسار الحفظ.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/backup-my-bouquetmakerxtream.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/backup-my-bouquetmakerxtream.sh",
+          "status": "available"
+        },
+        {
+          "name": "Backup-my-ip2sat-server",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: backup. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. تحقق من وجود مساحة تخزين كافية ومسار الحفظ.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/backup-my-ip2sat-server.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/backup-my-ip2sat-server.sh",
+          "status": "available"
+        },
+        {
+          "name": "Backup-my-ipaudio-server",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: backup. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. تحقق من وجود مساحة تخزين كافية ومسار الحفظ.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/backup-my-ipaudio-server.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/backup-my-ipaudio-server.sh",
+          "status": "available"
+        },
+        {
+          "name": "Backup-my-ipaudiopro-server",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: backup. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. تحقق من وجود مساحة تخزين كافية ومسار الحفظ.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/backup-my-ipaudiopro-server.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/backup-my-ipaudiopro-server.sh",
+          "status": "available"
+        },
+        {
+          "name": "Backup-my-jediplaylists",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: backup. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. تحقق من وجود مساحة تخزين كافية ومسار الحفظ.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/backup-my-jediplaylists.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/backup-my-jediplaylists.sh",
+          "status": "available"
+        },
+        {
+          "name": "Backup-my-multistalkerpro",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: backup. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. تحقق من وجود مساحة تخزين كافية ومسار الحفظ.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/backup-my-multistalkerpro.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/backup-my-multistalkerpro.sh",
+          "status": "available"
+        },
+        {
+          "name": "Backup-my-Subtitle-Setting",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: backup. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. تحقق من وجود مساحة تخزين كافية ومسار الحفظ.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/backup_my-subtitle-setting.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/backup_my-subtitle-setting.sh",
+          "status": "available"
+        },
+        {
+          "name": "Backup-my-xstreamity-servers",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: backup. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. تحقق من وجود مساحة تخزين كافية ومسار الحفظ.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/backup-my-xstreamity-servers.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/backup-my-xstreamity-servers.sh",
+          "status": "available"
+        },
+        {
+          "name": "Backup-sittings-xtraevent",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: backup. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. تحقق من وجود مساحة تخزين كافية ومسار الحفظ.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/backup-sittings-xtraevent.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/backup-sittings-xtraevent.sh",
+          "status": "available"
         }
       ]
     },
     "feeds": {
-      "tools": []
+      "tools": [
+        {
+          "name": "Eliesat (فيد اضافي للصورة)",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: feeds. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://gitlab.com/eliesat/scripts/-/raw/main/feed/eliesat-feed.sh -O - | /bin/sh",
+          "path": "https://gitlab.com/eliesat/scripts/-/raw/main/feed/eliesat-feed.sh",
+          "status": "available"
+        },
+        {
+          "name": "Emil (فيد أضافي للصورة)",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: feeds. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/FEED-emil-feed.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/FEED-emil-feed.sh",
+          "status": "available"
+        },
+        {
+          "name": "Jungle (فيد أضافي للصورة)",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: feeds. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/FEED-jungle-feed.sh -O - | /bin/sh",
+          "path": "https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/FEED-jungle-feed.sh",
+          "status": "available"
+        },
+        {
+          "name": "Libraries_3.12.4",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: feeds. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/FEED-libraries-3.12.4.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/FEED-libraries-3.12.4.sh",
+          "status": "available"
+        },
+        {
+          "name": "Libraries_3.12.6",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: feeds. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/FEED-libraries-3.12.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/FEED-libraries-3.12.sh",
+          "status": "available"
+        },
+        {
+          "name": "Oe-alliance-Picons (فيد به بايكونات)",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: feeds. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/FEED-oe-picons.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/FEED-oe-picons.sh",
+          "status": "available"
+        },
+        {
+          "name": "Oe-alliance-Settings (فيد به ملفات قنوات)",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: feeds. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/FEED-oe-settings.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/FEED-oe-settings.sh",
+          "status": "available"
+        },
+        {
+          "name": "Openatv-Deval (فيد صورة openatv للمطورين)",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: feeds. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget -O - -q https://feeds2.mynonpublic.com/devel-feed | bash",
+          "path": "https://feeds2.mynonpublic.com/devel-feed",
+          "status": "available"
+        },
+        {
+          "name": "OpenPicons (فيد بايكونات)",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: feeds. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/FEED-openpicons.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/FEED-openpicons.sh",
+          "status": "available"
+        },
+        {
+          "name": "Tarek-Hanfy (فيد اضافي للصورة)",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: feeds. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/FEED-Tarek.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/FEED-Tarek.sh",
+          "status": "available"
+        }
+      ]
     },
     "images": {
-      "tools": []
+      "tools": [
+        {
+          "name": "OpenATV 7.4",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: images. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. ملفات صور النظام قد تختلف حسب موديل الرسيفر؛ لا تستخدمها قبل مطابقة الموديل وإصدار الصورة.",
+          "install": "wget https://dreambox4u.com/emilnabil237/images/openatv-7.4.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/images/openatv-7.4.sh",
+          "status": "available"
+        },
+        {
+          "name": "OpenATV 7.5",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: images. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. ملفات صور النظام قد تختلف حسب موديل الرسيفر؛ لا تستخدمها قبل مطابقة الموديل وإصدار الصورة.",
+          "install": "wget https://dreambox4u.com/emilnabil237/images/openatv-7.5.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/images/openatv-7.5.sh",
+          "status": "available"
+        },
+        {
+          "name": "OpenATV 7.5.1",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: images. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. ملفات صور النظام قد تختلف حسب موديل الرسيفر؛ لا تستخدمها قبل مطابقة الموديل وإصدار الصورة.",
+          "install": "wget https://dreambox4u.com/emilnabil237/images/openatv-7.5.1.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/images/openatv-7.5.1.sh",
+          "status": "available"
+        },
+        {
+          "name": "OpenATV 7.6",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: images. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. ملفات صور النظام قد تختلف حسب موديل الرسيفر؛ لا تستخدمها قبل مطابقة الموديل وإصدار الصورة.",
+          "install": "wget https://dreambox4u.com/emilnabil237/images/openatv-7.6.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/images/openatv-7.6.sh",
+          "status": "available"
+        },
+        {
+          "name": "OpenATV 8.0",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: images. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. ملفات صور النظام قد تختلف حسب موديل الرسيفر؛ لا تستخدمها قبل مطابقة الموديل وإصدار الصورة.",
+          "install": "wget https://dreambox4u.com/emilnabil237/images/openatv-8.0.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/images/openatv-8.0.sh",
+          "status": "available"
+        },
+        {
+          "name": "OpenBlackHole 5.5.1",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: images. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. ملفات صور النظام قد تختلف حسب موديل الرسيفر؛ لا تستخدمها قبل مطابقة الموديل وإصدار الصورة.",
+          "install": "wget https://dreambox4u.com/emilnabil237/images/openblackhole-5.5.1.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/images/openblackhole-5.5.1.sh",
+          "status": "available"
+        },
+        {
+          "name": "OpenBlackHole 5.6",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: images. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. ملفات صور النظام قد تختلف حسب موديل الرسيفر؛ لا تستخدمها قبل مطابقة الموديل وإصدار الصورة.",
+          "install": "wget https://dreambox4u.com/emilnabil237/images/openblackhole-5.6.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/images/openblackhole-5.6.sh",
+          "status": "available"
+        },
+        {
+          "name": "OpenBlackHole 6.0",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: images. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. ملفات صور النظام قد تختلف حسب موديل الرسيفر؛ لا تستخدمها قبل مطابقة الموديل وإصدار الصورة.",
+          "install": "wget https://dreambox4u.com/emilnabil237/images/openblackhole-6.0.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/images/openblackhole-6.0.sh",
+          "status": "available"
+        },
+        {
+          "name": "OpenDroid",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: images. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. ملفات صور النظام قد تختلف حسب موديل الرسيفر؛ لا تستخدمها قبل مطابقة الموديل وإصدار الصورة.",
+          "install": "wget https://dreambox4u.com/emilnabil237/images/opendroid.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/images/opendroid.sh",
+          "status": "available"
+        },
+        {
+          "name": "OpenPLi 9.0",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: images. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. ملفات صور النظام قد تختلف حسب موديل الرسيفر؛ لا تستخدمها قبل مطابقة الموديل وإصدار الصورة.",
+          "install": "wget https://dreambox4u.com/emilnabil237/images/openpli-9.0.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/images/openpli-9.0.sh",
+          "status": "available"
+        },
+        {
+          "name": "OpenPLi 9.1",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: images. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. ملفات صور النظام قد تختلف حسب موديل الرسيفر؛ لا تستخدمها قبل مطابقة الموديل وإصدار الصورة.",
+          "install": "wget https://dreambox4u.com/emilnabil237/images/openpli-9.1.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/images/openpli-9.1.sh",
+          "status": "available"
+        },
+        {
+          "name": "OpenPLi 9.2",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: images. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. ملفات صور النظام قد تختلف حسب موديل الرسيفر؛ لا تستخدمها قبل مطابقة الموديل وإصدار الصورة.",
+          "install": "wget https://dreambox4u.com/emilnabil237/images/openpli-9.2.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/images/openpli-9.2.sh",
+          "status": "available"
+        },
+        {
+          "name": "OpenVIX Latest Version",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: images. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. ملفات صور النظام قد تختلف حسب موديل الرسيفر؛ لا تستخدمها قبل مطابقة الموديل وإصدار الصورة.",
+          "install": "wget https://dreambox4u.com/emilnabil237/images/openvix_latest-version.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/images/openvix_latest-version.sh",
+          "status": "available"
+        },
+        {
+          "name": "Pure2 7.6",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: images. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. ملفات صور النظام قد تختلف حسب موديل الرسيفر؛ لا تستخدمها قبل مطابقة الموديل وإصدار الصورة.",
+          "install": "wget https://dreambox4u.com/emilnabil237/images/pure2-7.6.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/images/pure2-7.6.sh",
+          "status": "available"
+        },
+        {
+          "name": "VTI 15.0.02",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: images. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. ملفات صور النظام قد تختلف حسب موديل الرسيفر؛ لا تستخدمها قبل مطابقة الموديل وإصدار الصورة.",
+          "install": "wget https://dreambox4u.com/emilnabil237/images/vti-15.0.02.sh -O - | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/images/vti-15.0.02.sh",
+          "status": "available"
+        }
+      ]
     },
     "bootlogos": {
-      "tools": []
+      "tools": [
+        {
+          "name": "BootlogoSwapper Egami (بوت لوجو متعدد)",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: bootlogos. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/bootLogoswapper-Egami.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/bootLogoswapper-Egami.sh",
+          "status": "available"
+        },
+        {
+          "name": "BootlogoSwapper Atv (بوت لوجو متعدد)",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: bootlogos. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/bootlogoswapper-Atv.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/bootlogoswapper-Atv.sh",
+          "status": "available"
+        },
+        {
+          "name": "BootlogoSwapper Pli (بوت لوجو متعدد)",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: bootlogos. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/bootlogoswapper-pli.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/bootlogoswapper-pli.sh",
+          "status": "available"
+        },
+        {
+          "name": "BootlogoSwapper OpenBH (بوت لوجو متعدد)",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: bootlogos. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/bootlogoswapper-OpenBH.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/bootlogoswapper-OpenBH.sh",
+          "status": "available"
+        },
+        {
+          "name": "BootlogoSwapper OpenSpa (بوت لوجو متعدد)",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: bootlogos. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/BootLogoSwapper-openspa.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/BootLogoSwapper-openspa.sh",
+          "status": "available"
+        },
+        {
+          "name": "BootlogoSwapper OpenVix (بوت لوجو متعدد)",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: bootlogos. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/bootlogoswapper-OpenVix.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/bootlogoswapper-OpenVix.sh",
+          "status": "available"
+        },
+        {
+          "name": "BootlogoSwapper-PURE2 (بوت لوجو متعدد)",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: bootlogos. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget -O - http://dreambox4u.com/emilnabil237/script/bootLogoswapper-Pure2.sh | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/bootLogoswapper-Pure2.sh",
+          "status": "available"
+        },
+        {
+          "name": "BootlogoSwapper Christmas (بوت لوجو متعدد)",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: bootlogos. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget -O - https://dreambox4u.com/emilnabil237/script/bootlogoswapper-christmas.sh | /bin/sh",
+          "path": "https://dreambox4u.com/emilnabil237/script/bootlogoswapper-christmas.sh",
+          "status": "available"
+        },
+        {
+          "name": "BootlogoSwapper Kids (بوت لوجو متعدد)",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: bootlogos. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/bootlogoswapper-kids.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/bootlogoswapper-kids.sh",
+          "status": "available"
+        },
+        {
+          "name": "BootlogoSwapper Ramadan (بوت لوجو متعدد)",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: bootlogos. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/bootlogo-swapper-ramadan.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/bootlogo-swapper-ramadan.sh",
+          "status": "available"
+        },
+        {
+          "name": "BootlogoSwapper Eid-Aldha (بوت لوجو متعدد)",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: bootlogos. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/bootlogoswapper-Eid-Aldha.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/bootlogoswapper-Eid-Aldha.sh",
+          "status": "available"
+        },
+        {
+          "name": "BootlogoSwapper V2.1 (بوت لوجو متعدد)",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: bootlogos. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/BootlogoSwapper_v2.1.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/BootlogoSwapper_v2.1.sh",
+          "status": "available"
+        },
+        {
+          "name": "BootlogoSwapper V2.3 (بوت لوجو متعدد)",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: bootlogos. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/BootlogoSwapper_v2.3.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/BootlogoSwapper_v2.3.sh",
+          "status": "available"
+        },
+        {
+          "name": "BootlogoSwapper V2.4 (بوت لوجو متعدد)",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: bootlogos. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/BootlogoSwapper_v2.4.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/BootlogoSwapper_v2.4.sh",
+          "status": "available"
+        }
+      ]
     },
     "spinners": {
-      "tools": []
+      "tools": [
+        {
+          "name": "Spinner-Circle",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget -O - https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-circle.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-circle.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Barcelona",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget -O - https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-barcelona.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-barcelona.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Bayern-Munich",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget -O - https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-bayern-munich.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-bayern-munich.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Chelsea",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget -O - https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-chelsea.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-chelsea.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Liverpool",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget -O - https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-liverpool.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-liverpool.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-MadMax",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget -O - https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-MadMax.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-MadMax.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Pigeon",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget -O - https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-pigeon.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-pigeon.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Pingu",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget -O - https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-Pingu.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-Pingu.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-TS",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget -O - https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-ts.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-ts.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Revolution",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget -O - https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-Revolution.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-Revolution.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Circle-Brown",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget -O - https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-circle-brown.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-circle-brown.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Collar",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-collar.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-collar.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Colored-Rings",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-colored-Rings.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-colored-Rings.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Fan",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-fan.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-fan.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-kare-dugmeler",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-kare-dugmeler.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-kare-dugmeler.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Kum-saati-kare",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-Kum-saati-kare.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-Kum-saati-kare.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-kupler",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-Kupler.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-Kupler.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Number-Counter",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-Number-Counter.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-Number-Counter.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Xdreamy",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-Xdreamy.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-Xdreamy.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Renkli-donen-cemberler",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-Renkli-donen-cemberler.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-Renkli-donen-cemberler.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Wheel",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-wheel.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-wheel.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-3d",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget -O - https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-3D.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-3D.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Aglare",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget -O - https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-aglare.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-aglare.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Dance",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-dance.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-dance.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Dart",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-dart.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-dart.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Echse",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-Echse.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-Echse.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Girls",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-girls.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-girls.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Girls-Dance",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-girls-dance.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-girls-dance.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Jack-Sparrow",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-Jack-Sparrow.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-Jack-Sparrow.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Nasht",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-nasht.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-nasht.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-PapaSchlumpf",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-PapaSchlumpf.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-PapaSchlumpf.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-presupaci-hodiny",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-presupaci-hodiny.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-presupaci-hodiny.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Simba",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-Simba.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-Simba.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-SylvesterTweety",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-SylvesterTweety.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-SylvesterTweety.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Vu+",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-vu+.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-vu+.sh",
+          "status": "available"
+        },
+        {
+          "name": "Spinner-Window",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: spinners. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. قد يغيّر ملفات واجهة الإقلاع أو الرسوم المتحركة الحالية.",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-window.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/raw/refs/heads/main/spinners/spinner-window.sh",
+          "status": "available"
+        }
+      ]
     },
     "restore": {
-      "tools": []
+      "tools": [
+        {
+          "name": "Restore-my-Channels",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: restore. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. أمر استعادة وقد يستبدل إعدادات موجودة؛ خذ نسخة احتياطية أولًا.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/Restore-My-backup-shannels.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/Restore-My-backup-shannels.sh",
+          "status": "available"
+        },
+        {
+          "name": "Restore-hotkey",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: restore. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. أمر استعادة وقد يستبدل إعدادات موجودة؛ خذ نسخة احتياطية أولًا.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/restore-hotkey.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/restore-hotkey.sh",
+          "status": "available"
+        },
+        {
+          "name": "Restore-network",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: restore. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. أمر استعادة وقد يستبدل إعدادات موجودة؛ خذ نسخة احتياطية أولًا.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/restore-network.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/restore-network.sh",
+          "status": "available"
+        },
+        {
+          "name": "Restore-tuner",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: restore. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. أمر استعادة وقد يستبدل إعدادات موجودة؛ خذ نسخة احتياطية أولًا.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/restore-tuner.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/restore-tuner.sh",
+          "status": "available"
+        },
+        {
+          "name": "Restore-my-bouquetmakerxtream",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: restore. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. أمر استعادة وقد يستبدل إعدادات موجودة؛ خذ نسخة احتياطية أولًا.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/restore-my-bouquetmakerxtream.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/restore-my-bouquetmakerxtream.sh",
+          "status": "available"
+        },
+        {
+          "name": "Restore-my-ip2sat-server",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: restore. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. أمر استعادة وقد يستبدل إعدادات موجودة؛ خذ نسخة احتياطية أولًا.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/restore-my-ip2sat-server.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/restore-my-ip2sat-server.sh",
+          "status": "available"
+        },
+        {
+          "name": "Restore-my-ipaudio-server",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: restore. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. أمر استعادة وقد يستبدل إعدادات موجودة؛ خذ نسخة احتياطية أولًا.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/restore-my-ipaudio-server.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/restore-my-ipaudio-server.sh",
+          "status": "available"
+        },
+        {
+          "name": "Restore-my-ipaudiopro-server",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: restore. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. أمر استعادة وقد يستبدل إعدادات موجودة؛ خذ نسخة احتياطية أولًا.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/restore-my-ipaudiopro-server.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/restore-my-ipaudiopro-server.sh",
+          "status": "available"
+        },
+        {
+          "name": "Restore-my-jediplaylists",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: restore. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. أمر استعادة وقد يستبدل إعدادات موجودة؛ خذ نسخة احتياطية أولًا.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/restore-my-jediplaylists.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/restore-my-jediplaylists.sh",
+          "status": "available"
+        },
+        {
+          "name": "Restore-my-multistalkerpro",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: restore. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. أمر استعادة وقد يستبدل إعدادات موجودة؛ خذ نسخة احتياطية أولًا.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/restore-my-multistalkerpro.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/restore-my-multistalkerpro.sh",
+          "status": "available"
+        },
+        {
+          "name": "Restore-My-Subtitle-Setting",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: restore. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. أمر استعادة وقد يستبدل إعدادات موجودة؛ خذ نسخة احتياطية أولًا.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/Restore_my-subtitle-setting.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/Restore_my-subtitle-setting.sh",
+          "status": "available"
+        },
+        {
+          "name": "Restore-my-xstreamity-servers",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: restore. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. أمر استعادة وقد يستبدل إعدادات موجودة؛ خذ نسخة احتياطية أولًا.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/restore-my-xstreamity-servers.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/restore-my-xstreamity-servers.sh",
+          "status": "available"
+        },
+        {
+          "name": "Restore-sittings-xtraevent",
+          "description": "المصدر: قائمة أوامر Enigma2 في مستودع Online4Tech. المجموعة: restore. راجع رابط المصدر وتوافق صورة النظام والجهاز قبل التنفيذ. أمر استعادة وقد يستبدل إعدادات موجودة؛ خذ نسخة احتياطية أولًا.",
+          "install": "wget http://dreambox4u.com/emilnabil237/script/restore-sittings-xtraevent.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/script/restore-sittings-xtraevent.sh",
+          "status": "available"
+        }
+      ]
     }
   }
 }
