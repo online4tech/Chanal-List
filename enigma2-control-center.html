@@ -307,6 +307,12 @@
                 <span className="search-icon">⌕</span>
                 <input className="search" value={searchQuery} onChange={e=>{setSearchQuery(e.target.value);setShowSearchResults(true);}} onFocus={()=>setShowSearchResults(!!searchQuery)} placeholder="ابحث في الأقسام والتصنيفات والأدوات..." aria-label="بحث شامل"/>
                 <span className="search-shortcut">بحث مباشر</span>
+                {showSearchResults && searchQuery.trim() && <div className="search-results">
+                  {globalMatches.categories.length>0 && <><div className="search-group-title">الأقسام</div>{globalMatches.categories.map(group=><button key={group.id} className="search-result" onClick={()=>chooseCategory(group.id)}><span>{group.icon || FALLBACK_ICON}　{group.title}</span><small>قسم رئيسي</small></button>)}</>}
+                  {globalMatches.sections.length>0 && <><div className="search-group-title">التصنيفات الفرعية</div>{globalMatches.sections.slice(0,8).map(section=><button key={section.id} className="search-result" onClick={()=>{setSelectedCategory(section.groupId);setSelectedSubCategory(section.id.split("::")[1]);const first=items.find(item=>item.groupId===section.groupId && item.sectionId===section.id.split("::")[1]);if(first)setSelectedTool(first.id);setShowSearchResults(false);}}><span>{section.title}</span><small>{groups.find(g=>g.id===section.groupId)?.title || ""}</small></button>)}</>}
+                  {globalMatches.tools.length>0 && <><div className="search-group-title">الأدوات والعناصر</div>{globalMatches.tools.map(item=><button key={item.id} className="search-result" onClick={()=>chooseTool(item)}><span>{item.name}</span><small>{item.sectionTitle}</small></button>)}</>}
+                  {!globalMatches.categories.length && !globalMatches.sections.length && !globalMatches.tools.length && <div className="search-group-title">مفيش نتائج مطابقة</div>}
+                </div>}
               </div>
               <nav className="crumbs" aria-label="Breadcrumb">
                 <button onClick={()=>{setSelectedCategory("");setSelectedSubCategory("");setSearchQuery("");}}>الرئيسية</button><span>／</span>
