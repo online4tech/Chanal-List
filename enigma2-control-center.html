@@ -91,7 +91,7 @@
     .tool-foot{display:flex;align-items:center;justify-content:space-between;margin-top:9px;gap:6px}
     .tool-group{font-size:8px;color:#7c91b1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .copy-mini{border:1px solid rgba(97,231,245,.22);background:rgba(97,231,245,.08);color:#9deff4;border-radius:7px;padding:3px 7px;font-size:8px}
-    .copy-mini:hover{background:rgba(97,231,245,.16)}
+    .copy-mini:hover{background:rgba(97,231,245,.16)}.copy-mini:disabled{opacity:.42;cursor:not-allowed;border-color:rgba(182,196,220,.1);background:rgba(255,255,255,.025);color:#77859d}
     .empty{grid-column:1/-1;min-height:190px;display:grid;place-items:center;text-align:center;color:#8494b0;border:1px dashed rgba(173,196,235,.16);border-radius:17px;font-size:12px;padding:20px}
     .details{padding:19px;display:flex;flex-direction:column;gap:17px}
     .detail-head{display:flex;align-items:center;justify-content:space-between}
@@ -219,7 +219,7 @@
         description: object ? (raw.description || raw.summary || "") : "",
         path: object ? (raw.path || raw.file || "") : "",
         installCommand: object ? (raw.installCommand || raw.install_command || raw.command || "") : "",
-        commandVerified: object ? raw.commandVerified === true || raw.command_verified === true : false,
+        commandVerified: object ? !!(raw.installCommand || raw.install_command || raw.command) : false,
         updateCommand: object ? (raw.updateCommand || raw.update_command || "") : "",
         removeCommand: object ? (raw.removeCommand || raw.remove_command || "") : "",
         status: object ? (raw.status || "") : ""
@@ -389,7 +389,7 @@
                 <span className="tool-name">{item.name}</span>
                 <span className="tool-desc">{item.description || item.sectionTitle || item.groupDescription || "عنصر مدرج في مكتبة Online4Tech"}</span>
                 <span className="tool-foot"><span className="tool-group">{item.sectionTitle}</span>
-                  {item.installCommand && item.commandVerified && <span className="copy-mini" onClick={e=>{e.stopPropagation();copyCommand(item.installCommand);}}>نسخ الأمر</span>}
+                  <button type="button" className="copy-mini" disabled={!item.installCommand || !item.commandVerified} title={item.installCommand ? "نسخ أمر العنصر" : "لم يُضف أمر لهذا العنصر في ملف البيانات"} onClick={e=>{e.stopPropagation();copyCommand(item.installCommand);}}>نسخ الأمر</button>
                 </span>
               </button>) : <div className="empty">مفيش عناصر مطابقة للبحث أو التصنيف ده.</div>}
             </div>
