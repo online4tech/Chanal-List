@@ -180,6 +180,46 @@
       .live-dot{font-size:8px}
       .category-card{flex-basis:158px}
     }
+    /* تحسين الوضوح مع الحفاظ على نفس توزيع وأبعاد الواجهة */
+    :root{--bg:#142139;--line:rgba(211,226,255,.2);--muted:#c0cee2;--text:#f7faff;--cyan:#70eff7;--violet:#b2a5ff}
+    body{background:radial-gradient(ellipse at 10% 0%,rgba(88,108,255,.24),transparent 34%),radial-gradient(ellipse at 90% 12%,rgba(52,210,230,.18),transparent 30%),linear-gradient(135deg,#142139,#192943 52%,#17263e)}
+    .topbar{background:rgba(22,36,59,.88)}
+    .glass{background:rgba(29,46,72,.88);border-color:rgba(210,226,255,.17);box-shadow:0 10px 40px rgba(0,0,0,.22)}
+    .category-card{background:rgba(46,65,94,.72);border-color:rgba(210,226,255,.08)}
+    .cat-copy b{font-size:14px}.cat-copy small{font-size:11px;color:#c1cee1}
+    .eyebrow,.detail-kicker{font-size:11px;color:#c1d0e6}
+    .cat-num,.rail-count{font-size:11px}
+    .main-heading p{font-size:13px;color:#c4d1e5}
+    .search{font-size:14px;background:rgba(9,18,34,.72);color:#fff}
+    .search::placeholder{color:#b1c0d6}
+    .search-result{font-size:12px;color:#f1f6ff}.search-result small{font-size:11px;color:#c0cee2}
+    .crumbs{font-size:12px;color:#b8c8df}.crumbs button{color:#d4e2f6}
+    .subcat{font-size:12px;color:#d3e0f3;background:rgba(255,255,255,.07)}
+    .results-head b{font-size:14px}.results-head span{font-size:12px;color:#c0cee2}
+    .tool-card{background:linear-gradient(145deg,rgba(43,62,91,.96),rgba(31,48,75,.96));border-color:rgba(210,226,255,.17)}
+    .tool-icon{width:37px;height:37px;font-size:19px;background:rgba(97,231,245,.16)}
+    .tool-status{font-size:10px;color:#ffe2a5}
+    .tool-name{font-size:13px;color:#fff;line-height:1.65}
+    .tool-desc{font-size:11px;color:#c4d2e6;line-height:1.65}
+    .tool-group{font-size:10px;color:#b6c8e2}
+    .copy-mini{font-size:10px;padding:5px 8px;color:#c4fbff;background:rgba(97,231,245,.15)}
+    .detail-hero h2{font-size:18px}.detail-hero p{font-size:12px;color:#c2d1e6}
+    .detail-label{font-size:11px;color:#c0d0e6}
+    .detail-value{font-size:13px;color:#edf4ff}
+    .meta-row{font-size:12px}.meta-row span:first-child{color:#b7c7df}.meta-row span:last-child{color:#f0f5ff}
+    .command-box{font-size:11px;color:#e0efff;background:rgba(7,15,29,.72);border-color:rgba(205,224,255,.2)}
+    .action-btn{font-size:11px}.action-btn.primary{color:#c9fbff}
+    .hint{font-size:11px;color:#e0d9c7;background:rgba(105,85,43,.18)}
+    .command-source-note{margin-top:7px;color:#c8d8eb;font-size:10px;line-height:1.6}
+    .loading{color:#e5efff;font-size:16px}
+    @media(max-width:680px){
+      .cat-copy b{font-size:12px}.cat-copy small{font-size:10px}
+      .main-heading p{font-size:11px}.search{font-size:12px}
+      .crumbs{font-size:10px}.subcat{font-size:10px}
+      .tool-name{font-size:12px}.tool-desc{font-size:10px}.tool-status{font-size:8px}
+      .copy-mini{font-size:9px}.detail-value{font-size:12px}
+    }
+
     @media(min-width:1101px) and (max-height:720px){
       .workspace{padding-top:12px;padding-bottom:12px;gap:12px}
       .topbar{height:72px}
@@ -238,13 +278,16 @@
       return {groups,items};
     }
     async function loadCatalog(){
-      const [catalogResponse,itemsResponse] = await Promise.all([
+      const [catalogResponse,itemsResponse,commandsResponse] = await Promise.all([
         fetch(DATA_BASE+"catalog.json",{cache:"no-cache"}),
-        fetch(DATA_BASE+"items.json.gz",{cache:"no-cache"})
+        fetch(DATA_BASE+"items.json.gz",{cache:"no-cache"}),
+        fetch(DATA_BASE+"commands.json",{cache:"no-cache"})
       ]);
       if(!catalogResponse.ok) throw new Error("تعذر تحميل catalog.json");
       if(!itemsResponse.ok) throw new Error("تعذر تحميل ملف العناصر");
+      if(!commandsResponse.ok) throw new Error("تعذر تحميل ملف الأوامر");
       const catalog = await catalogResponse.json();
+      const commandsData = await commandsResponse.json();
       let payload;
       if("DecompressionStream" in window){
         const compressed = await itemsResponse.arrayBuffer();
@@ -254,9 +297,26 @@
         throw new Error("المتصفح الحالي لا يدعم قراءة ملف الفهرس المضغوط");
       }
       const normalized = normalizeData(payload);
+      const commandRecords = Array.isArray(commandsData.records) ? commandsData.records : [];
+      const cleanKey = value => String(value || "").trim().toLocaleLowerCase().replace(/[\\s_-]+/g,"");
       const metadata = new Map((catalog.groups || []).map(g=>[g.id,g]));
       normalized.groups = normalized.groups.map(g=>({...metadata.get(g.id),...g,icon:g.icon || metadata.get(g.id)?.icon || FALLBACK_ICON}));
-      return {...normalized,catalog};
+      normalized.items = normalized.items.map(item => {
+        const sameName = commandRecords.filter(record => cleanKey(record.name) === cleanKey(item.name));
+        let matches = sameName.filter(record => cleanKey(record.path) === cleanKey(item.path));
+        if (matches.length > 1) {
+          const sectionMatches = matches.filter(record => cleanKey(record.sourceSection) === cleanKey(item.sectionId));
+          if (sectionMatches.length) matches = sectionMatches;
+        }
+        if (matches.length !== 1) {
+          const sectionMatches = sameName.filter(record => cleanKey(record.sourceSection) === cleanKey(item.sectionId));
+          if (sectionMatches.length === 1) matches = sectionMatches;
+        }
+        if (matches.length !== 1) return item;
+        const record = matches[0];
+        return {...item,installCommand:record.cmd || "",removeCommand:record.remove_cmd || "",commandSource:record.sourceSection,commandAvailable:!!record.cmd};
+      });
+      return {...normalized,catalog,commandStats:{sourceRecords:commandRecords.length,matched:normalized.items.filter(item=>item.installCommand).length}};
     }
 
     function App(){
@@ -323,7 +383,7 @@
       },[]);
       const categoryTitle=activeGroup?.title || "كل العناصر";
       const sectionTitle=sections.find(s=>s.id===selectedSubCategory)?.title;
-      const hasVerifiedInstall=!!(activeItem?.installCommand && activeItem?.commandVerified);
+      const hasInstallCommand=!!activeItem?.installCommand;
 
       if(error) return <div className="loading"><div>تعذر تحميل المركز: {error}<br/><small>حدّث الصفحة وحاول مرة تانية.</small></div></div>;
       if(!dataset) return <div className="loading"><div><div className="spinner"></div>جاري تجهيز مركز التحكم...</div></div>;
@@ -389,7 +449,7 @@
                 <span className="tool-name">{item.name}</span>
                 <span className="tool-desc">{item.description || item.sectionTitle || item.groupDescription || "عنصر مدرج في مكتبة Online4Tech"}</span>
                 <span className="tool-foot"><span className="tool-group">{item.sectionTitle}</span>
-                  <button type="button" className="copy-mini" disabled={!item.installCommand || !item.commandVerified} title={item.installCommand ? "نسخ أمر العنصر" : "لم يُضف أمر لهذا العنصر في ملف البيانات"} onClick={e=>{e.stopPropagation();copyCommand(item.installCommand);}}>نسخ الأمر</button>
+                  <button type="button" className="copy-mini" disabled={!item.installCommand} title={item.installCommand ? "نسخ الأمر الموجود في الملف المرفق" : "لا يوجد أمر مطابق لهذا العنصر في الملف المرفق"} onClick={e=>{e.stopPropagation();copyCommand(item.installCommand);}}>نسخ الأمر</button>
                 </span>
               </button>) : <div className="empty">مفيش عناصر مطابقة للبحث أو التصنيف ده.</div>}
             </div>
@@ -416,14 +476,14 @@
               </div>
               <div className="detail-block">
                 <div className="detail-label">أمر التثبيت</div>
-                {hasVerifiedInstall ? <><div className="command-box">{activeItem.installCommand}</div><div className="command-actions"><button className="action-btn primary enabled" onClick={()=>copyCommand(activeItem.installCommand)}>نسخ الأمر</button></div></> : <div className="command-box">لا يوجد أمر تثبيت موثوق لهذا العنصر في البيانات الحالية.</div>}
+                {hasInstallCommand ? <><div className="command-box">{activeItem.installCommand}</div><div className="command-actions"><button className="action-btn primary enabled" onClick={()=>copyCommand(activeItem.installCommand)}>نسخ أمر التثبيت</button></div><div className="command-source-note">الأمر من الملف المرفق · لم يتم تشغيله أو اختبار توافقه على الجهاز</div></> : <div className="command-box">لا يوجد أمر مطابق لهذا العنصر في الملف المرفق.</div>}
               </div>
               <div className="detail-block">
                 <div className="detail-label">إجراءات العنصر</div>
                 <div className="command-actions">
-                  <button className={"action-btn "+(hasVerifiedInstall?"enabled":"")} disabled={!hasVerifiedInstall} title={hasVerifiedInstall?"نسخ أمر التثبيت":"لا يوجد أمر تثبيت موثق"} onClick={()=>copyCommand(activeItem.installCommand)}>تثبيت</button>
-                  <button className={"action-btn "+(activeItem.updateCommand?"enabled":"")} disabled={!activeItem.updateCommand} title="لا يوجد أمر تحديث موثق">تحديث</button>
-                  <button className={"action-btn "+(activeItem.removeCommand?"enabled":"")} disabled={!activeItem.removeCommand} title="لا يوجد أمر إزالة موثق">إزالة</button>
+                  <button className={"action-btn "+(hasInstallCommand?"enabled":"")} disabled={!hasInstallCommand} title={hasInstallCommand?"نسخ أمر التثبيت":"لا يوجد أمر تثبيت في الملف"} onClick={()=>copyCommand(activeItem.installCommand)}>نسخ التثبيت</button>
+                  <button className={"action-btn "+(activeItem.updateCommand?"enabled":"")} disabled={!activeItem.updateCommand} title="لا يوجد أمر تحديث في الملف">تحديث</button>
+                  <button className={"action-btn "+(activeItem.removeCommand?"enabled":"")} disabled={!activeItem.removeCommand} title={activeItem.removeCommand?"نسخ أمر الإزالة":"لا يوجد أمر إزالة لهذا العنصر"} onClick={()=>copyCommand(activeItem.removeCommand)}>نسخ الإزالة</button>
                 </div>
               </div>
             </> : <div className="empty">اختار عنصر من المنتصف علشان تظهر تفاصيله هنا.</div>}
