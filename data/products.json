@@ -1,0 +1,16 @@
+{
+  "store": {
+    "name": "BYRomeh Store",
+    "currency": "EGP",
+    "whatsapp": "201092978131",
+    "notice": "الأسعار والتوافر يتم تأكيدهما عبر واتساب قبل إتمام الطلب."
+  },
+  "products": [
+    {"id":"vu-zero-4k","name":"Vu+ Zero 4K","brand":"Vu+","category":"receivers","condition":"new-used","tag":"Enigma2 4K","description":"رسيفر Enigma2 بدقة 4K للاستخدام المنزلي وتجربة مشاهدة مرنة.","price":null,"oldPrice":null,"availability":"اسأل عن التوفر","image":"","featured":true},
+    {"id":"vu-duo-4k-se","name":"Vu+ DUO 4K SE","brand":"Vu+","category":"receivers","condition":"new-used","tag":"فئة متقدمة","description":"جهاز Enigma2 من فئة DUO؛ تواصل لمعرفة النسخ والتجهيزات المتاحة.","price":null,"oldPrice":null,"availability":"اسأل عن التوفر","image":"","featured":true},
+    {"id":"dreambox-two-uhd","name":"Dreambox Two UHD","brand":"Dreambox","category":"receivers","condition":"new-used","tag":"UHD","description":"رسيفر Dreambox UHD يعمل بمنظومة Enigma2.","price":null,"oldPrice":null,"availability":"اسأل عن التوفر","image":"","featured":true},
+    {"id":"dreambox-one-uhd","name":"Dreambox ONE UHD","brand":"Dreambox","category":"receivers","condition":"new-used","tag":"UHD","description":"جهاز Dreambox ONE UHD؛ اسأل عن الحالة والملحقات المتاحة.","price":null,"oldPrice":null,"availability":"اسأل عن التوفر","image":"","featured":false},
+    {"id":"enigma-remote","name":"ريموت كنترول Enigma2","brand":"Accessories","category":"accessories","condition":"new","tag":"إكسسوارات","description":"ريموت بديل متوافق؛ يرجى تحديد موديل الجهاز قبل الطلب.","price":null,"oldPrice":null,"availability":"اسأل عن التوافق","image":"","featured":false},
+    {"id":"internal-hdd","name":"وحدة تخزين داخلية HDD","brand":"Accessories","category":"accessories","condition":"new-used","tag":"تخزين","description":"خيارات تخزين داخلية لأجهزة الرسيفر المتوافقة حسب الموديل والسعة.","price":null,"oldPrice":null,"availability":"اسأل عن السعات","image":"","featured":false}
+  ]
+}
