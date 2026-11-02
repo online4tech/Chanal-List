@@ -442,7 +442,7 @@
               </div>
             </div>
 
-            <div className="results-head"><b>{searchQuery.trim()?"نتائج البحث":selectedSubCategory?(sectionTitle||"العناصر"):"عناصر القسم"}</b><span>{filteredItems.length.toLocaleString("ar-EG")} عنصر</span></div>
+            <div className="results-head"><b>{searchQuery.trim()?"نتائج البحث":selectedSubCategory?(sectionTitle||"العناصر"):"عناصر القسم"}</b><span>{filteredItems.length.toLocaleString("ar-EG")} عنصر · {filteredItems.filter(item=>item.installCommand).length.toLocaleString("ar-EG")} أمر متاح للنسخ</span></div>
             <div className="tool-grid">
               {filteredItems.length ? filteredItems.map(item=><button key={item.id} className={"tool-card "+(selectedTool===item.id?"selected":"")} onClick={()=>chooseTool(item)}>
                 <div className="tool-top"><span className="tool-icon">{item.sectionIcon || item.groupIcon || FALLBACK_ICON}</span><span className="tool-status">{item.status || "مقبول بالفهرس"}</span></div>
@@ -478,6 +478,11 @@
                 <div className="detail-label">أمر التثبيت</div>
                 {hasInstallCommand ? <><div className="command-box">{activeItem.installCommand}</div><div className="command-actions"><button className="action-btn primary enabled" onClick={()=>copyCommand(activeItem.installCommand)}>نسخ أمر التثبيت</button></div><div className="command-source-note">الأمر من الملف المرفق · لم يتم تشغيله أو اختبار توافقه على الجهاز</div></> : <div className="command-box">لا يوجد أمر مطابق لهذا العنصر في الملف المرفق.</div>}
               </div>
+              {activeItem.removeCommand && <div className="detail-block">
+                <div className="detail-label">أمر الإزالة الموجود في الملف</div>
+                <div className="command-box">{activeItem.removeCommand}</div>
+                <div className="command-actions"><button className="action-btn enabled" onClick={()=>copyCommand(activeItem.removeCommand)}>نسخ أمر الإزالة</button></div>
+              </div>}
               <div className="detail-block">
                 <div className="detail-label">إجراءات العنصر</div>
                 <div className="command-actions">
