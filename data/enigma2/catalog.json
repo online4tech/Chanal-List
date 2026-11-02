@@ -1,0 +1,66 @@
+{
+  "name": "Online4Tech Enigma2 Center",
+  "schemaVersion": 1,
+  "sourceFile": "emeeeel.txt",
+  "generatedOn": "2026-11-02",
+  "totalItems": 716,
+  "dataFile": "items.json.gz",
+  "groups": [
+    {
+      "id": "plugins",
+      "title": "الإضافات والملحقات",
+      "icon": "🧩",
+      "count": 312,
+      "description": "إضافات Enigma2 ولوحات التحكم وأدوات النظام والوسائط."
+    },
+    {
+      "id": "skins",
+      "title": "مركز الثيمات",
+      "icon": "🎨",
+      "count": 113,
+      "description": "ثيمات صور Enigma2 وشاشات العرض."
+    },
+    {
+      "id": "channels",
+      "title": "قوائم القنوات",
+      "icon": "📡",
+      "count": 80,
+      "description": "قوائم قنوات متعددة الأقمار ومصادرها."
+    },
+    {
+      "id": "backups",
+      "title": "النسخ والاستعادة",
+      "icon": "💾",
+      "count": 83,
+      "description": "أدوات النسخ والاستعادة وصور الأنظمة والإقلاع المتعدد."
+    },
+    {
+      "id": "picons",
+      "title": "البيكونات",
+      "icon": "🖼️",
+      "count": 49,
+      "description": "شعارات القنوات حسب القمر الصناعي."
+    },
+    {
+      "id": "tools",
+      "title": "الأدوات والنظام",
+      "icon": "🛠️",
+      "count": 79,
+      "description": "أدوات الصيانة والتحديث وإدارة النظام."
+    }
+  ],
+  "publishingPolicy": {
+    "commandsPublished": false,
+    "directExecution": false,
+    "defaultItemStatus": "needs-review",
+    "note": "الفهرس تعريفي فقط. أوامر shell وأوامر الحذف وروابط التنفيذ المباشر غير منشورة."
+  },
+  "excludedSections": [
+    "softcams"
+  ],
+  "excludedPatterns": [
+    "IPTV/streaming portal tools",
+    "softcam/key access utilities"
+  ],
+  "compatibilityStatus": "not-verified"
+}
