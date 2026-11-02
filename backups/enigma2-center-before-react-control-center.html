@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07111f">
+<meta name="description" content="Online4Tech Enigma2 Center — فهرس منظم لإضافات وثيمات وقوائم وأدوات Enigma2.">
+<title>Online4Tech | Enigma2 Center</title>
+<style>
+:root{color-scheme:dark;--bg:#06101d;--panel:#0d1d30;--panel2:#122840;--line:rgba(173,207,238,.14);--text:#f1f7ff;--muted:#a9bdd2;--cyan:#42d7f5;--blue:#398cff;--mint:#55e0c1;--gold:#ffc96b}
+*{box-sizing:border-box}body{margin:0;min-width:320px;background:radial-gradient(ellipse at 85% -10%,rgba(57,140,255,.2),transparent 35%),var(--bg);color:var(--text);font-family:"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.7}
+a{color:inherit;text-decoration:none}.wrap{width:min(1480px,100%);margin:auto;padding-inline:clamp(16px,4vw,64px)}
+header{position:sticky;top:0;z-index:5;background:rgba(6,16,29,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.head{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:900;letter-spacing:.03em}.brand small{display:block;color:var(--muted);font-size:.72rem;letter-spacing:0}.nav{display:flex;gap:22px;align-items:center;color:#c6d8e9;font-weight:700;font-size:.92rem}.nav a:hover{color:var(--cyan)}
+.hero{padding-block:clamp(42px,7vw,88px) 38px}.eyebrow{display:inline-flex;padding:6px 13px;border:1px solid rgba(85,224,193,.25);background:rgba(85,224,193,.07);border-radius:30px;color:var(--mint);font-size:.82rem;font-weight:800}
+h1{font-size:clamp(2.2rem,5vw,4.4rem);line-height:1.15;margin:18px 0 12px;letter-spacing:-.035em}h1 span{color:var(--cyan)}.lead{max-width:850px;color:#b7cbe0;font-size:1.08rem;margin:0}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px;max-width:780px}.stat{padding:15px 18px;background:rgba(13,29,48,.8);border:1px solid var(--line);border-radius:16px}.stat b{display:block;font-size:1.45rem;color:var(--cyan)}.stat small{color:var(--muted)}
+.toolbar{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:12px;margin:20px 0 22px}.field{width:100%;min-height:52px;border:1px solid var(--line);border-radius:14px;background:#0b1a2b;color:var(--text);padding:0 16px;font:inherit;outline:none}.field:focus{border-color:rgba(66,215,245,.65);box-shadow:0 0 0 3px rgba(66,215,245,.09)}
+.groups{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}.group{border:1px solid var(--line);background:linear-gradient(145deg,#112840,#0b1b2d);border-radius:17px;padding:17px;cursor:pointer;text-align:right;color:var(--text);transition:.2s}.group:hover,.group.active{border-color:rgba(66,215,245,.55);transform:translateY(-2px);background:linear-gradient(145deg,#173752,#10253a)}.group .ico{font-size:1.35rem}.group b{display:block;margin:7px 0 2px}.group small{color:var(--muted)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:34px 0 14px}.section-head h2{font-size:1.6rem;margin:0}.section-head p{color:var(--muted);margin:4px 0 0;font-size:.9rem}
+.results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.item{min-width:0;padding:15px 17px;border:1px solid var(--line);border-radius:15px;background:rgba(13,29,48,.82);display:flex;align-items:center;justify-content:space-between;gap:12px}.item-name{font-weight:750;overflow-wrap:anywhere}.status{flex:none;font-size:.72rem;color:var(--gold);border:1px solid rgba(255,201,107,.22);background:rgba(255,201,107,.07);border-radius:30px;padding:4px 8px}
+.more{display:flex;justify-content:center;margin:22px 0}.btn{border:1px solid rgba(66,215,245,.3);background:rgba(66,215,245,.08);color:var(--cyan);border-radius:12px;padding:11px 20px;font:inherit;font-weight:800;cursor:pointer}.btn:hover{background:rgba(66,215,245,.15)}
+.notice{margin:34px 0;padding:18px 20px;border:1px solid rgba(255,201,107,.25);border-radius:16px;background:rgba(255,201,107,.055);color:var(--muted)}.notice b{color:var(--gold)}
+footer{margin-top:55px;padding:25px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}.foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.empty{padding:35px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:15px;grid-column:1/-1}
+@media(max-width:1050px){.groups{grid-template-columns:repeat(3,minmax(0,1fr))}.results{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.head{min-height:66px}.nav{gap:12px;font-size:.8rem}.toolbar{grid-template-columns:1fr}.stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.stat{padding:12px 10px}.stat b{font-size:1.15rem}.groups{grid-template-columns:repeat(2,minmax(0,1fr))}.results{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header><div class="wrap head"><a class="brand" href="./index.html">ONLINE4TECH <small>ENIGMA2 CENTER · خليك دايماً أونلاين</small></a><nav class="nav"><a href="./index.html">ملفات القنوات</a><a href="./products.html">المتجر</a><a href="https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh" target="_blank" rel="noopener">المستودع</a></nav></div></header>
+<main class="wrap">
+<section class="hero"><span class="eyebrow">📡 ENIGMA2 KNOWLEDGE & CATALOG</span><h1>مركز <span>Enigma2</span><br>كل أدواتك في مكان واحد</h1><p class="lead">فهرس موحد للإضافات والثيمات وقوائم القنوات والنسخ الاحتياطية والبيكونات وأدوات النظام. تقدر تبحث بالاسم وتستعرض كل قسم بسهولة.</p>
+<div class="stats"><div class="stat"><b id="totalCount">—</b><small>عنصر في الفهرس</small></div><div class="stat"><b id="groupCount">6</b><small>أقسام رئيسية</small></div><div class="stat"><b>100%</b><small>بدون تنفيذ أوامر من الموقع</small></div></div></section>
+<section><div class="toolbar"><input id="search" class="field" type="search" placeholder="ابحث عن إضافة أو ثيم أو قمر صناعي..." aria-label="ابحث في الفهرس"><select id="sectionFilter" class="field" aria-label="فلترة حسب القسم"><option value="">كل الأقسام الفرعية</option></select></div><div id="groups" class="groups" aria-label="الأقسام"></div></section>
+<section><div class="section-head"><div><h2 id="resultsTitle">كل العناصر</h2><p id="resultsMeta">جاري تحميل الفهرس...</p></div></div><div id="results" class="results"><div class="empty">جاري تحميل البيانات...</div></div><div class="more"><button id="loadMore" class="btn" hidden>عرض المزيد</button></div></section>
+<div class="notice"><b>ملاحظة مهمة:</b> البيانات مأخوذة من ملف فهرسة أولي، وليست توصية بالتثبيت. تم قبول العناصر المعروضة داخل الفهرس للتصفح والتعريف. القبول لا يعني اختبار الروابط أو ضمان التوافق مع موديلات الأجهزة وصور Enigma2؛ حالة التوافق تظل غير مؤكدة حتى الاختبار. لا توجد أوامر تثبيت أو حذف قابلة للتشغيل داخل الموقع.</div>
+</main>
+<footer><div class="wrap foot"><span>© Online4Tech · Enigma2 Center</span><a href="./index.html">العودة لصفحة ملفات القنوات ←</a></div></footer>
+<script>
+const GROUPS=[
+{id:"plugins",title:"الإضافات والملحقات",icon:"🧩",count:312,file:"plugins"},
+{id:"skins",title:"مركز الثيمات",icon:"🎨",count:113,file:"skins"},
+{id:"channels",title:"قوائم القنوات",icon:"📡",count:80,file:"channels"},
+{id:"backups",title:"النسخ والاستعادة",icon:"💾",count:83,file:"backups"},
+{id:"picons",title:"البيكونات",icon:"🖼️",count:49,file:"picons"},
+{id:"tools",title:"الأدوات والنظام",icon:"🛠️",count:79,file:"tools"}
+];
+let allItems=[],activeGroup="",visibleLimit=60;
+const $=id=>document.getElementById(id);
+function flatten(data){return data.groups.flatMap(g=>g.sections.flatMap(s=>s.items.map(name=>({name,group:g.id,section:s.id,sectionTitle:s.title}))));}
+function renderGroups(){ $("groups").innerHTML=GROUPS.map(g=>'<button class="group '+(activeGroup===g.id?'active':'')+'" data-group="'+g.id+'"><span class="ico">'+g.icon+'</span><b>'+g.title+'</b><small>'+g.count+' عنصر</small></button>').join("");}
+function updateSectionOptions(){const sections=[...new Map(allItems.filter(x=>!activeGroup||x.group===activeGroup).map(x=>[x.section,{id:x.section,title:x.sectionTitle}])).values()];$("sectionFilter").innerHTML='<option value="">كل الأقسام الفرعية</option>'+sections.map(s=>'<option value="'+s.id+'">'+s.title+'</option>').join("");}
+function filtered(){const q=$("search").value.trim().toLocaleLowerCase();const sub=$("sectionFilter").value;return allItems.filter(x=>(!activeGroup||x.group===activeGroup)&&(!sub||x.section===sub)&&(!q||(x.name+" "+x.sectionTitle).toLocaleLowerCase().includes(q)));}
+function render(){const items=filtered();const shown=items.slice(0,visibleLimit);$("resultsTitle").textContent=activeGroup?(GROUPS.find(g=>g.id===activeGroup)?.title||"العناصر"):"كل العناصر";$("resultsMeta").textContent="عرض "+shown.length+" من "+items.length+" عنصر مطابق";$("results").innerHTML=shown.length?shown.map(x=>'<article class="item"><span class="item-name">'+escapeHtml(x.name)+'</span><span class="status">مقبول بالفهرس</span></article>').join(""):'<div class="empty">مفيش نتائج مطابقة للبحث الحالي.</div>';$("loadMore").hidden=shown.length>=items.length;}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+async function load(){try{const r=await fetch("./data/enigma2/items.json.gz");if(!r.ok)throw Error("HTTP "+r.status);if(!("DecompressionStream" in window))throw Error("المتصفح لا يدعم فك ضغط ملف البيانات");const stream=new Blob([await r.arrayBuffer()]).stream().pipeThrough(new DecompressionStream("gzip"));const data=JSON.parse(await new Response(stream).text());allItems=flatten(data);$("totalCount").textContent=allItems.length.toLocaleString("ar-EG");renderGroups();updateSectionOptions();render();$("groupCount").textContent=GROUPS.length;}catch(e){$("results").innerHTML='<div class="empty">تعذر تحميل بيانات الفهرس. '+escapeHtml(e.message)+'<br>راجع اتصال الإنترنت وحاول تحديث الصفحة.</div>';$("resultsMeta").textContent="تعذر تحميل البيانات";}}
+$("groups").addEventListener("click",e=>{const b=e.target.closest("[data-group]");if(!b)return;activeGroup=activeGroup===b.dataset.group?"":b.dataset.group;visibleLimit=60;renderGroups();updateSectionOptions();render();});
+$("search").addEventListener("input",()=>{visibleLimit=60;render();});
+$("sectionFilter").addEventListener("change",()=>{visibleLimit=60;render();});
+$("loadMore").addEventListener("click",()=>{visibleLimit+=60;render();});
+load();
+</script>
+</body></html>
