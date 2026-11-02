@@ -12,6 +12,7 @@
  *   If omitted, the command is copied to the clipboard.
  * - Layout: 3 columns on desktop (lg+). Below lg it simply stacks (nothing desktop-specific leaks to mobile/tablet).
  */
+import DeviceConnection from "../components/DeviceConnection.jsx";
 import React, {
   memo, useCallback, useDeferredValue, useEffect, useMemo, useRef, useState,
 } from "react";
@@ -466,6 +467,8 @@ export default function ControlCenter({ data, onAction }) {
 
       <div className="relative">
         <Header query={searchQuery} setQuery={setSearchQuery} results={results} onPick={pickSearch} onHome={goHome} />
+
+        <DeviceConnection />
 
         <main className="mx-auto grid max-w-[1700px] grid-cols-1 gap-6 px-6 py-6 lg:grid-cols-[260px_minmax(0,1fr)_360px]">
           {/* Left rail */}
