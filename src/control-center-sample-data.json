@@ -1,0 +1,30 @@
+{
+  "main": {
+    "panels": {
+      "tools": [
+        { "name": "Panel One", "description": "Main control panel", "install": "wget -O - http://example.com/panel.sh | /bin/sh", "path": "/usr/lib/panels", "remove": "opkg remove panel-one", "status": "installed" }
+      ]
+    },
+    "plugins": {
+      "tools": [
+        { "name": "Plugin A", "description": "Example plugin", "install": "opkg install plugin-a", "remove": "opkg remove plugin-a", "status": "available" }
+      ]
+    },
+    "channels": {
+      "subcategories": {
+        "other":    { "tools": [{ "name": "Channels Pack", "install": "wget -O - http://example.com/ch.sh | /bin/sh", "description": "Generic list" }] },
+        "ciefp":    { "tools": [{ "name": "Ciefp Sat", "install": "wget -O - http://example.com/ciefp.sh | /bin/sh", "status": "update" }] },
+        "morph883": { "tools": [{ "name": "Morph883 List", "install": "wget -O - http://example.com/morph.sh | /bin/sh" }] },
+        "vaninbal": { "tools": [{ "name": "Vaninbal List", "install": "wget -O - http://example.com/vanin.sh | /bin/sh" }] }
+      }
+    },
+    "feeds": { "tools": [] },
+    "tools": { "tools": [] },
+    "media": { "tools": [] },
+    "skins": { "tools": [] },
+    "images": { "tools": [] },
+    "picons": { "tools": [] },
+    "bootlogos": { "tools": [] },
+    "spinners": { "tools": [] }
+  }
+}
