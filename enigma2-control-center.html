@@ -445,7 +445,7 @@
             <div className="results-head"><b>{searchQuery.trim()?"نتائج البحث":selectedSubCategory?(sectionTitle||"العناصر"):"عناصر القسم"}</b><span>{filteredItems.length.toLocaleString("ar-EG")} عنصر · {filteredItems.filter(item=>item.installCommand).length.toLocaleString("ar-EG")} أمر متاح للنسخ</span></div>
             <div className="tool-grid">
               {filteredItems.length ? filteredItems.map(item=><button key={item.id} className={"tool-card "+(selectedTool===item.id?"selected":"")} onClick={()=>chooseTool(item)}>
-                <div className="tool-top"><span className="tool-icon">{item.sectionIcon || item.groupIcon || FALLBACK_ICON}</span><span className="tool-status">{item.status || "مقبول بالفهرس"}</span></div>
+                <div className="tool-top"><span className="tool-icon">{item.sectionIcon || item.groupIcon || FALLBACK_ICON}</span>{item.status && <span className="tool-status">{item.status}</span>}</div>
                 <span className="tool-name">{item.name}</span>
                 <span className="tool-desc">{item.description || item.sectionTitle || item.groupDescription || "عنصر مدرج في مكتبة Online4Tech"}</span>
                 <span className="tool-foot"><span className="tool-group">{item.sectionTitle}</span>
