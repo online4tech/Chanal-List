@@ -1,0 +1,733 @@
+{
+  "main": {
+    "panels": {
+      "tools": [
+        {
+          "name": "AJPanel",
+          "description": "لوحة أدوات متكاملة لإدارة إضافات وأدوات Enigma2 فى مكان واحد. | المطور: AMAJamry | صور مذكور توافقها: OpenATV",
+          "install": "wget -q --no-check-certificate https://raw.githubusercontent.com/biko-73/AjPanel/main/installer.sh -O - | /bin/sh",
+          "path": "https://github.com/biko-73/AjPanel",
+          "status": "available"
+        },
+        {
+          "name": "DreamArabia",
+          "description": "لوحة عربية متكاملة تحتوي على مجموعة كبيرة من الإضافات والأدوات الخاصة بإنجما2. | المطور: dreambox4u",
+          "install": "wget -q --no-check-certificate http://dreambox4u.com/dreamarabia/scripts/installer.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/dreamarabia/scripts/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "GP4.2",
+          "description": "حزمة Gemini الشهيرة التي تضيف العديد من الوظائف المتقدمة وأدوات الإدارة. | المطور: Blue Panel",
+          "install": "apt update && wget -O /tmp/geminilocale_all.deb http://download.blue-panel.com/geminilocale_gp4.php && apt install -y /tmp/geminilocale_all.deb",
+          "path": "http://download.blue-panel.com/geminilocale_gp4.php",
+          "status": "available"
+        },
+        {
+          "name": "Mohamed Store",
+          "description": "متجر إضافات عربي يتيح تثبيت وتحديث العديد من البلجنات من مكان واحد. | المطور: wwwgoper77-wq",
+          "install": "wget -O - https://raw.githubusercontent.com/wwwgoper77-wq/MohamedStore/main/install.sh | sh",
+          "path": "https://github.com/wwwgoper77-wq/MohamedStore",
+          "status": "available"
+        },
+        {
+          "name": "EnigmaPlay",
+          "description": "متجر إضافات حديث يوفر الوصول السريع إلى أدوات وبلجنات Enigma2 من واجهة موحدة. | المطور: Ahmadarjan1",
+          "install": "wget -qO- https://raw.githubusercontent.com/Ahmadarjan1/EnigmaPlay-Repo/main/install.sh | sh",
+          "path": "https://github.com/Ahmadarjan1/EnigmaPlay-Repo",
+          "status": "available"
+        },
+        {
+          "name": "MagicPanelMax",
+          "description": "لوحة متقدمة تجمع الأدوات والإضافات والخدمات الشائعة في واجهة موحدة. | المطور: Ham-ahmed",
+          "install": "wget -q --no-check-certificate https://raw.githubusercontent.com/Ham-ahmed/G12/refs/heads/main/MagicPanelMax-install.sh -O - | /bin/sh",
+          "path": "https://github.com/Ham-ahmed/G12",
+          "status": "available"
+        },
+        {
+          "name": "LinuxSat Panel",
+          "description": "إحدى أشهر لوحات إدارة الإضافات والأدوات والتحديثات لأجهزة إنجما2. | المطور: Belfagor2005",
+          "install": "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/installer.sh -O - | /bin/bash",
+          "path": "https://github.com/Belfagor2005/LinuxsatPanel",
+          "status": "available"
+        },
+        {
+          "name": "AIO Panel",
+          "description": "لوحة شاملة تجمع عشرات الأدوات والإضافات والخدمات في مكان واحد. | المطور: OliOli2013",
+          "install": "wget -q -O - https://raw.githubusercontent.com/OliOli2013/PanelAIO-Plugin/main/installer.sh | /bin/sh",
+          "path": "https://github.com/OliOli2013/PanelAIO-Plugin",
+          "status": "available"
+        },
+        {
+          "name": "AJPanel Menu1",
+          "description": "نسخة مخصصة من لوحة AJPanel مزودة بقوائم وأدوات إضافية. | المطور: غير محدد",
+          "install": "wget -q --no-check-certificate https://raw.githubusercontent.com/tarekzoka/ajpanel/refs/heads/main/ajpanel_menu1.sh -O - | /bin/sh",
+          "path": "https://github.com/tarekzoka/ajpanel",
+          "status": "available"
+        },
+        {
+          "name": "EmilPanelPro",
+          "description": "لوحة احترافية تحتوى على مجموعة كبيرة من أدوات وإضافات Enigma2. | المطور: غير محدد",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/EmilPanelPro/emilpanelpro.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins",
+          "status": "available"
+        },
+        {
+          "name": "Emil Panel Lite",
+          "description": "نسخة خفيفة من لوحة EmilPanel للأجهزة محدودة الموارد. | المطور: غير محدد",
+          "install": "wget -q --no-check-certificate https://dreambox4u.com/emilnabil237/plugins/ajpanel/new/emil-panel-lite.sh -O - | /bin/sh",
+          "path": "http://dreambox4u.com/emilnabil237/plugins/ajpanel/new",
+          "status": "available"
+        },
+        {
+          "name": "SmartAddons Panel",
+          "description": "لوحة إضافات متقدمة لإدارة أدوات وملحقات Enigma2. | المطور: غير محدد",
+          "install": "wget -q --no-check-certificate https://raw.githubusercontent.com/Ham-ahmed/Secript-Panel/main/1New-Ajpanel-Panel-v5.0_HAN.sh -O - | /bin/sh",
+          "path": "https://github.com/Ham-ahmed/Secript-Panel",
+          "status": "available"
+        },
+        {
+          "name": "SmartAddons Panel Pro",
+          "description": "إصدار متطور من لوحة SmartAddons مزود بأدوات إضافية. | المطور: غير محدد",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/SmartAddonspanel/smart-Panel.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins",
+          "status": "available"
+        }
+      ]
+    },
+    "tools": {
+      "tools": [
+        {
+          "name": "ArabicSavior",
+          "description": "تحسين دعم اللغة العربية وإصلاح مشاكل الخطوط والترجمة. | المطور: popking159",
+          "install": "wget https://raw.githubusercontent.com/fairbird/ArabicSavior/main/installer.sh -O - | /bin/sh",
+          "path": "https://github.com/fairbird/ArabicSavior",
+          "status": "available"
+        },
+        {
+          "name": "BackupFlash",
+          "description": "أداة لإنشاء نسخة احتياطية كاملة من النظام الحالي واستعادتها بسهولة عند الحاجة. | المطور: fairbird",
+          "install": "wget https://raw.githubusercontent.com/fairbird/backupflash/main/installer.sh -O - | /bin/sh",
+          "path": "https://github.com/fairbird/backupflash",
+          "status": "available"
+        },
+        {
+          "name": "RaedQuickSignal",
+          "description": "عرض نسبة الإشارة بسرعة أثناء المشاهدة. | المطور: fairbird",
+          "install": "opkg update && opkg install wget && wget https://raw.githubusercontent.com/fairbird/RaedQuickSignal/main/installer.sh -O - | /bin/sh",
+          "path": "https://github.com/fairbird/RaedQuickSignal",
+          "status": "available"
+        },
+        {
+          "name": "Chromium",
+          "description": "متصفح Chromium لأجهزة Enigma2. | المطور: غير محدد",
+          "install": "opkg install enigma2-plugin-extensions-chromium",
+          "path": "https://www.openpli.org/",
+          "status": "available"
+        },
+        {
+          "name": "Transmission",
+          "description": "أداة تحميل تورنت متكاملة لأجهزة Enigma2. | المطور: غير محدد",
+          "install": "opkg install transmission transmission-client python3-transmission-rpc xz python3-beautifulsoup4 && wget -q --no-check-certificate http://dreambox4u.com/dreamarabia/Transmission_e2/Transmission_e2.sh -O - | bash",
+          "path": "http://dreambox4u.com/dreamarabia/Transmission_e2",
+          "status": "available"
+        },
+        {
+          "name": "Satelliweb E2",
+          "description": "إضافة متخصصة لمتابعة بيانات وأخبار الأقمار والقنوات. | المطور: غير محدد",
+          "install": "wget -q --no-check-certificate http://dreambox4u.com/dreamarabia/Satelliweb_e2/install_satelliweb.sh -O - | bash",
+          "path": "http://dreambox4u.com/dreamarabia/Satelliweb_e2",
+          "status": "available"
+        },
+        {
+          "name": "AlMuaddhin",
+          "description": "إضافة مواقيت الصلاة والتنبيه لها على أجهزة Enigma2. سكربت المصدر يحذف مجلد الإضافة السابق قبل فك النسخة الجديدة؛ خذ نسخة من إعداداتك وراجع توافق الصورة قبل التنفيذ. | المطور: Emil Nabil / Online4Tech",
+          "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/AlMuaddhin/almoaddhin.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/tree/main/AlMuaddhin",
+          "status": "available"
+        },
+        {
+          "name": "ImagesDownloader",
+          "description": "أداة تنزيل الصور/الملفات المرتبطة ببيئة Enigma2. سكربت المصدر يحذف مجلد الإضافة القديم قبل التثبيت؛ لا تنفّذه أثناء وجود تحديث أو عملية أخرى. | المطور: Emil Nabil / Online4Tech",
+          "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/ImagesDownloader/ImagesDownloader.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/tree/main/ImagesDownloader",
+          "status": "available"
+        },
+        {
+          "name": "InfoBarWeather",
+          "description": "إضافة عرض معلومات الطقس على شريط المعلومات. سكربت المصدر يزيل مجلد النسخة السابقة ويثبت curl عند الحاجة؛ التوافق يعتمد على صورة Enigma2. | المطور: Emil Nabil / Online4Tech",
+          "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/InfoBarWeather/InfobarWeather.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/tree/main/InfoBarWeather",
+          "status": "available"
+        },
+        {
+          "name": "Mawaqit",
+          "description": "إضافة Mawaqit لعرض مواقيت الصلاة. سكربت المصدر يحذف مجلد الإضافة السابق قبل فك الأرشيف؛ راجع التوافق وخذ نسخة احتياطية. | المطور: Emil Nabil / Online4Tech",
+          "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/Mawaqit/Mawaqit.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/tree/main/Mawaqit",
+          "status": "available"
+        },
+        {
+          "name": "NumberZapExt",
+          "description": "إضافة موسعة للتعامل مع التنقل بالأرقام بين القنوات. سكربت المصدر يحذف مجلد SystemPlugins السابق قبل التثبيت؛ لا تستخدمه إلا بعد التأكد من التوافق. | المطور: Emil Nabil / Online4Tech",
+          "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/NumberZapExt/NumberZapExt.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/tree/main/NumberZapExt",
+          "status": "available"
+        },
+        {
+          "name": "QuadPip",
+          "description": "إضافة وظائف العرض متعدد النوافذ (Quad PiP) للأجهزة والصور المتوافقة. سكربت المصدر يزيل الحزمة ومجلد الإضافة القديمين قبل التثبيت. | المطور: Emil Nabil / Online4Tech",
+          "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/QuadPip/QuadPip.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/tree/main/QuadPip",
+          "status": "available"
+        },
+        {
+          "name": "Advanced Screenshot",
+          "description": "أداة لالتقاط صور من واجهة Enigma2. ملف التثبيت IPK؛ السكربت يثبته باستخدام opkg ويحتاج curl. تحقق من معمارية وتوافق الصورة قبل التثبيت. | المطور: Emil Nabil / Online4Tech",
+          "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/advancedscreenshot/advancedscreenshot.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/tree/main/advancedscreenshot",
+          "status": "available"
+        },
+        {
+          "name": "تحديث فهارس الحزم — OpenATV / Enigma2",
+          "description": "تحديث قوائم الحزم المتاحة فقط دون تثبيت ترقيات. مناسب لصور Enigma2 التي تستخدم opkg. | المطور: Emil Nabil / Online4Tech",
+          "install": "opkg update",
+          "path": "https://github.com/emilnabil/download-plugins",
+          "status": "available"
+        },
+        {
+          "name": "تحديث فهارس الحزم — DreamOS",
+          "description": "تحديث قوائم الحزم في DreamOS دون ترقية الحزم المثبتة. | المطور: Emil Nabil / Online4Tech",
+          "install": "apt-get update",
+          "path": "https://github.com/emilnabil/download-plugins",
+          "status": "available"
+        },
+        {
+          "name": "ترقية الحزم — OpenATV / Enigma2",
+          "description": "ترقية حزم النظام عبر opkg. قد تؤدي ترقية الحزم عشوائياً إلى عدم استقرار الصورة أو تعارضات؛ استخدمها فقط عند توصية مطور الصورة وبعد نسخة احتياطية. | المطور: Emil Nabil / Online4Tech",
+          "install": "opkg upgrade",
+          "path": "https://github.com/emilnabil/download-plugins",
+          "status": "available"
+        },
+        {
+          "name": "ترقية الحزم — DreamOS",
+          "description": "ترقية الحزم عبر apt في DreamOS. قد تغيّر مكونات النظام؛ استخدمها فقط عند توصية مطور الصورة وبعد نسخة احتياطية. | المطور: Emil Nabil / Online4Tech",
+          "install": "apt-get upgrade",
+          "path": "https://github.com/emilnabil/download-plugins",
+          "status": "available"
+        }
+      ]
+    },
+    "media": {
+      "tools": [
+        {
+          "name": "IPAudioPro",
+          "description": "تشغيل وإدارة خدمات الصوت والراديو عبر الإنترنت. | المطور: zKhadiri",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/ipaudiopro/refs/heads/main/ipaudiopro.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/ipaudiopro",
+          "status": "available"
+        },
+        {
+          "name": "AudioShift",
+          "description": "أداة سريعة لتبديل المسارات الصوتية داخل القنوات والأفلام بسهولة. | المطور: xfayez95",
+          "install": "wget -O - https://xfayez95.github.io/audioshift/installer.sh | sh",
+          "path": "https://xfayez95.github.io/audioshift/installer.sh",
+          "status": "available"
+        },
+        {
+          "name": "UltraAudio",
+          "description": "حزمة متكاملة لتحسين وظائف الصوت وتوفير خيارات استماع إضافية داخل الجهاز. | المطور: K3bOra",
+          "install": "wget -qO- https://raw.githubusercontent.com/K3bOra/UltraAudio/main/install.sh | /bin/sh",
+          "path": "https://github.com/K3bOra/UltraAudio",
+          "status": "available"
+        },
+        {
+          "name": "OrangeAudio",
+          "description": "مشغل صوتي متطور يدعم البث الصوتي عبر الإنترنت ومحطات الراديو المختلفة. | المطور: popking159",
+          "install": "wget -qO- https://raw.githubusercontent.com/popking159/OrangeAudio/main/installer.sh | sh",
+          "path": "https://github.com/popking159/OrangeAudio",
+          "status": "available"
+        },
+        {
+          "name": "IPAudioPlus",
+          "description": "نسخة مطورة من خدمات الصوت عبر الإنترنت مع واجهة أكثر سهولة ودعماً لعدد أكبر من المصادر. | المطور: Ahmadarjan1",
+          "install": "wget -q -O - https://raw.githubusercontent.com/Ahmadarjan1/IPAudioPlus-Releases/main/installer.sh | /bin/sh",
+          "path": "https://github.com/Ahmadarjan1/IPAudioPlus-Releases",
+          "status": "available"
+        },
+        {
+          "name": "Xtream2Audio",
+          "description": "تشغيل وتحويل القنوات الصوتية من خدمات Xtream. | المطور: emilnabil | صور مذكور توافقها: OpenATV",
+          "install": "wget https://github.com/emilnabil/download-plugins/raw/refs/heads/main/Xtream2Audio/Xtream2Audio.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/tree/main/Xtream2Audio",
+          "status": "available"
+        }
+      ]
+    },
+    "skins": {
+      "tools": [
+        {
+          "name": "Metrix Poster",
+          "description": "إضافات ومكونات لواجهة MetrixHD تضيف بوسترات وأشكال عرض حديثة للقنوات والأفلام. | المطور: hmeng80",
+          "install": "wget -q --no-check-certificate https://gitlab.com/hmeng80/addons/-/raw/main/metrix-fhd-parts-ec.sh -O - | /bin/sh",
+          "path": "https://gitlab.com/hmeng80/addons",
+          "status": "available"
+        },
+        {
+          "name": "Mohammed Skin",
+          "description": "سكين عربي حديث يتميز بتصميم أنيق وخفيف مع دعم أغلب إضافات Enigma2. | المطور: mido00020",
+          "install": "wget -q --no-check-certificate https://raw.githubusercontent.com/mido00020/MohammedSkin/main/installer.sh -O - | /bin/sh",
+          "path": "https://github.com/mido00020/MohammedSkin",
+          "status": "available"
+        },
+        {
+          "name": "Obsidian FHD",
+          "description": "سكين Full HD احترافي بواجهة عصرية ومعلومات موسعة عن القنوات والمحتوى. | المطور: dali44g",
+          "install": "wget -qO- https://raw.githubusercontent.com/dali44g/Obsidian-FHD/main/install.sh | sh",
+          "path": "https://github.com/dali44g/Obsidian-FHD",
+          "status": "available"
+        },
+        {
+          "name": "CineView FHD",
+          "description": "واجهة سينمائية متقدمة تركز على عرض البوسترات ومعلومات الأفلام بصورة جذابة. | المطور: habeb-s",
+          "install": "wget -qO /tmp/cineview-install.sh https://raw.githubusercontent.com/habeb-s/CineView-MLA-Install/main/cineview-install.sh && sh /tmp/cineview-install.sh",
+          "path": "https://github.com/habeb-s/CineView-MLA-Install",
+          "status": "available"
+        },
+        {
+          "name": "CineView FHD MLA",
+          "description": "ثيم FHD مع مثبت ذكي يحدد عائلة الصورة ويتحقق من إصدار Python وملف IPK ببصمة SHA256 قبل التثبيت. مدعوم حسب السكربت: OpenATV وEGAMI وPurE2 وOpenBH وOpenViX وOpenPLi مع Python 3 ضمن الإصدارات المذكورة في المثبت. | المطور: Emil Nabil / Online4Tech",
+          "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/skin-cineview/CineView.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/tree/main/skin-cineview",
+          "status": "available"
+        },
+        {
+          "name": "MX Maestra Black Weather — Python 3.12",
+          "description": "ملف السكين المخصص لبيئات Python 3.12 فقط. لا تستخدمه مع إصدار Python مختلف؛ سكربت التثبيت يحذف مجلد السكين والحزمة السابقة. | المطور: Emil Nabil / Online4Tech",
+          "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/Skin-MX_Maestra_Black_weather/Skin-MX_Maestra_Black_weather.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/tree/main/Skin-MX_Maestra_Black_weather",
+          "status": "available"
+        },
+        {
+          "name": "MX Maestra Black Weather — Python 3.13",
+          "description": "ملف السكين المخصص لبيئات Python 3.13 فقط. لا تستخدمه مع إصدار Python مختلف؛ سكربت التثبيت يحذف مجلد السكين والحزمة السابقة. | المطور: Emil Nabil / Online4Tech",
+          "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/Skin-MX_Maestra_Black_weather/Skin-MX_Maestra_Black_weather.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/tree/main/Skin-MX_Maestra_Black_weather",
+          "status": "available"
+        },
+        {
+          "name": "HoloFHD Black",
+          "description": "Skin FHD لأجهزة DreamOS. مثبت المصدر يحاول تحديث الحزم ويثبت عدة مكونات Skin إضافية قبل فك الأرشيف؛ راجع الاعتماديات ومساحة التخزين. | المطور: Emil Nabil / Online4Tech",
+          "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/skins-for-dreambox/HoloFHD-Black.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/tree/main/skins-for-dreambox",
+          "status": "available"
+        },
+        {
+          "name": "ZSkin FHD",
+          "description": "Skin بدقة FHD. سكربت المصدر يفك الأرشيف إلى نظام الملفات مباشرة؛ تأكد من توافق الصورة وخذ نسخة احتياطية من إعدادات السكين. | المطور: Emil Nabil / Online4Tech",
+          "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/skins-for-dreambox/ZSkin-FHD.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/tree/main/skins-for-dreambox",
+          "status": "available"
+        },
+        {
+          "name": "Brushedalu HD",
+          "description": "Skin HD لأجهزة DreamOS. ملف تثبيت مباشر؛ راجع التوافق مع صورة جهازك قبل فك الملفات إلى النظام. | المطور: Emil Nabil / Online4Tech",
+          "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/skins-for-dreambox/Brushedalu-HD.sh | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/tree/main/skins-for-dreambox",
+          "status": "available"
+        }
+      ]
+    },
+    "picons": {
+      "tools": [
+        {
+          "name": "SetPicon",
+          "description": "أداة متخصصة لإدارة البيكونات وتحديد مسارها وتثبيتها تلقائياً. | المطور: emilnabil",
+          "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/setpicon/installer.sh -O - | /bin/sh",
+          "path": "https://github.com/emilnabil/download-plugins/tree/main/setpicon",
+          "status": "available"
+        }
+      ]
+    },
+    "plugins": {
+      "subcategories": {
+        "IPTV": {
+          "tools": [
+            {
+              "name": "Xtreamity",
+              "description": "مشغل IPTV احترافي يدعم Xtream Codes مع تنظيم القنوات والأفلام والمسلسلات بواجهة سهلة وسريعة. | المطور: biko-73 | صور مذكور توافقها: OpenATV",
+              "install": "wget https://raw.githubusercontent.com/biko-73/xstreamity/main/installer.sh -O - | /bin/sh",
+              "path": "https://github.com/biko-73/xstreamity",
+              "status": "available"
+            },
+            {
+              "name": "DreamXtream",
+              "description": "إضافة IPTV خفيفة مخصصة لصور DreamOS توفر تجربة مشاهدة مستقرة مع دعم قوائم Xtream. | المطور: dreambox4u",
+              "install": "wget http://dreambox4u.com/ch/E2/enigma2-plugin-extensions-dreamxtream_0.3-r9.0_arm64.deb -O /tmp/enigma2-plugin-extensions-dreamxtream_0.3-r9.0_arm64.deb && dpkg -i /tmp/enigma2-plugin-extensions-dreamxtream_0.3-r9.0_arm64.deb",
+              "path": "http://dreambox4u.com/ch/E2/enigma2-plugin-extensions-dreamxtream_0.3-r9.0_arm64.deb",
+              "status": "available"
+            },
+            {
+              "name": "MyStreamer",
+              "description": "مشغل IPTV متطور يدعم القنوات المباشرة ومكتبات الفيديو مع واجهة عربية سهلة الاستخدام. | المطور: popking159 | صور مذكور توافقها: OpenATV",
+              "install": "wget -qO - https://raw.githubusercontent.com/popking159/MyStreamer/refs/heads/main/myinstaller.sh | /bin/sh",
+              "path": "https://github.com/popking159/MyStreamer",
+              "status": "available"
+            },
+            {
+              "name": "XPortal",
+              "description": "عميل IPTV متكامل يدعم Stalker وXtream وMac Portal للوصول إلى محتوى IPTV بسهولة. | المطور: azroukarim",
+              "install": "wget -q --no-check-certificate https://raw.githubusercontent.com/azroukarim/XPortal/refs/heads/main/installer.sh -O - | /bin/sh",
+              "path": "https://github.com/azroukarim/XPortal",
+              "status": "available"
+            },
+            {
+              "name": "TiViMate",
+              "description": "نسخة محسنة من تجربة TiviMate لأجهزة Enigma2 مع دعم القوائم الحديثة والتنقل السريع. | المطور: opesboy",
+              "install": "wget -qO- https://raw.githubusercontent.com/opesboy/TiviMateE2/main/install.sh | sh",
+              "path": "https://github.com/opesboy/TiviMateE2",
+              "status": "available"
+            },
+            {
+              "name": "UltraStalker",
+              "description": "إضافة متخصصة لدعم بوابات Stalker Portal مع أداء عالٍ واستقرار أثناء المشاهدة. | المطور: K3bOra",
+              "install": "wget -qO- https://raw.githubusercontent.com/K3bOra/-UltraStalker/main/install.sh | /bin/sh",
+              "path": "https://github.com/K3bOra/-UltraStalker",
+              "status": "available"
+            },
+            {
+              "name": "XtreamNew",
+              "description": "إضافة IPTV حديثة تدعم أحدث أساليب تشغيل مكتبات Xtream Codes. | المطور: ahmedhussein4342-lgtm",
+              "install": "wget -q --no-check-certificate https://raw.githubusercontent.com/ahmedhussein4342-lgtm/XtreamNew/main/install_xtreamnew.sh -O - | /bin/sh",
+              "path": "https://github.com/ahmedhussein4342-lgtm/XtreamNew",
+              "status": "available"
+            },
+            {
+              "name": "BouquetMakerXtream",
+              "description": "أداة لإنشاء وترتيب الباقات والقنوات تلقائياً من مزودي Xtream بطريقة احترافية. | المطور: biko-73",
+              "install": "wget https://raw.githubusercontent.com/biko-73/BouquetMakerXtream/main/installer.sh -O - | /bin/sh",
+              "path": "https://github.com/biko-73/BouquetMakerXtream",
+              "status": "available"
+            },
+            {
+              "name": "E2Player",
+              "description": "واحدة من أشهر إضافات تشغيل المحتوى المرئي عبر الإنترنت لمشاهدة الأفلام والمسلسلات من مصادر متعددة. | المطور: oe-mirrors",
+              "install": "wget -q https://raw.githubusercontent.com/oe-mirrors/e2iplayer/refs/heads/python3/e2iplayer_install.sh -O - | /bin/sh",
+              "path": "https://github.com/oe-mirrors/e2iplayer",
+              "status": "available"
+            },
+            {
+              "name": "E2Player — E2Iplayer Updater",
+              "description": "أمر إضافي مرتبط بإضافة E2Player. راجع المصدر والتوافق قبل الاستخدام.",
+              "install": "wget --no-check-certificate -O - https://github.com/emilnabil/download-plugins/raw/refs/heads/main/E2IplayerUpdater/E2IplayerUpdater.sh | /bin/sh",
+              "path": "https://github.com/oe-mirrors/e2iplayer",
+              "status": "available"
+            },
+            {
+              "name": "MultiIptvAdder",
+              "description": "أداة لإضافة وإدارة العديد من اشتراكات IPTV بسهولة. | المطور: غير محدد",
+              "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiIptvAdder/installer.sh -O - | /bin/sh",
+              "path": "https://github.com/emilnabil/download-plugins",
+              "status": "available"
+            },
+            {
+              "name": "E2Player Hosts Update",
+              "description": "تحديث واستكمال هوستات E2Player. | المطور: غير محدد",
+              "install": "wget -q --no-check-certificate https://github.com/angelheart150/My_e2iplayer_hosts/raw/main/install-e2iplayer-update-hosts.sh -O - | /bin/sh",
+              "path": "https://github.com/angelheart150/My_e2iplayer_hosts",
+              "status": "available"
+            },
+            {
+              "name": "My Tsiplayer",
+              "description": "تحديث وإضافة هوستات Tsiplayer لمصادر مشاهدة إضافية. | المطور: غير محدد",
+              "install": "wget -q --no-check-certificate https://github.com/angelheart150/My-tsiplayer/raw/main/install-tsiplayer-update-hosts.sh -O - | /bin/sh",
+              "path": "https://github.com/angelheart150/My-tsiplayer",
+              "status": "available"
+            },
+            {
+              "name": "JediMakerXtream",
+              "description": "إنشاء الباقات والقنوات تلقائياً من مزودى Xtream. | المطور: غير محدد",
+              "install": "wget https://raw.githubusercontent.com/biko-73/JediMakerXtream/main/installer.sh -O - | /bin/sh",
+              "path": "https://github.com/biko-73/JediMakerXtream",
+              "status": "available"
+            },
+            {
+              "name": "Multi Stalker",
+              "description": "إدارة وتشغيل عدة بوابات Stalker من مكان واحد. | المطور: غير محدد",
+              "install": "wget https://raw.githubusercontent.com/biko-73/Multi-Stalker/main/pro/installer.sh -O - | /bin/sh",
+              "path": "https://github.com/biko-73/Multi-Stalker",
+              "status": "available"
+            }
+          ]
+        },
+        "Translation": {
+          "tools": [
+            {
+              "name": "SubsSupportPro",
+              "description": "إضافة ترجمة شهيرة لتحميل وإدارة ملفات الترجمة للأفلام والمسلسلات مباشرة من الجهاز. | المطور: popking159 | صور مذكور توافقها: OpenATV",
+              "install": "wget https://github.com/popking159/SubsSupportPro/raw/refs/heads/main/myinstaller.sh -O - | /bin/sh",
+              "path": "https://github.com/popking159/SubsSupportPro",
+              "status": "available"
+            },
+            {
+              "name": "SubExtractor Lite",
+              "description": "أداة لاستخراج الترجمات المدمجة من ملفات الفيديو وإنشاء ملفات ترجمة مستقلة. | المطور: Arian7s",
+              "install": "wget https://raw.githubusercontent.com/Arian7s/SubExtractorLite/main/installer.sh -O - | /bin/sh",
+              "path": "https://github.com/Arian7s/SubExtractorLite",
+              "status": "available"
+            },
+            {
+              "name": "MyTranslator",
+              "description": "مترجم متعدد اللغات لترجمة النصوص والقوائم داخل إضافات Enigma2. | المطور: ismailelkhooly",
+              "install": "wget -O /tmp/mytranslator.ipk https://github.com/ismailelkhooly/Ismail-/raw/refs/heads/main/enigma2-plugin-extensions-mytranslator_1.75.ipk && opkg install --force-reinstall /tmp/mytranslator.ipk",
+              "path": "https://github.com/ismailelkhooly/Ismail-",
+              "status": "available"
+            },
+            {
+              "name": "AiSubtitles",
+              "description": "إضافة تعتمد على تقنيات الذكاء الاصطناعي لإنشاء وترجمة الترجمات بشكل أسرع وأكثر دقة. | المطور: hmeng80",
+              "install": "wget -q --no-check-certificate https://gitlab.com/hmeng80/extensions/-/raw/main/AISubtitles/aisubtitles.sh -O - | /bin/sh",
+              "path": "https://gitlab.com/hmeng80/extensions",
+              "status": "available"
+            },
+            {
+              "name": "AutoSub AI",
+              "description": "أداة ذكية لإنشاء ترجمات تلقائية للمحتوى المرئي باستخدام تقنيات التعرف على الصوت. | المطور: HBK2010",
+              "install": "wget -q -O /tmp/AutoSub.tar.gz https://raw.githubusercontent.com/HBK2010/AutoSub/main/AutoSub.tar.gz && tar xzf /tmp/AutoSub.tar.gz -C /usr/lib/enigma2/python/Plugins/Extensions",
+              "path": "https://github.com/HBK2010/AutoSub",
+              "status": "available"
+            },
+            {
+              "name": "SSupport",
+              "description": "إضافة لتحميل وإدارة الترجمات للمحتوى المرئى. | المطور: غير محدد",
+              "install": "wget -q --no-check-certificate https://github.com/popking159/ssupport/raw/main/subssupport-install.sh -O - | /bin/sh",
+              "path": "https://github.com/popking159/ssupport",
+              "status": "available"
+            }
+          ]
+        },
+        "Softcam": {
+          "tools": [
+            {
+              "name": "CCcam",
+              "description": "حزمة CCcam بصيغة TAR.GZ من المستودع المصدر. | المطور: Emil Nabil",
+              "install": "",
+              "path": "https://github.com/emilnabil/download-plugins",
+              "status": "available"
+            },
+            {
+              "name": "OScam",
+              "description": "حزمة OScam بصيغة TAR.GZ من المستودع المصدر. | المطور: Emil Nabil",
+              "install": "",
+              "path": "https://github.com/emilnabil/download-plugins",
+              "status": "available"
+            },
+            {
+              "name": "NCam",
+              "description": "حزمة NCam بصيغة TAR.GZ من المستودع المصدر. | المطور: Emil Nabil",
+              "install": "",
+              "path": "https://github.com/emilnabil/download-plugins",
+              "status": "available"
+            },
+            {
+              "name": "MgCamd",
+              "description": "حزمة MgCamd بصيغة TAR.GZ من المستودع المصدر. | المطور: Emil Nabil",
+              "install": "",
+              "path": "https://github.com/emilnabil/download-plugins",
+              "status": "available"
+            },
+            {
+              "name": "Levi45 Emulator (IPK)",
+              "description": "حزمة IPK لإضافة Levi45 Emulator. | المطور: Emil Nabil",
+              "install": "set -e\nURL='https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/levi45emulator/enigma2-plugin-extensions-levi45emulator_all.ipk'\nPKG='/tmp/levi45-emulator.ipk'\nif command -v wget >/dev/null 2>&1; then wget -O \"$PKG\" \"$URL\"; elif command -v curl >/dev/null 2>&1; then curl -fL \"$URL\" -o \"$PKG\"; else echo 'wget أو curl غير متاح'; exit 1; fi\nif [ ! -s \"$PKG\" ]; then echo 'فشل تنزيل ملف التثبيت'; exit 1; fi\nif [ 'ipk' = 'ipk' ]; then\n  if command -v opkg >/dev/null 2>&1; then opkg install \"$PKG\"; else echo 'الصورة لا تحتوي على opkg؛ ملف IPK غير مدعوم هنا'; exit 1; fi\nelse\n  if command -v dpkg >/dev/null 2>&1; then dpkg -i \"$PKG\"; else echo 'الصورة لا تحتوي على dpkg؛ ملف DEB غير مدعوم هنا'; exit 1; fi\nfi\nrm -f \"$PKG\"\necho 'انتهى أمر التثبيت؛ راجع سجل الجهاز للتأكد من نجاح الحزمة.'",
+              "path": "https://github.com/emilnabil/download-plugins",
+              "status": "available"
+            },
+            {
+              "name": "Levi45 Emulator (DEB)",
+              "description": "حزمة DEB لإضافة Levi45 Emulator. | المطور: Emil Nabil",
+              "install": "set -e\nURL='https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/levi45emulator/enigma2-plugin-extensions-levi45emulator_all.deb'\nPKG='/tmp/levi45-emulator.deb'\nif command -v wget >/dev/null 2>&1; then wget -O \"$PKG\" \"$URL\"; elif command -v curl >/dev/null 2>&1; then curl -fL \"$URL\" -o \"$PKG\"; else echo 'wget أو curl غير متاح'; exit 1; fi\nif [ ! -s \"$PKG\" ]; then echo 'فشل تنزيل ملف التثبيت'; exit 1; fi\nif [ 'deb' = 'ipk' ]; then\n  if command -v opkg >/dev/null 2>&1; then opkg install \"$PKG\"; else echo 'الصورة لا تحتوي على opkg؛ ملف IPK غير مدعوم هنا'; exit 1; fi\nelse\n  if command -v dpkg >/dev/null 2>&1; then dpkg -i \"$PKG\"; else echo 'الصورة لا تحتوي على dpkg؛ ملف DEB غير مدعوم هنا'; exit 1; fi\nfi\nrm -f \"$PKG\"\necho 'انتهى أمر التثبيت؛ راجع سجل الجهاز للتأكد من نجاح الحزمة.'",
+              "path": "https://github.com/emilnabil/download-plugins",
+              "status": "available"
+            },
+            {
+              "name": "Emu Installer",
+              "description": "أرشيف أداة Emu Installer. | المطور: Emil Nabil",
+              "install": "",
+              "path": "https://github.com/emilnabil/download-plugins",
+              "status": "available"
+            },
+            {
+              "name": "Alternative Softcam Manager",
+              "description": "أرشيف Alternative Softcam Manager. | المطور: Emil Nabil",
+              "install": "",
+              "path": "https://github.com/emilnabil/download-plugins",
+              "status": "available"
+            }
+          ]
+        },
+        "Settings": {
+          "tools": [
+            {
+              "name": "Ciefp — قمر واحد 19°E",
+              "description": "قائمة قنوات لقمر Astra 19.2°E. سكربت المصدر يحدّث ملفات إعدادات القنوات على الرسيفر؛ احتفظ بنسخة احتياطية قبل التنفيذ. | المطور: Emil Nabil / Online4Tech",
+              "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/ciefp-channels-e2/ciefp-E2-1sat-19E.sh | /bin/sh",
+              "path": "https://github.com/emilnabil/download-plugins/tree/main/ciefp-channels-e2",
+              "status": "available"
+            },
+            {
+              "name": "Ciefp — قمران 19°E + 13°E",
+              "description": "قائمة قنوات لتجميعة Astra 19.2°E وHot Bird 13°E. قد تستبدل إعدادات القنوات الحالية؛ راجع توافق الأقمار والتوصيلات وخذ نسخة احتياطية. | المطور: Emil Nabil / Online4Tech",
+              "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/ciefp-channels-e2/ciefp-E2-2satA-19E-13E.sh | /bin/sh",
+              "path": "https://github.com/emilnabil/download-plugins/tree/main/ciefp-channels-e2",
+              "status": "available"
+            },
+            {
+              "name": "Ciefp — 6 أقمار",
+              "description": "قائمة متعددة الأقمار تشمل 23°E و19.2°E و16°E و13°E و1.9°E و0.8°W. تأكد من إعدادات الـDiSEqC قبل التثبيت. | المطور: Emil Nabil / Online4Tech",
+              "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/ciefp-channels-e2/ciefp-E2-6sat-23E-19E-16E-13E-1.9E-0.8W.sh | /bin/sh",
+              "path": "https://github.com/emilnabil/download-plugins/tree/main/ciefp-channels-e2",
+              "status": "available"
+            },
+            {
+              "name": "Morpheus883 — Hot Bird + Astra",
+              "description": "قائمة قنوات متعددة الأقمار من Morpheus883 لتجميعة 13°E و19.2°E. السكربت ينشئ نسخة احتياطية من /etc/enigma2 قبل الاستبدال. | المطور: Emil Nabil / Online4Tech",
+              "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/morpheus883-channels/E2_Morph883_13E-19.2E.sh | /bin/sh",
+              "path": "https://github.com/emilnabil/download-plugins/tree/main/morpheus883-channels",
+              "status": "available"
+            },
+            {
+              "name": "Morpheus883 — Motor Settings",
+              "description": "إعدادات قنوات للموتور من Morpheus883. السكربت ينشئ نسخة احتياطية مؤرخة من /etc/enigma2 قبل نسخ الإعدادات الجديدة. | المطور: Emil Nabil / Online4Tech",
+              "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/morpheus883-channels/E2_Morph883_Motor.sh | /bin/sh",
+              "path": "https://github.com/emilnabil/download-plugins/tree/main/morpheus883-channels",
+              "status": "available"
+            },
+            {
+              "name": "Morpheus883 — Settings",
+              "description": "حزمة إعدادات قنوات عامة من Morpheus883. السكربت ينشئ نسخة احتياطية قبل تحديث ملفات /etc/enigma2. | المطور: Emil Nabil / Online4Tech",
+              "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/morpheus883-channels/E2_Morph883_Settings.sh | /bin/sh",
+              "path": "https://github.com/emilnabil/download-plugins/tree/main/morpheus883-channels",
+              "status": "available"
+            },
+            {
+              "name": "Vhannibal — Hot Bird 13°E",
+              "description": "قائمة Vhannibal لقمر Hot Bird 13°E. تنبيه: السكربت يحذف ملفات القنوات والراديو الحالية قبل نسخ الجديدة؛ خذ نسخة احتياطية أولاً. | المطور: Emil Nabil / Online4Tech",
+              "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/vanenbal-channels/Vhannibal-HotBird-13E.sh | /bin/sh",
+              "path": "https://github.com/emilnabil/download-plugins/tree/main/vanenbal-channels",
+              "status": "available"
+            },
+            {
+              "name": "Vhannibal — Motor 70°E إلى 45°W",
+              "description": "إعدادات Vhannibal للموتور عبر نطاق أقمار واسع. السكربت يحذف ملفات القنوات والراديو الحالية؛ تأكد من إعدادات الموتور وخذ نسخة احتياطية. | المطور: Emil Nabil / Online4Tech",
+              "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/vanenbal-channels/Vhannibal-Motor-70E-45W.sh | /bin/sh",
+              "path": "https://github.com/emilnabil/download-plugins/tree/main/vanenbal-channels",
+              "status": "available"
+            },
+            {
+              "name": "Vhannibal — Dual 13°E + 19°E",
+              "description": "قائمة Vhannibal لقمرين Hot Bird 13°E وAstra 19.2°E. راجع توافق إعدادات الأقمار قبل الاستبدال. | المطور: Emil Nabil / Online4Tech",
+              "install": "wget -q --no-check-certificate -O - https://raw.githubusercontent.com/emilnabil/download-plugins/main/vanenbal-channels/Vhannibal-Dual-13-19E.sh | /bin/sh",
+              "path": "https://github.com/emilnabil/download-plugins/tree/main/vanenbal-channels",
+              "status": "available"
+            }
+          ]
+        },
+        "Other": {
+          "tools": [
+            {
+              "name": "EPGImport",
+              "description": "أداة استيراد وتحديث بيانات دليل البرامج الإلكتروني EPG من مصادر متعددة. | المطور: Saiedf",
+              "install": "wget -qO- https://raw.githubusercontent.com/Saiedf/EPGImport/main/installer_epgimportiet5_auto.sh | /bin/sh",
+              "path": "https://github.com/Saiedf/EPGImport",
+              "status": "available"
+            },
+            {
+              "name": "MultiCamAdder",
+              "description": "إضافة لإدارة وإضافة أنظمة SoftCam المختلفة وتسهيل التبديل بينها. | المطور: emilnabil",
+              "install": "wget https://raw.githubusercontent.com/emilnabil/download-plugins/refs/heads/main/MultiCamAdder/installer.sh -O - | /bin/sh",
+              "path": "https://github.com/emilnabil/download-plugins/tree/main/MultiCamAdder",
+              "status": "available"
+            },
+            {
+              "name": "Server EagleSat",
+              "description": "خدمة وأدوات إضافية خاصة بمنصة EagleSat لتوسيع وظائف الجهاز. | المطور: eliesat",
+              "install": "wget -qO- --no-check-certificate https://raw.githubusercontent.com/eliesat/ServerEagleSat/main/installer.sh | bash",
+              "path": "https://github.com/eliesat/ServerEagleSat",
+              "status": "available"
+            },
+            {
+              "name": "TMBD",
+              "description": "إضافة لجلب وعرض معلومات الأفلام والمسلسلات. | المطور: غير محدد",
+              "install": "wget https://raw.githubusercontent.com/biko-73/TMBD/main/installer.sh -O - | /bin/sh",
+              "path": "https://github.com/biko-73/TMBD",
+              "status": "available"
+            },
+            {
+              "name": "XtraEvent",
+              "description": "جلب صور وبيانات الأحداث والأفلام والقنوات تلقائياً. | المطور: غير محدد",
+              "install": "wget -q --no-check-certificate https://github.com/digiteng/xtra/raw/main/xtraEvent.sh -O - | /bin/sh",
+              "path": "https://github.com/digiteng/xtra",
+              "status": "available"
+            },
+            {
+              "name": "TeamNitro",
+              "description": "مجموعة أدوات وخدمات إضافية لأجهزة Enigma2. | المطور: غير محدد",
+              "install": "wget https://raw.githubusercontent.com/biko-73/TeamNitro/main/script/installerB.sh -O - | /bin/sh",
+              "path": "https://github.com/biko-73/TeamNitro",
+              "status": "available"
+            }
+          ]
+        }
+      }
+    },
+    "channels": {
+      "subcategories": {
+        "ملفات القنوات والأقمار": {
+          "tools": [
+            {
+              "name": "ملف satellites.xml",
+              "description": "ملف بيانات الأقمار الصناعية المنشور في مستودع BYRomeh. يتم تنزيله إلى /tmp فقط ولا يستبدل ملفات النظام.",
+              "install": "wget -O /tmp/satellites.xml https://raw.githubusercontent.com/online4tech/Enigma2-Chanal-List-BYRomeh/main/satellites.xml",
+              "path": "https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh/blob/main/satellites.xml",
+              "status": "available"
+            },
+            {
+              "name": "ملف cables.xml",
+              "description": "ملف بيانات شبكات الكابل. يتم تنزيل نسخة إلى /tmp فقط.",
+              "install": "wget -O /tmp/cables.xml https://raw.githubusercontent.com/online4tech/Enigma2-Chanal-List-BYRomeh/main/cables.xml",
+              "path": "https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh/blob/main/cables.xml",
+              "status": "available"
+            }
+          ]
+        }
+      }
+    },
+    "backup": {
+      "tools": [
+        {
+          "name": "نسخة قنوات OpenATV",
+          "description": "تحميل أرشيف نسخة القنوات المنشور بالمستودع إلى مجلد /tmp فقط. راجع محتوياته وتوافقه قبل أي استعادة.",
+          "install": "wget -O /tmp/channels_backup_openATV_Enigma2-Chanal-List-BYRomeh.tar.gz https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh/raw/main/channels_backup_openATV_Enigma2-Chanal-List-BYRomeh.tar.gz",
+          "path": "https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh/blob/main/channels_backup_openATV_Enigma2-Chanal-List-BYRomeh.tar.gz",
+          "status": "available"
+        }
+      ]
+    },
+    "feeds": {
+      "tools": []
+    },
+    "images": {
+      "tools": []
+    },
+    "bootlogos": {
+      "tools": []
+    },
+    "spinners": {
+      "tools": []
+    },
+    "restore": {
+      "tools": []
+    }
+  }
+}
