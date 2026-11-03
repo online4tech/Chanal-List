@@ -45,7 +45,11 @@ assert.ok(entry.includes("localeCompare"), "Case-insensitive A-Z sorting is wire
 assert.ok(entry.includes("prepareCatalog(catalog)"), "Prepared catalog is rendered");
 
 const ui = readFileSync("src/pages/ControlCenter.jsx", "utf8");
-assert.ok(ui.includes("navigationHistory") && ui.includes("goBack"), "Existing hierarchical back navigation remains");
+assert.ok(ui.includes('window.history.pushState'), "In-app navigation adds native browser history entries");
+assert.ok(ui.includes('window.history.replaceState'), "Initial page state is registered without adding a duplicate entry");
+assert.ok(ui.includes('addEventListener("popstate"'), "Browser Back and Forward restore the selected UI state");
+assert.ok(!ui.includes("navigationHistory") && !ui.includes("goBack"), "Custom in-app Back stack and handler are removed");
+assert.ok(!ui.includes("← Back"), "In-page Back button is removed");
 assert.ok(ui.includes("const results = useMemo"), "Existing deferred search remains");
 
 const css = readFileSync("src/styles.css", "utf8");
