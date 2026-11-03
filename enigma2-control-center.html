@@ -588,6 +588,40 @@
     @media(max-width:680px){.app-header{height:auto;min-height:76px;padding:10px 14px;grid-template-columns:1fr auto;gap:8px}.app-header .head-title{font-size:16px}.app-header .head-title small{font-size:10px}.workspace{padding:12px}.hero-section{height:auto;min-height:190px;padding:24px 20px;align-items:flex-start;flex-direction:column;gap:18px}.hero-copy h1{font-size:32px}.hero-copy p{font-size:14px}.hero-status{align-items:flex-start}.hero-satellite{right:70%;top:20%;font-size:42px}.search-wrap{height:60px;padding:0 15px}.search{font-size:14px}.category-strip{gap:8px}.category-chip{height:42px;padding:0 14px}.tool-grid{grid-template-columns:1fr;gap:16px}.plugin-card.tool-card{height:220px;min-height:220px;padding:18px}.plugin-card .tool-name{font-size:25px}.plugin-card .tool-icon{width:64px;height:64px;flex-basis:64px;font-size:32px}.plugin-card .copy-mini{min-width:130px;height:44px}.app-footer{height:auto;min-height:80px;gap:8px;flex-wrap:wrap;padding:18px;font-size:10px}}
     @media(max-width:390px){.workspace{padding:10px}.plugin-card .tool-name{font-size:22px}.plugin-card .tool-desc{font-size:12px}.plugin-card .copy-mini{min-width:118px;padding:0 12px;font-size:12px}.app-footer{justify-content:center;text-align:center}}
 
+  
+    /* Header brand lockup: O4T logo replaces plain text while preserving 90px header */
+    .app-header{grid-template-columns:minmax(230px,1fr) minmax(320px,560px) minmax(190px,1fr);gap:24px}
+    .o4t-brand{display:flex;align-items:center;justify-content:flex-start;gap:13px;direction:ltr;min-width:0}
+    .o4t-symbol{position:relative;display:flex;align-items:center;justify-content:center;gap:0;height:58px;min-width:105px;padding:0 8px;font-family:Arial,sans-serif;font-size:43px;font-weight:900;letter-spacing:-5px;line-height:1;color:#f7fbff;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+    .o4t-symbol strong{color:#ff343b;font-size:48px;font-style:italic;margin:0 1px}
+    .o4t-symbol i{position:absolute;right:1px;top:0;color:#ff343b;font-size:16px;font-style:normal;letter-spacing:0;transform:rotate(-18deg);text-shadow:0 0 9px rgba(255,52,59,.55)}
+    .o4t-wordmark{display:flex;flex-direction:column;gap:3px;direction:ltr;white-space:nowrap}
+    .o4t-wordmark b{font-family:Arial,sans-serif;font-size:21px;font-weight:900;letter-spacing:-.7px;color:#f5f8ff;line-height:1}
+    .o4t-wordmark b span{color:#ff343b}
+    .o4t-wordmark small{font-family:Arial,sans-serif;font-size:10px;font-weight:800;letter-spacing:1.1px;color:#c4d4e8}
+    .header-connection{justify-content:flex-end}
+    .connection-pill{display:inline-flex;align-items:center;gap:10px;padding:11px 17px;border:1px solid rgba(42,255,130,.55);border-radius:999px;background:linear-gradient(135deg,rgba(0,100,46,.38),rgba(0,55,33,.35));color:#a7ffc8;font-size:12px;font-weight:800;white-space:nowrap;box-shadow:0 0 18px rgba(24,255,123,.13),inset 0 1px 0 rgba(255,255,255,.08)}
+    .connection-pill i{width:9px;height:9px;border-radius:50%;background:#28ef78;box-shadow:0 0 12px #28ef78}
+    @media(max-width:680px){
+      .app-header{grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:9px 12px}
+      .o4t-brand{gap:7px}
+      .o4t-symbol{height:43px;min-width:76px;font-size:33px;letter-spacing:-4px}
+      .o4t-symbol strong{font-size:37px}
+      .o4t-symbol i{font-size:12px}
+      .o4t-wordmark b{font-size:15px}
+      .o4t-wordmark small{font-size:7px;letter-spacing:.7px}
+      .header-connection{justify-content:flex-end}
+      .connection-pill{padding:8px 10px;font-size:9px;gap:6px}
+      .connection-pill i{width:7px;height:7px}
+    }
+    @media(max-width:390px){
+      .o4t-symbol{min-width:67px;font-size:29px}
+      .o4t-symbol strong{font-size:33px}
+      .o4t-wordmark b{font-size:13px}
+      .o4t-wordmark small{font-size:6px}
+      .connection-pill{padding:7px 8px;font-size:8px}
+    }
+
   </style>
 </head>
 <body>
@@ -765,14 +799,13 @@
 
       return <div className="shell">
         <header className="app-header topbar">
-          <div className="brand">
-            <div className="brand-mark">O4T</div>
-            <div><div className="brand-name">ONLINE4TECH</div><div className="brand-sub">ENIGMA2 ECOSYSTEM</div></div>
+          <div className="brand o4t-brand" aria-label="O4T Online4Tech Enigma2 Ecosystem">
+            <div className="o4t-symbol"><span>O</span><strong>4</strong><span>T</span><i>⌁</i></div>
+            <div className="o4t-wordmark"><b>ONLINE<span>4</span>TECH</b><small>ENIGMA2 ECOSYSTEM</small></div>
           </div>
           <div className="head-title">مركز التحكم الذكي<small>كل أدوات Enigma2 في منصة واحدة</small></div>
-          <div className="profile">
-            <div className="profile-copy"><b>ONLINE4TECH</b><span>خليك دايماً أونلاين</span></div>
-            <div className="avatar">O4</div>
+          <div className="profile header-connection">
+            <span className="connection-pill"><i></i>متصل بالسيرفر</span>
           </div>
         </header>
 
