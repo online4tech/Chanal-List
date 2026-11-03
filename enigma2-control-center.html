@@ -622,6 +622,34 @@
       .connection-pill{padding:7px 8px;font-size:8px}
     }
 
+  
+    /* SCROLL FIX + VISUAL POLISH v3.1 — keep all catalog cards reachable */
+    html,body,#root{height:auto!important;min-height:100%!important;width:100%;overflow:visible!important}
+    html{overflow-x:hidden!important;overflow-y:auto!important;scroll-behavior:smooth}
+    body{overflow-x:hidden!important;overflow-y:auto!important}
+    #root{display:block;overflow:visible!important}
+    .shell{height:auto!important;min-height:100vh;overflow:visible!important}
+    .workspace,.main.plugins-container,.main-top,.tool-grid{height:auto!important;min-height:0!important;overflow:visible!important}
+    .tool-grid{align-content:start;grid-auto-rows:minmax(220px,auto);padding-bottom:28px}
+    .app-header{position:sticky!important;top:0!important}
+    .plugin-card .tool-icon{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(145deg,color-mix(in srgb,var(--card) 24%,#10233a),#09192b)!important;border:1px solid color-mix(in srgb,var(--card) 75%,white 8%)!important;border-radius:22px!important;font-size:40px!important;line-height:1;box-shadow:0 0 0 5px color-mix(in srgb,var(--card) 8%,transparent),0 8px 24px color-mix(in srgb,var(--card) 22%,transparent)!important}
+    .plugin-card .tool-icon:after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(135deg,rgba(255,255,255,.16),transparent 55%);pointer-events:none;z-index:-1}
+    .plugin-card .tool-name{font-family:Cairo,"Segoe UI",Tahoma,sans-serif;letter-spacing:-.35px}
+    .plugin-card .tool-desc{font-family:Cairo,"Segoe UI",Tahoma,sans-serif;text-shadow:0 1px 8px rgba(0,0,0,.25)}
+    .category-chip-icon{display:inline-grid;place-items:center;min-width:25px;min-height:25px;border-radius:8px;background:rgba(255,255,255,.09);font-size:17px;line-height:1}
+    .category-chip{font-family:Cairo,"Segoe UI",Tahoma,sans-serif;font-weight:800}
+    .subcat{font-family:Cairo,"Segoe UI",Tahoma,sans-serif;font-weight:700}
+    .crumbs{font-family:Cairo,"Segoe UI",Tahoma,sans-serif;font-size:12px}
+    .results-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .plugin-card.tool-card.selected{outline:2px solid color-mix(in srgb,var(--card) 85%,white);outline-offset:2px}
+    @media(max-width:680px){
+      html,body,#root{height:auto!important;min-height:100%!important;overflow:visible!important}
+      .shell,.workspace,.main.plugins-container,.tool-grid{height:auto!important;overflow:visible!important}
+      .app-header{position:sticky!important;top:0!important}
+      .plugin-card .tool-icon{width:62px;height:62px;flex-basis:62px;font-size:34px!important}
+      .plugin-card .tool-name{font-size:23px;line-height:1.3}
+    }
+
   </style>
 </head>
 <body>
