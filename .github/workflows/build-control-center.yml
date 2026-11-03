@@ -1,0 +1,51 @@
+name: Build Control Center
+
+# Rebuilds the published page (control-center/) and the bridge ZIP automatically
+# whenever the source changes on main, so nobody has to run npm on their own computer.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "control-center-app/**"
+      - "vite.config.js"
+      - "package.json"
+      - "package-lock.json"
+      - "tailwind.config.js"
+      - "postcss.config.js"
+      - "bridge/**"
+      - "scripts/make-bridge-zip.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-control-center
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build Control Center
+        run: npm run build
+      - name: Refresh bridge ZIP
+        run: python3 scripts/make-bridge-zip.py
+      - name: Commit build output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add control-center/assets control-center/index.html bridge/Online4Tech-Bridge.zip
+          if ! git diff --cached --quiet; then
+            git commit -m "build: refresh Control Center and bridge ZIP [skip ci]"
+            git pull --rebase origin main
+            git push
+          fi
