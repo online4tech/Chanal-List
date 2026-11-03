@@ -1,14 +1,20 @@
 import { defineConfig } from "vite";
 import { resolve } from "node:path";
-import { rmSync } from "node:fs";
+import { existsSync, readdirSync, rmSync } from "node:fs";
 
 const outDir = resolve(process.cwd(), "control-center");
 
-// Only the hashed build output is cleaned; control-center/data/catalog.json is kept.
+// Remove only Vite-generated hashed assets; keep manually maintained assets such as header-logo.css.
 const cleanAssetsOnly = {
   name: "clean-assets-only",
   buildStart() {
-    rmSync(resolve(outDir, "assets"), { recursive: true, force: true });
+    const assetsDir = resolve(outDir, "assets");
+    if (!existsSync(assetsDir)) return;
+    for (const file of readdirSync(assetsDir)) {
+      if (/^index-[\\w-]+\\.(js|css)$/.test(file)) {
+        rmSync(resolve(assetsDir, file), { force: true });
+      }
+    }
   },
 };
 
