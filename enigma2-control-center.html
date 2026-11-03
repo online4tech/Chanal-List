@@ -226,6 +226,17 @@
       .tool-card{min-height:112px}
       .details{padding:15px;gap:12px}
     }
+  
+    /* Tool Inspector: compact layout after removing metadata rows. */
+    .details{gap:12px}
+    .detail-hero{padding:14px 12px}
+    .detail-icon{margin-bottom:8px}
+    .detail-hero p{margin-top:5px}
+    .detail-block{padding-top:10px}
+    .detail-note{margin-top:9px;padding:9px 10px;border:1px solid rgba(97,231,245,.12);border-radius:10px;background:rgba(97,231,245,.045);font-size:10px;line-height:1.7;color:#b9cbe2}
+    .detail-note b{display:block;margin-bottom:3px;color:#83dce6;font-size:9px}
+    .detail-extra-actions{display:none}
+    .meta-row{display:none}
   </style>
 </head>
 <body>
@@ -259,9 +270,11 @@
         description: object ? (raw.description || raw.summary || "") : "",
         path: object ? (raw.path || raw.file || "") : "",
         installCommand: object ? (raw.installCommand || raw.install_command || raw.command || "") : "",
+        installNotes: object ? (raw.installNotes || raw.install_notes || raw.installNote || raw.install_note || "") : "",
         commandVerified: object ? !!(raw.installCommand || raw.install_command || raw.command) : false,
         updateCommand: object ? (raw.updateCommand || raw.update_command || "") : "",
         removeCommand: object ? (raw.removeCommand || raw.remove_command || "") : "",
+        removeNotes: object ? (raw.removeNotes || raw.remove_notes || raw.removeNote || raw.remove_note || "") : "",
         status: object ? (raw.status || "") : ""
       };
     }
@@ -314,7 +327,7 @@
         }
         if (matches.length !== 1) return item;
         const record = matches[0];
-        return {...item,installCommand:record.cmd || "",removeCommand:record.remove_cmd || "",commandSource:record.sourceSection,commandAvailable:!!record.cmd};
+        return {...item,installCommand:record.cmd || "",removeCommand:record.remove_cmd || "",installNotes:item.installNotes || record.installNotes || record.install_notes || record.install_note || "",removeNotes:item.removeNotes || record.removeNotes || record.remove_notes || record.remove_note || "",commandSource:record.sourceSection,commandAvailable:!!record.cmd};
       });
       return {...normalized,catalog,commandStats:{sourceRecords:commandRecords.length,matched:normalized.items.filter(item=>item.installCommand).length}};
     }
@@ -461,29 +474,24 @@
               <div className="detail-hero">
                 <div className="detail-icon">{activeItem.sectionIcon || activeItem.groupIcon || FALLBACK_ICON}</div>
                 <h2>{activeItem.name}</h2>
-                <p>{activeItem.sectionTitle} · {activeItem.groupTitle}</p>
+                <p>{activeItem.groupTitle}</p>
               </div>
               <div>
                 <div className="detail-label">الوصف</div>
                 <div className="detail-value">{activeItem.description || activeItem.groupDescription || "لا يوجد وصف تفصيلي مضاف لهذا العنصر في ملف البيانات الحالي."}</div>
               </div>
               <div className="detail-block">
-                <div className="detail-label">معلومات العنصر</div>
-                <div className="meta-row"><span>القسم</span><span>{activeItem.groupTitle}</span></div>
-                <div className="meta-row"><span>التصنيف</span><span>{activeItem.sectionTitle}</span></div>
-                <div className="meta-row"><span>المسار</span><span>{activeItem.path || "غير متوفر"}</span></div>
-                <div className="meta-row"><span>التوافق</span><span>غير متحقق منه</span></div>
-              </div>
-              <div className="detail-block">
                 <div className="detail-label">أمر التثبيت</div>
                 {hasInstallCommand ? <><div className="command-box">{activeItem.installCommand}</div><div className="command-actions"><button className="action-btn primary enabled" onClick={()=>copyCommand(activeItem.installCommand)}>نسخ أمر التثبيت</button></div><div className="command-source-note">الأمر من الملف المرفق · لم يتم تشغيله أو اختبار توافقه على الجهاز</div></> : <div className="command-box">لا يوجد أمر مطابق لهذا العنصر في الملف المرفق.</div>}
+                {activeItem.installNotes && <div className="detail-note"><b>ملاحظات التثبيت</b><span>{activeItem.installNotes}</span></div>}
               </div>
               {activeItem.removeCommand && <div className="detail-block">
                 <div className="detail-label">أمر الإزالة الموجود في الملف</div>
                 <div className="command-box">{activeItem.removeCommand}</div>
                 <div className="command-actions"><button className="action-btn enabled" onClick={()=>copyCommand(activeItem.removeCommand)}>نسخ أمر الإزالة</button></div>
+                {activeItem.removeNotes && <div className="detail-note"><b>ملاحظات الحذف</b><span>{activeItem.removeNotes}</span></div>}
               </div>}
-              <div className="detail-block">
+              <div className="detail-block detail-extra-actions">
                 <div className="detail-label">إجراءات العنصر</div>
                 <div className="command-actions">
                   <button className={"action-btn "+(hasInstallCommand?"enabled":"")} disabled={!hasInstallCommand} title={hasInstallCommand?"نسخ أمر التثبيت":"لا يوجد أمر تثبيت في الملف"} onClick={()=>copyCommand(activeItem.installCommand)}>نسخ التثبيت</button>
