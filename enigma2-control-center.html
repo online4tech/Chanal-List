@@ -237,6 +237,48 @@
     .detail-note b{display:block;margin-bottom:3px;color:#83dce6;font-size:9px}
     .detail-extra-actions{display:none}
     .meta-row{display:none}
+
+    /* Library Sections: compact cards only; preserve colors, glass, glow and interactions. */
+    .rail .category-card{
+      height:55px;
+      min-height:55px;
+      padding:3px 9px;
+      gap:10px;
+    }
+    .rail .cat-icon{
+      width:48px;
+      height:48px;
+      flex:none;
+    }
+    .rail .cat-copy b{
+      font-size:14px;
+      font-weight:700;
+      line-height:1.2;
+    }
+    .rail .cat-copy small{
+      display:-webkit-box;
+      font-size:11px;
+      line-height:1.3;
+      margin-top:1px;
+      white-space:normal;
+      -webkit-line-clamp:2;
+      -webkit-box-orient:vertical;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .rail .cat-num{font-size:11px}
+
+    @media(max-width:680px){
+      .rail .category-card{
+        height:52px;
+        min-height:52px;
+        padding:2px 8px;
+      }
+      .rail .cat-icon{width:48px;height:48px}
+      .rail .cat-copy b{font-size:14px;line-height:1.2}
+      .rail .cat-copy small{font-size:11px;line-height:1.3}
+      .rail .cat-num{font-size:11px}
+    }
   </style>
 </head>
 <body>
