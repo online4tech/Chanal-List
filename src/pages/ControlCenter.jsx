@@ -509,61 +509,31 @@ export default function ControlCenter({ data, onAction }) {
     return out;
   }, [deferredQuery, index]);
 
+  const navigationHistory = useRef([]);
   const applyLocation = useCallback((location) => {
     setSelectedCategory(location.category ?? categories[0]?.id ?? null);
     setSelectedSubCategory(location.subCategory ?? null);
     setSelectedTool(location.tool ?? null);
   }, [categories]);
-  const currentLocation = useCallback(() => ({
-    category: selectedCategory, subCategory: selectedSubCategory, tool: selectedTool,
-  }), [selectedCategory, selectedSubCategory, selectedTool]);
-  const pushBrowserLocation = useCallback((location) => {
-    window.history.pushState({
-      ...(window.history.state || {}),
-      __online4techControlCenter: true,
-      location,
-    }, "");
-  }, []);
-
-  // Keep the native browser Back/Forward buttons in sync with in-app navigation.
-  useEffect(() => {
-    if (!selectedCategory || window.history.state?.__online4techControlCenter) return;
-    window.history.replaceState({
-      ...(window.history.state || {}),
-      __online4techControlCenter: true,
-      location: currentLocation(),
-    }, "");
-  }, [selectedCategory, currentLocation]);
-
-  useEffect(() => {
-    const handlePopState = (event) => {
-      if (event.state?.__online4techControlCenter && event.state.location) {
-        applyLocation(event.state.location);
-      }
-    };
-    window.addEventListener("popstate", handlePopState);
-    return () => window.removeEventListener("popstate", handlePopState);
-  }, [applyLocation]);
-
   const navigateTo = useCallback((location) => {
-    const current = currentLocation();
-    if (current.category === location.category &&
-        current.subCategory === (location.subCategory ?? null) &&
-        current.tool === (location.tool ?? null)) return;
-    pushBrowserLocation(location);
+    const current = { category: selectedCategory, subCategory: selectedSubCategory, tool: selectedTool };
+    if (current.category !== location.category || current.subCategory !== location.subCategory || current.tool !== location.tool) navigationHistory.current.push(current);
     applyLocation(location);
-  }, [currentLocation, pushBrowserLocation, applyLocation]);
+  }, [selectedCategory, selectedSubCategory, selectedTool, applyLocation]);
   const goHome = useCallback(() => {
-    navigateTo({ category: categories[0]?.id ?? null, subCategory: null, tool: null });
+    navigationHistory.current = [];
+    applyLocation({ category: categories[0]?.id ?? null, subCategory: null, tool: null });
     setSearchQuery("");
-  }, [categories, navigateTo]);
+  }, [categories, applyLocation]);
   const jumpToNode = useCallback((id) => {
     const n = nodeById.get(id); if (!n) return;
-    navigateTo({ category: n.root, subCategory: n.parent ? id : null, tool: null });
-  }, [nodeById, navigateTo]);
+    navigationHistory.current = [];
+    applyLocation({ category: n.root, subCategory: n.parent ? id : null, tool: null });
+  }, [nodeById, applyLocation]);
   const pickCategory = useCallback((id) => {
-    navigateTo({ category: id, subCategory: null, tool: null });
-  }, [navigateTo]);
+    navigationHistory.current = [];
+    applyLocation({ category: id, subCategory: null, tool: null });
+  }, [applyLocation]);
   const pickNode = useCallback((id) => {
     const n = nodeById.get(id); if (n) navigateTo({ category: n.root, subCategory: n.parent ? id : null, tool: null });
   }, [nodeById, navigateTo]);
@@ -572,6 +542,18 @@ export default function ControlCenter({ data, onAction }) {
     const n = nodeById.get(t.nodeId);
     navigateTo({ category: n.root, subCategory: n.parent ? n.id : null, tool: id });
   }, [toolById, nodeById, navigateTo]);
+  const goBack = useCallback(() => {
+    const previous = navigationHistory.current.pop();
+    if (previous) { applyLocation(previous); return; }
+    if (selectedTool) { applyLocation({ category: selectedCategory, subCategory: selectedSubCategory, tool: null }); return; }
+    const active = nodeById.get(selectedSubCategory || selectedCategory);
+    if (active?.parent) {
+      const parent = nodeById.get(active.parent);
+      applyLocation({ category: parent.root, subCategory: parent.parent ? parent.id : null, tool: null });
+      return;
+    }
+    goHome();
+  }, [applyLocation, selectedTool, selectedCategory, selectedSubCategory, nodeById, goHome]);
   const pickSearch = useCallback((r) => {
     if (r.type === "tool") pickTool(r.id); else pickNode(r.id);
     setSearchQuery("");
@@ -627,6 +609,10 @@ export default function ControlCenter({ data, onAction }) {
               <>
                 <div className="mb-6">
                   <div className="flex flex-wrap items-center gap-3">
+                    <button onClick={goBack}
+                      className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.06] px-3 py-2 text-sm text-slate-300 backdrop-blur-xl transition hover:border-cyan-400/40 hover:bg-white/10 hover:text-white hover:shadow-[0_0_22px_rgba(34,211,238,0.16)]">
+                      ← Back
+                    </button>
                     <h1 className="text-2xl font-semibold text-white">{activeNode.label}</h1>
                   </div>
                   <p className="mt-1 text-sm text-slate-400">
