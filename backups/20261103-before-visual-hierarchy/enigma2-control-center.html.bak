@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080d1b">
+  <meta name="description" content="Online4Tech Enigma2 Control Center">
+  <title>Online4Tech | Control Center</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { sans: ['Cairo','Segoe UI','Tahoma','sans-serif'] },
+        colors: { ink:'#080d1b', panel:'#10182a', cyan:'#61e7f5', violet:'#9b8cff' }
+      }}
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{color-scheme:dark;--bg:#080d1b;--line:rgba(191,211,255,.105);--muted:#92a1bb;--text:#edf4ff;--cyan:#61e7f5;--violet:#9b8cff}
+    *{box-sizing:border-box}
+    html,body,#root{margin:0;width:100%;height:100%;min-height:100%;background:var(--bg);color:var(--text);font-family:Cairo,"Segoe UI",Tahoma,sans-serif}
+    body{overflow:hidden;background:radial-gradient(ellipse at 10% 0%,rgba(88,108,255,.2),transparent 34%),radial-gradient(ellipse at 90% 12%,rgba(52,210,230,.12),transparent 30%),linear-gradient(135deg,#080d1b,#0b1021 52%,#0b1020)}
+    button,input{font:inherit}
+    button{cursor:pointer}
+    .shell{height:100vh;min-height:680px;display:flex;flex-direction:column;overflow:hidden}
+    .topbar{height:82px;flex:none;display:grid;grid-template-columns:1fr minmax(320px,560px) 1fr;align-items:center;gap:28px;padding:0 30px;border-bottom:1px solid var(--line);background:rgba(9,15,30,.58);backdrop-filter:blur(24px)}
+    .brand{display:flex;align-items:center;gap:13px;min-width:0}
+    .brand-mark{width:43px;height:43px;border-radius:14px;display:grid;place-items:center;font-size:21px;font-weight:900;color:#07131e;background:linear-gradient(145deg,#76f1f4,#7e9bff 58%,#bd8bff);box-shadow:0 8px 30px rgba(97,231,245,.22)}
+    .brand-name{font-weight:900;letter-spacing:.07em;font-size:17px;line-height:1.15}
+    .brand-sub{font-size:10px;color:#8798b6;letter-spacing:.14em;margin-top:5px}
+    .head-title{text-align:center;font-size:18px;font-weight:800;white-space:nowrap}
+    .head-title small{display:block;color:#8393b0;font-size:10px;font-weight:500;letter-spacing:.12em}
+    .profile{display:flex;justify-content:flex-start;align-items:center;gap:12px}
+    .profile-copy{text-align:left;line-height:1.35}
+    .profile-copy b{display:block;font-size:12px}
+    .profile-copy span{font-size:10px;color:#8292ad}
+    .avatar{width:39px;height:39px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(97,231,245,.35);background:linear-gradient(145deg,rgba(97,231,245,.2),rgba(155,140,255,.2));color:#baf8ff;font-weight:900}
+    .workspace{flex:1;min-height:0;display:grid;grid-template-columns:252px minmax(420px,1fr) 316px;gap:16px;padding:17px 18px 19px}
+    .glass{background:rgba(255,255,255,.05);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.08);box-shadow:0 10px 40px rgba(0,0,0,.35);border-radius:21px}
+    .rail,.details{min-height:0;overflow:auto;scrollbar-width:thin;scrollbar-color:#354461 transparent}
+    .rail{padding:18px 13px}
+    .rail-head{padding:3px 9px 15px;display:flex;align-items:center;justify-content:space-between}
+    .eyebrow{font-size:10px;color:#8294b2;font-weight:800;letter-spacing:.14em}
+    .rail-count{font-size:10px;color:#7eeaf2;background:rgba(97,231,245,.09);border:1px solid rgba(97,231,245,.17);padding:4px 8px;border-radius:20px}
+    .category-list{display:grid;gap:8px}
+    .category-card{width:100%;min-height:65px;display:flex;align-items:center;gap:12px;text-align:right;padding:10px 11px;border:1px solid transparent;border-radius:15px;background:rgba(10,17,34,.42);color:var(--text);transition:transform .2s,border-color .2s,background .2s,box-shadow .2s}
+    .category-card:hover{transform:translateX(-3px);border-color:rgba(97,231,245,.22);background:rgba(73,111,158,.13)}
+    .category-card.active{border-color:rgba(97,231,245,.45);background:linear-gradient(105deg,rgba(97,231,245,.14),rgba(155,140,255,.12));box-shadow:inset -3px 0 0 var(--cyan),0 8px 25px rgba(0,0,0,.15)}
+    .cat-icon{width:39px;height:39px;flex:none;border-radius:12px;display:grid;place-items:center;background:rgba(134,157,207,.1);font-size:18px}
+    .category-card.active .cat-icon{background:rgba(97,231,245,.15)}
+    .cat-copy{min-width:0;flex:1}
+    .cat-copy b{display:block;font-size:12px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .cat-copy small{display:block;font-size:10px;color:#8191ad;margin-top:2px}
+    .cat-num{font-size:10px;color:#9bacc7;background:rgba(255,255,255,.045);padding:3px 7px;border-radius:20px}
+    .main{min-width:0;min-height:0;display:flex;flex-direction:column;overflow:hidden;padding:19px 20px}
+    .main-top{flex:none}
+    .main-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:15px}
+    .main-heading h1{margin:0;font-size:24px;font-weight:900;letter-spacing:-.04em}
+    .main-heading p{margin:4px 0 0;color:#8e9db7;font-size:11px}
+    .live-dot{display:inline-flex;align-items:center;gap:7px;color:#9feadf;font-size:10px;padding:6px 10px;border-radius:20px;border:1px solid rgba(98,226,195,.18);background:rgba(98,226,195,.07);white-space:nowrap}
+    .live-dot:before{content:"";width:6px;height:6px;border-radius:50%;background:#65e5c2;box-shadow:0 0 12px #65e5c2}
+    .search-wrap{position:relative;margin-top:17px}
+    .search-icon{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:17px;color:#8497b5;pointer-events:none}
+    .search{width:100%;height:48px;padding:0 47px 0 48px;border:1px solid rgba(173,196,235,.13);border-radius:14px;outline:none;color:#edf4ff;background:rgba(5,11,24,.5);font-size:12px;transition:.2s}
+    .search:focus{border-color:rgba(97,231,245,.48);box-shadow:0 0 0 3px rgba(97,231,245,.07)}
+    .search::placeholder{color:#72829e}.search-results{position:absolute;top:55px;right:0;left:0;z-index:20;max-height:360px;overflow:auto;padding:9px;border:1px solid rgba(97,231,245,.2);border-radius:15px;background:rgba(10,17,34,.97);backdrop-filter:blur(24px);box-shadow:0 18px 45px rgba(0,0,0,.45)}.search-group-title{padding:7px 8px 4px;color:#7185a5;font-size:9px;font-weight:800}.search-result{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px;border:0;border-radius:9px;background:transparent;color:#dce9fa;text-align:right;font-size:10px}.search-result:hover{background:rgba(97,231,245,.09)}.search-result small{color:#7f93b1;font-size:9px}
+    .search-shortcut{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:9px;color:#7f90ad;border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:3px 6px}
+    .crumbs{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:15px 0 12px;color:#7f91ae;font-size:10px}
+    .crumbs button{color:#a9bad3;background:none;border:0;padding:0}
+    .crumbs button:hover{color:var(--cyan)}
+    .crumbs .current{color:#dceaff;font-weight:800}
+    .subcats{display:flex;gap:7px;overflow:auto;padding:1px 0 13px;scrollbar-width:thin;scrollbar-color:#354461 transparent}
+    .subcat{flex:none;padding:6px 12px;border-radius:20px;border:1px solid rgba(174,196,232,.12);background:rgba(255,255,255,.035);color:#9aabc5;font-size:10px;transition:.2s}
+    .subcat:hover,.subcat.active{border-color:rgba(97,231,245,.4);background:rgba(97,231,245,.1);color:#b9f6fb}
+    .results-head{display:flex;justify-content:space-between;align-items:center;margin:2px 0 11px}
+    .results-head b{font-size:12px}
+    .results-head span{font-size:10px;color:#7e90ad}
+    .tool-grid{flex:1;min-height:0;overflow:auto;display:grid;align-content:start;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:2px 2px 12px;scrollbar-width:thin;scrollbar-color:#354461 transparent}
+    .tool-card{min-width:0;min-height:124px;text-align:right;position:relative;overflow:hidden;padding:13px;border:1px solid rgba(182,202,239,.1);border-radius:16px;background:linear-gradient(145deg,rgba(23,34,58,.76),rgba(13,22,41,.72));transition:transform .2s,border-color .2s,box-shadow .2s}
+    .tool-card:after{content:"";position:absolute;inset:auto -25px -45px auto;width:100px;height:100px;border-radius:50%;background:rgba(97,231,245,.055);filter:blur(25px);pointer-events:none}
+    .tool-card:hover{transform:translateY(-3px);border-color:rgba(97,231,245,.35);box-shadow:0 12px 26px rgba(0,0,0,.22),0 0 20px rgba(97,231,245,.055)}
+    .tool-card.selected{border-color:rgba(97,231,245,.62);background:linear-gradient(145deg,rgba(35,71,94,.58),rgba(26,34,64,.82));box-shadow:inset 0 0 0 1px rgba(97,231,245,.12),0 0 22px rgba(97,231,245,.08)}
+    .tool-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+    .tool-icon{width:33px;height:33px;border-radius:10px;display:grid;place-items:center;background:rgba(97,231,245,.09);color:#9ceff4;font-size:15px}
+    .tool-status{font-size:8px;color:#f3c879;background:rgba(243,200,121,.08);border:1px solid rgba(243,200,121,.15);border-radius:20px;padding:3px 6px;white-space:nowrap}
+    .tool-name{display:block;margin-top:10px;font-size:11px;font-weight:800;line-height:1.55;overflow-wrap:anywhere}
+    .tool-desc{display:block;margin-top:3px;color:#7f90aa;font-size:9px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .tool-foot{display:flex;align-items:center;justify-content:space-between;margin-top:9px;gap:6px}
+    .tool-group{font-size:8px;color:#7c91b1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .copy-mini{border:1px solid rgba(97,231,245,.22);background:rgba(97,231,245,.08);color:#9deff4;border-radius:7px;padding:3px 7px;font-size:8px}
+    .copy-mini:hover{background:rgba(97,231,245,.16)}.copy-mini:disabled{opacity:.42;cursor:not-allowed;border-color:rgba(182,196,220,.1);background:rgba(255,255,255,.025);color:#77859d}
+    .empty{grid-column:1/-1;min-height:190px;display:grid;place-items:center;text-align:center;color:#8494b0;border:1px dashed rgba(173,196,235,.16);border-radius:17px;font-size:12px;padding:20px}
+    .details{padding:19px;display:flex;flex-direction:column;gap:17px}
+    .detail-head{display:flex;align-items:center;justify-content:space-between}
+    .detail-kicker{font-size:9px;color:#8294b1;letter-spacing:.14em;font-weight:800}
+    .detail-hero{padding:18px 14px;border:1px solid rgba(97,231,245,.14);border-radius:16px;background:linear-gradient(145deg,rgba(97,231,245,.08),rgba(155,140,255,.07));text-align:center}
+    .detail-icon{width:55px;height:55px;margin:0 auto 10px;border-radius:17px;display:grid;place-items:center;font-size:24px;background:rgba(97,231,245,.12);border:1px solid rgba(97,231,245,.16)}
+    .detail-hero h2{margin:0;font-size:16px;font-weight:900;overflow-wrap:anywhere}
+    .detail-hero p{margin:6px 0 0;color:#93a3bd;font-size:10px}
+    .detail-block{border-top:1px solid rgba(182,202,239,.09);padding-top:13px}
+    .detail-label{font-size:9px;color:#8091ae;font-weight:800;letter-spacing:.08em;margin-bottom:7px}
+    .detail-value{font-size:11px;color:#d3e0f3;line-height:1.8;overflow-wrap:anywhere}
+    .meta-row{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid rgba(182,202,239,.06);font-size:10px}
+    .meta-row span:first-child{color:#7f90aa}
+    .meta-row span:last-child{color:#c4d2e7;text-align:left}
+    .command-box{border:1px solid rgba(182,202,239,.12);background:rgba(3,8,19,.48);border-radius:11px;padding:10px;color:#8295b4;font:10px/1.8 ui-monospace,Consolas,monospace;direction:ltr;text-align:left;overflow-wrap:anywhere}
+    .command-actions{display:flex;gap:7px;margin-top:8px}
+    .action-btn{flex:1;border:1px solid rgba(182,202,239,.12);border-radius:9px;padding:8px 5px;background:rgba(255,255,255,.035);color:#72839e;font-size:9px;cursor:not-allowed}
+    .action-btn.primary{border-color:rgba(97,231,245,.2);background:rgba(97,231,245,.07);color:#83cbd2}
+    .action-btn.enabled{cursor:pointer;color:#b7f5f7;border-color:rgba(97,231,245,.4);background:rgba(97,231,245,.12)}
+    .hint{margin-top:auto;border:1px solid rgba(243,200,121,.15);background:rgba(243,200,121,.055);border-radius:12px;padding:11px;color:#a9a18d;font-size:9px;line-height:1.8}
+    .hint b{color:#f0cc86}
+    .loading{height:100vh;display:grid;place-items:center;color:#b8c8e2;font-size:14px}
+    .spinner{width:23px;height:23px;border:2px solid rgba(97,231,245,.2);border-top-color:var(--cyan);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(15px);opacity:0;pointer-events:none;background:#122b3a;border:1px solid rgba(97,231,245,.3);color:#c4fbff;border-radius:11px;padding:9px 16px;font-size:11px;transition:.2s;z-index:30}
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    .mobile-fallback{display:none}
+    .mobile-fallback{display:none!important}
+    @media(max-width:1100px){
+      body{overflow:auto}
+      html,body,#root{height:auto;min-height:100%}
+      .shell{display:flex;height:auto;min-height:100vh;overflow:visible}
+      .topbar{height:auto;min-height:74px;padding:12px 18px;grid-template-columns:1fr auto 1fr;gap:12px}
+      .workspace{flex:1;min-height:0;overflow:visible;grid-template-columns:220px minmax(0,1fr);grid-template-rows:minmax(620px,auto) auto;gap:12px;padding:12px}
+      .rail,.main,.details{overflow:visible;min-height:0}
+      .rail{max-height:calc(100vh - 110px);overflow:auto}
+      .main{min-height:620px}
+      .tool-grid{grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible}
+      .details{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:14px}
+      .detail-head,.hint{grid-column:1/-1}
+      .detail-hero{grid-row:span 2}
+    }
+    @media(max-width:680px){
+      .topbar{display:grid;grid-template-columns:1fr auto;padding:12px 14px;gap:8px}
+      .brand-mark{width:38px;height:38px;border-radius:12px;font-size:18px}
+      .brand-name{font-size:14px}
+      .brand-sub{font-size:8px}
+      .head-title{grid-column:1/-1;grid-row:2;text-align:right;font-size:15px;padding:4px 2px 2px}
+      .head-title small{font-size:9px}
+      .profile-copy{display:none}
+      .avatar{width:35px;height:35px}
+      .workspace{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto;gap:10px;padding:10px}
+      .rail{max-height:none;overflow:hidden;padding:12px}
+      .rail-head{padding:2px 5px 10px}
+      .category-list{display:flex;gap:8px;overflow-x:auto;overflow-y:hidden;padding:2px 1px 8px;scrollbar-width:thin}
+      .category-card{flex:0 0 175px;min-height:62px;padding:8px}
+      .cat-icon{width:34px;height:34px}
+      .cat-copy b{font-size:10px}
+      .cat-copy small{font-size:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .cat-num{font-size:9px}
+      .main{min-height:650px;padding:14px 12px}
+      .main-heading h1{font-size:20px}
+      .main-heading p{font-size:10px;line-height:1.7}
+      .live-dot{font-size:9px;padding:5px 8px}
+      .search-wrap{margin-top:13px}
+      .search{height:45px;font-size:11px;padding-right:42px}
+      .crumbs{margin:12px 0 10px;font-size:9px}
+      .subcats{padding-bottom:11px}
+      .subcat{font-size:9px;padding:6px 10px}
+      .tool-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+      .tool-card{min-height:125px;padding:10px}
+      .tool-name{font-size:10px}
+      .tool-desc{font-size:8px}
+      .tool-status{font-size:7px}
+      .copy-mini{font-size:8px;padding:4px 6px}
+      .details{grid-column:auto;display:flex;padding:14px;gap:13px}
+      .detail-head,.hint{grid-column:auto}
+      .detail-hero{grid-row:auto}
+      .command-actions{flex-wrap:wrap}
+      .action-btn{min-width:28%}
+    }
+    @media(max-width:390px){
+      .tool-grid{grid-template-columns:minmax(0,1fr)}
+      .tool-card{min-height:112px}
+      .main-heading h1{font-size:18px}
+      .live-dot{font-size:8px}
+      .category-card{flex-basis:158px}
+    }
+    /* تحسين الوضوح مع الحفاظ على نفس توزيع وأبعاد الواجهة */
+    :root{--bg:#142139;--line:rgba(211,226,255,.2);--muted:#c0cee2;--text:#f7faff;--cyan:#70eff7;--violet:#b2a5ff}
+    body{background:radial-gradient(ellipse at 10% 0%,rgba(88,108,255,.24),transparent 34%),radial-gradient(ellipse at 90% 12%,rgba(52,210,230,.18),transparent 30%),linear-gradient(135deg,#142139,#192943 52%,#17263e)}
+    .topbar{background:rgba(22,36,59,.88)}
+    .glass{background:rgba(29,46,72,.88);border-color:rgba(210,226,255,.17);box-shadow:0 10px 40px rgba(0,0,0,.22)}
+    .category-card{background:rgba(46,65,94,.72);border-color:rgba(210,226,255,.08)}
+    .cat-copy b{font-size:14px}.cat-copy small{font-size:11px;color:#c1cee1}
+    .eyebrow,.detail-kicker{font-size:11px;color:#c1d0e6}
+    .cat-num,.rail-count{font-size:11px}
+    .main-heading p{font-size:13px;color:#c4d1e5}
+    .search{font-size:14px;background:rgba(9,18,34,.72);color:#fff}
+    .search::placeholder{color:#b1c0d6}
+    .search-result{font-size:12px;color:#f1f6ff}.search-result small{font-size:11px;color:#c0cee2}
+    .crumbs{font-size:12px;color:#b8c8df}.crumbs button{color:#d4e2f6}
+    .subcat{font-size:12px;color:#d3e0f3;background:rgba(255,255,255,.07)}
+    .results-head b{font-size:14px}.results-head span{font-size:12px;color:#c0cee2}
+    .tool-card{background:linear-gradient(145deg,rgba(43,62,91,.96),rgba(31,48,75,.96));border-color:rgba(210,226,255,.17)}
+    .tool-icon{width:37px;height:37px;font-size:19px;background:rgba(97,231,245,.16)}
+    .tool-status{font-size:10px;color:#ffe2a5}
+    .tool-name{font-size:13px;color:#fff;line-height:1.65}
+    .tool-desc{font-size:11px;color:#c4d2e6;line-height:1.65}
+    .tool-group{font-size:10px;color:#b6c8e2}
+    .copy-mini{font-size:10px;padding:5px 8px;color:#c4fbff;background:rgba(97,231,245,.15)}
+    .detail-hero h2{font-size:18px}.detail-hero p{font-size:12px;color:#c2d1e6}
+    .detail-label{font-size:11px;color:#c0d0e6}
+    .detail-value{font-size:13px;color:#edf4ff}
+    .meta-row{font-size:12px}.meta-row span:first-child{color:#b7c7df}.meta-row span:last-child{color:#f0f5ff}
+    .command-box{font-size:11px;color:#e0efff;background:rgba(7,15,29,.72);border-color:rgba(205,224,255,.2)}
+    .action-btn{font-size:11px}.action-btn.primary{color:#c9fbff}
+    .hint{font-size:11px;color:#e0d9c7;background:rgba(105,85,43,.18)}
+    .command-source-note{margin-top:7px;color:#c8d8eb;font-size:10px;line-height:1.6}
+    .loading{color:#e5efff;font-size:16px}
+    @media(max-width:680px){
+      .cat-copy b{font-size:12px}.cat-copy small{font-size:10px}
+      .main-heading p{font-size:11px}.search{font-size:12px}
+      .crumbs{font-size:10px}.subcat{font-size:10px}
+      .tool-name{font-size:12px}.tool-desc{font-size:10px}.tool-status{font-size:8px}
+      .copy-mini{font-size:9px}.detail-value{font-size:12px}
+    }
+
+    @media(min-width:1101px) and (max-height:720px){
+      .workspace{padding-top:12px;padding-bottom:12px;gap:12px}
+      .topbar{height:72px}
+      .tool-card{min-height:112px}
+      .details{padding:15px;gap:12px}
+    }
+  
+    /* Tool Inspector: compact layout after removing metadata rows. */
+    .details{gap:12px}
+    .detail-hero{padding:14px 12px}
+    .detail-icon{margin-bottom:8px}
+    .detail-hero p{margin-top:5px}
+    .detail-block{padding-top:10px}
+    .detail-note{margin-top:9px;padding:9px 10px;border:1px solid rgba(97,231,245,.12);border-radius:10px;background:rgba(97,231,245,.045);font-size:10px;line-height:1.7;color:#b9cbe2}
+    .detail-note b{display:block;margin-bottom:3px;color:#83dce6;font-size:9px}
+    .detail-extra-actions{display:none}
+    .meta-row{display:none}
+
+    /* Library Sections: compact cards only; preserve colors, glass, glow and interactions. */
+    .rail .category-card{
+      height:55px;
+      min-height:55px;
+      padding:2px 9px;
+      gap:10px;
+    }
+    .rail .cat-icon{
+      width:48px;
+      height:48px;
+      flex:none;
+    }
+    .rail .cat-copy b{
+      font-size:14px;
+      font-weight:700;
+      line-height:1.2;
+    }
+    .rail .cat-copy small{
+      display:-webkit-box;
+      font-size:11px;
+      line-height:1.3;
+      margin-top:1px;
+      white-space:normal;
+      -webkit-line-clamp:2;
+      -webkit-box-orient:vertical;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .rail .cat-num{font-size:11px}
+
+    @media(max-width:680px){
+      .rail .category-card{
+        height:52px;
+        min-height:52px;
+        padding:1px 8px;
+      }
+      .rail .cat-icon{width:48px;height:48px}
+      .rail .cat-copy b{font-size:14px;line-height:1.2}
+      .rail .cat-copy small{font-size:11px;line-height:1.3}
+      .rail .cat-num{font-size:11px}
+    }
+
+    /* ONLINE4TECH PREMIUM UI REFINEMENT — visual-only CSS layer */
+    :root{color-scheme:dark;--bg:#08111f;--line:rgba(255,255,255,.10);--muted:#a9bad0;--text:#f0f6ff;--cyan:#39d7ff;--violet:#9b8cff;--panel:#132743;--card:#203859;--selected:#295784}
+    body{background:radial-gradient(ellipse at 8% 0%,rgba(57,215,255,.13),transparent 34%),radial-gradient(ellipse at 92% 8%,rgba(106,132,255,.15),transparent 31%),linear-gradient(135deg,#08111f,#0c1b30 52%,#08111f)}
+    .topbar{background:rgba(8,17,31,.88);border-bottom-color:rgba(255,255,255,.10);box-shadow:0 8px 28px rgba(0,0,0,.24)}
+    .glass{background:linear-gradient(145deg,rgba(19,39,67,.97),rgba(15,32,55,.96));border:1px solid rgba(255,255,255,.10);box-shadow:0 12px 34px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.035);backdrop-filter:blur(24px)}
+    .rail,.main,.details{border-radius:20px}
+    .rail{padding:14px 12px}.rail-head{padding:2px 8px 11px}.category-list{gap:7px}
+    .category-card{min-height:55px;padding:7px 9px;gap:10px;border:1px solid rgba(255,255,255,.10);border-radius:13px;background:linear-gradient(145deg,#203859,#1a304d);box-shadow:0 6px 18px rgba(0,0,0,.20),0 0 0 1px rgba(255,255,255,.025);transition:transform .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease}
+    .category-card:hover{transform:translateX(-2px);border-color:rgba(57,215,255,.38);background:linear-gradient(145deg,#29486c,#203b5d);box-shadow:0 10px 24px rgba(0,0,0,.28)}
+    .category-card.active{border:2px solid rgba(57,215,255,.8);background:linear-gradient(110deg,#295784,#24466b);box-shadow:inset -3px 0 0 #39d7ff,0 0 20px rgba(57,215,255,.35),0 0 40px rgba(57,215,255,.15),0 8px 25px rgba(0,0,0,.25)}
+    .cat-icon{background:rgba(58,106,170,.25);border:1px solid rgba(255,255,255,.08);box-shadow:0 0 13px rgba(57,215,255,.08)}
+    .category-card.active .cat-icon{background:rgba(57,215,255,.18);border-color:rgba(57,215,255,.24);box-shadow:0 0 15px rgba(57,215,255,.18)}
+    .cat-copy b{font-size:13px;font-weight:800;line-height:1.2}.cat-copy small{font-size:10px;color:rgba(240,246,255,.72);line-height:1.3}
+    .cat-num{font-size:11px;font-weight:600;color:#e2efff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:3px 8px}
+    .rail-count{color:#a9f2ff;background:rgba(57,215,255,.12);border-color:rgba(57,215,255,.25)}
+    .main{padding:16px 18px}.main-heading h1{font-size:22px;letter-spacing:-.025em}.main-heading p{color:#b1c1d8}
+    .search-wrap{margin-top:13px}.search{height:44px;background:#0b1a2b;border-color:rgba(255,255,255,.12)}
+    .search:focus{border-color:rgba(57,215,255,.65);box-shadow:0 0 0 3px rgba(57,215,255,.12),0 0 18px rgba(57,215,255,.10);transition:all .15s ease}
+    .crumbs{margin:10px 0 8px;color:#9eb2cd}.subcats{gap:6px;padding-bottom:8px}
+    .subcat{padding:5px 10px;border-color:rgba(255,255,255,.10);background:rgba(32,56,89,.72);color:#c0d0e5;transition:all .2s ease}
+    .subcat:hover,.subcat.active{border-color:rgba(57,215,255,.58);background:rgba(41,87,132,.9);color:#fff;box-shadow:0 0 14px rgba(57,215,255,.12)}
+    .results-head{margin:1px 0 8px}.results-head b{font-size:13px;color:#f0f6ff}.results-head span{color:#afc0d7}
+    .tool-grid{grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;padding:2px 2px 10px}
+    .tool-card{display:grid;grid-template-columns:42px minmax(0,1fr) 78px;grid-template-rows:22px 30px;align-items:center;column-gap:9px;row-gap:3px;height:78px;min-height:78px;padding:9px 10px;border:1px solid rgba(255,255,255,.10);border-radius:14px;background:linear-gradient(145deg,#203859,#192f4b);box-shadow:0 8px 25px rgba(0,0,0,.25),0 0 0 1px rgba(255,255,255,.05);transition:transform .2s ease,border-color .2s ease,background .25s ease,box-shadow .2s ease}
+    .tool-card:after{width:90px;height:90px;background:rgba(57,215,255,.07)}
+    .tool-card:hover{transform:translateY(-2px);border-color:rgba(57,215,255,.42);background:linear-gradient(145deg,#29496e,#203a5b);box-shadow:0 12px 35px rgba(0,0,0,.35)}
+    .tool-card.selected{border:2px solid rgba(57,215,255,.8);background:linear-gradient(145deg,#295784,#21466c);box-shadow:inset 0 0 0 1px rgba(57,215,255,.14),0 0 20px rgba(57,215,255,.35),0 0 40px rgba(57,215,255,.15);transition:all .25s ease}
+    .tool-card.selected:before{content:"";position:absolute;top:13px;bottom:13px;right:0;width:3px;border-radius:3px 0 0 3px;background:#39d7ff;box-shadow:0 0 12px rgba(57,215,255,.9),0 0 22px rgba(57,215,255,.45)}
+    .tool-top{grid-column:1;grid-row:1 / span 2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:0}
+    .tool-icon{width:31px;height:31px;border-radius:10px;background:rgba(58,106,170,.28);border:1px solid rgba(255,255,255,.10);color:#d9f8ff;font-size:14px;box-shadow:0 0 14px rgba(57,215,255,.10)}
+    .tool-status{font-size:7px;padding:1px 4px}
+    .tool-name{grid-column:2;grid-row:1;min-width:0;margin:0;color:#f4f8ff;font-size:15px;font-weight:700;line-height:1.2;letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .tool-desc{grid-column:2;grid-row:2;min-width:0;margin:0;color:rgba(255,255,255,.72);font-size:11px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis}
+    .tool-foot{grid-column:3;grid-row:1 / span 2;display:flex;flex-direction:column;align-items:stretch;justify-content:center;gap:4px;min-width:0;margin:0}
+    .tool-group{width:100%;text-align:center;color:#c0d0e5;font-size:8px}
+    .copy-mini{min-height:29px;padding:4px 5px;border:1px solid rgba(57,215,255,.35);border-radius:9px;background:#2296d2;color:#fff;font-size:9px;font-weight:700;box-shadow:0 5px 15px rgba(34,150,210,.28);transition:all .2s ease}
+    .copy-mini:hover:not(:disabled){background:#35b5ff;transform:translateY(-2px);box-shadow:0 0 16px rgba(53,181,255,.45),0 7px 18px rgba(0,0,0,.2)}
+    .copy-mini:disabled{opacity:.38;box-shadow:none}
+    .details{padding:15px;gap:12px;background:linear-gradient(150deg,rgba(19,39,67,.98),rgba(13,29,50,.97))}
+    .detail-head{padding-bottom:3px}.detail-kicker{font-size:10px;color:#a9bfd9}
+    .detail-hero{padding:14px 12px;border-color:rgba(57,215,255,.24);background:linear-gradient(145deg,rgba(41,87,132,.42),rgba(19,39,67,.72));box-shadow:0 8px 22px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.04)}
+    .detail-icon{background:rgba(58,106,170,.30);border-color:rgba(57,215,255,.22);box-shadow:0 0 18px rgba(57,215,255,.13)}
+    .detail-hero h2{font-size:17px;color:#fff}.detail-hero p{font-size:11px;color:#c0d0e5}
+    .detail-label{margin-bottom:7px;color:#c1d3e9;font-size:11px;letter-spacing:.025em}
+    .detail-value{color:#edf5ff;font-size:12px;line-height:1.75}
+    .detail-block{border-top-color:rgba(255,255,255,.14);padding-top:11px}
+    .detail-note{border-color:rgba(57,215,255,.18);background:rgba(57,215,255,.07);color:#d1e4f6}.detail-note b{color:#9deaff}
+    .command-box{background:#081726;border:1px solid rgba(74,190,255,.22);border-radius:14px;color:#f0f6ff;padding:11px 12px;line-height:1.7}
+    .command-actions{gap:8px;margin-top:9px}
+    .action-btn{min-height:42px;padding:9px 10px;border-radius:12px;font-size:10px;font-weight:700;transition:transform .2s ease,background .2s ease,box-shadow .2s ease,border-color .15s ease}
+    .action-btn.primary.enabled,.action-btn.enabled{cursor:pointer;color:#fff;border:1px solid rgba(91,202,255,.42);background:#2296d2;box-shadow:0 5px 15px rgba(34,150,210,.35)}
+    .action-btn.primary.enabled:hover,.action-btn.enabled:hover{background:#35b5ff;transform:translateY(-2px);box-shadow:0 0 16px rgba(53,181,255,.45),0 8px 20px rgba(0,0,0,.22)}
+    .action-btn:focus-visible,.copy-mini:focus-visible,.category-card:focus-visible,.tool-card:focus-visible,.subcat:focus-visible{outline:2px solid #39d7ff;outline-offset:3px}
+    .hint{border-color:rgba(255,210,120,.22);background:rgba(255,190,80,.075);color:#d7c8a8}.hint b{color:#ffe0a2}
+    .empty{border-color:rgba(255,255,255,.18);background:rgba(19,39,67,.35);color:#c0d0e5}
+    @media(max-width:680px){.tool-grid{grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}.tool-card{height:78px;min-height:78px;padding:9px 10px}.tool-name{font-size:14px}.tool-desc{font-size:11px;line-height:1.3}.details{gap:12px}}
+    @media(max-width:420px){.tool-grid{grid-template-columns:minmax(0,1fr)}.tool-card{grid-template-columns:40px minmax(0,1fr) 74px}.tool-name{font-size:14px}}
+  </style>
+</head>
+<body>
+  <div id="root"><div class="loading"><div><div class="spinner"></div>جاري تجهيز مركز التحكم...</div></div></div>
+  <iframe class="mobile-fallback" src="./enigma2-center.html" title="Enigma2 Center"></iframe>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const {useState,useEffect,useMemo,useCallback} = React;
+    const DATA_BASE = "./data/enigma2/";
+    const FALLBACK_ICON = "◈";
+
+    function safeText(value, fallback="غير متاح في بيانات الفهرس"){
+      return typeof value === "string" && value.trim() ? value.trim() : fallback;
+    }
+    function normalizeItem(raw, group, section, index){
+      const object = raw && typeof raw === "object" && !Array.isArray(raw);
+      const name = object ? (raw.name || raw.title || raw.label || raw.id) : raw;
+      return {
+        id: object && raw.id ? String(raw.id) : [group.id,section.id,index,String(name)].join("-"),
+        name: safeText(String(name ?? "عنصر بدون اسم"),"عنصر بدون اسم"),
+        groupId: group.id,
+        groupTitle: group.title,
+        groupIcon: group.icon || FALLBACK_ICON,
+        groupDescription: group.description || "",
+        sectionId: section.id,
+        sectionTitle: section.title || section.name || section.id,
+        sectionIcon: section.icon || group.icon || FALLBACK_ICON,
+        description: object ? (raw.description || raw.summary || "") : "",
+        path: object ? (raw.path || raw.file || "") : "",
+        installCommand: object ? (raw.installCommand || raw.install_command || raw.command || "") : "",
+        installNotes: object ? (raw.installNotes || raw.install_notes || raw.installNote || raw.install_note || "") : "",
+        commandVerified: object ? !!(raw.installCommand || raw.install_command || raw.command) : false,
+        updateCommand: object ? (raw.updateCommand || raw.update_command || "") : "",
+        removeCommand: object ? (raw.removeCommand || raw.remove_command || "") : "",
+        removeNotes: object ? (raw.removeNotes || raw.remove_notes || raw.removeNote || raw.remove_note || "") : "",
+        status: object ? (raw.status || "") : ""
+      };
+    }
+    function normalizeData(raw){
+      const groups = Array.isArray(raw?.groups) ? raw.groups : [];
+      const items = [];
+      groups.forEach(group => {
+        (Array.isArray(group.sections) ? group.sections : []).forEach(section => {
+          (Array.isArray(section.items) ? section.items : []).forEach((item,index) => {
+            items.push(normalizeItem(item,group,section,index));
+          });
+        });
+      });
+      return {groups,items};
+    }
+    async function loadCatalog(){
+      const [catalogResponse,itemsResponse,commandsResponse] = await Promise.all([
+        fetch(DATA_BASE+"catalog.json",{cache:"no-cache"}),
+        fetch(DATA_BASE+"items.json.gz",{cache:"no-cache"}),
+        fetch(DATA_BASE+"commands.json",{cache:"no-cache"})
+      ]);
+      if(!catalogResponse.ok) throw new Error("تعذر تحميل catalog.json");
+      if(!itemsResponse.ok) throw new Error("تعذر تحميل ملف العناصر");
+      if(!commandsResponse.ok) throw new Error("تعذر تحميل ملف الأوامر");
+      const catalog = await catalogResponse.json();
+      const commandsData = await commandsResponse.json();
+      let payload;
+      if("DecompressionStream" in window){
+        const compressed = await itemsResponse.arrayBuffer();
+        const stream = new Blob([compressed]).stream().pipeThrough(new DecompressionStream("gzip"));
+        payload = JSON.parse(await new Response(stream).text());
+      } else {
+        throw new Error("المتصفح الحالي لا يدعم قراءة ملف الفهرس المضغوط");
+      }
+      const normalized = normalizeData(payload);
+      const commandRecords = Array.isArray(commandsData.records) ? commandsData.records : [];
+      const cleanKey = value => String(value || "").trim().toLocaleLowerCase().replace(/[\\s_-]+/g,"");
+      const metadata = new Map((catalog.groups || []).map(g=>[g.id,g]));
+      normalized.groups = normalized.groups.map(g=>({...metadata.get(g.id),...g,icon:g.icon || metadata.get(g.id)?.icon || FALLBACK_ICON}));
+      normalized.items = normalized.items.map(item => {
+        const sameName = commandRecords.filter(record => cleanKey(record.name) === cleanKey(item.name));
+        let matches = sameName.filter(record => cleanKey(record.path) === cleanKey(item.path));
+        if (matches.length > 1) {
+          const sectionMatches = matches.filter(record => cleanKey(record.sourceSection) === cleanKey(item.sectionId));
+          if (sectionMatches.length) matches = sectionMatches;
+        }
+        if (matches.length !== 1) {
+          const sectionMatches = sameName.filter(record => cleanKey(record.sourceSection) === cleanKey(item.sectionId));
+          if (sectionMatches.length === 1) matches = sectionMatches;
+        }
+        if (matches.length !== 1) return item;
+        const record = matches[0];
+        return {...item,installCommand:record.cmd || "",removeCommand:record.remove_cmd || "",installNotes:item.installNotes || record.installNotes || record.install_notes || record.install_note || "",removeNotes:item.removeNotes || record.removeNotes || record.remove_notes || record.remove_note || "",commandSource:record.sourceSection,commandAvailable:!!record.cmd};
+      });
+      return {...normalized,catalog,commandStats:{sourceRecords:commandRecords.length,matched:normalized.items.filter(item=>item.installCommand).length}};
+    }
+
+    function App(){
+      const [dataset,setDataset] = useState(null);
+      const [error,setError] = useState("");
+      const [selectedCategory,setSelectedCategory] = useState("");
+      const [selectedSubCategory,setSelectedSubCategory] = useState("");
+      const [selectedTool,setSelectedTool] = useState("");
+      const [searchQuery,setSearchQuery] = useState("");
+      const [showSearchResults,setShowSearchResults] = useState(false);
+
+      useEffect(()=>{loadCatalog().then(data=>{
+        setDataset(data);
+        setSelectedCategory(data.groups[0]?.id || "");
+        setSelectedTool(data.items[0]?.id || "");
+      }).catch(e=>setError(e.message));},[]);
+
+      const groups = dataset?.groups || [];
+      const items = dataset?.items || [];
+      const activeGroup = groups.find(g=>g.id===selectedCategory) || null;
+      const activeItem = items.find(item=>item.id===selectedTool) || null;
+      const sections = useMemo(()=>{
+        if(!activeGroup) return [];
+        const map = new Map();
+        items.filter(item=>item.groupId===activeGroup.id).forEach(item=>{
+          if(!map.has(item.sectionId)) map.set(item.sectionId,{id:item.sectionId,title:item.sectionTitle,count:0});
+          map.get(item.sectionId).count++;
+        });
+        return [...map.values()];
+      },[items,activeGroup]);
+      const categoryCounts = useMemo(()=>{
+        const map = new Map();
+        items.forEach(item=>map.set(item.groupId,(map.get(item.groupId)||0)+1));
+        return map;
+      },[items]);
+      const filteredItems = useMemo(()=>{
+        const query=searchQuery.trim().toLocaleLowerCase();
+        return items.filter(item=>
+          (!selectedCategory || item.groupId===selectedCategory) &&
+          (!selectedSubCategory || item.sectionId===selectedSubCategory) &&
+          (!query || [item.name,item.groupTitle,item.sectionTitle,item.description].join(" ").toLocaleLowerCase().includes(query))
+        );
+      },[items,selectedCategory,selectedSubCategory,searchQuery]);
+      const globalMatches = useMemo(()=>{
+        const query=searchQuery.trim().toLocaleLowerCase();
+        if(!query) return {categories:[],sections:[],tools:[]};
+        return {
+          categories:groups.filter(g=>(g.title||g.id).toLocaleLowerCase().includes(query)),
+          sections:sectionsForAll(items).filter(s=>s.title.toLocaleLowerCase().includes(query)),
+          tools:items.filter(item=>[item.name,item.description].join(" ").toLocaleLowerCase().includes(query)).slice(0,8)
+        };
+      },[groups,items,searchQuery]);
+      const chooseCategory = useCallback(id=>{
+        setSelectedCategory(id);setSelectedSubCategory("");setShowSearchResults(false);
+        const first=items.find(item=>item.groupId===id);if(first)setSelectedTool(first.id);
+      },[items]);
+      const chooseTool = useCallback(item=>{
+        setSelectedTool(item.id);setSelectedCategory(item.groupId);setSelectedSubCategory(item.sectionId);setShowSearchResults(false);
+      },[]);
+      const copyCommand = useCallback(async command=>{
+        if(!command)return;
+        try{await navigator.clipboard.writeText(command);showToast("تم نسخ الأمر");}
+        catch(e){showToast("تعذر النسخ من المتصفح");}
+      },[]);
+      const categoryTitle=activeGroup?.title || "كل العناصر";
+      const sectionTitle=sections.find(s=>s.id===selectedSubCategory)?.title;
+      const hasInstallCommand=!!activeItem?.installCommand;
+
+      if(error) return <div className="loading"><div>تعذر تحميل المركز: {error}<br/><small>حدّث الصفحة وحاول مرة تانية.</small></div></div>;
+      if(!dataset) return <div className="loading"><div><div className="spinner"></div>جاري تجهيز مركز التحكم...</div></div>;
+
+      return <div className="shell">
+        <header className="topbar">
+          <div className="brand">
+            <div className="brand-mark">O4T</div>
+            <div><div className="brand-name">ONLINE4TECH</div><div className="brand-sub">ENIGMA2 ECOSYSTEM</div></div>
+          </div>
+          <div className="head-title">مركز التحكم الذكي<small>كل أدوات Enigma2 في مساحة واحدة</small></div>
+          <div className="profile">
+            <div className="profile-copy"><b>ONLINE4TECH</b><span>خليك دايماً أونلاين</span></div>
+            <div className="avatar">O4</div>
+          </div>
+        </header>
+
+        <div className="workspace">
+          <aside className="rail glass">
+            <div className="rail-head"><span className="eyebrow">LIBRARY SECTIONS</span><span className="rail-count">{groups.length} أقسام</span></div>
+            <div className="category-list">
+              {groups.map(group=><button key={group.id} className={"category-card "+(selectedCategory===group.id?"active":"")} onClick={()=>chooseCategory(group.id)}>
+                <span className="cat-icon">{group.icon || FALLBACK_ICON}</span>
+                <span className="cat-copy"><b>{group.title || group.id}</b><small>{group.description || "تصفح عناصر القسم"}</small></span>
+                <span className="cat-num">{categoryCounts.get(group.id)||0}</span>
+              </button>)}
+            </div>
+          </aside>
+
+          <main className="main glass">
+            <div className="main-top">
+              <div className="main-heading">
+                <div><h1>{categoryTitle}</h1><p>استعرض العناصر والتصنيفات واختر أي عنصر لعرض تفاصيله</p></div>
+                <span className="live-dot">الفهرس متصل</span>
+              </div>
+              <div className="search-wrap">
+                <span className="search-icon">⌕</span>
+                <input className="search" value={searchQuery} onChange={e=>{setSearchQuery(e.target.value);setShowSearchResults(true);}} onFocus={()=>setShowSearchResults(!!searchQuery)} placeholder="ابحث في الأقسام والتصنيفات والأدوات..." aria-label="بحث شامل"/>
+                <span className="search-shortcut">بحث مباشر</span>
+                {showSearchResults && searchQuery.trim() && <div className="search-results">
+                  {globalMatches.categories.length>0 && <><div className="search-group-title">الأقسام</div>{globalMatches.categories.map(group=><button key={group.id} className="search-result" onClick={()=>chooseCategory(group.id)}><span>{group.icon || FALLBACK_ICON}　{group.title}</span><small>قسم رئيسي</small></button>)}</>}
+                  {globalMatches.sections.length>0 && <><div className="search-group-title">التصنيفات الفرعية</div>{globalMatches.sections.slice(0,8).map(section=><button key={section.id} className="search-result" onClick={()=>{setSelectedCategory(section.groupId);setSelectedSubCategory(section.id.split("::")[1]);const first=items.find(item=>item.groupId===section.groupId && item.sectionId===section.id.split("::")[1]);if(first)setSelectedTool(first.id);setShowSearchResults(false);}}><span>{section.title}</span><small>{groups.find(g=>g.id===section.groupId)?.title || ""}</small></button>)}</>}
+                  {globalMatches.tools.length>0 && <><div className="search-group-title">الأدوات والعناصر</div>{globalMatches.tools.map(item=><button key={item.id} className="search-result" onClick={()=>chooseTool(item)}><span>{item.name}</span><small>{item.sectionTitle}</small></button>)}</>}
+                  {!globalMatches.categories.length && !globalMatches.sections.length && !globalMatches.tools.length && <div className="search-group-title">مفيش نتائج مطابقة</div>}
+                </div>}
+              </div>
+              <nav className="crumbs" aria-label="Breadcrumb">
+                <button onClick={()=>{setSelectedCategory("");setSelectedSubCategory("");setSearchQuery("");}}>الرئيسية</button><span>／</span>
+                <button onClick={()=>setSelectedSubCategory("")}>{categoryTitle}</button>
+                {sectionTitle && <><span>／</span><button className="current">{sectionTitle}</button></>}
+                {activeItem && <><span>／</span><span className="current">{activeItem.name}</span></>}
+              </nav>
+              <div className="subcats">
+                <button className={"subcat "+(!selectedSubCategory?"active":"")} onClick={()=>setSelectedSubCategory("")}>كل التصنيفات</button>
+                {sections.map(section=><button key={section.id} className={"subcat "+(selectedSubCategory===section.id?"active":"")} onClick={()=>setSelectedSubCategory(section.id)}>{section.title} <span style={{opacity:.65}}>({section.count})</span></button>)}
+              </div>
+            </div>
+
+            <div className="results-head"><b>{searchQuery.trim()?"نتائج البحث":selectedSubCategory?(sectionTitle||"العناصر"):"عناصر القسم"}</b><span>{filteredItems.length.toLocaleString("ar-EG")} عنصر · {filteredItems.filter(item=>item.installCommand).length.toLocaleString("ar-EG")} أمر متاح للنسخ</span></div>
+            <div className="tool-grid">
+              {filteredItems.length ? filteredItems.map(item=><button key={item.id} className={"tool-card "+(selectedTool===item.id?"selected":"")} onClick={()=>chooseTool(item)}>
+                <div className="tool-top"><span className="tool-icon">{item.sectionIcon || item.groupIcon || FALLBACK_ICON}</span>{item.status && <span className="tool-status">{item.status}</span>}</div>
+                <span className="tool-name">{item.name}</span>
+                <span className="tool-desc">{item.description || item.sectionTitle || item.groupDescription || "عنصر مدرج في مكتبة Online4Tech"}</span>
+                <span className="tool-foot"><span className="tool-group">{item.sectionTitle}</span>
+                  <button type="button" className="copy-mini" disabled={!item.installCommand} title={item.installCommand ? "نسخ الأمر الموجود في الملف المرفق" : "لا يوجد أمر مطابق لهذا العنصر في الملف المرفق"} onClick={e=>{e.stopPropagation();copyCommand(item.installCommand);}}>نسخ الأمر</button>
+                </span>
+              </button>) : <div className="empty">مفيش عناصر مطابقة للبحث أو التصنيف ده.</div>}
+            </div>
+          </main>
+
+          <aside className="details glass">
+            <div className="detail-head"><span className="detail-kicker">TOOL INSPECTOR</span><span className="rail-count">التفاصيل</span></div>
+            {activeItem ? <>
+              <div className="detail-hero">
+                <div className="detail-icon">{activeItem.sectionIcon || activeItem.groupIcon || FALLBACK_ICON}</div>
+                <h2>{activeItem.name}</h2>
+                <p>{activeItem.groupTitle}</p>
+              </div>
+              <div>
+                <div className="detail-label">الوصف</div>
+                <div className="detail-value">{activeItem.description || activeItem.groupDescription || "لا يوجد وصف تفصيلي مضاف لهذا العنصر في ملف البيانات الحالي."}</div>
+              </div>
+              <div className="detail-block">
+                <div className="detail-label">أمر التثبيت</div>
+                {hasInstallCommand ? <><div className="command-box">{activeItem.installCommand}</div><div className="command-actions"><button className="action-btn primary enabled" onClick={()=>copyCommand(activeItem.installCommand)}>نسخ أمر التثبيت</button></div><div className="command-source-note">الأمر من الملف المرفق · لم يتم تشغيله أو اختبار توافقه على الجهاز</div></> : <div className="command-box">لا يوجد أمر مطابق لهذا العنصر في الملف المرفق.</div>}
+                {activeItem.installNotes && <div className="detail-note"><b>ملاحظات التثبيت</b><span>{activeItem.installNotes}</span></div>}
+              </div>
+              {activeItem.removeCommand && <div className="detail-block">
+                <div className="detail-label">أمر الإزالة الموجود في الملف</div>
+                <div className="command-box">{activeItem.removeCommand}</div>
+                <div className="command-actions"><button className="action-btn enabled" onClick={()=>copyCommand(activeItem.removeCommand)}>نسخ أمر الإزالة</button></div>
+                {activeItem.removeNotes && <div className="detail-note"><b>ملاحظات الحذف</b><span>{activeItem.removeNotes}</span></div>}
+              </div>}
+              <div className="detail-block detail-extra-actions">
+                <div className="detail-label">إجراءات العنصر</div>
+                <div className="command-actions">
+                  <button className={"action-btn "+(hasInstallCommand?"enabled":"")} disabled={!hasInstallCommand} title={hasInstallCommand?"نسخ أمر التثبيت":"لا يوجد أمر تثبيت في الملف"} onClick={()=>copyCommand(activeItem.installCommand)}>نسخ التثبيت</button>
+                  <button className={"action-btn "+(activeItem.updateCommand?"enabled":"")} disabled={!activeItem.updateCommand} title="لا يوجد أمر تحديث في الملف">تحديث</button>
+                  <button className={"action-btn "+(activeItem.removeCommand?"enabled":"")} disabled={!activeItem.removeCommand} title={activeItem.removeCommand?"نسخ أمر الإزالة":"لا يوجد أمر إزالة لهذا العنصر"} onClick={()=>copyCommand(activeItem.removeCommand)}>نسخ الإزالة</button>
+                </div>
+              </div>
+            </> : <div className="empty">اختار عنصر من المنتصف علشان تظهر تفاصيله هنا.</div>}
+            <div className="hint"><b>تنبيه أمان:</b> الفهرس الحالي للتصفح والتعريف. أوامر التثبيت والتحديث والإزالة لا تظهر ولا تتاح إلا لو اتضافت للبيانات وتم توثيقها ومراجعتها.</div>
+          </aside>
+        </div>
+      </div>;
+    }
+
+    function sectionsForAll(items){
+      const map=new Map();
+      items.forEach(item=>{const key=item.groupId+"::"+item.sectionId;if(!map.has(key))map.set(key,{id:key,title:item.sectionTitle,groupId:item.groupId});});
+      return [...map.values()];
+    }
+    function showToast(message){
+      const el=document.getElementById("toast");if(!el)return;
+      el.textContent=message;el.classList.add("show");
+      clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>el.classList.remove("show"),1900);
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+  </script>
+</body>
+</html>
