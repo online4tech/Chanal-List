@@ -235,6 +235,7 @@
     .detail-block{padding-top:10px}
     .detail-note{margin-top:9px;padding:9px 10px;border:1px solid rgba(97,231,245,.12);border-radius:10px;background:rgba(97,231,245,.045);font-size:10px;line-height:1.7;color:#b9cbe2}
     .detail-note b{display:block;margin-bottom:3px;color:#83dce6;font-size:9px}
+    .detail-extra-actions{display:none}
     .meta-row{display:none}
   </style>
 </head>
@@ -490,7 +491,7 @@
                 <div className="command-actions"><button className="action-btn enabled" onClick={()=>copyCommand(activeItem.removeCommand)}>نسخ أمر الإزالة</button></div>
                 {activeItem.removeNotes && <div className="detail-note"><b>ملاحظات الحذف</b><span>{activeItem.removeNotes}</span></div>}
               </div>}
-              <div className="detail-block">
+              <div className="detail-block detail-extra-actions">
                 <div className="detail-label">إجراءات العنصر</div>
                 <div className="command-actions">
                   <button className={"action-btn "+(hasInstallCommand?"enabled":"")} disabled={!hasInstallCommand} title={hasInstallCommand?"نسخ أمر التثبيت":"لا يوجد أمر تثبيت في الملف"} onClick={()=>copyCommand(activeItem.installCommand)}>نسخ التثبيت</button>
