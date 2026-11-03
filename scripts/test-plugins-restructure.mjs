@@ -39,10 +39,22 @@ for (const [name, count] of Object.entries(expectedCounts)) {
 }
 assert.ok(!Object.hasOwn(plugin.subcategories, "Plugins"), "Intermediate Plugins wrapper removed");
 
+const expectedSidebarOrder = [
+  "panels", "plugins", "channels", "tools", "feeds", "picons",
+  "skins", "bootlogos", "spinners", "images", "backup", "restore",
+];
+const rootKeys = Object.keys(catalog.main);
+assert.equal(rootKeys.length, expectedSidebarOrder.length, "No root category added or removed");
+assert.deepEqual([...rootKeys].sort(), [...expectedSidebarOrder].sort(), "Root category identities are unchanged");
+
 const entry = readFileSync("src/main.jsx", "utf8");
 assert.ok(entry.includes("flattenPluginCategories"), "Runtime flattening is wired");
 assert.ok(entry.includes("localeCompare"), "Case-insensitive A-Z sorting is wired");
 assert.ok(entry.includes("prepareCatalog(catalog)"), "Prepared catalog is rendered");
+assert.ok(entry.includes("const SIDEBAR_CATEGORY_ORDER = ["), "Explicit sidebar order is defined");
+for (const key of expectedSidebarOrder) assert.ok(entry.includes(`"${key}"`), `Sidebar category remains configured: ${key}`);
+assert.ok(entry.includes("SIDEBAR_CATEGORY_RANK.get(a)") && entry.includes("SIDEBAR_CATEGORY_RANK.get(b)"), "Only root category display order uses the requested rank");
+assert.ok(entry.includes("SIDEBAR_CATEGORY_ORDER.map((k) => [k, { tools: [] }])"), "Initial loading state uses the same sidebar order");
 
 const ui = readFileSync("src/pages/ControlCenter.jsx", "utf8");
 assert.ok(ui.includes('window.history.pushState'), "In-app navigation adds native browser history entries");

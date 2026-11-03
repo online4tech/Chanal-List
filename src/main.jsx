@@ -3,11 +3,17 @@ import { createRoot } from "react-dom/client";
 import ControlCenter from "./pages/ControlCenter.jsx";
 import "./styles.css";
 
+// Display order only: category data, labels, icons and child maps remain untouched.
+const SIDEBAR_CATEGORY_ORDER = [
+  "panels", "plugins", "channels", "tools", "feeds", "picons",
+  "skins", "bootlogos", "spinners", "images", "backup", "restore",
+];
+const SIDEBAR_CATEGORY_RANK = new Map(SIDEBAR_CATEGORY_ORDER.map((key, index) => [key, index]));
+
 // Keep the existing catalog as the source for every section except Channels.
 const emptyCatalog = {
   main: Object.fromEntries(
-    ["panels", "plugins", "channels", "feeds", "tools", "skins", "images",
-      "picons", "bootlogos", "spinners", "backup", "restore"].map((k) => [k, { tools: [] }])
+    SIDEBAR_CATEGORY_ORDER.map((k) => [k, { tools: [] }])
   ),
 };
 
@@ -60,7 +66,12 @@ const sortCategoryMaps = (value) => {
 const prepareCatalog = (catalog) => {
   if (!catalog?.main) return catalog;
   flattenPluginCategories(catalog);
-  catalog.main = sortEntriesAZ(catalog.main);
+  catalog.main = Object.fromEntries(
+    Object.entries(catalog.main).sort(([a], [b]) =>
+      (SIDEBAR_CATEGORY_RANK.get(a) ?? Number.MAX_SAFE_INTEGER)
+      - (SIDEBAR_CATEGORY_RANK.get(b) ?? Number.MAX_SAFE_INTEGER)
+    )
+  );
   for (const category of Object.values(catalog.main)) sortCategoryMaps(category);
   return catalog;
 };
