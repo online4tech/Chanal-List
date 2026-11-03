@@ -432,6 +432,13 @@
         "ملفات القنوات والأقمار": {
           "tools": [
             {
+              "name": "تثبيت جميع ملفات القنوات",
+              "description": "تثبيت ملفات القنوات المرفوعة في مستودع Online4Tech، بما يشمل قوائم الباقات وملفات الأقمار وبيانات الاستقبال. ينشئ نسخة احتياطية من الملفات الحالية المطابقة قبل الاستبدال. | المطور: Online4Tech",
+              "install": "wget -qO- https://raw.githubusercontent.com/online4tech/Enigma2-Chanal-List-BYRomeh/main/install-channels.sh | sh",
+              "path": "https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh/blob/main/install-channels.sh",
+              "status": "available"
+            },
+            {
               "name": "ملف satellites.xml",
               "description": "ملف بيانات الأقمار الصناعية المنشور في مستودع BYRomeh. يتم تنزيله إلى /tmp فقط ولا يستبدل ملفات النظام.",
               "install": "wget -O /tmp/satellites.xml https://raw.githubusercontent.com/online4tech/Enigma2-Chanal-List-BYRomeh/main/satellites.xml",
