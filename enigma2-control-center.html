@@ -551,6 +551,43 @@
     @media(max-width:680px){.workspace{padding:9px}.main{padding:14px 12px;min-height:calc(100vh - 85px)}.category-strip{gap:7px;padding:11px 1px}.category-chip{min-height:35px;padding:6px 10px;font-size:10px}.tool-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.tool-card{min-height:185px;padding:11px;border-radius:15px}.tool-name{font-size:13px}.tool-desc{font-size:10px}.tool-icon{width:36px;height:36px;flex-basis:36px;font-size:18px}}
     @media(max-width:390px){.tool-grid{grid-template-columns:minmax(0,1fr)}}
 
+    /* PREMIUM APP STORE REDESIGN v3.0 — presentation only */
+    :root{--store-bg:#07101a;--store-panel:#142742;--store-gold:#ffd54a;--store-cyan:#00d8ff}
+    html,body,#root{background:var(--store-bg)}
+    .shell{min-height:100vh;height:auto;overflow:visible;background:radial-gradient(ellipse at 50% -20%,rgba(0,180,255,.13),transparent 48%),#07101a}
+    .app-header{height:90px;min-height:90px;position:sticky;top:0;z-index:9999;background:rgba(7,17,27,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08);padding:0 28px}
+    .app-header .head-title{font-size:25px;font-weight:900}.app-header .head-title small{font-size:12px;color:rgba(255,255,255,.7)}
+    .workspace{display:block;max-width:1800px;width:100%;margin:0 auto;padding:24px;overflow:visible}
+    .rail,.details,.left-sidebar,.right-sidebar,.inspector-panel,.library-panel{display:none!important}
+    .main.plugins-container{display:flex;flex-direction:column;width:100%;min-height:0;height:auto;overflow:visible;padding:0;background:transparent;border:0;box-shadow:none;gap:0}
+    .hero-section{height:220px;min-height:220px;border-radius:28px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:space-between;padding:34px 42px;margin:0 0 22px;background:radial-gradient(circle at 78% 35%,rgba(0,211,255,.22),transparent 20%),radial-gradient(circle at 20% 80%,rgba(38,91,166,.35),transparent 28%),linear-gradient(115deg,#071a2b 0%,#0b2944 48%,#101a39 100%);border:1px solid rgba(0,207,255,.28);box-shadow:inset 0 0 55px rgba(0,185,255,.09),0 18px 45px rgba(0,0,0,.3)}
+    .hero-section:before{content:"";position:absolute;inset:0;background-image:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.55)),radial-gradient(1px 1px at 12% 25%,#fff 99%,transparent),radial-gradient(1px 1px at 32% 70%,#8feaff 99%,transparent),radial-gradient(2px 2px at 72% 20%,#fff 99%,transparent),radial-gradient(1px 1px at 88% 74%,#fff 99%,transparent);background-size:auto,140px 110px,180px 140px,210px 160px,160px 130px;pointer-events:none}
+    .hero-copy,.hero-status{position:relative;z-index:2}.hero-kicker{font-size:10px;letter-spacing:2px;color:#6deaff;font-weight:900}.hero-copy h1{font-size:clamp(32px,4vw,52px);font-weight:900;line-height:1.2;margin:8px 0;color:#fff;text-shadow:0 4px 22px rgba(0,0,0,.4)}.hero-copy p{font-size:18px;color:#d4eaff;margin:0}
+    .hero-status{display:flex;flex-direction:column;align-items:flex-start;gap:10px}.hero-status .live-dot{background:rgba(36,255,139,.13);border:1px solid rgba(56,255,145,.42);color:#78ffae;padding:10px 16px;border-radius:30px;box-shadow:0 0 22px rgba(37,255,129,.18)}.hero-status small{color:#b4cbe4}
+    .hero-orbit{position:absolute;border:1px solid rgba(0,211,255,.2);border-radius:50%;pointer-events:none}.orbit-one{width:330px;height:330px;right:28%;top:-190px}.orbit-two{width:460px;height:460px;right:24%;top:-250px}.hero-satellite{position:absolute;right:43%;top:35%;font-size:58px;color:#69eaff;text-shadow:0 0 28px #00cfff;transform:rotate(25deg);opacity:.75}
+    .main-top{display:flex;flex-direction:column;width:100%;gap:15px}.main-heading{display:none}
+    .search-wrap{order:0;height:70px;border-radius:20px;background:#081829;border:1px solid rgba(0,208,255,.25);box-shadow:0 8px 24px rgba(0,0,0,.2);display:flex;align-items:center;padding:0 24px}.search-wrap:focus-within{border-color:#00d3ff;box-shadow:0 0 0 2px rgba(0,211,255,.1),0 0 25px rgba(0,211,255,.2)}.search{font-size:17px;color:#fff}.search::placeholder{color:#91abc5}.search-icon{color:#00d8ff;font-size:28px}
+    .category-strip{order:1;display:flex;flex-wrap:nowrap;overflow-x:auto;gap:12px;padding:4px 2px 12px;scrollbar-width:thin;scrollbar-color:#00a9d2 transparent}.category-chip{height:48px;padding:0 18px;border-radius:999px;font-size:12px;background:#11263d;border:1px solid rgba(128,180,220,.22);color:#d7eaff}.category-chip.active{background:#00cfff;color:#fff;border-color:#00dfff;box-shadow:0 0 25px rgba(0,212,255,.45)}.category-chip-icon{font-size:18px}
+    .crumbs{margin:0;color:#8da9c5}.subcats{padding:0 0 10px}.subcat{font-size:11px}
+    .results-head{margin:6px 0 15px}.results-head b{font-size:16px;color:#fff}.results-head span{font-size:11px;color:#a9c4df}
+    .tool-grid{width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;overflow:visible;align-content:start;padding:0 0 12px}
+    .plugin-card.tool-card{height:220px;min-height:220px;max-height:220px;position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:0;padding:20px 22px;border-radius:24px;overflow:hidden;background:linear-gradient(145deg,rgba(20,39,66,.98),rgba(8,23,40,.98));border:2px solid color-mix(in srgb,var(--card,#00d8ff) 62%,transparent);box-shadow:0 10px 35px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.05),0 0 25px color-mix(in srgb,var(--card,#00d8ff) 14%,transparent),inset 0 0 34px color-mix(in srgb,var(--card,#00d8ff) 9%,transparent);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+    .plugin-card.tool-card:after{background:color-mix(in srgb,var(--card,#00d8ff) 20%,transparent);filter:blur(36px);width:150px;height:150px;right:-45px;bottom:-70px}.plugin-card.tool-card:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 18px 40px rgba(0,0,0,.38),0 0 28px color-mix(in srgb,var(--card,#00d8ff) 28%,transparent)}
+    .plugin-card .tool-top{display:flex;align-items:flex-start;min-height:70px}.plugin-card .tool-icon{width:72px;height:72px;flex:0 0 72px;border-radius:20px;font-size:38px;display:grid;place-items:center;color:var(--card);background:color-mix(in srgb,var(--card) 14%,#0b1d31);border:1px solid color-mix(in srgb,var(--card) 60%,transparent);box-shadow:0 0 24px color-mix(in srgb,var(--card) 28%,transparent);filter:drop-shadow(0 0 8px color-mix(in srgb,var(--card) 30%,transparent))}
+    .plugin-card .tool-status{font-size:10px;font-weight:900;color:#7dffae;background:rgba(20,210,105,.13);border:1px solid rgba(55,255,139,.34);padding:6px 11px}
+    .plugin-card .tool-name{font-size:clamp(20px,1.65vw,28px);font-weight:900;line-height:1.15;color:#ffd54a;text-shadow:0 0 12px rgba(255,213,74,.4);margin:0 0 7px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;padding-inline-end:80px}
+    .plugin-card .tool-desc{font-size:14px;font-weight:500;line-height:1.55;color:#d4eaff;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:42px}
+    .plugin-card .tool-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid color-mix(in srgb,var(--card) 30%,transparent);padding-top:10px;margin-top:auto}
+    .plugin-card .category-button{height:36px;display:inline-flex;align-items:center;padding:0 14px;border-radius:999px;background:color-mix(in srgb,var(--card) 16%,#10243b);border:1px solid color-mix(in srgb,var(--card) 45%,transparent);color:#e8f5ff;font-size:11px;font-weight:800;max-width:45%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .plugin-card .copy-mini{height:46px;min-width:145px;padding:0 18px;border-radius:14px;font-size:14px;font-weight:900;color:#07111b;background:linear-gradient(135deg,var(--card),color-mix(in srgb,var(--card) 60%,white));border:0;box-shadow:0 6px 18px color-mix(in srgb,var(--card) 22%,transparent);cursor:pointer}
+    .plugin-card .copy-mini:disabled{opacity:.38;filter:grayscale(1)}.plugin-card .copy-mini:hover:not(:disabled){transform:translateY(-2px);filter:brightness(1.12)}
+    .theme-plugins{--card:#00d8ff}.theme-channels{--card:#42f57b}.theme-media{--card:#ac5eff}.theme-system{--card:#ff4b6e}.theme-skins{--card:#ffaa3c}.theme-picons{--card:#45a5ff}.theme-bootlogos{--card:#ffd54a}
+    .app-footer{height:80px;min-height:80px;margin-top:28px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:#07111b;border-top:1px solid rgba(255,255,255,.08);color:#9fb8d2;font-size:12px}
+    .empty{grid-column:1/-1}
+    @media(max-width:1100px){.workspace{padding:20px}.tool-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.hero-section{padding:28px}.app-header .head-title{font-size:20px}}
+    @media(max-width:680px){.app-header{height:auto;min-height:76px;padding:10px 14px;grid-template-columns:1fr auto;gap:8px}.app-header .head-title{font-size:16px}.app-header .head-title small{font-size:10px}.workspace{padding:12px}.hero-section{height:auto;min-height:190px;padding:24px 20px;align-items:flex-start;flex-direction:column;gap:18px}.hero-copy h1{font-size:32px}.hero-copy p{font-size:14px}.hero-status{align-items:flex-start}.hero-satellite{right:70%;top:20%;font-size:42px}.search-wrap{height:60px;padding:0 15px}.search{font-size:14px}.category-strip{gap:8px}.category-chip{height:42px;padding:0 14px}.tool-grid{grid-template-columns:1fr;gap:16px}.plugin-card.tool-card{height:220px;min-height:220px;padding:18px}.plugin-card .tool-name{font-size:25px}.plugin-card .tool-icon{width:64px;height:64px;flex-basis:64px;font-size:32px}.plugin-card .copy-mini{min-width:130px;height:44px}.app-footer{height:auto;min-height:80px;gap:8px;flex-wrap:wrap;padding:18px;font-size:10px}}
+    @media(max-width:390px){.workspace{padding:10px}.plugin-card .tool-name{font-size:22px}.plugin-card .tool-desc{font-size:12px}.plugin-card .copy-mini{min-width:118px;padding:0 12px;font-size:12px}.app-footer{justify-content:center;text-align:center}}
+
   </style>
 </head>
 <body>
@@ -646,6 +683,17 @@
       return {...normalized,catalog,commandStats:{sourceRecords:commandRecords.length,matched:normalized.items.filter(item=>item.installCommand).length}};
     }
 
+    function categoryTheme(item){
+      const key=[item.groupId,item.groupTitle,item.sectionId,item.sectionTitle,item.name].join(" ").toLocaleLowerCase();
+      if(/channel|قنوات|القنوات/.test(key)) return "theme-channels";
+      if(/media|وسائط|فيديو|صوت/.test(key)) return "theme-media";
+      if(/skin|واجهة|سكين/.test(key)) return "theme-skins";
+      if(/picon|بيكون|شعار/.test(key)) return "theme-picons";
+      if(/bootlogo|بوت|إقلاع/.test(key)) return "theme-bootlogos";
+      if(/system|نظام|تحديث|إدارة/.test(key)) return "theme-system";
+      return "theme-plugins";
+    }
+
     function App(){
       const [dataset,setDataset] = useState(null);
       const [error,setError] = useState("");
@@ -716,12 +764,12 @@
       if(!dataset) return <div className="loading"><div><div className="spinner"></div>جاري تجهيز مركز التحكم...</div></div>;
 
       return <div className="shell">
-        <header className="topbar">
+        <header className="app-header topbar">
           <div className="brand">
             <div className="brand-mark">O4T</div>
             <div><div className="brand-name">ONLINE4TECH</div><div className="brand-sub">ENIGMA2 ECOSYSTEM</div></div>
           </div>
-          <div className="head-title">مركز التحكم الذكي<small>كل أدوات Enigma2 في مساحة واحدة</small></div>
+          <div className="head-title">مركز التحكم الذكي<small>كل أدوات Enigma2 في منصة واحدة</small></div>
           <div className="profile">
             <div className="profile-copy"><b>ONLINE4TECH</b><span>خليك دايماً أونلاين</span></div>
             <div className="avatar">O4</div>
@@ -729,8 +777,12 @@
         </header>
 
         <div className="workspace">
-
-          <main className="main glass">
+          <main className="main glass plugins-container">
+            <section className="hero-section">
+              <div className="hero-copy"><span className="hero-kicker">ONLINE4TECH · ENIGMA2 ECOSYSTEM</span><h1>الإضافات والملحقات</h1><p>استعرض وأدر جميع إضافات Enigma2 بسهولة</p></div>
+              <div className="hero-status"><span className="live-dot">متصل بالسيرفر</span><small>الفهرس متصل · جاهز للاستكشاف</small></div>
+              <div className="hero-orbit orbit-one"></div><div className="hero-orbit orbit-two"></div><div className="hero-satellite">◈</div>
+            </section>
             <div className="main-top">
               <div className="main-heading">
                 <div><h1>{categoryTitle}</h1><p>استعرض العناصر والتصنيفات واختر أي عنصر لعرض تفاصيله</p></div>
@@ -768,19 +820,18 @@
 
             <div className="results-head"><b>{searchQuery.trim()?"نتائج البحث":selectedSubCategory?(sectionTitle||"العناصر"):"عناصر القسم"}</b><span>{filteredItems.length.toLocaleString("ar-EG")} عنصر · {filteredItems.filter(item=>item.installCommand).length.toLocaleString("ar-EG")} أمر متاح للنسخ</span></div>
             <div className="tool-grid">
-              {filteredItems.length ? filteredItems.map(item=><div key={item.id} className={"tool-card "+(selectedTool===item.id?"selected":"")} role="button" tabIndex={0} onClick={()=>chooseTool(item)} onKeyDown={e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();chooseTool(item);}}}>
-                <div className="tool-top"><span className="tool-icon">{item.sectionIcon || item.groupIcon || FALLBACK_ICON}</span>{item.status && <span className="tool-status">{item.status}</span>}</div>
+              {filteredItems.length ? filteredItems.map(item=><div key={item.id} className={"plugin-card tool-card "+categoryTheme(item)+" "+(selectedTool===item.id?"selected":"")} role="button" tabIndex={0} onClick={()=>chooseTool(item)} onKeyDown={e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();chooseTool(item);}}}>
+                <div className="tool-top"><span className="tool-icon">{item.sectionIcon || item.groupIcon || FALLBACK_ICON}</span><span className="tool-status">{item.status || "متاح ✓"}</span></div>
                 <span className="tool-name">{item.name}</span>
                 <span className="tool-desc">{item.description || item.sectionTitle || item.groupDescription || "عنصر مدرج في مكتبة Online4Tech"}</span>
-                <span className="tool-foot"><span className="tool-group">{item.sectionTitle}</span>
+                <span className="tool-foot"><span className="tool-group category-button">{item.sectionTitle || item.groupTitle || "عام"}</span>
                   <button type="button" className="copy-mini" disabled={!item.installCommand} title={item.installCommand ? "نسخ الأمر الموجود في الملف المرفق" : "لا يوجد أمر مطابق لهذا العنصر في الملف المرفق"} onClick={e=>{e.stopPropagation();copyCommand(item.installCommand);}}>نسخ الأمر</button>
                 </span>
               </div>) : <div className="empty">مفيش عناصر مطابقة للبحث أو التصنيف ده.</div>}
             </div>
           </main>
-
-
         </div>
+        <footer className="app-footer"><span>© Online4Tech</span><span>Enigma2 Control Center</span><span>Premium Store · v3.0</span></footer>
       </div>;
     }
 
