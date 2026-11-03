@@ -3,19 +3,19 @@ import { createRoot } from "react-dom/client";
 import ControlCenter from "./pages/ControlCenter.jsx";
 import "./styles.css";
 
-// Keep the existing catalog as the source for every section except Channels.
-const emptyCatalog = {
-  main: Object.fromEntries(
-    SIDEBAR_CATEGORY_ORDER.map((k) => [k, { tools: [] }])
-  ),
-};
-
 // Display order only: category data, labels, icons and child maps remain untouched.
 const SIDEBAR_CATEGORY_ORDER = [
   "panels", "plugins", "channels", "tools", "feeds", "picons",
   "skins", "bootlogos", "spinners", "images", "backup", "restore",
 ];
 const SIDEBAR_CATEGORY_RANK = new Map(SIDEBAR_CATEGORY_ORDER.map((key, index) => [key, index]));
+
+// Keep the existing catalog as the source for every section except Channels.
+const emptyCatalog = {
+  main: Object.fromEntries(
+    SIDEBAR_CATEGORY_ORDER.map((k) => [k, { tools: [] }])
+  ),
+};
 
 const root = createRoot(document.getElementById("root"));
 const renderCatalog = (data) =>
