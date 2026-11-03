@@ -538,3 +538,27 @@
                 <div className="command-actions">
                   <button className={"action-btn "+(hasInstallCommand?"enabled":"")} disabled={!hasInstallCommand} title={hasInstallCommand?"نسخ أمر التثبيت":"لا يوجد أمر تثبيت في الملف"} onClick={()=>copyCommand(activeItem.installCommand)}>نسخ التثبيت</button>
                   <button className={"action-btn "+(activeItem.updateCommand?"enabled":"")} disabled={!activeItem.updateCommand} title="لا يوجد أمر تحديث في الملف">تحديث</button>
+                  <button className={"action-btn "+(activeItem.removeCommand?"enabled":"")} disabled={!activeItem.removeCommand} title={activeItem.removeCommand?"نسخ أمر الإزالة":"لا يوجد أمر إزالة لهذا العنصر"} onClick={()=>copyCommand(activeItem.removeCommand)}>نسخ الإزالة</button>
+                </div>
+              </div>
+            </> : <div className="empty">اختار عنصر من المنتصف علشان تظهر تفاصيله هنا.</div>}
+            <div className="hint"><b>تنبيه أمان:</b> الفهرس الحالي للتصفح والتعريف. أوامر التثبيت والتحديث والإزالة لا تظهر ولا تتاح إلا لو اتضافت للبيانات وتم توثيقها ومراجعتها.</div>
+          </aside>
+        </div>
+      </div>;
+    }
+
+    function sectionsForAll(items){
+      const map=new Map();
+      items.forEach(item=>{const key=item.groupId+"::"+item.sectionId;if(!map.has(key))map.set(key,{id:key,title:item.sectionTitle,groupId:item.groupId});});
+      return [...map.values()];
+    }
+    function showToast(message){
+      const el=document.getElementById("toast");if(!el)return;
+      el.textContent=message;el.classList.add("show");
+      clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>el.classList.remove("show"),1900);
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+  </script>
+</body>
+</html>
