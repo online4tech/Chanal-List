@@ -11,7 +11,7 @@ const cleanAssetsOnly = {
     const assetsDir = resolve(outDir, "assets");
     if (!existsSync(assetsDir)) return;
     for (const file of readdirSync(assetsDir)) {
-      if (/^index-[\\w-]+\\.(js|css)$/.test(file)) {
+      if (file.startsWith("index-") && (file.endsWith(".js") || file.endsWith(".css"))) {
         rmSync(resolve(assetsDir, file), { force: true });
       }
     }
