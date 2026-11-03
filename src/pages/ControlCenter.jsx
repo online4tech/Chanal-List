@@ -290,13 +290,13 @@ const PAGE = 60;
 const ToolGrid = memo(function ToolGrid({ node, selectedToolId, onSelectTool, onSelectNode }) {
   const [limit, setLimit] = useState(PAGE); // reset by `key` on the parent when node changes
   const shown = node.tools.slice(0, limit);
-  const stacked = node.root === "plugins";
+  const pluginCards = node.root === "plugins";
   return (
     <div className="space-y-6">
       {node.children.length > 0 && (
         <section>
           <h2 className="mb-3 text-xs font-medium uppercase tracking-widest text-slate-500">Sub categories</h2>
-          <div className={`grid grid-cols-1 gap-3 ${stacked ? "" : "sm:grid-cols-2 xl:grid-cols-3"}`}>
+          <div className={`grid grid-cols-1 gap-3 ${pluginCards ? "sm:grid-cols-2 xl:grid-cols-3" : "sm:grid-cols-2 xl:grid-cols-3"}`}>
             {node.children.map((c) => <SubCategoryCard key={c.id} node={c} onSelect={onSelectNode} />)}
           </div>
         </section>
@@ -306,9 +306,9 @@ const ToolGrid = memo(function ToolGrid({ node, selectedToolId, onSelectTool, on
           <h2 className="mb-3 text-xs font-medium uppercase tracking-widest text-slate-500">
             Tools · {node.tools.length}
           </h2>
-          <div className={`grid grid-cols-1 gap-4 ${stacked ? "" : "sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"}`}>
+          <div className={`grid grid-cols-1 gap-4 ${pluginCards ? "sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4" : "sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"}`}>
             {shown.map((t) => (
-              <ToolCard key={t.id} tool={t} rootKey={node.key === "Media" ? "media" : node.root} selected={t.id === selectedToolId} onSelect={onSelectTool} stacked={stacked} />
+              <ToolCard key={t.id} tool={t} rootKey={node.key === "Media" ? "media" : node.root} selected={t.id === selectedToolId} onSelect={onSelectTool} stacked={pluginCards} />
             ))}
           </div>
           {limit < node.tools.length && (
