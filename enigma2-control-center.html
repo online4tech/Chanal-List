@@ -452,6 +452,68 @@
       .tool-name{font-size:12px}
     }
 
+  
+    /* Plugin cards: three-column desktop grid with readable vertical content. */
+    .tool-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;align-content:start}
+    .tool-card{
+      display:grid;
+      grid-template-columns:minmax(0,1fr);
+      grid-template-rows:auto auto minmax(42px,1fr) auto;
+      align-items:start;
+      gap:8px;
+      min-height:205px;
+      height:auto;
+      padding:15px;
+      text-align:right;
+      cursor:pointer;
+    }
+    .tool-card:focus-visible{outline:2px solid rgba(87,214,255,.9);outline-offset:3px}
+    .tool-top{grid-column:1;grid-row:1;display:flex;flex-direction:row;align-items:center;justify-content:space-between;width:100%;gap:8px}
+    .tool-icon{width:38px;height:38px;flex:0 0 38px}
+    .tool-status{font-size:9px;padding:3px 7px}
+    .tool-name{
+      grid-column:1;grid-row:2;display:block;
+      min-width:0;margin:0;padding-top:2px;
+      color:#ffd36b;font-size:15px;font-weight:900;
+      line-height:1.55;letter-spacing:0;
+      white-space:normal;overflow:visible;text-overflow:clip;
+      overflow-wrap:anywhere;
+    }
+    .tool-desc{
+      grid-column:1;grid-row:3;display:-webkit-box;
+      min-width:0;margin:0;padding:0;
+      color:#d4e0f0;font-size:12px;line-height:1.75;
+      white-space:normal;overflow:hidden;
+      -webkit-line-clamp:3;-webkit-box-orient:vertical;
+      text-overflow:ellipsis;overflow-wrap:anywhere;
+    }
+    .tool-foot{
+      grid-column:1;grid-row:4;
+      display:flex;flex-direction:row;align-items:center;
+      justify-content:space-between;gap:10px;
+      width:100%;min-width:0;margin:0;padding-top:9px;
+      border-top:1px solid rgba(210,226,255,.12);
+    }
+    .tool-group{min-width:0;text-align:right;font-size:10px}
+    .copy-mini{flex:0 0 auto;min-width:82px;padding:7px 11px;font-size:10px}
+    @media(max-width:1100px){
+      .tool-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .tool-card{min-height:190px}
+    }
+    @media(max-width:680px){
+      .tool-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+      .tool-card{min-height:190px;padding:11px;gap:7px}
+      .tool-name{font-size:13px;line-height:1.55}
+      .tool-desc{font-size:10px;line-height:1.65;-webkit-line-clamp:3}
+      .tool-icon{width:33px;height:33px;flex-basis:33px}
+      .tool-group{font-size:8px}
+      .copy-mini{min-width:66px;padding:6px 7px;font-size:9px}
+    }
+    @media(max-width:390px){
+      .tool-grid{grid-template-columns:minmax(0,1fr)}
+      .tool-card{min-height:170px}
+    }
+
   </style>
 </head>
 <body>
@@ -672,14 +734,14 @@
 
             <div className="results-head"><b>{searchQuery.trim()?"نتائج البحث":selectedSubCategory?(sectionTitle||"العناصر"):"عناصر القسم"}</b><span>{filteredItems.length.toLocaleString("ar-EG")} عنصر · {filteredItems.filter(item=>item.installCommand).length.toLocaleString("ar-EG")} أمر متاح للنسخ</span></div>
             <div className="tool-grid">
-              {filteredItems.length ? filteredItems.map(item=><button key={item.id} className={"tool-card "+(selectedTool===item.id?"selected":"")} onClick={()=>chooseTool(item)}>
+              {filteredItems.length ? filteredItems.map(item=><div key={item.id} className={"tool-card "+(selectedTool===item.id?"selected":"")} role="button" tabIndex={0} onClick={()=>chooseTool(item)} onKeyDown={e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();chooseTool(item);}}}>
                 <div className="tool-top"><span className="tool-icon">{item.sectionIcon || item.groupIcon || FALLBACK_ICON}</span>{item.status && <span className="tool-status">{item.status}</span>}</div>
                 <span className="tool-name">{item.name}</span>
                 <span className="tool-desc">{item.description || item.sectionTitle || item.groupDescription || "عنصر مدرج في مكتبة Online4Tech"}</span>
                 <span className="tool-foot"><span className="tool-group">{item.sectionTitle}</span>
                   <button type="button" className="copy-mini" disabled={!item.installCommand} title={item.installCommand ? "نسخ الأمر الموجود في الملف المرفق" : "لا يوجد أمر مطابق لهذا العنصر في الملف المرفق"} onClick={e=>{e.stopPropagation();copyCommand(item.installCommand);}}>نسخ الأمر</button>
                 </span>
-              </button>) : <div className="empty">مفيش عناصر مطابقة للبحث أو التصنيف ده.</div>}
+              </div>) : <div className="empty">مفيش عناصر مطابقة للبحث أو التصنيف ده.</div>}
             </div>
           </main>
 
