@@ -275,7 +275,7 @@ const ToolCard = memo(function ToolCard({ tool, rootKey, selected, onSelect, sta
 });
 
 const SubCategoryCard = memo(function SubCategoryCard({ node, onSelect }) {
-  const Icon = node.children.length ? Layers : FolderOpen;
+  const Icon = node.key === "Media" ? getIcon(node.icon) : node.children.length ? Layers : FolderOpen;
   return (
     <button onClick={() => onSelect(node.id)}
       className="group flex h-14 items-center gap-3 rounded-2xl border border-white/[0.08] bg-white/5 p-3.5 text-left transition-all hover:-translate-y-0.5 hover:border-cyan-400/40 hover:bg-white/[0.09] hover:shadow-[0_0_28px_rgba(34,211,238,0.18)]">
