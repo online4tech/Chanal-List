@@ -5,6 +5,7 @@ on:
     branches:
       - plugins-flat-grid
       - native-browser-back-20261103
+      - sidebar-order-20261103
     paths:
       - "src/**"
       - "control-center-app/**"
