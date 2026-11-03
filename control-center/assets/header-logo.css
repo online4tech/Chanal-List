@@ -1,0 +1,35 @@
+/* Online4Tech header logo only — visual override, no JavaScript changes */
+header > div > button:first-child {
+  justify-self: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  gap: 0;
+  padding: 0;
+}
+
+header > div > button:first-child > span {
+  display: none !important;
+}
+
+header > div > button:first-child::before {
+  content: "";
+  display: block;
+  width: clamp(170px, 22vw, 230px);
+  height: 48px;
+  background-image: url("https://online4tech.github.io/online4Tech/assets/site-logo.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+@media (max-width: 1023px) {
+  header > div > button:first-child {
+    justify-self: center;
+  }
+
+  header > div > button:first-child::before {
+    width: clamp(165px, 48vw, 220px);
+    height: 44px;
+  }
+}
