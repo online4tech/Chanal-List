@@ -19,7 +19,7 @@ import {
   Archive, ChevronRight, Copy, Download, FolderOpen, Home, Image as ImageIcon,
   LayoutPanelLeft, Loader, Film, Package, Palette, Power, Puzzle, RefreshCw,
   RotateCcw, Rss, Search, Terminal, Trash2, Tv, User, Wrench, X, Sparkles,
-  Layers, Check,
+  Layers, Check, Monitor, Smartphone, ExternalLink, Wifi, WifiOff,
 } from "lucide-react";
 
 /* ───────────────────────── 1. Icon mapping system ───────────────────────── */
@@ -393,9 +393,48 @@ const DetailsPanel = memo(function DetailsPanel({ tool, rootKey, onAction }) {
 });
 
 /* ───────────────────────── 5. Page ───────────────────────── */
-/* ───────────────────────── Telnet runner (talks to telnet-bridge.js) ───────────────────────── */
+/* ───────────────────────── Telnet runner (talks to the local bridge, or manual mode) ───────────────────────── */
 const BRIDGE_URL = "ws://127.0.0.1:8765";
+const BRIDGE_ZIP = "../bridge/Online4Tech-Bridge.zip"; // served next to /control-center/ on GitHub Pages
 const ANSI = /\x1b\[[0-9;?]*[A-Za-z]/g;
+const IS_MOBILE = typeof navigator !== "undefined" && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || "");
+const TERMIUS_PLAY = "https://play.google.com/store/apps/details?id=com.server.auditor.ssh.client";
+const TERMIUS_IOS = "https://apps.apple.com/app/termius-terminal-ssh-client/id549039908";
+const PUTTY_URL = "https://www.putty.org";
+
+// Checks (without sending anything) whether the local bridge answers on this computer.
+function useBridgeStatus() {
+  const [status, setStatus] = useState("checking"); // checking | online | offline
+  const check = useCallback(() => {
+    setStatus("checking");
+    let settled = false, ws, timer;
+    const finish = (s) => {
+      if (settled) return;
+      settled = true; clearTimeout(timer); setStatus(s);
+      try { ws && ws.close(); } catch { /* ignore */ }
+    };
+    try { ws = new WebSocket(BRIDGE_URL); } catch { finish("offline"); return; }
+    timer = setTimeout(() => finish("offline"), 2500);
+    ws.onopen = () => finish("online");
+    ws.onerror = () => finish("offline");
+  }, []);
+  useEffect(() => { check(); }, [check]);
+  return [status, check];
+}
+
+function CopyButton({ text, label = "نسخ", className = "" }) {
+  const [done, setDone] = useState(false);
+  const copy = async () => {
+    try { await navigator.clipboard.writeText(String(text)); setDone(true); setTimeout(() => setDone(false), 1500); } catch { /* ignore */ }
+  };
+  return (
+    <button type="button" onClick={copy}
+      className={`flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/10 px-4 py-2 text-sm text-white transition hover:bg-white/20 ${className}`}>
+      {done ? <Check className="h-4 w-4 text-emerald-300" /> : <Copy className="h-4 w-4" />}
+      {done ? "تم النسخ" : label}
+    </button>
+  );
+}
 
 function TelnetRunner({ job, onClose }) {
   const [cfg, setCfg] = useState(() => {
@@ -405,16 +444,23 @@ function TelnetRunner({ job, onClose }) {
   const [log, setLog] = useState("");
   const [state, setState] = useState("idle"); // idle | running | done | error
   const [code, setCode] = useState(null);
+  const [bridge, recheck] = useBridgeStatus();
+  const [picked, setPicked] = useState(IS_MOBILE ? "manual" : null); // null = choose automatically
   const wsRef = useRef(null);
   const boxRef = useRef(null);
+
+  const mode = picked || (bridge === "offline" ? "manual" : "bridge");
 
   useEffect(() => () => wsRef.current?.close(), []);
   useEffect(() => { if (boxRef.current) boxRef.current.scrollTop = boxRef.current.scrollHeight; }, [log]);
 
   const set = (k) => (e) => setCfg((c) => ({ ...c, [k]: e.target.value }));
+  const remember = () => {
+    try { localStorage.setItem("cc-receiver", JSON.stringify({ host: cfg.host, port: cfg.port, user: cfg.user })); } catch { /* ignore */ }
+  };
 
   const run = () => {
-    try { localStorage.setItem("cc-receiver", JSON.stringify({ host: cfg.host, port: cfg.port, user: cfg.user })); } catch {}
+    remember();
     setLog(""); setCode(null); setState("running");
     let ws;
     try { ws = new WebSocket(BRIDGE_URL); } catch { setState("error"); setLog("Cannot open the local bridge.\n"); return; }
@@ -430,16 +476,31 @@ function TelnetRunner({ job, onClose }) {
     };
     ws.onerror = () => {
       setState("error");
-      setLog("Cannot reach the local bridge.\nRun it first:  node telnet-bridge.js\n");
+      setLog("الجسر غير شغال على الكمبيوتر ده.\nافتح ملف start-bridge.bat ثم جرّب تاني.\n");
+      recheck();
     };
     ws.onclose = () => setState((s) => (s === "running" ? "error" : s));
   };
 
   const input = "h-10 w-full rounded-xl border border-white/10 bg-white/[0.06] px-3 text-sm text-white outline-none focus:border-cyan-400/50";
   const running = state === "running";
+  const host = cfg.host.trim();
+  const tab = (id, label, Icon) => (
+    <button type="button" onClick={() => setPicked(id)}
+      className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-3 py-2 text-sm transition ${
+        mode === id ? "bg-gradient-to-r from-cyan-500/30 to-violet-500/30 text-white ring-1 ring-cyan-400/40" : "text-slate-400 hover:bg-white/10 hover:text-white"}`}>
+      <Icon className="h-4 w-4" />{label}
+    </button>
+  );
+  const badge = {
+    checking: ["text-slate-300 border-white/10 bg-white/5", "جاري فحص الجسر…"],
+    online: ["text-emerald-300 border-emerald-400/30 bg-emerald-400/10", "الجسر شغال على الكمبيوتر ده"],
+    offline: ["text-amber-300 border-amber-400/30 bg-amber-400/10", "الجسر غير شغال"],
+  }[bridge];
+
   return (
-    <div className="fixed inset-0 z-50 grid place-items-center bg-black/60 p-4 backdrop-blur-sm">
-      <div className={`${glass} w-full max-w-2xl space-y-4 rounded-3xl bg-slate-900/80 p-6`}>
+    <div className="fixed inset-0 z-50 grid place-items-center overflow-y-auto bg-black/60 p-4 backdrop-blur-sm">
+      <div className={`${glass} my-auto w-full max-w-2xl space-y-4 rounded-3xl bg-slate-900/90 p-6`}>
         <div className="flex items-center justify-between">
           <h3 className="flex items-center gap-2 text-lg font-semibold text-white">
             <Terminal className="h-5 w-5 text-cyan-300" />
@@ -448,37 +509,117 @@ function TelnetRunner({ job, onClose }) {
           <button onClick={onClose} className="text-slate-400 hover:text-white"><X className="h-5 w-5" /></button>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          <input className={input} placeholder="Receiver IP" value={cfg.host} onChange={set("host")} disabled={running} />
-          <input className={input} placeholder="Port" value={cfg.port} onChange={set("port")} disabled={running} />
-          <input className={input} placeholder="User" value={cfg.user} onChange={set("user")} disabled={running} />
-          <input className={input} placeholder="Password" type="password" value={cfg.pass} onChange={set("pass")} disabled={running} />
+        <div className="flex gap-2 rounded-2xl border border-white/10 bg-black/20 p-1.5">
+          {tab("bridge", "تنفيذ مباشر (كمبيوتر)", Monitor)}
+          {tab("manual", "يدوي (موبايل أو أي جهاز)", Smartphone)}
         </div>
 
-        <code className="block max-h-24 overflow-auto break-all rounded-xl border border-white/[0.08] bg-black/30 p-3 text-xs text-cyan-100">
+        <input className={input} placeholder="Receiver IP  مثال: 192.168.1.50" value={cfg.host}
+          onChange={set("host")} disabled={running} inputMode="decimal" dir="ltr" />
+
+        <code dir="ltr" className="block max-h-24 overflow-auto break-all rounded-xl border border-white/[0.08] bg-black/30 p-3 text-xs text-cyan-100">
           {job.command}
         </code>
 
-        <pre ref={boxRef}
-          className="h-64 overflow-auto whitespace-pre-wrap break-words rounded-xl border border-white/[0.08] bg-black/50 p-3 text-xs leading-relaxed text-emerald-200">
-          {log || "Output will appear here…"}
-        </pre>
+        {mode === "bridge" ? (
+          <>
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <span className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs ${badge[0]}`}>
+                {bridge === "offline" ? <WifiOff className="h-3.5 w-3.5" /> : <Wifi className="h-3.5 w-3.5" />}{badge[1]}
+              </span>
+              <button type="button" onClick={recheck} className="text-xs text-slate-400 underline hover:text-white">إعادة الفحص</button>
+            </div>
 
-        <div className="flex items-center justify-between">
-          <span className={`text-sm ${state === "done" && code === 0 ? "text-emerald-300" : state === "error" || (state === "done" && code !== 0) ? "text-rose-300" : "text-slate-400"}`}>
-            {state === "idle" && "Ready"}
-            {running && "Running…"}
-            {state === "done" && (code === 0 ? "Finished successfully" : `Finished with exit code ${code}`)}
-            {state === "error" && "Failed"}
-          </span>
-          <div className="flex gap-2">
-            <button onClick={onClose} className="rounded-xl border border-white/10 bg-white/10 px-4 py-2 text-sm text-white hover:bg-white/20">Close</button>
-            <button onClick={run} disabled={running || !cfg.host.trim()}
-              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-2 text-sm font-medium text-white disabled:opacity-40">
-              <Download className="h-4 w-4" />{running ? "Running…" : "Run on receiver"}
-            </button>
+            {bridge === "offline" && (
+              <div dir="rtl" className="space-y-2 rounded-xl border border-amber-400/25 bg-amber-400/10 p-3 text-sm leading-7 text-amber-100">
+                <p>التنفيذ المباشر محتاج برنامج الجسر الصغير على الكمبيوتر (مرة واحدة):</p>
+                <ol className="list-decimal space-y-1 pr-5">
+                  <li><a className="underline" href={BRIDGE_ZIP} download>حمّل ملف الجسر</a> وفك الضغط في فولدر تحتفظ به.</li>
+                  <li>اضغط دبل كليك على <b dir="ltr">start-bridge.bat</b> واترك النافذة مفتوحة.</li>
+                  <li>ارجع هنا واضغط "إعادة الفحص".</li>
+                </ol>
+                <p className="text-xs opacity-80">من الموبايل أو لو مش عايز تحمّل حاجة، استخدم تبويب "يدوي".</p>
+              </div>
+            )}
+
+            <div className="grid grid-cols-3 gap-3">
+              <input className={input} placeholder="Port" value={cfg.port} onChange={set("port")} disabled={running} dir="ltr" />
+              <input className={input} placeholder="User" value={cfg.user} onChange={set("user")} disabled={running} dir="ltr" />
+              <input className={input} placeholder="Password" type="password" value={cfg.pass} onChange={set("pass")} disabled={running} dir="ltr" />
+            </div>
+
+            <pre ref={boxRef} dir="ltr"
+              className="h-56 overflow-auto whitespace-pre-wrap break-words rounded-xl border border-white/[0.08] bg-black/50 p-3 text-xs leading-relaxed text-emerald-200">
+              {log || "Output will appear here…"}
+            </pre>
+
+            <div className="flex items-center justify-between">
+              <span className={`text-sm ${state === "done" && code === 0 ? "text-emerald-300" : state === "error" || (state === "done" && code !== 0) ? "text-rose-300" : "text-slate-400"}`}>
+                {state === "idle" && "جاهز"}
+                {running && "جاري التنفيذ…"}
+                {state === "done" && (code === 0 ? "تم التنفيذ بنجاح" : `انتهى بكود خطأ ${code}`)}
+                {state === "error" && "فشل"}
+              </span>
+              <div className="flex gap-2">
+                <button onClick={onClose} className="rounded-xl border border-white/10 bg-white/10 px-4 py-2 text-sm text-white hover:bg-white/20">إغلاق</button>
+                <button onClick={run} disabled={running || !host}
+                  className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-2 text-sm font-medium text-white disabled:opacity-40">
+                  <Download className="h-4 w-4" />{running ? "جاري التنفيذ…" : "نفّذ على الرسيفر"}
+                </button>
+              </div>
+            </div>
+          </>
+        ) : (
+          <div dir="rtl" className="space-y-4">
+            <ol className="list-decimal space-y-3 pr-5 text-sm leading-7 text-slate-200">
+              <li>
+                ثبّت تطبيق اتصال بالرسيفر (مرة واحدة):
+                <div className="mt-2 flex flex-wrap gap-2">
+                  <a href={TERMIUS_PLAY} target="_blank" rel="noreferrer"
+                    className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/10 px-3 py-1.5 text-xs text-white hover:bg-white/20">
+                    <ExternalLink className="h-3.5 w-3.5" />Termius · أندرويد
+                  </a>
+                  <a href={TERMIUS_IOS} target="_blank" rel="noreferrer"
+                    className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/10 px-3 py-1.5 text-xs text-white hover:bg-white/20">
+                    <ExternalLink className="h-3.5 w-3.5" />Termius · آيفون
+                  </a>
+                  <a href={PUTTY_URL} target="_blank" rel="noreferrer"
+                    className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/10 px-3 py-1.5 text-xs text-white hover:bg-white/20">
+                    <ExternalLink className="h-3.5 w-3.5" />PuTTY · ويندوز
+                  </a>
+                </div>
+              </li>
+              <li>
+                في التطبيق اعمل اتصال جديد بالبيانات دي (نوع الاتصال <b dir="ltr">Telnet</b>):
+                <div dir="ltr" className="mt-2 grid grid-cols-3 gap-2 text-center text-xs">
+                  <span className="rounded-lg bg-black/30 p-2 text-cyan-100">{host || "IP"}</span>
+                  <span className="rounded-lg bg-black/30 p-2 text-cyan-100">Port 23</span>
+                  <span className="rounded-lg bg-black/30 p-2 text-cyan-100">root</span>
+                </div>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  <CopyButton text={host} label="نسخ الـ IP" />
+                  {host && (
+                    <a href={`telnet://${host}:23`}
+                      className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/10 px-4 py-2 text-sm text-white hover:bg-white/20">
+                      <ExternalLink className="h-4 w-4" />جرّب فتح التطبيق
+                    </a>
+                  )}
+                </div>
+              </li>
+              <li>
+                بعد ما تدخل، الصق الأمر ده واضغط Enter:
+                <div className="mt-2"><CopyButton text={job.command} label="نسخ الأمر" className="w-full" /></div>
+              </li>
+              <li>استنى لحد ما الأمر يخلص، وبعدها أعد تشغيل الواجهة (Restart GUI) أو الرسيفر لو الإضافة طلبت كده.</li>
+            </ol>
+            <p className="text-xs leading-6 text-slate-500">
+              الرسيفر لازم يكون على نفس شبكة الواي فاي بتاعة جهازك، ولازم يكون متصل بالإنترنت عشان ينزّل الإضافة.
+            </p>
+            <div className="flex justify-end">
+              <button onClick={onClose} className="rounded-xl border border-white/10 bg-white/10 px-4 py-2 text-sm text-white hover:bg-white/20">إغلاق</button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
