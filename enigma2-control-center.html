@@ -740,6 +740,21 @@
       .plugin-card .tool-desc{font-size:11px!important}
     }
 
+
+    /* APP STORE REFACTOR — card icon assets and compact action row */
+    .category-chip-icon img{width:19px;height:19px;object-fit:contain;display:block}
+    .plugin-card .tool-icon img{width:42px;height:42px;object-fit:contain;display:block;filter:drop-shadow(0 3px 8px rgba(0,0,0,.24))}
+    .plugin-card .card-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    .plugin-card .source-mini{height:42px;display:inline-flex;align-items:center;justify-content:center;padding:0 12px;border-radius:12px;border:1px solid color-mix(in srgb,var(--card) 55%,transparent);background:rgba(8,20,37,.72);color:#eaf7ff;font-size:12px;font-weight:800;text-decoration:none;white-space:nowrap}
+    .plugin-card .source-mini:hover{background:color-mix(in srgb,var(--card) 22%,#10243b);border-color:var(--card)}
+    .plugin-card .copy-mini{min-width:116px!important;height:42px!important;padding:0 13px!important;font-size:12px!important}
+    @media(max-width:680px){
+      .plugin-card .tool-icon img{width:38px;height:38px}
+      .plugin-card .card-actions{gap:6px}
+      .plugin-card .source-mini{height:38px;padding:0 9px;font-size:10px}
+      .plugin-card .copy-mini{min-width:100px!important;height:38px!important;font-size:11px!important}
+    }
+
   </style>
 </head>
 <body>
@@ -763,6 +778,8 @@
       return {
         id: object && raw.id ? String(raw.id) : [group.id,section.id,index,String(name)].join("-"),
         name: safeText(String(name ?? "عنصر بدون اسم"),"عنصر بدون اسم"),
+        icon: object && typeof raw.icon === "string" ? raw.icon : "",
+        url: object ? (raw.url || raw.link || raw.website || raw.downloadUrl || "") : "",
         groupId: group.id,
         groupTitle: group.title,
         groupIcon: group.icon || FALLBACK_ICON,
@@ -835,6 +852,19 @@
       return {...normalized,catalog,commandStats:{sourceRecords:commandRecords.length,matched:normalized.items.filter(item=>item.installCommand).length}};
     }
 
+    function getCategoryIcon(category){
+      const key=String(category || "").toLocaleLowerCase();
+      if(/channel|قنوات|قائمة|قمر|satellite/.test(key)) return "assets/icons/satellite.svg";
+      if(/subtitle|ترجم|subs/.test(key)) return "assets/icons/subtitle.svg";
+      if(/tv|تلفزيون|بث|live|قنوات/.test(key)) return "assets/icons/tv.svg";
+      if(/movie|film|فيلم|وسائط|media|video/.test(key)) return "assets/icons/movie.svg";
+      if(/backup|نسخ|استعاد|image|صور النظام/.test(key)) return "assets/icons/backup.svg";
+      if(/picon|بيكون|شعار/.test(key)) return "assets/icons/picons.svg";
+      if(/skin|ثيم|واجهة/.test(key)) return "assets/icons/skin.svg";
+      if(/boot|إقلاع|بوت/.test(key)) return "assets/icons/bootlogo.svg";
+      if(/tool|system|أدوات|نظام|إدارة|صيانة|إعداد/.test(key)) return "assets/icons/settings.svg";
+      return "assets/icons/tools.svg";
+    }
     function categoryTheme(item){
       const key=[item.groupId,item.groupTitle,item.sectionId,item.sectionTitle,item.name].join(" ").toLocaleLowerCase();
       if(/channel|قنوات|القنوات/.test(key)) return "theme-channels";
@@ -942,7 +972,7 @@
               <nav className="category-strip" aria-label="الأقسام الرئيسية">
                 <button className={"category-chip "+(!selectedCategory?"active":"")} onClick={()=>{setSelectedCategory("");setSelectedSubCategory("");setSelectedTool("");}}>كل الأقسام</button>
                 {groups.map(group=><button key={group.id} className={"category-chip "+(selectedCategory===group.id?"active":"")} onClick={()=>chooseCategory(group.id)}>
-                  <span className="category-chip-icon">{group.icon || FALLBACK_ICON}</span>
+                  <span className="category-chip-icon"><img src={getCategoryIcon(group.id+" "+group.title)} alt="" loading="lazy"/></span>
                   <span>{group.title || group.id}</span><small>{(categoryCounts.get(group.id)||0).toLocaleString("ar-EG")}</small>
                 </button>)}
               </nav>
@@ -972,11 +1002,14 @@
             <div className="results-head"><b>{searchQuery.trim()?"نتائج البحث":selectedSubCategory?(sectionTitle||"العناصر"):"عناصر القسم"}</b><span>{filteredItems.length.toLocaleString("ar-EG")} عنصر · {filteredItems.filter(item=>item.installCommand).length.toLocaleString("ar-EG")} أمر متاح للنسخ</span></div>
             <div className="tool-grid">
               {filteredItems.length ? filteredItems.map(item=><div key={item.id} className={"plugin-card tool-card "+categoryTheme(item)+" "+(selectedTool===item.id?"selected":"")} role="button" tabIndex={0} onClick={()=>chooseTool(item)} onKeyDown={e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();chooseTool(item);}}}>
-                <div className="tool-top"><span className="tool-icon">{item.sectionIcon || item.groupIcon || FALLBACK_ICON}</span><span className="tool-status">{item.status || "متاح ✓"}</span></div>
+                <div className="tool-top"><span className="tool-icon"><img src={item.icon || getCategoryIcon(item.sectionId+" "+item.sectionTitle+" "+item.groupId)} alt="" loading="lazy" onError={e=>{e.currentTarget.onerror=null;e.currentTarget.src=getCategoryIcon(item.groupId+" "+item.groupTitle);}}/></span><span className="tool-status">{item.status || "متاح ✓"}</span></div>
                 <span className="tool-name">{item.name}</span>
                 <span className="tool-desc">{item.description || item.sectionTitle || item.groupDescription || "عنصر مدرج في مكتبة Online4Tech"}</span>
                 <span className="tool-foot"><span className="tool-group category-button">{item.sectionTitle || item.groupTitle || "عام"}</span>
-                  <button type="button" className="copy-mini" disabled={!item.installCommand} title={item.installCommand ? "نسخ الأمر الموجود في الملف المرفق" : "لا يوجد أمر مطابق لهذا العنصر في الملف المرفق"} onClick={e=>{e.stopPropagation();copyCommand(item.installCommand);}}>نسخ الأمر</button>
+                  <span className="card-actions">
+                    {item.url && <a className="source-mini" href={item.url} target="_blank" rel="noopener noreferrer" onClick={e=>e.stopPropagation()} aria-label={"فتح رابط "+item.name}>فتح الرابط ↗</a>}
+                    <button type="button" className="copy-mini" disabled={!item.installCommand} title={item.installCommand ? "نسخ أمر العنصر" : "لا يوجد أمر متاح لهذا العنصر"} onClick={e=>{e.stopPropagation();copyCommand(item.installCommand);}}>نسخ الأمر</button>
+                  </span>
                 </span>
               </div>) : <div className="empty">مفيش عناصر مطابقة للبحث أو التصنيف ده.</div>}
             </div>
