@@ -68,3 +68,19 @@ body{overflow-x:hidden}
     }
   }
 }
+
+/* Use a consistent folder glyph for the category tiles, including Media. */
+@supports selector(.grid:has(>button)) {
+  .grid.grid-cols-1.gap-3:has(>button.h-14) > button.h-14 > svg { display: none; }
+  .grid.grid-cols-1.gap-3:has(>button.h-14) > button.h-14::before {
+    content: "";
+    display: block;
+    flex: 0 0 20px;
+    width: 20px;
+    height: 20px;
+    background: currentColor;
+    color: #94a3b8;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+}
