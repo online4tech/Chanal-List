@@ -248,11 +248,11 @@ const CategoryCard = memo(function CategoryCard({ node, active, onSelect }) {
   );
 });
 
-const ToolCard = memo(function ToolCard({ tool, rootKey, selected, onSelect }) {
+const ToolCard = memo(function ToolCard({ tool, rootKey, selected, onSelect, stacked }) {
   const Icon = getIcon(tool.icon || rootKey);
   return (
     <button onClick={() => onSelect(tool.id)}
-      className={`group flex flex-col gap-3 rounded-2xl border p-4 text-left transition-all duration-300 hover:-translate-y-1 ${
+      className={`group flex flex-col gap-3 rounded-2xl border p-4 text-left transition-all duration-300 hover:-translate-y-1 ${stacked ? "h-[132px]" : ""} ${
         selected
           ? "border-cyan-400/50 bg-cyan-400/10 shadow-[0_0_34px_rgba(34,211,238,0.25)]"
           : "border-white/[0.08] bg-white/5 hover:border-violet-400/40 hover:bg-white/[0.09] hover:shadow-[0_12px_40px_rgba(139,92,246,0.28)]"}`}>
@@ -278,7 +278,7 @@ const SubCategoryCard = memo(function SubCategoryCard({ node, onSelect }) {
   const Icon = node.children.length ? Layers : FolderOpen;
   return (
     <button onClick={() => onSelect(node.id)}
-      className="group flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-white/5 p-3.5 text-left transition-all hover:-translate-y-0.5 hover:border-cyan-400/40 hover:bg-white/[0.09] hover:shadow-[0_0_28px_rgba(34,211,238,0.18)]">
+      className="group flex h-14 items-center gap-3 rounded-2xl border border-white/[0.08] bg-white/5 p-3.5 text-left transition-all hover:-translate-y-0.5 hover:border-cyan-400/40 hover:bg-white/[0.09] hover:shadow-[0_0_28px_rgba(34,211,238,0.18)]">
       <Icon className="h-5 w-5 text-violet-300" />
       <span className="min-w-0 flex-1 truncate text-sm text-white">{node.label}</span>
       <span className="rounded-md bg-white/10 px-2 py-0.5 text-xs text-slate-300">{node.count}</span>
@@ -290,12 +290,13 @@ const PAGE = 60;
 const ToolGrid = memo(function ToolGrid({ node, selectedToolId, onSelectTool, onSelectNode }) {
   const [limit, setLimit] = useState(PAGE); // reset by `key` on the parent when node changes
   const shown = node.tools.slice(0, limit);
+  const stacked = node.root === "plugins";
   return (
     <div className="space-y-6">
       {node.children.length > 0 && (
         <section>
           <h2 className="mb-3 text-xs font-medium uppercase tracking-widest text-slate-500">Sub categories</h2>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          <div className={`grid grid-cols-1 gap-3 ${stacked ? "" : "sm:grid-cols-2 xl:grid-cols-3"}`}>
             {node.children.map((c) => <SubCategoryCard key={c.id} node={c} onSelect={onSelectNode} />)}
           </div>
         </section>
@@ -305,9 +306,9 @@ const ToolGrid = memo(function ToolGrid({ node, selectedToolId, onSelectTool, on
           <h2 className="mb-3 text-xs font-medium uppercase tracking-widest text-slate-500">
             Tools · {node.tools.length}
           </h2>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+          <div className={`grid grid-cols-1 gap-4 ${stacked ? "" : "sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"}`}>
             {shown.map((t) => (
-              <ToolCard key={t.id} tool={t} rootKey={node.root} selected={t.id === selectedToolId} onSelect={onSelectTool} />
+              <ToolCard key={t.id} tool={t} rootKey={node.key === "Media" ? "media" : node.root} selected={t.id === selectedToolId} onSelect={onSelectTool} stacked={stacked} />
             ))}
           </div>
           {limit < node.tools.length && (
@@ -593,7 +594,7 @@ export default function ControlCenter({ data, onAction }) {
 
           {/* Details */}
           <section className="min-w-0">
-            <DetailsPanel tool={activeTool} rootKey={activeNode?.root} onAction={handleAction} />
+            <DetailsPanel tool={activeTool} rootKey={activeNode?.key === "Media" ? "media" : activeNode?.root} onAction={handleAction} />
           </section>
         </main>
       </div>
