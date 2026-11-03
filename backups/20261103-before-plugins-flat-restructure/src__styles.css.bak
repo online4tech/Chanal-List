@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+html, body, #root { min-height: 100%; margin: 0; }
+body { min-width: 320px; background: #070a1a; }
+button, input { font: inherit; }
