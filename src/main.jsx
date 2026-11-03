@@ -6,7 +6,7 @@ import "./styles.css";
 // Keep the existing catalog as the source for every section except Channels.
 const emptyCatalog = {
   main: Object.fromEntries(
-    ["panels", "plugins", "channels", "feeds", "tools", "media", "skins", "images",
+    ["panels", "plugins", "channels", "feeds", "tools", "skins", "images",
       "picons", "bootlogos", "spinners", "backup", "restore"].map((k) => [k, { tools: [] }])
   ),
 };
