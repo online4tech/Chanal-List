@@ -12,7 +12,6 @@
  *   If omitted, the command is copied to the clipboard.
  * - Layout: 3 columns on desktop (lg+). Below lg it simply stacks (nothing desktop-specific leaks to mobile/tablet).
  */
-import DeviceConnection from "../components/DeviceConnection.jsx";
 import React, {
   memo, useCallback, useDeferredValue, useEffect, useMemo, useRef, useState,
 } from "react";
@@ -393,6 +392,97 @@ const DetailsPanel = memo(function DetailsPanel({ tool, rootKey, onAction }) {
 });
 
 /* ───────────────────────── 5. Page ───────────────────────── */
+/* ───────────────────────── Telnet runner (talks to telnet-bridge.js) ───────────────────────── */
+const BRIDGE_URL = "ws://127.0.0.1:8765";
+const ANSI = /\x1b\[[0-9;?]*[A-Za-z]/g;
+
+function TelnetRunner({ job, onClose }) {
+  const [cfg, setCfg] = useState(() => {
+    const base = { host: "", port: 23, user: "root", pass: "" };
+    try { return { ...base, ...JSON.parse(localStorage.getItem("cc-receiver") || "{}") }; } catch { return base; }
+  });
+  const [log, setLog] = useState("");
+  const [state, setState] = useState("idle"); // idle | running | done | error
+  const [code, setCode] = useState(null);
+  const wsRef = useRef(null);
+  const boxRef = useRef(null);
+
+  useEffect(() => () => wsRef.current?.close(), []);
+  useEffect(() => { if (boxRef.current) boxRef.current.scrollTop = boxRef.current.scrollHeight; }, [log]);
+
+  const set = (k) => (e) => setCfg((c) => ({ ...c, [k]: e.target.value }));
+
+  const run = () => {
+    try { localStorage.setItem("cc-receiver", JSON.stringify({ host: cfg.host, port: cfg.port, user: cfg.user })); } catch {}
+    setLog(""); setCode(null); setState("running");
+    let ws;
+    try { ws = new WebSocket(BRIDGE_URL); } catch { setState("error"); setLog("Cannot open the local bridge.\n"); return; }
+    wsRef.current = ws;
+    ws.onopen = () => ws.send(JSON.stringify({
+      host: cfg.host.trim(), port: Number(cfg.port) || 23, user: cfg.user, password: cfg.pass, command: job.command,
+    }));
+    ws.onmessage = (e) => {
+      let m; try { m = JSON.parse(e.data); } catch { return; }
+      if (m.type === "data") setLog((l) => (l + m.data.replace(ANSI, "")).slice(-20000));
+      if (m.type === "done") { setCode(m.code); setState("done"); }
+      if (m.type === "error") { setLog((l) => `${l}\n[error] ${m.message}\n`); setState("error"); }
+    };
+    ws.onerror = () => {
+      setState("error");
+      setLog("Cannot reach the local bridge.\nRun it first:  node telnet-bridge.js\n");
+    };
+    ws.onclose = () => setState((s) => (s === "running" ? "error" : s));
+  };
+
+  const input = "h-10 w-full rounded-xl border border-white/10 bg-white/[0.06] px-3 text-sm text-white outline-none focus:border-cyan-400/50";
+  const running = state === "running";
+  return (
+    <div className="fixed inset-0 z-50 grid place-items-center bg-black/60 p-4 backdrop-blur-sm">
+      <div className={`${glass} w-full max-w-2xl space-y-4 rounded-3xl bg-slate-900/80 p-6`}>
+        <div className="flex items-center justify-between">
+          <h3 className="flex items-center gap-2 text-lg font-semibold text-white">
+            <Terminal className="h-5 w-5 text-cyan-300" />
+            {job.type[0].toUpperCase() + job.type.slice(1)} · {job.tool.name}
+          </h3>
+          <button onClick={onClose} className="text-slate-400 hover:text-white"><X className="h-5 w-5" /></button>
+        </div>
+
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <input className={input} placeholder="Receiver IP" value={cfg.host} onChange={set("host")} disabled={running} />
+          <input className={input} placeholder="Port" value={cfg.port} onChange={set("port")} disabled={running} />
+          <input className={input} placeholder="User" value={cfg.user} onChange={set("user")} disabled={running} />
+          <input className={input} placeholder="Password" type="password" value={cfg.pass} onChange={set("pass")} disabled={running} />
+        </div>
+
+        <code className="block max-h-24 overflow-auto break-all rounded-xl border border-white/[0.08] bg-black/30 p-3 text-xs text-cyan-100">
+          {job.command}
+        </code>
+
+        <pre ref={boxRef}
+          className="h-64 overflow-auto whitespace-pre-wrap break-words rounded-xl border border-white/[0.08] bg-black/50 p-3 text-xs leading-relaxed text-emerald-200">
+          {log || "Output will appear here…"}
+        </pre>
+
+        <div className="flex items-center justify-between">
+          <span className={`text-sm ${state === "done" && code === 0 ? "text-emerald-300" : state === "error" || (state === "done" && code !== 0) ? "text-rose-300" : "text-slate-400"}`}>
+            {state === "idle" && "Ready"}
+            {running && "Running…"}
+            {state === "done" && (code === 0 ? "Finished successfully" : `Finished with exit code ${code}`)}
+            {state === "error" && "Failed"}
+          </span>
+          <div className="flex gap-2">
+            <button onClick={onClose} className="rounded-xl border border-white/10 bg-white/10 px-4 py-2 text-sm text-white hover:bg-white/20">Close</button>
+            <button onClick={run} disabled={running || !cfg.host.trim()}
+              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-2 text-sm font-medium text-white disabled:opacity-40">
+              <Download className="h-4 w-4" />{running ? "Running…" : "Run on receiver"}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function ControlCenter({ data, onAction }) {
   const model = useMemo(() => buildModel(data), [data]);
   const { categories, nodeById, toolById, index } = model;
@@ -402,6 +492,7 @@ export default function ControlCenter({ data, onAction }) {
   const [selectedTool, setSelectedTool] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [toast, setToast] = useState("");
+  const [job, setJob] = useState(null); // { type, tool, command } → opens the Telnet runner
   const deferredQuery = useDeferredValue(searchQuery);
 
   // default to the first category once data is available
@@ -451,8 +542,8 @@ export default function ControlCenter({ data, onAction }) {
   const handleAction = useCallback((type, tool) => {
     if (onAction) return onAction(type, tool);
     const cmd = type === "install" ? tool.install : type === "update" ? tool.update || tool.install : tool.remove;
-    navigator.clipboard?.writeText(cmd || "");
-    setToast(`${type} command copied`); setTimeout(() => setToast(""), 1600);
+    if (!cmd) return;
+    setJob({ type, tool, command: cmd });
   }, [onAction]);
 
   return (
@@ -467,8 +558,6 @@ export default function ControlCenter({ data, onAction }) {
 
       <div className="relative">
         <Header query={searchQuery} setQuery={setSearchQuery} results={results} onPick={pickSearch} onHome={goHome} />
-
-        <DeviceConnection />
 
         <main className="mx-auto grid max-w-[1700px] grid-cols-1 gap-6 px-6 py-6 lg:grid-cols-[260px_minmax(0,1fr)_360px]">
           {/* Left rail */}
@@ -509,6 +598,7 @@ export default function ControlCenter({ data, onAction }) {
         </main>
       </div>
 
+      {job && <TelnetRunner job={job} onClose={() => setJob(null)} />}
       {toast && (
         <div className={`${glass} fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-xl bg-slate-900/80 px-4 py-2 text-sm text-white`}>
           {toast}
