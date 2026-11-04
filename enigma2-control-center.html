@@ -1096,7 +1096,7 @@
                   {globalMatches.tools.length>0 && <><div className="search-group-title">الأدوات والعناصر</div>{globalMatches.tools.map(item=><button key={item.id} className="search-result" onClick={()=>chooseTool(item)}><span>{item.name}</span><small>{item.sectionTitle}</small></button>)}</>}
                   {!globalMatches.categories.length && !globalMatches.sections.length && !globalMatches.tools.length && <div className="search-group-title">مفيش نتائج مطابقة</div>}
                 </div>}
-              </div>>
+              </div>
             </div>
 
             <div className="results-head"><b>{searchQuery.trim()?"نتائج البحث":selectedSubCategory?(sectionTitle||"العناصر"):"عناصر القسم"}</b><span>{filteredItems.length.toLocaleString("ar-EG")} عنصر · {filteredItems.filter(item=>item.installCommand).length.toLocaleString("ar-EG")} أمر متاح للنسخ</span></div>
