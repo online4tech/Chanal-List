@@ -20,16 +20,62 @@ import {
   LayoutPanelLeft, Loader, Film, Package, Palette, Power, Puzzle, RefreshCw,
   RotateCcw, Rss, Search, Terminal, Trash2, Tv, User, Wrench, X, Sparkles,
   Layers, Check, Monitor, Smartphone, ExternalLink, Wifi, WifiOff,
+  MonitorPlay, SlidersHorizontal, KeyRound, Languages, Shapes, Images, Cpu,
 } from "lucide-react";
 
-/* ───────────────────────── 1. Icon mapping system ───────────────────────── */
-// Add a line here to give any new section its own icon. Unknown keys fall back to Package.
-const ICON_MAP = {
-  panels: LayoutPanelLeft, plugins: Puzzle, channels: Tv, feeds: Rss, tools: Wrench,
-  media: Film, skins: Palette, images: ImageIcon, picons: ImageIcon, bootlogos: Power,
-  spinners: Loader, backup: Archive, restore: RotateCcw, default: Package,
+/* ───────────────────────── 1. Theme: icon + accent color per section ───────────────────────── */
+// Add a line here to give a section its own icon and color (a = "R G B").
+// Unknown keys fall back to a stable color picked from their name, so new data never looks broken.
+const THEMES = {
+  panels: { a: "167 139 250", icon: LayoutPanelLeft },
+  plugins: { a: "34 211 238", icon: Puzzle },
+  channels: { a: "96 165 250", icon: Tv },
+  feeds: { a: "251 146 60", icon: Rss },
+  tools: { a: "251 191 36", icon: Wrench },
+  media: { a: "255 107 0", icon: Film },
+  skins: { a: "232 121 249", icon: Palette },
+  images: { a: "129 140 248", icon: ImageIcon },
+  picons: { a: "52 211 153", icon: Images },
+  bootlogos: { a: "248 113 113", icon: Power },
+  spinners: { a: "45 212 191", icon: Loader },
+  backup: { a: "74 222 128", icon: Archive },
+  restore: { a: "56 189 248", icon: RotateCcw },
+  // plugin sub categories
+  iptv: { a: "0 200 255", icon: MonitorPlay },
+  settings: { a: "77 154 255", icon: SlidersHorizontal },
+  softcam: { a: "139 92 246", icon: KeyRound },
+  translation: { a: "46 204 113", icon: Languages },
+  other: { a: "148 163 184", icon: Shapes },
 };
-const getIcon = (key) => ICON_MAP[String(key || "").toLowerCase().replace(/[\s_-]/g, "")] || ICON_MAP.default;
+const ACCENT_POOL = ["34 211 238", "167 139 250", "96 165 250", "251 146 60", "251 191 36", "52 211 153", "232 121 249", "45 212 191"];
+const normKey = (k) => String(k || "").toLowerCase().replace(/[\s_-]/g, "");
+const ICON_MAP = { ...Object.fromEntries(Object.entries(THEMES).map(([k, v]) => [k, v.icon])), default: Package };
+const getIcon = (key) => ICON_MAP[normKey(key)] || ICON_MAP.default;
+
+function themeFor(node) {
+  if (!node) return { a: "34 211 238", Icon: Package };
+  for (const k of [node.key, node.root]) {
+    const t = THEMES[normKey(k)];
+    if (t) return { a: t.a, Icon: t.icon };
+  }
+  const h = [...String(node.root || node.key)].reduce((n, c) => (n * 31 + c.charCodeAt(0)) >>> 0, 7);
+  return { a: ACCENT_POOL[h % ACCENT_POOL.length], Icon: getIcon(node.icon) };
+}
+
+// Descriptions look like "text | المطور: Name | صور مذكور توافقها: OpenATV" — split them into text + chips.
+function parseDesc(desc) {
+  const parts = String(desc || "").split("|").map((s) => s.trim()).filter(Boolean);
+  const out = { text: parts[0] || "", dev: "", compat: "" };
+  for (const p of parts.slice(1)) {
+    const i = p.indexOf(":");
+    if (i < 0) continue;
+    const k = p.slice(0, i), v = p.slice(i + 1).trim();
+    if (!v) continue;
+    if (/المطور|developer|author/i.test(k)) out.dev = v;
+    else if (/توافق|compat|image/i.test(k)) out.compat = v;
+  }
+  return out;
+}
 
 /* ───────────────────────── 2. JSON → normalized tree ───────────────────────── */
 const TOOL_KEYS = ["install", "installCommand", "install_command", "command", "cmd", "url", "path",
@@ -227,88 +273,91 @@ const Breadcrumbs = memo(function Breadcrumbs({ items }) {
   );
 });
 
+const StatusPill = ({ status }) => (
+  <span className={`inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[11px] font-medium capitalize ${statusStyle(status)}`}>
+    <span className="h-1.5 w-1.5 rounded-full bg-current" />{status}
+  </span>
+);
+
+const Chip = ({ icon: Icon, children, className = "" }) => (
+  <span className={`inline-flex min-w-0 items-center gap-1.5 rounded-lg bg-white/[0.06] px-2 py-1 text-[11px] text-slate-300 ${className}`}>
+    <Icon className="cc-accent h-3 w-3 shrink-0" /><span className="truncate" dir="auto">{children}</span>
+  </span>
+);
+
 const CategoryCard = memo(function CategoryCard({ node, active, onSelect }) {
-  const Icon = getIcon(node.icon);
+  const theme = themeFor(node);
+  const Icon = theme.Icon;
   return (
-    <button onClick={() => onSelect(node.id)}
-      className={`group relative flex w-full items-center gap-3 overflow-hidden rounded-2xl border p-3.5 text-left transition-all duration-300 ${
-        active
-          ? "border-cyan-400/40 bg-gradient-to-r from-cyan-400/15 to-violet-500/15 shadow-[0_0_30px_rgba(34,211,238,0.18)]"
-          : "border-white/[0.08] bg-white/5 hover:border-white/20 hover:bg-white/[0.09] hover:shadow-[0_0_28px_rgba(139,92,246,0.22)]"}`}>
-      {active && <span className="absolute left-0 top-1/4 h-1/2 w-1 rounded-r-full bg-cyan-300" />}
-      <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl transition ${
-        active ? "bg-cyan-400/20 text-cyan-200" : "bg-white/10 text-slate-300 group-hover:text-white"}`}>
-        <Icon className="h-5 w-5" />
-      </span>
-      <span className="min-w-0 flex-1">
+    <button onClick={() => onSelect(node.id)} style={{ "--a": theme.a }}
+      className={`cc-nav group ${active ? "is-active" : ""}`}>
+      <span className="cc-tile cc-tile-sm"><Icon className="h-5 w-5" /></span>
+      <span className="min-w-0 flex-1 text-start">
         <span className="block truncate text-sm font-medium text-white">{node.label}</span>
         <span className="block text-xs text-slate-500">{node.count} items</span>
       </span>
+      <ChevronRight className="cc-nav-arrow h-4 w-4 shrink-0" />
     </button>
   );
 });
 
-const ToolCard = memo(function ToolCard({ tool, rootKey, selected, onSelect, stacked }) {
-  const Icon = getIcon(tool.icon || rootKey);
+const ToolCard = memo(function ToolCard({ tool, theme, selected, onSelect }) {
+  const Icon = tool.icon ? getIcon(tool.icon) : theme.Icon;
+  const d = useMemo(() => parseDesc(tool.description), [tool.description]);
   return (
-    <button onClick={() => onSelect(tool.id)}
-      className={`group flex flex-col gap-3 rounded-2xl border p-4 text-left transition-all duration-300 hover:-translate-y-1 ${stacked ? "h-[132px]" : ""} ${
-        selected
-          ? "border-cyan-400/50 bg-cyan-400/10 shadow-[0_0_34px_rgba(34,211,238,0.25)]"
-          : "border-white/[0.08] bg-white/5 hover:border-violet-400/40 hover:bg-white/[0.09] hover:shadow-[0_12px_40px_rgba(139,92,246,0.28)]"}`}>
-      <div className="flex items-start justify-between gap-2">
-        <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-cyan-400/20 to-violet-500/20 text-cyan-200">
-          <Icon className="h-5 w-5" />
-        </span>
-        <span className={`rounded-full border px-2.5 py-0.5 text-[11px] capitalize ${statusStyle(tool.status)}`}>
-          {tool.status}
-        </span>
+    <button onClick={() => onSelect(tool.id)} style={{ "--a": theme.a }}
+      className={`cc-card group ${selected ? "is-selected" : ""}`}>
+      <div className="flex items-start justify-between gap-3">
+        <span className="cc-tile"><Icon className="h-6 w-6" /></span>
+        <StatusPill status={tool.status} />
       </div>
       <div className="min-w-0">
-        <h3 className="truncate text-sm font-semibold text-white">{tool.name}</h3>
-        <p className="mt-1 line-clamp-2 min-h-[2.5rem] text-xs leading-relaxed text-slate-400">
-          {tool.description || tool.path || "No description"}
+        <h3 className="truncate text-[15px] font-semibold text-white">{tool.name}</h3>
+        <p dir="auto" className="mt-1.5 line-clamp-2 text-start text-[13px] leading-relaxed text-slate-400">
+          {d.text || tool.path || "No description"}
         </p>
+      </div>
+      <div className="mt-auto flex min-h-[26px] items-center gap-1.5">
+        {d.dev && <Chip icon={User}>{d.dev}</Chip>}
+        {d.compat && <Chip icon={Cpu} className="max-w-[48%] shrink-0">{d.compat}</Chip>}
       </div>
     </button>
   );
 });
 
 const SubCategoryCard = memo(function SubCategoryCard({ node, onSelect }) {
-  const Icon = node.key === "Media" ? getIcon(node.icon) : node.children.length ? Layers : FolderOpen;
+  const theme = themeFor(node);
+  const Icon = theme.Icon;
   return (
-    <button onClick={() => onSelect(node.id)}
-      className="group flex h-14 items-center gap-3 rounded-2xl border border-white/[0.08] bg-white/5 p-3.5 text-left transition-all hover:-translate-y-0.5 hover:border-cyan-400/40 hover:bg-white/[0.09] hover:shadow-[0_0_28px_rgba(34,211,238,0.18)]">
-      <Icon className="h-5 w-5 text-violet-300" />
-      <span className="min-w-0 flex-1 truncate text-sm text-white">{node.label}</span>
-      <span className="rounded-md bg-white/10 px-2 py-0.5 text-xs text-slate-300">{node.count}</span>
+    <button onClick={() => onSelect(node.id)} style={{ "--a": theme.a }} className="cc-sub group">
+      <span className="cc-tile cc-tile-sm"><Icon className="h-5 w-5" /></span>
+      <span className="min-w-0 flex-1 truncate text-start text-[15px] font-semibold text-white">{node.label}</span>
+      <span className="cc-count">{node.count}</span>
+      <ChevronRight className="cc-nav-arrow h-4 w-4 shrink-0" />
     </button>
   );
 });
 
 const PAGE = 60;
-const ToolGrid = memo(function ToolGrid({ node, selectedToolId, onSelectTool, onSelectNode }) {
+const ToolGrid = memo(function ToolGrid({ node, theme, selectedToolId, onSelectTool, onSelectNode }) {
   const [limit, setLimit] = useState(PAGE); // reset by `key` on the parent when node changes
   const shown = node.tools.slice(0, limit);
-  const pluginCards = node.root === "plugins";
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {node.children.length > 0 && (
         <section>
-          <h2 className="mb-3 text-xs font-medium uppercase tracking-widest text-slate-500">Sub categories</h2>
-          <div className={`grid grid-cols-1 gap-3 ${pluginCards ? "sm:grid-cols-2 xl:grid-cols-3" : "sm:grid-cols-2 xl:grid-cols-3"}`}>
+          <h2 className="cc-eyebrow mb-3">Sub categories</h2>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
             {node.children.map((c) => <SubCategoryCard key={c.id} node={c} onSelect={onSelectNode} />)}
           </div>
         </section>
       )}
       {node.tools.length > 0 && (
         <section>
-          <h2 className="mb-3 text-xs font-medium uppercase tracking-widest text-slate-500">
-            Tools · {node.tools.length}
-          </h2>
-          <div className={`grid grid-cols-1 gap-4 ${pluginCards ? "sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4" : "sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"}`}>
+          <h2 className="cc-eyebrow mb-3">Tools · {node.tools.length}</h2>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
             {shown.map((t) => (
-              <ToolCard key={t.id} tool={t} rootKey={node.key === "Media" ? "media" : node.root} selected={t.id === selectedToolId} onSelect={onSelectTool} stacked={pluginCards} />
+              <ToolCard key={t.id} tool={t} theme={theme} selected={t.id === selectedToolId} onSelect={onSelectTool} />
             ))}
           </div>
           {limit < node.tools.length && (
@@ -334,43 +383,45 @@ const CopyRow = ({ icon: Icon, label, value }) => {
     <div>
       <div className="mb-1.5 flex items-center justify-between text-xs text-slate-400">
         <span className="flex items-center gap-1.5"><Icon className="h-3.5 w-3.5" />{label}</span>
-        <button onClick={copy} className="text-slate-500 transition hover:text-white">
+        <button onClick={copy} className="text-slate-500 transition hover:text-white" aria-label={`Copy ${label}`}>
           {done ? <Check className="h-3.5 w-3.5 text-emerald-300" /> : <Copy className="h-3.5 w-3.5" />}
         </button>
       </div>
-      <code className="block max-h-28 overflow-auto break-all rounded-xl border border-white/[0.08] bg-black/30 p-3 text-xs text-cyan-100">
-        {value}
-      </code>
+      <code dir="ltr" className="cc-code">{value}</code>
     </div>
   );
 };
 
-const DetailsPanel = memo(function DetailsPanel({ tool, rootKey, onAction }) {
+const DetailsPanel = memo(function DetailsPanel({ tool, theme, onAction }) {
   if (!tool)
     return (
-      <aside className={`${glass} sticky top-6 grid min-h-[320px] place-items-center rounded-3xl p-8 text-center`}>
+      <aside style={{ "--a": theme.a }} className="cc-panel sticky top-6 grid min-h-[320px] place-items-center p-8 text-center">
         <div>
-          <Sparkles className="mx-auto mb-3 h-8 w-8 text-violet-300/60" />
-          <p className="text-sm text-slate-400">Select a tool to see its details</p>
+          <span className="cc-tile cc-tile-lg mx-auto mb-4"><Sparkles className="h-7 w-7" /></span>
+          <p className="text-sm font-medium text-slate-200">Select a tool to see its details</p>
+          <p className="mt-1 text-xs text-slate-500">Commands, path and actions appear here</p>
         </div>
       </aside>
     );
-  const Icon = getIcon(tool.icon || rootKey);
+  const Icon = tool.icon ? getIcon(tool.icon) : theme.Icon;
+  const d = parseDesc(tool.description);
   const btn = "flex items-center justify-center gap-2 rounded-xl px-3 py-2.5 text-sm font-medium transition disabled:cursor-not-allowed disabled:opacity-40";
   return (
-    <aside className={`${glass} sticky top-6 space-y-5 rounded-3xl p-6`}>
+    <aside style={{ "--a": theme.a }} className="cc-panel sticky top-6 space-y-5 p-6">
       <div className="flex items-start gap-4">
-        <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-cyan-400/25 to-violet-500/25 text-cyan-200">
-          <Icon className="h-7 w-7" />
-        </span>
-        <div className="min-w-0">
-          <h2 className="break-words text-lg font-semibold text-white">{tool.name}</h2>
-          <span className={`mt-1 inline-block rounded-full border px-2.5 py-0.5 text-[11px] capitalize ${statusStyle(tool.status)}`}>
-            {tool.status}
-          </span>
+        <span className="cc-tile cc-tile-lg"><Icon className="h-7 w-7" /></span>
+        <div className="min-w-0 pt-0.5">
+          <h2 className="break-words text-lg font-semibold leading-snug text-white">{tool.name}</h2>
+          <div className="mt-1.5"><StatusPill status={tool.status} /></div>
         </div>
       </div>
-      {tool.description && <p className="text-sm leading-relaxed text-slate-300">{tool.description}</p>}
+      {d.text && <p dir="auto" className="text-start text-sm leading-7 text-slate-300">{d.text}</p>}
+      {(d.dev || d.compat) && (
+        <div className="flex flex-wrap gap-2">
+          {d.dev && <Chip icon={User}>{d.dev}</Chip>}
+          {d.compat && <Chip icon={Cpu}>{d.compat}</Chip>}
+        </div>
+      )}
       <CopyRow icon={Terminal} label="Install command" value={tool.install} />
       <CopyRow icon={FolderOpen} label="Path" value={tool.path} />
       <CopyRow icon={Trash2} label="Remove command" value={tool.remove} />
@@ -770,6 +821,9 @@ export default function ControlCenter({ data, onAction }) {
     return list;
   }, [activeNode, activeTool, nodeById, goHome, jumpToNode]);
 
+  const theme = useMemo(() => themeFor(activeNode), [activeNode]);
+  const HeadIcon = theme.Icon;
+
   const handleAction = useCallback((type, tool) => {
     if (onAction) return onAction(type, tool);
     const cmd = type === "install" ? tool.install : type === "update" ? tool.update || tool.install : tool.remove;
@@ -778,13 +832,14 @@ export default function ControlCenter({ data, onAction }) {
   }, [onAction]);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#070a1a] text-slate-200">
-      {/* ambient background */}
+    <div style={{ "--a": theme.a }} className="relative min-h-screen overflow-hidden bg-[#070a1a] text-slate-200">
+      {/* ambient background: glows follow the accent color of the active section */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,#14183f_0%,#070a1a_60%)]" />
-        <div className="absolute -left-40 top-20 h-[520px] w-[520px] rounded-full bg-violet-600/25 blur-[140px]" />
-        <div className="absolute right-[-120px] top-[-80px] h-[460px] w-[460px] rounded-full bg-cyan-500/20 blur-[140px]" />
-        <div className="absolute bottom-[-160px] left-1/3 h-[420px] w-[620px] rounded-full bg-blue-700/20 blur-[150px]" />
+        <div className="cc-blob absolute -left-40 top-20 h-[520px] w-[520px] rounded-full blur-[140px]" style={{ backgroundColor: "rgb(var(--a) / .20)" }} />
+        <div className="cc-blob absolute right-[-120px] top-[-80px] h-[460px] w-[460px] rounded-full blur-[140px]" style={{ backgroundColor: "rgb(var(--a) / .16)" }} />
+        <div className="absolute bottom-[-160px] left-1/3 h-[420px] w-[620px] rounded-full bg-blue-700/15 blur-[150px]" />
+        <div className="absolute inset-0 opacity-[.035]" style={{ backgroundImage: "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)", backgroundSize: "44px 44px" }} />
       </div>
 
       <div className="relative">
@@ -805,17 +860,22 @@ export default function ControlCenter({ data, onAction }) {
             <Breadcrumbs items={crumbs} />
             {activeNode && (
               <>
-                <div className="mb-6">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <h1 className="text-2xl font-semibold text-white">{activeNode.label}</h1>
+                <div className="mb-7 flex items-center gap-4">
+                  <span className="cc-tile cc-tile-lg"><HeadIcon className="h-7 w-7" /></span>
+                  <div className="min-w-0">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <h1 className="text-2xl font-semibold tracking-tight text-white">{activeNode.label}</h1>
+                      <span className="cc-count">{activeNode.count}</span>
+                    </div>
+                    <p dir="auto" className="mt-1 text-start text-sm text-slate-400">
+                      {activeNode.description || `${activeNode.count} items`}
+                    </p>
                   </div>
-                  <p className="mt-1 text-sm text-slate-400">
-                    {activeNode.description || `${activeNode.count} items`}
-                  </p>
                 </div>
                 <ToolGrid
                   key={activeNode.id}
                   node={activeNode}
+                  theme={theme}
                   selectedToolId={selectedTool}
                   onSelectTool={pickTool}
                   onSelectNode={pickNode}
@@ -826,7 +886,7 @@ export default function ControlCenter({ data, onAction }) {
 
           {/* Details */}
           <section className="min-w-0">
-            <DetailsPanel tool={activeTool} rootKey={activeNode?.key === "Media" ? "media" : activeNode?.root} onAction={handleAction} />
+            <DetailsPanel tool={activeTool} theme={theme} onAction={handleAction} />
           </section>
         </main>
       </div>
