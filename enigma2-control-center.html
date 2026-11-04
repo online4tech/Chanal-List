@@ -1057,6 +1057,12 @@
                 <div><h1>{categoryTitle}</h1><p>استعرض العناصر والتصنيفات واختر أي عنصر لعرض تفاصيله</p></div>
                 <span className="live-dot">الفهرس متصل</span>
               </div>
+              <nav className="crumbs" aria-label="Breadcrumb">
+                <button onClick={()=>{setSelectedCategory("");setSelectedSubCategory("");setSearchQuery("");}}>الرئيسية</button><span>／</span>
+                <button onClick={()=>setSelectedSubCategory("")}>{categoryTitle}</button>
+                {sectionTitle && <><span>／</span><button className="current">{sectionTitle}</button></>}
+                {activeItem && <><span>／</span><span className="current">{activeItem.name}</span></>}
+              </nav>
               <nav className="category-strip" aria-label="الأقسام الرئيسية">
                 <button className={"category-chip "+(!selectedCategory?"active":"")} onClick={()=>{setSelectedCategory("");setSelectedSubCategory("");setSelectedTool("");}}>كل الأقسام</button>
                 {groups.map(group=><button key={group.id} className={"category-chip "+(selectedCategory===group.id?"active":"")} onClick={()=>chooseCategory(group.id)}>
@@ -1064,6 +1070,10 @@
                   <span>{group.title || group.id}</span><small>{(categoryCounts.get(group.id)||0).toLocaleString("ar-EG")}</small>
                 </button>)}
               </nav>
+              <div className="subcats">
+                <button className={"subcat "+(!selectedSubCategory?"active":"")} onClick={()=>setSelectedSubCategory("")}>كل التصنيفات</button>
+                {sections.map(section=><button key={section.id} className={"subcat "+(selectedSubCategory===section.id?"active":"")} onClick={()=>setSelectedSubCategory(section.id)}>{section.title} <span style={{opacity:.65}}>({section.count})</span></button>)}
+              </div
               <div className="search-wrap">
                 <span className="search-icon">⌕</span>
                 <input className="search" value={searchQuery} onChange={e=>{setSearchQuery(e.target.value);setShowSearchResults(true);}} onFocus={()=>setShowSearchResults(!!searchQuery)} placeholder="ابحث في الإضافات والتصنيفات والأدوات..." aria-label="بحث شامل"/>
@@ -1074,17 +1084,7 @@
                   {globalMatches.tools.length>0 && <><div className="search-group-title">الأدوات والعناصر</div>{globalMatches.tools.map(item=><button key={item.id} className="search-result" onClick={()=>chooseTool(item)}><span>{item.name}</span><small>{item.sectionTitle}</small></button>)}</>}
                   {!globalMatches.categories.length && !globalMatches.sections.length && !globalMatches.tools.length && <div className="search-group-title">مفيش نتائج مطابقة</div>}
                 </div>}
-              </div>
-              <nav className="crumbs" aria-label="Breadcrumb">
-                <button onClick={()=>{setSelectedCategory("");setSelectedSubCategory("");setSearchQuery("");}}>الرئيسية</button><span>／</span>
-                <button onClick={()=>setSelectedSubCategory("")}>{categoryTitle}</button>
-                {sectionTitle && <><span>／</span><button className="current">{sectionTitle}</button></>}
-                {activeItem && <><span>／</span><span className="current">{activeItem.name}</span></>}
-              </nav>
-              <div className="subcats">
-                <button className={"subcat "+(!selectedSubCategory?"active":"")} onClick={()=>setSelectedSubCategory("")}>كل التصنيفات</button>
-                {sections.map(section=><button key={section.id} className={"subcat "+(selectedSubCategory===section.id?"active":"")} onClick={()=>setSelectedSubCategory(section.id)}>{section.title} <span style={{opacity:.65}}>({section.count})</span></button>)}
-              </div>
+              </div>>
             </div>
 
             <div className="results-head"><b>{searchQuery.trim()?"نتائج البحث":selectedSubCategory?(sectionTitle||"العناصر"):"عناصر القسم"}</b><span>{filteredItems.length.toLocaleString("ar-EG")} عنصر · {filteredItems.filter(item=>item.installCommand).length.toLocaleString("ar-EG")} أمر متاح للنسخ</span></div>
