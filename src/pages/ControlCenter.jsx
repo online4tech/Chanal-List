@@ -188,7 +188,7 @@ const Header = memo(function Header({ query, setQuery, results, onPick, onHome }
   }, []);
   return (
     <header className="relative z-30 border-b border-white/[0.06] bg-gradient-to-b from-white/[0.04] to-transparent">
-      <div className="mx-auto grid max-w-[1700px] grid-cols-1 items-center gap-4 px-6 py-5 lg:grid-cols-[1fr_minmax(420px,640px)_1fr]">
+      <div className="grid w-full grid-cols-1 items-center gap-4 px-6 py-5 lg:grid-cols-[1fr_minmax(420px,640px)_1fr]">
         <button onClick={onHome} className="flex items-center gap-3 justify-self-start">
           <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-cyan-400 to-violet-600 shadow-[0_0_30px_rgba(139,92,246,0.55)]">
             <Sparkles className="h-5 w-5 text-white" />
@@ -347,7 +347,7 @@ const ToolGrid = memo(function ToolGrid({ node, theme, selectedToolId, onSelectT
       {node.children.length > 0 && (
         <section>
           <h2 className="cc-eyebrow mb-3">Sub categories</h2>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3 min-[1900px]:grid-cols-4">
             {node.children.map((c) => <SubCategoryCard key={c.id} node={c} onSelect={onSelectNode} />)}
           </div>
         </section>
@@ -355,7 +355,7 @@ const ToolGrid = memo(function ToolGrid({ node, theme, selectedToolId, onSelectT
       {node.tools.length > 0 && (
         <section>
           <h2 className="cc-eyebrow mb-3">Tools · {node.tools.length}</h2>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 min-[1900px]:grid-cols-5 min-[2400px]:grid-cols-6">
             {shown.map((t) => (
               <ToolCard key={t.id} tool={t} theme={theme} selected={t.id === selectedToolId} onSelect={onSelectTool} />
             ))}
@@ -392,7 +392,7 @@ const CopyRow = ({ icon: Icon, label, value }) => {
   );
 };
 
-const DetailsPanel = memo(function DetailsPanel({ tool, theme, node, onAction }) {
+const DetailsPanel = memo(function DetailsPanel({ tool, theme, node, onAction, onCopy }) {
   if (!tool) {
     const HeadIcon = theme.Icon;
     const intro = (node && (THEMES[normKey(node.key)]?.intro || node.description || THEMES[normKey(node.root)]?.intro)) || "";
@@ -444,9 +444,9 @@ const DetailsPanel = memo(function DetailsPanel({ tool, theme, node, onAction })
           className={`${btn} bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-[0_0_24px_rgba(34,211,238,0.3)] hover:brightness-110`}>
           <Download className="h-4 w-4" />Install
         </button>
-        <button disabled={!tool.update && !tool.install} onClick={() => onAction("update", tool)}
+        <button disabled={!tool.install} onClick={() => onCopy(tool)}
           className={`${btn} border border-white/10 bg-white/10 text-white hover:bg-white/20`}>
-          <RefreshCw className="h-4 w-4" />Update
+          <Copy className="h-4 w-4" />Copy
         </button>
         <button disabled={!tool.remove} onClick={() => onAction("remove", tool)}
           className={`${btn} border border-rose-400/30 bg-rose-500/15 text-rose-200 hover:bg-rose-500/25`}>
@@ -843,6 +843,33 @@ export default function ControlCenter({ data, onAction }) {
   useEffect(() => { if (centerRef.current) centerRef.current.scrollTop = 0; }, [activeNode?.id]);
   const HeadIcon = theme.Icon;
 
+  const toastTimer = useRef(null);
+  const showToast = useCallback((msg) => {
+    setToast(msg);
+    clearTimeout(toastTimer.current);
+    toastTimer.current = setTimeout(() => setToast(""), 1800);
+  }, []);
+  useEffect(() => () => clearTimeout(toastTimer.current), []);
+
+  // Copies the Telnet install command of the selected tool.
+  const handleCopy = useCallback(async (tool) => {
+    const text = tool?.install || "";
+    if (!text) return;
+    let ok = false;
+    try { await navigator.clipboard.writeText(text); ok = true; } catch { /* use the fallback below */ }
+    if (!ok) {
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = text; ta.setAttribute("readonly", "");
+        ta.style.cssText = "position:fixed;opacity:0;top:0;left:0";
+        document.body.appendChild(ta); ta.select();
+        ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+      } catch { ok = false; }
+    }
+    showToast(ok ? "تم النسخ" : "تعذّر النسخ");
+  }, [showToast]);
+
   const handleAction = useCallback((type, tool) => {
     if (onAction) return onAction(type, tool);
     const cmd = type === "install" ? tool.install : type === "update" ? tool.update || tool.install : tool.remove;
@@ -864,7 +891,7 @@ export default function ControlCenter({ data, onAction }) {
       <div className="relative lg:flex lg:h-full lg:flex-col">
         <Header query={searchQuery} setQuery={setSearchQuery} results={results} onPick={pickSearch} onHome={goHome} />
 
-        <main className="mx-auto grid w-full max-w-[1700px] grid-cols-1 gap-6 px-6 py-6 lg:min-h-0 lg:flex-1 lg:grid-cols-[260px_minmax(0,1fr)_360px] lg:grid-rows-[minmax(0,1fr)] lg:overflow-hidden lg:pb-4">
+        <main className="grid w-full grid-cols-1 gap-6 px-6 py-6 lg:min-h-0 lg:flex-1 lg:grid-cols-[260px_minmax(0,1fr)_360px] 2xl:grid-cols-[280px_minmax(0,1fr)_400px] lg:grid-rows-[minmax(0,1fr)] lg:overflow-hidden lg:pb-4">
           {/* Left rail */}
           <section className="cc-scroll lg:h-full lg:overflow-y-auto lg:pr-1">
             <div className="space-y-2.5 lg:pb-2">
@@ -905,14 +932,16 @@ export default function ControlCenter({ data, onAction }) {
 
           {/* Details */}
           <section className="cc-scroll min-w-0 lg:h-full lg:overflow-y-auto">
-            <DetailsPanel tool={activeTool} theme={theme} node={activeNode} onAction={handleAction} />
+            <DetailsPanel tool={activeTool} theme={theme} node={activeNode} onAction={handleAction} onCopy={handleCopy} />
           </section>
         </main>
       </div>
 
       {job && <TelnetRunner job={job} onClose={() => setJob(null)} />}
       {toast && (
-        <div className={`${glass} fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-xl bg-slate-900/80 px-4 py-2 text-sm text-white`}>
+        <div role="status" aria-live="polite"
+          className="cc-toast fixed bottom-6 left-1/2 z-[60] flex items-center gap-2 rounded-full border border-emerald-400/30 bg-slate-900/90 px-4 py-2 text-sm text-white shadow-[0_10px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl">
+          {toast.startsWith("تم") && <Check className="h-4 w-4 text-emerald-300" />}
           {toast}
         </div>
       )}
