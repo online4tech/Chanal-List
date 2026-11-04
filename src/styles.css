@@ -111,3 +111,26 @@ button, input { font: inherit; }
 .cc-scroll::-webkit-scrollbar-track { background: transparent; }
 .cc-scroll::-webkit-scrollbar-thumb { background: rgb(var(--a) / .30); border-radius: 999px; }
 .cc-scroll::-webkit-scrollbar-thumb:hover { background: rgb(var(--a) / .55); }
+
+/* Section emblem (logo shown in the details panel before a tool is selected) */
+.cc-emblem { position: relative; display: grid; place-items: center; width: 132px; height: 132px; }
+.cc-emblem-ring {
+  position: absolute; inset: 0; border-radius: 50%;
+  border: 1px dashed rgb(var(--a) / .35); animation: cc-spin 28s linear infinite;
+}
+.cc-emblem-ring-2 { inset: 14px; border-style: solid; border-color: rgb(var(--a) / .16); animation-direction: reverse; animation-duration: 40s; }
+.cc-emblem-core {
+  position: relative; display: grid; place-items: center; width: 84px; height: 84px; border-radius: 26px; color: rgb(var(--a));
+  background: linear-gradient(145deg, rgb(var(--a) / .38), rgb(var(--a) / .08));
+  box-shadow: inset 0 0 0 1px rgb(var(--a) / .4), 0 0 44px -6px rgb(var(--a) / .65), 0 18px 34px -12px rgb(0 0 0 / .6);
+  animation: cc-float 5s ease-in-out infinite;
+}
+.cc-stat {
+  display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 10px 8px; border-radius: 14px;
+  background: rgba(255,255,255,.045); box-shadow: inset 0 0 0 1px rgba(255,255,255,.07);
+}
+.cc-stat b { font-size: 20px; font-weight: 700; color: rgb(var(--a)); line-height: 1.2; }
+.cc-stat span { font-size: 11px; color: rgb(148 163 184); }
+@keyframes cc-spin { to { transform: rotate(360deg); } }
+@keyframes cc-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@media (prefers-reduced-motion: reduce) { .cc-emblem-ring, .cc-emblem-core { animation: none; } }
