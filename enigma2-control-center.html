@@ -855,6 +855,64 @@
       .category-strip{justify-content:flex-start}
       .category-strip + .subcats{justify-content:flex-start;margin-top:12px}
     }
+
+
+    /* ONLINE4TECH CONTROL CENTER — compact aligned layout repair (UI only) */
+    .app-header{
+      width:100%;max-width:none;margin-inline:auto;
+      grid-template-columns:minmax(0,1fr) minmax(280px,560px) minmax(0,1fr)!important;
+      align-items:center!important;gap:18px!important;
+      padding-inline:max(24px,calc((100vw - 1760px)/2 + 24px))!important;
+      background:rgba(7,17,27,.72)!important;
+      box-shadow:none!important;border-radius:0!important;
+    }
+    .o4t-brand{justify-self:start!important}
+    .app-header .head-title{text-align:center!important;justify-self:center!important;line-height:1.25}
+    .header-connection{justify-self:end!important}
+    .workspace{max-width:1800px!important;margin-inline:auto!important;padding:18px 24px 22px!important}
+    .main-top{display:flex!important;flex-direction:column!important;gap:12px!important}
+    .crumbs{order:0!important;margin:0 0 2px!important}
+    .category-strip{order:1!important;margin:0!important;padding:5px 2px 8px!important}
+    .subcats{order:2!important;margin:0!important;padding:0 1px 8px!important}
+    .search-wrap{order:3!important}
+    .results-head{margin:3px 0 10px!important}
+    .tool-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px!important;align-content:start!important;grid-auto-rows:180px!important;padding:2px 3px 18px!important}
+    .plugin-card.tool-card{
+      height:180px!important;min-height:180px!important;max-height:180px!important;
+      padding:14px 16px!important;gap:7px!important;border-radius:18px!important;
+    }
+    .plugin-card .tool-top{min-height:55px!important;height:55px!important;margin:0!important;align-items:center!important}
+    .plugin-card .tool-icon{width:55px!important;height:55px!important;flex:0 0 55px!important;border-radius:15px!important}
+    .plugin-card .tool-icon img{width:34px!important;height:34px!important}
+    .plugin-card .tool-name{
+      font-size:clamp(1.2rem,1.25vw,1.35rem)!important;font-weight:800!important;
+      line-height:1.3!important;min-height:0!important;max-height:2.6em!important;
+      -webkit-line-clamp:2!important;margin:0!important;
+    }
+    .plugin-card .tool-desc{font-size:11px!important;line-height:1.4!important;-webkit-line-clamp:2!important}
+    .plugin-card .tool-foot{padding-top:6px!important;gap:8px!important}
+    .plugin-card .copy-mini,.plugin-card .source-mini{height:35px!important;min-height:35px!important;border-radius:999px!important;font-size:.8rem!important;padding-inline:12px!important}
+    .plugin-card .category-button{height:32px!important;border-radius:999px!important}
+    .app-footer{max-width:1800px;margin-inline:auto}
+    .error-boundary-screen{min-height:100vh;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at top,rgba(0,190,255,.12),transparent 48%),#07101a;color:#eef7ff;text-align:center;font-family:Cairo,"Segoe UI",sans-serif}
+    .error-boundary-screen>div{max-width:560px;padding:30px;border:1px solid rgba(0,216,255,.25);border-radius:22px;background:rgba(15,31,52,.82);box-shadow:0 18px 50px rgba(0,0,0,.3)}
+    .error-boundary-screen h2{margin:0 0 12px;font-size:22px}.error-boundary-screen p{color:#b8cbe0;line-height:1.8}
+    .error-boundary-screen button{border:1px solid rgba(0,216,255,.5);border-radius:999px;padding:10px 20px;background:#087fbf;color:#fff;font-weight:800;cursor:pointer}
+    @media(max-width:1100px){.tool-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-auto-rows:180px!important}.plugin-card.tool-card{height:180px!important;min-height:180px!important;max-height:180px!important}}
+    @media(max-width:680px){
+      .app-header{grid-template-columns:minmax(0,1fr) auto!important;padding:9px 12px!important;gap:8px!important}
+      .app-header .head-title{display:none!important}
+      .workspace{padding:12px!important}
+      .tool-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-auto-rows:180px!important;gap:10px!important}
+      .plugin-card.tool-card{height:180px!important;min-height:180px!important;max-height:180px!important;padding:12px!important}
+      .plugin-card .tool-icon{width:48px!important;height:48px!important;flex-basis:48px!important}
+      .plugin-card .tool-icon img{width:30px!important;height:30px!important}
+      .plugin-card .tool-name{font-size:1.05rem!important;line-height:1.3!important}
+      .plugin-card .tool-desc{font-size:10px!important}
+      .plugin-card .copy-mini,.plugin-card .source-mini{height:32px!important;min-height:32px!important;font-size:.72rem!important;padding-inline:9px!important}
+      .hero-section{min-height:170px!important;height:auto!important;padding:22px!important}
+    }
+    @media(max-width:390px){.tool-grid{grid-template-columns:minmax(0,1fr)!important}.plugin-card.tool-card{height:180px!important;min-height:180px!important}}
 </style>
 </head>
 <body>
@@ -1129,7 +1187,17 @@
       el.textContent=message;el.classList.add("show");
       clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>el.classList.remove("show"),1900);
     }
-    ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+
+    class AppErrorBoundary extends React.Component{
+      constructor(props){super(props);this.state={hasError:false};}
+      static getDerivedStateFromError(){return {hasError:true};}
+      componentDidCatch(error,info){console.error("Online4Tech Control Center render error:",error,info);}
+      render(){
+        if(this.state.hasError)return <main className="error-boundary-screen"><div><h2>حصل خطأ غير متوقع في عرض المركز</h2><p>باقي الصفحة لم يتم تحميلها بشكل سليم. تقدر تعيد المحاولة من غير فقد بيانات الفهرس.</p><button onClick={()=>{this.setState({hasError:false});window.location.reload();}}>إعادة تحميل المركز</button></div></main>;
+        return this.props.children;
+      }
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<AppErrorBoundary><App/></AppErrorBoundary>);
   </script>
 </body>
 </html>
