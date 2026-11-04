@@ -27,25 +27,25 @@ import {
 // Add a line here to give a section its own icon and color (a = "R G B").
 // Unknown keys fall back to a stable color picked from their name, so new data never looks broken.
 const THEMES = {
-  panels: { a: "167 139 250", icon: LayoutPanelLeft },
-  plugins: { a: "34 211 238", icon: Puzzle },
-  channels: { a: "96 165 250", icon: Tv },
-  feeds: { a: "251 146 60", icon: Rss },
-  tools: { a: "251 191 36", icon: Wrench },
-  media: { a: "255 107 0", icon: Film },
-  skins: { a: "232 121 249", icon: Palette },
-  images: { a: "129 140 248", icon: ImageIcon },
-  picons: { a: "52 211 153", icon: Images },
-  bootlogos: { a: "248 113 113", icon: Power },
-  spinners: { a: "45 212 191", icon: Loader },
-  backup: { a: "74 222 128", icon: Archive },
-  restore: { a: "56 189 248", icon: RotateCcw },
+  panels: { a: "167 139 250", icon: LayoutPanelLeft, intro: "لوحات متكاملة تجمع عشرات الأدوات والإضافات والخدمات في واجهة واحدة على الرسيفر." },
+  plugins: { a: "34 211 238", icon: Puzzle, intro: "إضافات Enigma2 لتشغيل IPTV والوسائط والسوفتكام والترجمة وضبط الإعدادات، وتُثبَّت بأمر واحد." },
+  channels: { a: "96 165 250", icon: Tv, intro: "قوائم قنوات جاهزة ومحدّثة للأقمار المختلفة، تُثبَّت مباشرة على الرسيفر." },
+  feeds: { a: "251 146 60", icon: Rss, intro: "مصادر حزم (Feeds) تضيفها للرسيفر لتثبيت وتحديث الإضافات من مستودعاتها." },
+  tools: { a: "251 191 36", icon: Wrench, intro: "أدوات مساعدة لصيانة الرسيفر وإدارة النظام والملفات." },
+  media: { a: "255 107 0", icon: Film, intro: "مشغّلات وإضافات للوسائط والأفلام والمسلسلات على الرسيفر." },
+  skins: { a: "232 121 249", icon: Palette, intro: "واجهات (Skins) تغيّر شكل الرسيفر وقوائمه وتمنحه مظهرًا جديدًا." },
+  images: { a: "129 140 248", icon: ImageIcon, intro: "صور نظام (Images) كاملة للرسيفر مع روابط التحميل والتثبيت." },
+  picons: { a: "52 211 153", icon: Images, intro: "أيقونات القنوات (Picons) التي تظهر بجانب اسم كل قناة في القائمة." },
+  bootlogos: { a: "248 113 113", icon: Power, intro: "شعارات الإقلاع (Bootlogos) التي تظهر عند تشغيل الرسيفر." },
+  spinners: { a: "45 212 191", icon: Loader, intro: "أيقونات التحميل المتحركة (Spinners) التي تظهر أثناء انتظار فتح الشاشات." },
+  backup: { a: "74 222 128", icon: Archive, intro: "أدوات النسخ الاحتياطي لقوائم القنوات والإعدادات والصور." },
+  restore: { a: "56 189 248", icon: RotateCcw, intro: "استرجاع النسخ الاحتياطية والإعدادات والقوائم السابقة إلى الرسيفر." },
   // plugin sub categories
-  iptv: { a: "0 200 255", icon: MonitorPlay },
-  settings: { a: "77 154 255", icon: SlidersHorizontal },
-  softcam: { a: "139 92 246", icon: KeyRound },
-  translation: { a: "46 204 113", icon: Languages },
-  other: { a: "148 163 184", icon: Shapes },
+  iptv: { a: "0 200 255", icon: MonitorPlay, intro: "إضافات تشغيل IPTV وقوائم Xtream وM3U على الرسيفر." },
+  settings: { a: "77 154 255", icon: SlidersHorizontal, intro: "إضافات لضبط إعدادات الرسيفر والنظام." },
+  softcam: { a: "139 92 246", icon: KeyRound, intro: "إضافات وأدوات SoftCam لإدارة الكامات على الرسيفر." },
+  translation: { a: "46 204 113", icon: Languages, intro: "إضافات الترجمة والترجمات (Subtitles) وتعريب الواجهة." },
+  other: { a: "148 163 184", icon: Shapes, intro: "إضافات متنوعة لا تندرج تحت تصنيف محدد." },
 };
 const ACCENT_POOL = ["34 211 238", "167 139 250", "96 165 250", "251 146 60", "251 191 36", "52 211 153", "232 121 249", "45 212 191"];
 const normKey = (k) => String(k || "").toLowerCase().replace(/[\s_-]/g, "");
@@ -392,17 +392,31 @@ const CopyRow = ({ icon: Icon, label, value }) => {
   );
 };
 
-const DetailsPanel = memo(function DetailsPanel({ tool, theme, onAction }) {
-  if (!tool)
+const DetailsPanel = memo(function DetailsPanel({ tool, theme, node, onAction }) {
+  if (!tool) {
+    const HeadIcon = theme.Icon;
+    const intro = (node && (THEMES[normKey(node.key)]?.intro || node.description || THEMES[normKey(node.root)]?.intro)) || "";
+    const subs = node?.children?.length || 0;
     return (
-      <aside style={{ "--a": theme.a }} className="cc-panel grid min-h-[320px] place-items-center p-8 text-center">
-        <div>
-          <span className="cc-tile cc-tile-lg mx-auto mb-4"><Sparkles className="h-7 w-7" /></span>
-          <p className="text-sm font-medium text-slate-200">Select a tool to see its details</p>
-          <p className="mt-1 text-xs text-slate-500">Commands, path and actions appear here</p>
+      <aside style={{ "--a": theme.a }} className="cc-panel flex flex-col items-center gap-5 px-6 py-9 text-center">
+        <div className="cc-emblem" aria-hidden="true">
+          <span className="cc-emblem-ring" /><span className="cc-emblem-ring cc-emblem-ring-2" />
+          <span className="cc-emblem-core"><HeadIcon className="h-11 w-11" /></span>
         </div>
+        <div className="min-w-0">
+          <p className="cc-eyebrow mb-1.5">القسم</p>
+          <h2 className="break-words text-xl font-semibold tracking-tight text-white">{node?.label || "Control Center"}</h2>
+        </div>
+        {intro && <p dir="auto" className="max-w-[300px] text-sm leading-7 text-slate-300">{intro}</p>}
+        {node && (
+          <div className={`grid w-full gap-2.5 ${subs ? "grid-cols-2" : "grid-cols-1"}`}>
+            <div className="cc-stat"><b>{node.count}</b><span>أداة</span></div>
+            {subs > 0 && <div className="cc-stat"><b>{subs}</b><span>تصنيف فرعي</span></div>}
+          </div>
+        )}
       </aside>
     );
+  }
   const Icon = tool.icon ? getIcon(tool.icon) : theme.Icon;
   const d = parseDesc(tool.description);
   const btn = "flex items-center justify-center gap-2 rounded-xl px-3 py-2.5 text-sm font-medium transition disabled:cursor-not-allowed disabled:opacity-40";
@@ -891,7 +905,7 @@ export default function ControlCenter({ data, onAction }) {
 
           {/* Details */}
           <section className="cc-scroll min-w-0 lg:h-full lg:overflow-y-auto">
-            <DetailsPanel tool={activeTool} theme={theme} onAction={handleAction} />
+            <DetailsPanel tool={activeTool} theme={theme} node={activeNode} onAction={handleAction} />
           </section>
         </main>
       </div>
