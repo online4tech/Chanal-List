@@ -395,7 +395,7 @@ const CopyRow = ({ icon: Icon, label, value }) => {
 const DetailsPanel = memo(function DetailsPanel({ tool, theme, onAction }) {
   if (!tool)
     return (
-      <aside style={{ "--a": theme.a }} className="cc-panel sticky top-6 grid min-h-[320px] place-items-center p-8 text-center">
+      <aside style={{ "--a": theme.a }} className="cc-panel grid min-h-[320px] place-items-center p-8 text-center">
         <div>
           <span className="cc-tile cc-tile-lg mx-auto mb-4"><Sparkles className="h-7 w-7" /></span>
           <p className="text-sm font-medium text-slate-200">Select a tool to see its details</p>
@@ -407,7 +407,7 @@ const DetailsPanel = memo(function DetailsPanel({ tool, theme, onAction }) {
   const d = parseDesc(tool.description);
   const btn = "flex items-center justify-center gap-2 rounded-xl px-3 py-2.5 text-sm font-medium transition disabled:cursor-not-allowed disabled:opacity-40";
   return (
-    <aside style={{ "--a": theme.a }} className="cc-panel sticky top-6 space-y-5 p-6">
+    <aside style={{ "--a": theme.a }} className="cc-panel space-y-5 p-6">
       <div className="flex items-start gap-4">
         <span className="cc-tile cc-tile-lg"><Icon className="h-7 w-7" /></span>
         <div className="min-w-0 pt-0.5">
@@ -516,16 +516,19 @@ function TelnetRunner({ job, onClose }) {
     let ws;
     try { ws = new WebSocket(BRIDGE_URL); } catch { setState("error"); setLog("Cannot open the local bridge.\n"); return; }
     wsRef.current = ws;
+    let finished = false; // once "done" arrives, later messages (goodbye noise from old bridges) are ignored
     ws.onopen = () => ws.send(JSON.stringify({
       host: cfg.host.trim(), port: Number(cfg.port) || 23, user: cfg.user, password: cfg.pass, command: job.command,
     }));
     ws.onmessage = (e) => {
+      if (finished) return;
       let m; try { m = JSON.parse(e.data); } catch { return; }
       if (m.type === "data") setLog((l) => (l + m.data.replace(ANSI, "")).slice(-20000));
-      if (m.type === "done") { setCode(m.code); setState("done"); }
-      if (m.type === "error") { setLog((l) => `${l}\n[error] ${m.message}\n`); setState("error"); }
+      if (m.type === "done") { finished = true; setCode(m.code); setState("done"); }
+      if (m.type === "error") { finished = true; setLog((l) => `${l}\n[error] ${m.message}\n`); setState("error"); }
     };
     ws.onerror = () => {
+      if (finished) return;
       setState("error");
       setLog("الجسر غير شغال على الكمبيوتر ده.\nافتح ملف start-bridge.bat ثم جرّب تاني.\n");
       recheck();
@@ -822,6 +825,8 @@ export default function ControlCenter({ data, onAction }) {
   }, [activeNode, activeTool, nodeById, goHome, jumpToNode]);
 
   const theme = useMemo(() => themeFor(activeNode), [activeNode]);
+  const centerRef = useRef(null);
+  useEffect(() => { if (centerRef.current) centerRef.current.scrollTop = 0; }, [activeNode?.id]);
   const HeadIcon = theme.Icon;
 
   const handleAction = useCallback((type, tool) => {
@@ -832,7 +837,7 @@ export default function ControlCenter({ data, onAction }) {
   }, [onAction]);
 
   return (
-    <div style={{ "--a": theme.a }} className="relative min-h-screen overflow-hidden bg-[#070a1a] text-slate-200">
+    <div style={{ "--a": theme.a }} className="relative min-h-screen overflow-hidden bg-[#070a1a] text-slate-200 lg:h-screen">
       {/* ambient background: glows follow the accent color of the active section */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,#14183f_0%,#070a1a_60%)]" />
@@ -842,13 +847,13 @@ export default function ControlCenter({ data, onAction }) {
         <div className="absolute inset-0 opacity-[.035]" style={{ backgroundImage: "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)", backgroundSize: "44px 44px" }} />
       </div>
 
-      <div className="relative">
+      <div className="relative lg:flex lg:h-full lg:flex-col">
         <Header query={searchQuery} setQuery={setSearchQuery} results={results} onPick={pickSearch} onHome={goHome} />
 
-        <main className="mx-auto grid max-w-[1700px] grid-cols-1 gap-6 px-6 py-6 lg:grid-cols-[260px_minmax(0,1fr)_360px]">
+        <main className="mx-auto grid w-full max-w-[1700px] grid-cols-1 gap-6 px-6 py-6 lg:min-h-0 lg:flex-1 lg:grid-cols-[260px_minmax(0,1fr)_360px] lg:grid-rows-[minmax(0,1fr)] lg:overflow-hidden lg:pb-4">
           {/* Left rail */}
-          <section className="lg:sticky lg:top-6 lg:max-h-[calc(100vh-3rem)] lg:self-start lg:overflow-y-auto">
-            <div className="space-y-2.5 lg:pr-1">
+          <section className="cc-scroll lg:h-full lg:overflow-y-auto lg:pr-1">
+            <div className="space-y-2.5 lg:pb-2">
               {categories.map((c) => (
                 <CategoryCard key={c.id} node={c} active={c.id === selectedCategory} onSelect={pickCategory} />
               ))}
@@ -856,7 +861,7 @@ export default function ControlCenter({ data, onAction }) {
           </section>
 
           {/* Content */}
-          <section className="min-w-0">
+          <section ref={centerRef} className="cc-scroll min-w-0 lg:-mx-2 lg:h-full lg:overflow-y-auto lg:px-2 lg:pb-6">
             <Breadcrumbs items={crumbs} />
             {activeNode && (
               <>
@@ -885,7 +890,7 @@ export default function ControlCenter({ data, onAction }) {
           </section>
 
           {/* Details */}
-          <section className="min-w-0">
+          <section className="cc-scroll min-w-0 lg:h-full lg:overflow-y-auto">
             <DetailsPanel tool={activeTool} theme={theme} onAction={handleAction} />
           </section>
         </main>
