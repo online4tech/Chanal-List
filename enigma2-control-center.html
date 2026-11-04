@@ -1085,7 +1085,7 @@
               <div className="subcats">
                 <button className={"subcat "+(!selectedSubCategory?"active":"")} onClick={()=>setSelectedSubCategory("")}>كل التصنيفات</button>
                 {sections.map(section=><button key={section.id} className={"subcat "+(selectedSubCategory===section.id?"active":"")} onClick={()=>setSelectedSubCategory(section.id)}>{section.title} <span style={{opacity:.65}}>({section.count})</span></button>)}
-              </div
+              </div>
               <div className="search-wrap">
                 <span className="search-icon">⌕</span>
                 <input className="search" value={searchQuery} onChange={e=>{setSearchQuery(e.target.value);setShowSearchResults(true);}} onFocus={()=>setShowSearchResults(!!searchQuery)} placeholder="ابحث في الإضافات والتصنيفات والأدوات..." aria-label="بحث شامل"/>
