@@ -141,11 +141,12 @@ function session(ws) {
 
     sock.setTimeout(IDLE_MS, () => { send({ type: "error", message: "Timed out" }); sock.destroy(); });
     sock.on("connect", () => send({ type: "data", data: `Connected to ${host}:${port}\n` }));
-    sock.on("error", (e) => { send({ type: "error", message: e.message }); ws.close(); });
+    sock.on("error", (e) => { if (!finished) send({ type: "error", message: e.message }); ws.close(); });
     sock.on("close", () => { if (!finished) send({ type: "error", message: "Connection closed" }); ws.close(); });
     ws.onclose = () => sock.destroy();
 
     sock.on("data", (chunk) => {
+      if (finished) return; // command already reported as done: ignore the receiver's goodbye (exit echo, prompts)
       // strip and answer Telnet negotiation
       const out = [];
       for (let i = 0; i < chunk.length; i++) {
@@ -186,8 +187,8 @@ function session(ws) {
         if (m) {
           finished = true;
           send({ type: "done", code: Number(m[1]) });
-          sock.write("exit\r\n");
-          setTimeout(() => sock.end(), 300);
+          try { sock.write("exit\r\n"); } catch { /* connection already closing */ }
+          setTimeout(() => sock.destroy(), 300);
         } else if (buf.length > 200) buf = buf.slice(-200);
       }
     });
