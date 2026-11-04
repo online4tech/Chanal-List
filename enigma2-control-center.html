@@ -913,6 +913,108 @@
       .hero-section{min-height:170px!important;height:auto!important;padding:22px!important}
     }
     @media(max-width:390px){.tool-grid{grid-template-columns:minmax(0,1fr)!important}.plugin-card.tool-card{height:180px!important;min-height:180px!important}}
+
+    
+    /* OFFICIAL ONLINE4TECH HEADER — true centered brand / balanced 3-column layout */
+    .app-header{
+      display:grid!important;
+      direction:rtl!important;
+      grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)!important;
+      align-items:center!important;
+      gap:18px!important;
+      width:100%!important;
+      max-width:none!important;
+      padding-inline:max(22px,calc((100vw - 1760px)/2 + 24px))!important;
+      background:rgba(7,17,27,.72)!important;
+      -webkit-backdrop-filter:blur(24px)!important;
+      backdrop-filter:blur(24px)!important;
+      border:0!important;
+      border-bottom:1px solid rgba(255,255,255,.09)!important;
+      border-radius:0!important;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.025)!important;
+    }
+    .app-header .head-title{
+      grid-column:1!important;
+      justify-self:start!important;
+      text-align:right!important;
+      white-space:nowrap!important;
+      line-height:1.25!important;
+      font-size:25px!important;
+      font-weight:900!important;
+    }
+    .app-header .head-title small{
+      display:block!important;
+      margin-top:4px!important;
+      color:rgba(255,255,255,.7)!important;
+      font-size:12px!important;
+      font-weight:500!important;
+      letter-spacing:0!important;
+    }
+    .app-header .title-accent{
+      color:#FFD54A!important;
+      text-shadow:0 0 9px rgba(255,213,74,.16)!important;
+    }
+    .app-header .o4t-brand{
+      grid-column:2!important;
+      justify-self:center!important;
+      align-items:center!important;
+      justify-content:center!important;
+      margin:0 auto!important;
+      width:max-content!important;
+      max-width:100%!important;
+    }
+    .app-header .header-connection{
+      grid-column:3!important;
+      justify-self:end!important;
+      justify-content:flex-start!important;
+      margin:0!important;
+    }
+    @media(max-width:1100px){
+      .app-header{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)!important;gap:12px!important}
+      .app-header .head-title{font-size:20px!important}
+      .app-header .head-title small{font-size:10px!important}
+    }
+    @media(max-width:680px){
+      .app-header{
+        min-height:82px!important;height:auto!important;
+        grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)!important;
+        gap:5px!important;padding:9px 10px!important;
+      }
+      .app-header .head-title{
+        display:block!important;grid-column:1!important;
+        justify-self:start!important;text-align:right!important;
+        white-space:normal!important;font-size:12px!important;
+        line-height:1.3!important;max-width:100%!important;
+      }
+      .app-header .head-title small{
+        display:block!important;font-size:8px!important;
+        line-height:1.35!important;margin-top:3px!important;
+        white-space:normal!important;
+      }
+      .app-header .o4t-brand{
+        grid-column:2!important;gap:5px!important;
+        justify-self:center!important;transform:scale(.82);
+        transform-origin:center center;
+      }
+      .app-header .o4t-symbol{height:42px!important;min-width:70px!important;font-size:31px!important}
+      .app-header .o4t-symbol strong{font-size:35px!important}
+      .app-header .o4t-wordmark b{font-size:14px!important}
+      .app-header .o4t-wordmark small{font-size:6px!important;letter-spacing:.55px!important}
+      .app-header .header-connection{
+        grid-column:3!important;justify-self:end!important;
+        justify-content:flex-end!important;
+      }
+      .app-header .connection-pill{padding:7px 8px!important;font-size:8px!important;gap:5px!important}
+      .app-header .connection-pill i{width:7px!important;height:7px!important}
+    }
+    @media(max-width:390px){
+      .app-header{gap:2px!important;padding-inline:7px!important}
+      .app-header .head-title{font-size:10px!important}
+      .app-header .head-title small{font-size:7px!important}
+      .app-header .o4t-brand{transform:scale(.72)}
+      .app-header .connection-pill{padding:6px 6px!important;font-size:7px!important}
+    }
+
 </style>
 </head>
 <body>
@@ -1105,11 +1207,11 @@
 
       return <div className="shell">
         <header className="app-header topbar">
+          <div className="head-title">مركز التحكم <span className="title-accent">الذكي</span><small>كل أدوات Enigma2 في منصة واحدة</small></div>
           <div className="brand o4t-brand" aria-label="O4T Online4Tech Enigma2 Ecosystem">
             <div className="o4t-symbol"><span>O</span><strong>4</strong><span>T</span><i>⌁</i></div>
             <div className="o4t-wordmark"><b>ONLINE<span>4</span>TECH</b><small>ENIGMA2 ECOSYSTEM</small></div>
           </div>
-          <div className="head-title">مركز التحكم الذكي<small>كل أدوات Enigma2 في منصة واحدة</small></div>
           <div className="profile header-connection">
             <span className="connection-pill"><i></i>متصل بالسيرفر</span>
           </div>
