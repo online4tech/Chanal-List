@@ -843,7 +843,19 @@
       .plugin-card .copy-mini{min-width:0!important}
     }
 
-  </style>
+  
+    /* NAV HIERARCHY — secondary filters directly below primary categories */
+    .category-strip{justify-content:center}
+    .category-strip + .subcats{
+      justify-content:center;
+      margin-top:14px;
+      padding-top:1px;
+    }
+    @media(max-width:680px){
+      .category-strip{justify-content:flex-start}
+      .category-strip + .subcats{justify-content:flex-start;margin-top:12px}
+    }
+</style>
 </head>
 <body>
   <div id="root"><div class="loading"><div><div class="spinner"></div>جاري تجهيز مركز التحكم...</div></div></div>
