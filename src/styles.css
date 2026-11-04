@@ -2,85 +2,105 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { color-scheme: dark; }
+:root { color-scheme: dark; --a: 34 211 238; }
 html, body, #root { min-height: 100%; margin: 0; }
-body { min-width: 320px; background: #070a1a; }
+body { min-width: 320px; background: #070a1a; overflow-x: hidden; }
 button, input { font: inherit; }
 
-/* Responsive premium category cards for the Plugins section. */
-.plugin-category-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;width:100%;}
-@media(min-width:768px){.plugin-category-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
-@media(min-width:1280px){.plugin-category-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
-.plugin-category-card{box-sizing:border-box;min-width:0;height:72px;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:rgba(255,255,255,.05);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);transition:transform .25s ease,filter .25s ease,border-color .25s ease,box-shadow .25s ease;}
-.plugin-category-card:hover{transform:translate3d(0,-4px,0);filter:brightness(1.08);border-color:var(--category-accent,rgba(148,163,184,.5));box-shadow:0 10px 28px var(--category-glow,rgba(148,163,184,.16));}
-.plugin-category-card.is-active{border-color:var(--category-accent,#94a3b8);box-shadow:0 0 0 1px var(--category-accent,#94a3b8),0 10px 28px var(--category-glow,rgba(148,163,184,.2));}
-.plugin-category-icon{color:var(--category-accent,#94a3b8);}
-.plugin-category-card[data-category="iptv"]{--category-accent:#00c8ff;--category-glow:rgba(0,200,255,.25)}
-.plugin-category-card[data-category="media"]{--category-accent:#ff6b00;--category-glow:rgba(255,107,0,.25)}
-.plugin-category-card[data-category="settings"]{--category-accent:#4d9aff;--category-glow:rgba(77,154,255,.25)}
-.plugin-category-card[data-category="softcam"]{--category-accent:#8b5cf6;--category-glow:rgba(139,92,246,.25)}
-.plugin-category-card[data-category="translation"]{--category-accent:#2ecc71;--category-glow:rgba(46,204,113,.25)}
-.plugin-category-card[data-category="other"]{--category-accent:#94a3b8;--category-glow:rgba(148,163,184,.2)}
-body{overflow-x:hidden}
+/* ───────── Control Center theme ─────────
+   Every themed element sets --a ("R G B") on itself; everything below reads it. */
+.cc-accent { color: rgb(var(--a)); }
+.cc-blob { transition: background-color .9s ease; }
+.cc-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgb(148 163 184 / .75); }
 
-/* Legacy category-card markup: promote it to the flat Plugins grid without changing tool cards. */
-@supports selector(.grid:has(>button)) {
-  .grid.grid-cols-1.gap-3:has(>button.h-14) {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 14px;
-    width: 100%;
-  }
-  .grid.grid-cols-1.gap-3:has(>button.h-14) > button.h-14 {
-    box-sizing: border-box;
-    height: 72px;
-    min-width: 0;
-    border-radius: 18px;
-    border-color: rgba(255,255,255,.10);
-    background: rgba(255,255,255,.05);
-    -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
-    transition: transform .25s ease, filter .25s ease, border-color .25s ease, box-shadow .25s ease;
-  }
-  .grid.grid-cols-1.gap-3:has(>button.h-14) > button.h-14:hover,
-  .grid.grid-cols-1.gap-3:has(>button.h-14) > button.h-14:focus-visible {
-    transform: translate3d(0,-4px,0);
-    filter: brightness(1.08);
-    border-color: rgba(0,200,255,.55);
-    box-shadow: 0 10px 28px rgba(0,200,255,.18);
-    outline: none;
-  }
-  .grid.grid-cols-1.gap-3:has(>button.h-14) > button.h-14 > span:first-of-type {
-    font-size: 16px;
-    font-weight: 600;
-  }
-  .grid.grid-cols-1.gap-3:has(>button.h-14) > button.h-14 > span:nth-of-type(2) {
-    font-size: 12px;
-    font-weight: 400;
-  }
-  @media (min-width: 768px) {
-    .grid.grid-cols-1.gap-3:has(>button.h-14) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-  @media (min-width: 1280px) {
-    .grid.grid-cols-1.gap-3:has(>button.h-14) {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
+/* Icon tile */
+.cc-tile {
+  display: grid; place-items: center; flex: 0 0 auto;
+  width: 48px; height: 48px; border-radius: 14px; color: rgb(var(--a));
+  background: linear-gradient(145deg, rgb(var(--a) / .30), rgb(var(--a) / .07));
+  box-shadow: inset 0 0 0 1px rgb(var(--a) / .30), 0 8px 20px -8px rgb(var(--a) / .55);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.cc-tile-sm { width: 40px; height: 40px; border-radius: 12px; }
+.cc-tile-lg { width: 60px; height: 60px; border-radius: 18px; }
+
+/* Sidebar item */
+.cc-nav {
+  position: relative; display: flex; width: 100%; align-items: center; gap: 12px; overflow: hidden;
+  padding: 12px; border-radius: 18px; border: 1px solid rgba(255,255,255,.07);
+  background: linear-gradient(165deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  transition: border-color .25s ease, box-shadow .25s ease, background .25s ease, transform .25s ease;
+}
+.cc-nav:hover, .cc-nav:focus-visible {
+  border-color: rgb(var(--a) / .45); outline: none; transform: translateX(2px);
+  box-shadow: 0 10px 28px -14px rgb(var(--a) / .55);
+}
+.cc-nav.is-active {
+  border-color: rgb(var(--a) / .6);
+  background: linear-gradient(100deg, rgb(var(--a) / .20), rgb(var(--a) / .04) 70%);
+  box-shadow: 0 0 0 1px rgb(var(--a) / .25), 0 12px 32px -14px rgb(var(--a) / .65);
+}
+.cc-nav.is-active::before {
+  content: ""; position: absolute; left: 0; top: 22%; bottom: 22%; width: 3px; border-radius: 0 4px 4px 0;
+  background: rgb(var(--a)); box-shadow: 0 0 12px rgb(var(--a));
+}
+.cc-nav-arrow { color: rgb(148 163 184 / .5); opacity: 0; transform: translateX(-4px); transition: opacity .2s ease, transform .2s ease, color .2s ease; }
+.cc-nav:hover .cc-nav-arrow, .cc-sub:hover .cc-nav-arrow, .cc-nav.is-active .cc-nav-arrow { opacity: 1; transform: none; color: rgb(var(--a)); }
+
+/* Sub category tile */
+.cc-sub {
+  display: flex; align-items: center; gap: 12px; min-width: 0; height: 72px; padding: 0 14px;
+  border-radius: 18px; border: 1px solid rgba(255,255,255,.09);
+  background: linear-gradient(165deg, rgba(255,255,255,.07), rgba(255,255,255,.025));
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.cc-sub:hover, .cc-sub:focus-visible {
+  transform: translateY(-3px); border-color: rgb(var(--a) / .55); outline: none;
+  box-shadow: 0 16px 34px -14px rgb(var(--a) / .55);
+}
+.cc-count {
+  min-width: 28px; padding: 2px 8px; text-align: center; font-size: 12px; font-weight: 600; border-radius: 999px;
+  color: rgb(var(--a)); background: rgb(var(--a) / .12); box-shadow: inset 0 0 0 1px rgb(var(--a) / .22);
 }
 
-/* Use a consistent folder glyph for the category tiles, including Media. */
-@supports selector(.grid:has(>button)) {
-  .grid.grid-cols-1.gap-3:has(>button.h-14) > button.h-14 > svg { display: none; }
-  .grid.grid-cols-1.gap-3:has(>button.h-14) > button.h-14::before {
-    content: "";
-    display: block;
-    flex: 0 0 20px;
-    width: 20px;
-    height: 20px;
-    background: currentColor;
-    color: #94a3b8;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3C/svg%3E") center / contain no-repeat;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3C/svg%3E") center / contain no-repeat;
-  }
+/* Tool card */
+.cc-card {
+  position: relative; display: flex; flex-direction: column; gap: 14px; min-height: 176px; min-width: 0;
+  padding: 16px; text-align: start; overflow: hidden; border-radius: 20px; border: 1px solid rgba(255,255,255,.09);
+  background: linear-gradient(165deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease, background .25s ease;
+}
+.cc-card::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 2px; opacity: 0; transition: opacity .25s ease;
+  background: linear-gradient(90deg, transparent, rgb(var(--a) / .9), transparent);
+}
+.cc-card:hover, .cc-card:focus-visible {
+  transform: translateY(-3px); border-color: rgb(var(--a) / .5); outline: none;
+  box-shadow: 0 18px 40px -14px rgb(var(--a) / .5);
+}
+.cc-card:hover::before, .cc-card.is-selected::before { opacity: 1; }
+.cc-card:hover .cc-tile { transform: scale(1.06); }
+.cc-card.is-selected {
+  border-color: rgb(var(--a) / .75);
+  background: linear-gradient(165deg, rgb(var(--a) / .17), rgb(var(--a) / .04));
+  box-shadow: 0 0 0 1px rgb(var(--a) / .45), 0 18px 40px -14px rgb(var(--a) / .55);
+}
+
+/* Details panel */
+/* NOTE: no `position` here — the element also carries Tailwind's `sticky`. */
+.cc-panel {
+  overflow: hidden; border-radius: 26px; border: 1px solid rgba(255,255,255,.10);
+  background: linear-gradient(170deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
+  -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px);
+  box-shadow: 0 18px 50px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.cc-panel::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 140px; pointer-events: none;
+  background: radial-gradient(120% 100% at 0% 0%, rgb(var(--a) / .22), transparent 70%);
+}
+.cc-panel > * { position: relative; z-index: 1; }
+.cc-code {
+  display: block; max-height: 112px; overflow: auto; word-break: break-all; padding: 12px; font-size: 12px; line-height: 1.6;
+  color: #cffafe; background: rgba(0,0,0,.35); border: 1px solid rgba(255,255,255,.08);
+  border-left: 3px solid rgb(var(--a)); border-radius: 12px;
 }
