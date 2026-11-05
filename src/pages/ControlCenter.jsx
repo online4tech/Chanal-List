@@ -314,7 +314,7 @@ const ToolCard = memo(function ToolCard({ tool, theme, selected, onSelect }) {
       <div className="min-w-0">
         <h3 className="truncate text-[15px] font-semibold text-white">{tool.name}</h3>
         <p dir="auto" className="mt-1.5 line-clamp-2 text-start text-[13px] leading-relaxed text-slate-400">
-          {d.text || tool.path || "No description"}
+          {d.text || "No description"}
         </p>
       </div>
       <div className="mt-auto flex min-h-[26px] items-center gap-1.5">
@@ -375,23 +375,6 @@ const ToolGrid = memo(function ToolGrid({ node, theme, selectedToolId, onSelectT
   );
 });
 
-const CopyRow = ({ icon: Icon, label, value }) => {
-  const [done, setDone] = useState(false);
-  if (!value) return null;
-  const copy = () => navigator.clipboard?.writeText(String(value)).then(() => { setDone(true); setTimeout(() => setDone(false), 1200); });
-  return (
-    <div>
-      <div className="mb-1.5 flex items-center justify-between text-xs text-slate-400">
-        <span className="flex items-center gap-1.5"><Icon className="h-3.5 w-3.5" />{label}</span>
-        <button onClick={copy} className="text-slate-500 transition hover:text-white" aria-label={`Copy ${label}`}>
-          {done ? <Check className="h-3.5 w-3.5 text-emerald-300" /> : <Copy className="h-3.5 w-3.5" />}
-        </button>
-      </div>
-      <code dir="ltr" className="cc-code">{value}</code>
-    </div>
-  );
-};
-
 const DetailsPanel = memo(function DetailsPanel({ tool, theme, node, onAction, onCopy }) {
   if (!tool) {
     const HeadIcon = theme.Icon;
@@ -436,9 +419,6 @@ const DetailsPanel = memo(function DetailsPanel({ tool, theme, node, onAction, o
           {d.compat && <Chip icon={Cpu}>{d.compat}</Chip>}
         </div>
       )}
-      <CopyRow icon={Terminal} label="Install command" value={tool.install} />
-      <CopyRow icon={FolderOpen} label="Path" value={tool.path} />
-      <CopyRow icon={Trash2} label="Remove command" value={tool.remove} />
       <div className="grid grid-cols-3 gap-2 pt-1">
         <button disabled={!tool.install} onClick={() => onAction("install", tool)}
           className={`${btn} bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-[0_0_24px_rgba(34,211,238,0.3)] hover:brightness-110`}>
