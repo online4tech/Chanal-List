@@ -26,7 +26,7 @@ h1{font-size:clamp(1.7rem,3.4vw,2.7rem);line-height:1.3;margin:10px 0 9px;letter
 .item{min-width:0;padding:16px 18px;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:rgba(255,255,255,.07);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);display:flex;flex-direction:column;gap:5px;position:relative;transition:transform .22s,border-color .22s,background .22s,box-shadow .25s;box-shadow:0 10px 36px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.12)}
 .item:hover{border-color:rgba(66,215,245,.5);transform:translateY(-4px);background:rgba(255,255,255,.11);box-shadow:0 16px 46px rgba(66,215,245,.2),inset 0 1px 0 rgba(255,255,255,.16)}
 .item-name{font-weight:800;font-size:1rem;overflow-wrap:anywhere;color:#ffc96b;letter-spacing:.01em;text-shadow:0 1px 10px rgba(255,201,107,.3);line-height:1.35}
-.item-sub{color:#f1f7ff;font-size:.82rem;margin-bottom:10px;line-height:1.65;opacity:.92;font-weight:400}
+.item-sub{color:#f1f7ff;font-size:.82rem;margin-bottom:10px;line-height:1.55;opacity:.92;font-weight:400;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .item-actions{display:flex;gap:6px;margin-top:auto}
 .run{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:34px;border-radius:9px;border:0;background:linear-gradient(120deg,var(--cyan),var(--blue));color:#061523;font:inherit;font-size:.8rem;font-weight:800;cursor:pointer;transition:filter .2s,transform .15s}.run:hover{filter:brightness(1.08)}.run:active{transform:scale(.97)}
 .copy{flex:none;width:34px;min-height:34px;display:inline-flex;align-items:center;justify-content:center;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);font-size:.95rem;cursor:pointer;transition:background .2s,color .2s,transform .15s}.copy:hover{background:rgba(66,215,245,.12);color:var(--cyan)}.copy:active{transform:scale(.93)}.copy.done{border-color:rgba(85,224,193,.5);background:rgba(85,224,193,.14);color:var(--mint)}
@@ -206,11 +206,87 @@ const GROUPS=[
 ];
 let allItems=[],activeGroup="",visibleLimit=60,toastTimer;
 const $=id=>document.getElementById(id);
-function flatten(data,cmds){const bySec=new Map(),byName=new Map();(cmds.records||[]).forEach(r=>{const k=r.sourceSection+"|"+r.name;if(!bySec.has(k))bySec.set(k,r);if(!byName.has(r.name))byName.set(r.name,r);});let i=0;return data.groups.flatMap(g=>g.sections.flatMap(s=>s.items.map(name=>{const r=bySec.get(s.id+"|"+name)||byName.get(name);return{id:i++,name,group:g.id,section:s.id,sectionTitle:s.title,cmd:r?String(r.cmd||"").trim():""};})));}
+const PLUGIN_DESC={
+'Ajpanel':'لوحة تحكم متكاملة لإدارة ملفات Enigma2، IPTV، والقنوات. تثبيت وتحديث الإضافات بضغطة واحدة.',
+'AjPanel':'لوحة تحكم متكاملة لإدارة ملفات Enigma2، IPTV، والقنوات. تثبيت وتحديث الإضافات بضغطة واحدة.',
+'ArabicSavior':'مصحح اللغة العربية لعرض النصوص والقوائم بشكل صحيح. يحل مشاكل الترميز في Enigma2.',
+'AiSubtitles':'ترجمة تلقائية للترجمات باستخدام الذكاء الاصطناعي. يدعم قنوات البث المباشر.',
+'AdenChManager':'مدير القنوات لتنظيم وترتيب الباقات. إضافة/حذف/تعديل القنوات بسهولة.',
+'Atilehd':'مدير الثيمات (Skins) لـ Enigma2. تثبيت وتبديل الثيمات بضغطة واحدة.',
+'AutoBiss':'جلب شفرات BISS تلقائياً لقنوات BISS. تحديث مستمر للشفرات.',
+'AutoSub':'مترجم البث المباشر للقنوات (ترجمة فورية). يدعم multiple languages.',
+'Auto-DCW-Key-Add':'إضافة مفاتيح DCW للشفرات. تحديث تلقائي للشفرات.',
+'AutoZap Recovery':'تصحيح بث القنوات تلقائياً (recovery). إصلاح مشاكل الإشارة.',
+'Azkar Almuslim':'أذكار Muslim (أذكار الصباح/المساء). تذكير يومي.',
+'Athan Times':'مواقيت الصلاة لـ Enigma2. تنبيهات أذان.',
+'AlMoaddin Modded by Emil':'المؤذن (أذان) لـ Enigma2. تنبيهات صوتية للصلاة.',
+'Apod':'معلومات عن كوكب الأرض (NASA APOD). صورة يومية + شرح.',
+'Astronomy':'حركة الكواكب والنجوم. عرض فلكي.',
+'AudioMerge':'دمج صوتيات قناتين. مزامنة صوتية.',
+'AudioShift':'إضافة صوتيات على قنوات السات. تأخير صوتي.',
+'AudioSelectionPatcher-By-M-Nasr':'صوتيات فوكس مع تايم شفت. تعديل صوتي.',
+'BackupAndFlash-mod-Emil':'نسخ احتياطي للصورة (Image). حفظ/استعادة complete backup.',
+'BackupSuite':'نسخ احتياطي للصورة. حفظ إعدادات Enigma2.',
+'BissFeedAutoKey':'مفاتيح BISS للـ feeds. جلب تلقائي.',
+'Bitrate':'عرض معدل البث (bitrate) للقناة. مراقبة جودة البث.',
+'Bitrate-mod-ariad':'عرض معدل البث (bitrate) للقناة. مراقبة جودة البث.',
+'BootlogoSwapper V2.4':'تبديل شعار الإقلاع (Bootlogo). متعدد (رمضان، أعياد، إلخ).',
+'BootlogoSwapper V2.1':'تبديل شعار الإقلاع (Bootlogo). متعدد (رمضان، أعياد، إلخ).',
+'BootlogoSwapper V2.3':'تبديل شعار الإقلاع (Bootlogo). متعدد (رمضان، أعياد، إلخ).',
+'Bundesliga-Permanent-Clock':'ساعة رقمية (Bundesliga). عرض وقت المباريات.',
+'CacheFlush':'مسح الذاكرة المؤقتة (Cache). تحسين الأداء.',
+'Calculator-E2':'آلة حاسبة لـ Enigma2. حسابات سريعة.',
+'Calendar':'تقويم لـ Enigma2. عرض التواريخ.',
+'Ciplushelper':'تشغيل الكامات الرسمية (CI+). دعم CAMs.',
+'CrashLogoViewer_1.6':'تصفح ملفات الكراش (Crash logs). تشخيص الأخطاء.',
+'CrashLogoViewer_1.8':'تصفح ملفات الكراش (Crash logs). تشخيص الأخطاء.',
+'CrashLogoViewer_1.9':'تصفح ملفات الكراش (Crash logs). تشخيص الأخطاء.',
+'CrondManager':'تحديد وقت للسكريبتات (Cron). جدولة المهام.',
+'Curl':'أداة تحميل (Curl). مهم جداً للتنزيلات.',
+'CFG_ZOOM_FINAL':'سيرفرات مجانية (Free servers). تفعيل سيرفرات.',
+'CHLogoChanger':'تخصيص شعار القناة (Channel Logo). تغيير Picons.',
+'CutsClear':'حذف الأفلام (Cuts). تنظيف recordings.',
+'Disk_And_CPU_Temperature':'حرارة القرص الصلب والمعالج. مراقبة hardware.',
+'DreamExplorer':'تصفح ملفات Enigma2. مدير ملفات.',
+'E2iPlayer':'مشغل وسائط وStreaming (E2iPlayer). دعم IPTV وVOD.',
+'IPTVPlayer':'مشغل IPTV (IPTVPlayer). دعم playlists وVOD.',
+'XStreamity':'مشغل Xtream Codes IPTV. دعم playlists وcatchup.',
+'BouquetMakerXtream':'صانع باقات IPTV (BouquetMakerXtream). دعم Xtream Codes.',
+'CCcam':'بروتوكول مشاركة بطاقات (CCcam). card sharing.',
+'Oscam':'Open Source CAM (OScam). دعم multiple protocols.',
+'CiefpBouquetUpdater':'تحديث باقات القنوات (CiefpBouquetUpdater). تحديث تلقائي.',
+'Dreambox-Control-Center':'مركز تحكم Dreambox. إدارة STB.',
+'Tuxcom':'terminal emulator (Tuxcom). تنفيذ أوامر.',
+'Weather':'天気/Weather plugin. عرض حالة الطقس.',
+'YouTube':'مشغل YouTube لـ Enigma2. بحث وتشغيل videos.',
+'Kodi':'Kodi media center لـ Enigma2. دعم addons.',
+'PiconManager':'مدير Picons (أيقونات القنوات). تثبيت/تحديث.',
+'PiconUpdater':'تحديث Picons تلقائياً. دعم multiple satellites.',
+'Softcam':'SoftCam manager. تشغيل/إيقاف CAMs.',
+'NCam':'NCam softcam. دعم multiple protocols.',
+'Gcam':'Gcam softcam. دعم multiple protocols.',
+'Wicard':'Wicard softcam. دعم multiple protocols.',
+'Hypercam':'Hypercam softcam. دعم multiple protocols.',
+'Mgcamd':'Mgcamd softcam. دعم multiple protocols.',
+'Camd3':'Camd3 softcam. دعم multiple protocols.',
+'Evocamd':'Evocamd softcam. دعم multiple protocols.',
+'Sbox':'Sbox softcam. دعم multiple protocols.',
+'CCcam2.3.0':'CCcam 2.3.0 softcam. card sharing.',
+'CCcam2.1.4':'CCcam 2.1.4 softcam. card sharing.',
+'CCcam2.2.1':'CCcam 2.2.1 softcam. card sharing.',
+'CCcam2.0.11':'CCcam 2.0.11 softcam. card sharing.',
+};
+function pluginDesc(name,group,sectionTitle){
+  if(PLUGIN_DESC[name]) return PLUGIN_DESC[name];
+  const m=name.match(/\(([^)]+)\)/);if(m&&m[1].trim())return m[1].trim();
+  const gmap={plugins:'إضافة Enigma2 — تثبيت تلقائي via wget.',skins:'ثيم Enigma2 — تغيير واجهة الرسيفر.',bootlogos:'شعار إقلاع (Bootlogo) — تغيير شاشة البدء.',spinners:'سبينر (مؤشر تحميل) — تغيير animation.',images:'صورة نظام Enigma2 — تثبيت image.',picons:'أيقونة قناة (Picon) — عرض شعار القناة.',channels:'قائمة قنوات — bouquet TV/Radio.',tools:'أداة Enigma2 — utility.',feeds:'Feed Enigma2 — تحديث packages.',panels:'لوحة تحكم — إدارة الرسيفر.',backup:'نسخ احتياطي — حفظ image/settings.',restore:'استعادة — restore from backup.',media:'وسائط — مشغل media.',iptv:'IPTV — تشغيل IPTV streams.',settings:'إعدادات — تخصيص Enigma2.',softcam:'SoftCam — تشغيل CAMs.',translation:'ترجمة — subtitles/translation.',other:'أخرى — إضافة Enigma2.'};
+  return gmap[group]||sectionTitle||'إضافة Enigma2 — تثبيت تلقائي via wget.';
+}
+function flatten(data,cmds){const bySec=new Map(),byName=new Map();(cmds.records||[]).forEach(r=>{const k=r.sourceSection+"|"+r.name;if(!bySec.has(k))bySec.set(k,r);if(!byName.has(r.name))byName.set(r.name,r);});let i=0;return data.groups.flatMap(g=>g.sections.flatMap(s=>s.items.map(name=>{const r=bySec.get(s.id+"|"+name)||byName.get(name);return{id:i++,name,group:g.id,section:s.id,sectionTitle:s.title,desc:pluginDesc(name,g.id,s.title),cmd:r?String(r.cmd||"").trim():""};}))));}
 function renderGroups(){const all='<button class="group '+(activeGroup===""?"active":"")+'" data-group="">الكل <small>('+allItems.length+')</small></button>';$("groups").innerHTML=all+GROUPS.map(g=>'<button class="group '+(activeGroup===g.id?'active':'')+'" data-group="'+g.id+'"><span class="ico">'+g.icon+'</span>'+g.title+' <small>('+g.count+')</small></button>').join("");}
 function updateSectionOptions(){const sections=[...new Map(allItems.filter(x=>!activeGroup||x.group===activeGroup).map(x=>[x.section,{id:x.section,title:x.sectionTitle}])).values()];$("sectionFilter").innerHTML='<option value="">كل الأقسام الفرعية</option>'+sections.map(s=>'<option value="'+s.id+'">'+s.title+'</option>').join("");}
-function filtered(){const q=$("search").value.trim().toLocaleLowerCase();const sub=$("sectionFilter").value;return allItems.filter(x=>(!activeGroup||x.group===activeGroup)&&(!sub||x.section===sub)&&(!q||(x.name+" "+x.sectionTitle).toLocaleLowerCase().includes(q)));}
-function render(){const items=filtered();const shown=items.slice(0,visibleLimit);$("resultsTitle").textContent=activeGroup?(GROUPS.find(g=>g.id===activeGroup)?.title||"العناصر"):"كل العناصر";$("resultsMeta").textContent="عرض "+shown.length+" من "+items.length+" أمر مطابق";$("results").innerHTML=shown.length?shown.map(x=>'<article class="item"><span class="item-name">'+escapeHtml(x.name)+'</span><span class="item-sub">'+escapeHtml(x.sectionTitle)+'</span>'+(x.cmd?'<div class="item-actions"><button class="run" type="button" data-run="'+x.id+'">🖥️ تثبيت تلقائي</button><button class="copy" type="button" data-copy="'+x.id+'" aria-label="نسخ الأمر" title="نسخ الأمر">📋</button></div>':'<div class="empty" style="padding:10px">لا يوجد أمر لهذا العنصر.</div>')+'</article>').join(""):'<div class="empty">مفيش نتائج مطابقة للبحث الحالي.</div>';$("loadMore").hidden=shown.length>=items.length;}
+function filtered(){const q=$("search").value.trim().toLocaleLowerCase();const sub=$("sectionFilter").value;return allItems.filter(x=>(!activeGroup||x.group===activeGroup)&&(!sub||x.section===sub)&&(!q||(x.name+" "+x.desc+" "+x.sectionTitle).toLocaleLowerCase().includes(q)));}
+function render(){const items=filtered();const shown=items.slice(0,visibleLimit);$("resultsTitle").textContent=activeGroup?(GROUPS.find(g=>g.id===activeGroup)?.title||"العناصر"):"كل العناصر";$("resultsMeta").textContent="عرض "+shown.length+" من "+items.length+" أمر مطابق";$("results").innerHTML=shown.length?shown.map(x=>'<article class="item"><span class="item-name">'+escapeHtml(x.name)+'</span><span class="item-sub">'+escapeHtml(x.desc)+'</span>'+(x.cmd?'<div class="item-actions"><button class="run" type="button" data-run="'+x.id+'">🖥️ تثبيت تلقائي</button><button class="copy" type="button" data-copy="'+x.id+'" aria-label="نسخ الأمر" title="نسخ الأمر">📋</button></div>':'<div class="empty" style="padding:10px">لا يوجد أمر لهذا العنصر.</div>')+'</article>').join(""):'<div class="empty">مفيش نتائج مطابقة للبحث الحالي.</div>';$("loadMore").hidden=shown.length>=items.length;}
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 async function load(){try{const [r,rc]=await Promise.all([fetch("./data/enigma2/items.json.gz"),fetch("./data/enigma2/commands.json")]);if(!r.ok)throw Error("HTTP "+r.status);if(!rc.ok)throw Error("تعذر تحميل ملف الأوامر");const cmds=await rc.json();if(!("DecompressionStream" in window))throw Error("المتصفح لا يدعم فك ضغط ملف البيانات");const stream=new Blob([await r.arrayBuffer()]).stream().pipeThrough(new DecompressionStream("gzip"));const data=JSON.parse(await new Response(stream).text());allItems=flatten(data,cmds);$("totalCount").textContent=allItems.length.toLocaleString("ar-EG");renderGroups();updateSectionOptions();render();$("groupCount").textContent=GROUPS.length;}catch(e){$("results").innerHTML='<div class="empty">تعذر تحميل بيانات الفهرس. '+escapeHtml(e.message)+'<br>راجع اتصال الإنترنت وحاول تحديث الصفحة.</div>';$("resultsMeta").textContent="تعذر تحميل البيانات";}}
 $("groups").addEventListener("click",e=>{const b=e.target.closest("[data-group]");if(!b)return;activeGroup=activeGroup===b.dataset.group?"":b.dataset.group;visibleLimit=60;renderGroups();updateSectionOptions();render();});
