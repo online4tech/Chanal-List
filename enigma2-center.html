@@ -277,12 +277,14 @@ const PLUGIN_DESC={
 'CCcam2.0.11':'CCcam 2.0.11 softcam. card sharing.',
 };
 function pluginDesc(name,group,sectionTitle){
+  const base=name.split('(')[0].trim();
+  if(PLUGIN_DESC[base]) return PLUGIN_DESC[base];
   if(PLUGIN_DESC[name]) return PLUGIN_DESC[name];
   const m=name.match(/\(([^)]+)\)/);if(m&&m[1].trim())return m[1].trim();
   const gmap={plugins:'إضافة Enigma2 — تثبيت تلقائي via wget.',skins:'ثيم Enigma2 — تغيير واجهة الرسيفر.',bootlogos:'شعار إقلاع (Bootlogo) — تغيير شاشة البدء.',spinners:'سبينر (مؤشر تحميل) — تغيير animation.',images:'صورة نظام Enigma2 — تثبيت image.',picons:'أيقونة قناة (Picon) — عرض شعار القناة.',channels:'قائمة قنوات — bouquet TV/Radio.',tools:'أداة Enigma2 — utility.',feeds:'Feed Enigma2 — تحديث packages.',panels:'لوحة تحكم — إدارة الرسيفر.',backup:'نسخ احتياطي — حفظ image/settings.',restore:'استعادة — restore from backup.',media:'وسائط — مشغل media.',iptv:'IPTV — تشغيل IPTV streams.',settings:'إعدادات — تخصيص Enigma2.',softcam:'SoftCam — تشغيل CAMs.',translation:'ترجمة — subtitles/translation.',other:'أخرى — إضافة Enigma2.'};
   return gmap[group]||sectionTitle||'إضافة Enigma2 — تثبيت تلقائي via wget.';
 }
-function flatten(data,cmds){const bySec=new Map(),byName=new Map();(cmds.records||[]).forEach(r=>{const k=r.sourceSection+"|"+r.name;if(!bySec.has(k))bySec.set(k,r);if(!byName.has(r.name))byName.set(r.name,r);});let i=0;return data.groups.flatMap(g=>g.sections.flatMap(s=>s.items.map(name=>{const r=bySec.get(s.id+"|"+name)||byName.get(name);return{id:i++,name,group:g.id,section:s.id,sectionTitle:s.title,desc:pluginDesc(name,g.id,s.title),cmd:r?String(r.cmd||"").trim():""};}))));}
+function flatten(data,cmds){const bySec=new Map(),byName=new Map();(cmds.records||[]).forEach(r=>{const k=r.sourceSection+"|"+r.name;if(!bySec.has(k))bySec.set(k,r);if(!byName.has(r.name))byName.set(r.name,r);});let i=0;return data.groups.flatMap(g=>g.sections.flatMap(s=>s.items.map(name=>{const r=bySec.get(s.id+"|"+name)||byName.get(name);return{id:i++,name,group:g.id,section:s.id,sectionTitle:s.title,desc:pluginDesc(name,g.id,s.title),cmd:r?String(r.cmd||"").trim():""};})));}
 function renderGroups(){const all='<button class="group '+(activeGroup===""?"active":"")+'" data-group="">الكل <small>('+allItems.length+')</small></button>';$("groups").innerHTML=all+GROUPS.map(g=>'<button class="group '+(activeGroup===g.id?'active':'')+'" data-group="'+g.id+'"><span class="ico">'+g.icon+'</span>'+g.title+' <small>('+g.count+')</small></button>').join("");}
 function updateSectionOptions(){const sections=[...new Map(allItems.filter(x=>!activeGroup||x.group===activeGroup).map(x=>[x.section,{id:x.section,title:x.sectionTitle}])).values()];$("sectionFilter").innerHTML='<option value="">كل الأقسام الفرعية</option>'+sections.map(s=>'<option value="'+s.id+'">'+s.title+'</option>').join("");}
 function filtered(){const q=$("search").value.trim().toLocaleLowerCase();const sub=$("sectionFilter").value;return allItems.filter(x=>(!activeGroup||x.group===activeGroup)&&(!sub||x.section===sub)&&(!q||(x.name+" "+x.desc+" "+x.sectionTitle).toLocaleLowerCase().includes(q)));}
