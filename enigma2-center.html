@@ -87,16 +87,20 @@ footer{margin-top:55px;padding:25px 0;border-top:1px solid var(--line);color:var
 .empty{padding:35px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:15px;grid-column:1/-1}
 @media(max-width:650px){.toolbar{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}}
 .shell{width:100%;padding-inline:var(--page-pad);margin-inline:auto}
-.topbar{position:sticky;top:0;z-index:50;background:rgba(6,16,29,.86);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
-.topbar-inner{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:28px}
-.brand{display:flex;align-items:center;gap:13px;font-weight:900;letter-spacing:.02em;white-space:nowrap}
-.brand-logo{height:44px;width:auto;max-width:180px;object-fit:contain;display:block;filter:drop-shadow(0 0 12px rgba(66,215,245,.25))}
-.brand-copy{display:grid;line-height:1.25}.brand-copy small{color:var(--muted);font-size:.72rem;font-weight:600;margin-top:5px}
-.nav{display:flex;align-items:center;gap:clamp(12px,1.7vw,30px);color:#c0d2e5;font-weight:700;font-size:.94rem}
-.nav a{transition:color .2s ease}.nav a:hover{color:var(--cyan)}
-.nav-hot{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border-radius:12px;color:#fff!important;border:1px solid rgba(66,215,245,.45);background:linear-gradient(135deg,rgba(66,215,245,.22),rgba(57,140,255,.22));transition:border-color .2s,box-shadow .2s}.nav-hot:hover{border-color:var(--cyan);box-shadow:0 0 22px rgba(66,215,245,.25)}.nav-hot{position:relative;white-space:nowrap}.nav-hot::after{content:"";position:absolute;top:-4px;left:-4px;width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
-.nav-cta{padding:10px 17px;border:1px solid rgba(66,215,245,.35);border-radius:12px;color:var(--cyan)!important;background:rgba(66,215,245,.07)}
-@media(min-width:1024px) and (max-width:1340px){.nav{gap:11px;font-size:.88rem}.nav-hot{padding:7px 10px}.nav-cta{padding:9px 12px;white-space:nowrap}}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(6,16,29,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);box-shadow:0 4px 30px rgba(0,0,0,.3)}
+.topbar-inner{display:flex;flex-direction:column;align-items:center;gap:14px;padding:18px var(--page-pad) 14px}
+.brand{display:flex;align-items:center;justify-content:center;gap:16px;font-weight:900;letter-spacing:.02em}
+.brand-logo{height:72px;width:auto;max-width:280px;object-fit:contain;display:block;filter:drop-shadow(0 0 22px rgba(66,215,245,.4)) drop-shadow(0 0 8px rgba(255,201,107,.25))}
+.brand-copy{display:grid;line-height:1.2;text-align:center}
+.brand-copy small{color:var(--muted);font-size:.75rem;font-weight:600;margin-top:6px;letter-spacing:.12em}
+.nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px}
+.nav a{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:14px;border:1px solid rgba(66,215,245,.35);background:linear-gradient(135deg,rgba(66,215,245,.14),rgba(57,140,255,.14));color:#e8f6ff;font-weight:700;font-size:.9rem;transition:all .25s ease;box-shadow:0 0 16px rgba(66,215,245,.12),inset 0 1px 0 rgba(255,255,255,.1);white-space:nowrap;backdrop-filter:blur(8px)}
+.nav a:hover{border-color:var(--cyan);color:#fff;background:linear-gradient(135deg,rgba(66,215,245,.26),rgba(57,140,255,.26));box-shadow:0 0 26px rgba(66,215,245,.35),inset 0 1px 0 rgba(255,255,255,.15);transform:translateY(-2px)}
+.nav a.active,.nav a[aria-current="page"]{border-color:var(--gold);color:#fff;background:linear-gradient(135deg,rgba(255,201,107,.22),rgba(255,146,60,.22));box-shadow:0 0 28px rgba(255,201,107,.35),inset 0 1px 0 rgba(255,255,255,.15)}
+.nav-hot{border-color:rgba(255,201,107,.45)!important;background:linear-gradient(135deg,rgba(255,201,107,.18),rgba(255,146,60,.18))!important}
+.nav-cta{border-color:rgba(85,224,193,.4)!important;background:linear-gradient(135deg,rgba(85,224,193,.15),rgba(57,140,255,.15))!important;color:#a7ffc8!important}
+.menu-toggle{display:none;border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:12px;padding:9px 13px;font-weight:800;cursor:pointer}
+@media(max-width:760px){.topbar-inner{gap:10px;padding:12px var(--page-pad)}.brand-logo{height:52px;max-width:200px}.nav{gap:6px}.nav a{padding:8px 12px;font-size:.82rem}}
 .menu-toggle{display:none;border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:12px;padding:9px 13px;font-weight:800;cursor:pointer}
 a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
 .nav a[aria-current="page"]{color:var(--cyan)}
@@ -111,14 +115,20 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offse
 </head>
 <body>
 <header class="topbar">
-  <div class="shell topbar-inner">
+  <div class="topbar-inner">
     <a class="brand" href="index.html" aria-label="Enigma2 BYRomeh - الصفحة الرئيسية">
       <img class="brand-logo" src="assets/byromeh-logo.png" alt="BYRomeh logo" />
       <span class="brand-copy">ENIGMA2 <small>CHANNEL LIST · BYROMEH</small></span>
     </a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">☰ <span>القائمة</span></button>
     <nav class="nav" id="main-nav" aria-label="التنقل الرئيسي">
-      <a href="index.html#downloads">ملفات التحميل</a><a href="index.html#features">المميزات</a><a href="index.html#install">إرشادات الاستعادة</a><a href="index.html#devices">الأجهزة</a><a href="products.html">متجر الأجهزة</a><a href="enigma2-center.html" aria-current="page">مركز Enigma2</a><a class="nav-hot" href="control-center/">لوحة التحكم</a><a class="nav-cta" href="https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh" target="_blank" rel="noopener noreferrer">المستودع على GitHub ↗</a>
+      <a href="index.html">الرئيسية</a>
+      <a href="index.html#downloads">الملفات</a>
+      <a href="index.html#downloads">مركز التحميل</a>
+      <a href="products.html">المتجر</a>
+      <a href="control-center/" class="nav-hot">لوحة التحكم</a>
+      <a href="enigma2-center.html" class="nav-cta" aria-current="page">مركز الانيجما</a>
+      <a href="https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
     </nav>
   </div>
 </header>
