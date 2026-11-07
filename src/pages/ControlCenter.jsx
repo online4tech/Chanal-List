@@ -190,9 +190,7 @@ const Header = memo(function Header({ query, setQuery, results, onPick, onHome }
     <header className="relative z-30 border-b border-white/[0.06] bg-gradient-to-b from-white/[0.04] to-transparent">
       <div className="grid w-full grid-cols-1 items-center gap-4 px-6 py-5 lg:grid-cols-[1fr_minmax(420px,640px)_1fr]">
         <button onClick={onHome} className="flex items-center gap-3 justify-self-start">
-          <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-cyan-400 to-violet-600 shadow-[0_0_30px_rgba(139,92,246,0.55)]">
-            <Sparkles className="h-5 w-5 text-white" />
-          </span>
+          <img src="/Enigma2-Chanal-List-BYRomeh/assets/byromeh-logo.png" alt="BYRomeh" className="h-9 w-auto max-w-[150px] object-contain drop-shadow-[0_0_12px_rgba(66,215,245,0.4)]" />
           <span className="text-left leading-tight">
             <span className="block text-lg font-semibold tracking-wide text-white">Control Center</span>
             <span className="block text-xs text-slate-400">Manage everything in one place</span>
