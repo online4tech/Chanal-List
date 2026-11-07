@@ -17,6 +17,23 @@
 .section-bar a:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(66,215,245,.08)}
 .section-bar a.active{border-color:var(--cyan);color:var(--cyan);background:rgba(66,215,245,.12)}
 @media(max-width:600px){.section-bar{gap:6px;padding:10px var(--pad)}.section-bar a{padding:7px 11px;font-size:.82rem}}
+.product{cursor:pointer;position:relative;overflow:hidden}.product .visual img{transition:transform .4s ease}.product:hover .visual img{transform:scale(1.06)}.product:hover{transform:translateY(-6px);border-color:rgba(66,215,245,.5);box-shadow:0 24px 60px rgba(0,0,0,.35)}.img-fallback .visual{background:linear-gradient(135deg,#10243a,#0a1929)}.featured-badge{position:absolute;top:13px;left:13px;z-index:3;border:1px solid rgba(255,201,107,.5);background:linear-gradient(135deg,rgba(255,201,107,.25),rgba(255,146,60,.2));color:var(--gold);border-radius:30px;padding:5px 10px;font-size:11px;font-weight:800;backdrop-filter:blur(6px);box-shadow:0 4px 12px rgba(0,0,0,.25)}.tag{backdrop-filter:blur(6px)}.visual{border-radius:20px 20px 0 0}.product-body{padding:20px 18px}.meta span{background:rgba(255,255,255,.04);padding:4px 10px;border-radius:8px;font-size:11px}.desc{line-height:1.7}.price{font-size:16px}.ask{transition:transform .2s,box-shadow .2s}.ask:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(66,215,245,.25)}
+.featured-badge{position:absolute;top:13px;left:13px;z-index:3;border:1px solid rgba(255,201,107,.5);background:linear-gradient(135deg,rgba(255,201,107,.25),rgba(255,146,60,.2));color:var(--gold);border-radius:30px;padding:5px 10px;font-size:11px;font-weight:800;backdrop-filter:blur(6px)}
+.modal-overlay{position:fixed;inset:0;z-index:100;background:rgba(4,10,18,.78);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:16px;overflow-y:auto}
+.modal-overlay.open{display:flex}
+.modal{width:100%;max-width:720px;margin:auto;background:linear-gradient(155deg,#10243a,#0a1929);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 30px 90px #0008;display:flex;flex-direction:column}
+.modal-visual{height:260px;position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 50% 45%,#1c4564,#0b1c2d 68%)}
+.modal-visual img{width:calc(100% - 40px);height:calc(100% - 40px);object-fit:contain;background:#f4f6f8;border-radius:14px;padding:14px}
+.modal-body{padding:24px 26px;display:grid;gap:12px}
+.modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.modal-head h3{font-size:24px;margin:0}.modal-close{border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--text);border-radius:10px;width:36px;height:36px;display:grid;place-items:center;cursor:pointer;font-size:18px;line-height:1;transition:background .2s}.modal-close:hover{background:rgba(255,255,255,.12)}
+.modal-meta{display:flex;flex-wrap:wrap;gap:8px}.chip{border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:20px;padding:5px 12px;font-size:12px;color:#c6d7e8;font-weight:700}.chip.brand{border-color:rgba(66,215,245,.35);color:var(--cyan)}
+.modal-desc{color:var(--muted);font-size:14px;line-height:1.8;margin:0}
+.modal-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 26px;border-top:1px solid var(--line);background:rgba(0,0,0,.25);flex-wrap:wrap}
+.modal-price{font-size:20px;font-weight:900;color:var(--mint)}
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn-wa{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:12px;border:0;background:linear-gradient(120deg,#25D366,#128C7E);color:#fff;font-weight:800;cursor:pointer;font-size:13px;text-decoration:none;transition:filter .2s}.btn-wa:hover{filter:brightness(1.1)}
+@media(max-width:600px){.modal-visual{height:200px}.modal-body{padding:18px}.modal-foot{padding:14px 18px}.modal-head h3{font-size:20px}}
 </style>
 </head>
 <body>
@@ -41,16 +58,40 @@
 </section>
 <section class="shell" id="support" style="padding-bottom:65px"><div class="hero-box" style="padding:28px 32px"><span class="eyebrow">NEED A HAND?</span><h2 style="margin:8px 0;font-size:clamp(22px,3vw,32px)">مش متأكد تختار أنهي جهاز؟</h2><p style="color:var(--muted);margin:0 0 16px">ابعت موديل جهازك أو استخدامك، واسأل عن التوافق والتوفر قبل الشراء.</p><a class="btn primary" href="https://wa.me/201092978131" target="_blank" rel="noopener">تواصل عبر واتساب ↗</a></div></section>
 </main>
+<div class="modal-overlay" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal-visual" id="modalVisual"></div>
+    <div class="modal-body">
+      <div class="modal-head">
+        <h3 id="modalTitle">—</h3>
+        <button class="modal-close" id="modalClose" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="modal-meta" id="modalMeta"></div>
+      <p class="modal-desc" id="modalDesc"></p>
+    </div>
+    <div class="modal-foot">
+      <span class="modal-price" id="modalPrice">اتصل للسعر</span>
+      <div class="modal-actions">
+        <a class="btn-wa" id="modalWa" href="#" target="_blank" rel="noopener">💬 اطلب عبر WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</div>
 <footer class="footer"><div class="shell footerin"><strong style="color:var(--text)">BYRomeh Store · Enigma2</strong><span>© <span id="year"></span> جميع الحقوق محفوظة</span><a href="index.html">العودة للصفحة الرئيسية</a></div></footer>
 <script>
 const state={items:[],category:"all"};
 const wa="201092978131";
 const $=s=>document.querySelector(s);
 function safe(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function card(p){const visual=p.image?'<img src="'+safe(p.image)+'" alt="'+safe(p.name)+'" style="width:calc(100% - 32px);height:calc(100% - 32px);object-fit:contain;position:relative;z-index:1;padding:14px;background:#f4f6f8;border-radius:14px">':(p.category==="accessories"?'<div class="accessory" aria-hidden="true">✦</div>':'<div class="device" aria-hidden="true"><i></i><em>'+safe(p.brand.toUpperCase())+'</em></div>');const msg=encodeURIComponent("مرحبًا، أريد الاستفسار عن "+p.name+" والسعر والتوفر.");return '<article class="product"><div class="visual"><span class="tag">'+safe(p.tag||"منتج")+'</span>'+visual+'</div><div class="product-body"><div class="meta"><span>'+safe(p.brand)+'</span><span>'+safe(p.availability||"استفسر عن التوفر")+'</span></div><h3>'+safe(p.name)+'</h3><p class="desc">'+safe(p.description)+'</p><div class="price-line"><span class="price">'+(p.price?Number(p.price).toLocaleString("ar-EG")+" ج.م":"السعر عند الاستفسار")+'</span><a class="ask" href="https://wa.me/'+wa+'?text='+msg+'" target="_blank" rel="noopener">استفسر عن المنتج ↗</a></div></div></article>';}
+function card(p){const visual=p.image?'<img src="'+safe(p.image)+'" alt="'+safe(p.name)+'" loading="lazy" onerror="this.style.display=\'none\';this.parentElement.classList.add(\'img-fallback\')" style="width:calc(100% - 32px);height:calc(100% - 32px);object-fit:contain;position:relative;z-index:1;padding:14px;background:#f4f6f8;border-radius:14px;transition:transform .4s ease">':(p.category==="accessories"?'<div class="accessory" aria-hidden="true">📦</div>':'<div class="device" aria-hidden="true"><i></i><em>'+safe(p.brand.toUpperCase())+'</em></div>');const featured=p.featured?'<span class="featured-badge">⭐ مميز</span>':'';const msg=encodeURIComponent("مرحبا، أحتاج مساعدة في اختيار "+p.name+" (Enigma2 receiver).");return '<article class="product" data-id="'+safe(p.id)+'" onclick="openModalById(\''+safe(p.id)+'\')">'+featured+'<div class="visual"><span class="tag">'+safe(p.tag||"جديد")+'</span>'+visual+'</div><div class="product-body"><div class="meta"><span>'+safe(p.brand)+'</span><span>'+safe(p.availability||"متوفر للطلب")+'</span></div><h3>'+safe(p.name)+'</h3><p class="desc">'+safe(p.description)+'</p><div class="price-line"><span class="price">'+(p.price?Number(p.price).toLocaleString("ar-EG")+" ج.م":"السعر عند الاستفسار")+'</span><a class="ask" href="https://wa.me/'+wa+'?text='+msg+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">استفسر عن المنتج ↗</a></div></div></article>';}
+function openModalById(id){const p=state.items.find(x=>x.id===id);if(!p)return;document.getElementById('modalTitle').textContent=p.name;document.getElementById('modalDesc').textContent=p.description||'';const visual=document.getElementById('modalVisual');visual.innerHTML=p.image?'<img src="'+safe(p.image)+'" alt="'+safe(p.name)+'" onerror="this.style.display=\'none\'">':(p.category==="accessories"?'<div class="accessory" aria-hidden="true">📦</div>':'<div class="device" aria-hidden="true"><i></i><em>'+safe(p.brand.toUpperCase())+'</em></div>');const meta=document.getElementById('modalMeta');meta.innerHTML='<span class="chip brand">'+safe(p.brand)+'</span>'+(p.category?'<span class="chip">'+(p.category==='receivers'?'Empfänger':'Zubehör')+'</span>':'')+(p.condition?'<span class="chip">'+safe(p.condition)+'</span>':'')+(p.tag?'<span class="chip">'+safe(p.tag)+'</span>':'')+(p.availability?'<span class="chip">'+safe(p.availability)+'</span>':'');document.getElementById('modalPrice').textContent=p.price?Number(p.price).toLocaleString('ar-EG')+' ج.م':'السعر عند الاستفسار';const msg=encodeURIComponent('مرحبا، أحتاج مساعدة في اختيار '+p.name+' (Enigma2 receiver).');document.getElementById('modalWa').href='https://wa.me/'+wa+'?text='+msg;document.getElementById('productModal').classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(){document.getElementById('productModal').classList.remove('open');document.body.style.overflow='';}
 function render(){const q=$("#search").value.trim().toLowerCase(),brand=$("#brand").value,sort=$("#sort").value;let list=state.items.filter(p=>(state.category==="all"||p.category===state.category)&&(!brand||p.brand===brand)&&(!q||(p.name+" "+p.brand+" "+p.description).toLowerCase().includes(q)));if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name,"ar"));else list.sort((a,b)=>Number(b.featured)-Number(a.featured));$("#products").innerHTML=list.length?list.map(card).join(""):'<div class="empty">مفيش منتجات مطابقة للبحث. جرّب كلمة أو تصنيف تاني.</div>';}
 document.querySelectorAll(".filter").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");state.category=b.dataset.category;render();}));
 $("#search").addEventListener("input",render);$("#brand").addEventListener("change",render);$("#sort").addEventListener("change",render);$("#year").textContent=new Date().getFullYear();
+document.getElementById('modalClose').addEventListener('click',closeModal);
+document.getElementById('productModal').addEventListener('click',e=>{if(e.target.id==='productModal')closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 fetch("data/products.json").then(r=>{if(!r.ok)throw Error("catalog");return r.json()}).then(d=>{state.items=Array.isArray(d.products)?d.products:[];render()}).catch(()=>{$("#products").innerHTML='<div class="empty">تعذر تحميل المنتجات حاليًا. حاول تحديث الصفحة.</div>';});
 </script>
 </body></html>
