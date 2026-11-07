@@ -12,10 +12,25 @@
 @media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.tools{grid-template-columns:1fr 1fr}.tools input{grid-column:1/-1}}
 @media(max-width:600px){.topin{min-height:68px}.nav{gap:10px;font-size:12px}.nav a:not(.back):not(.nav-hot){display:none}.nav-hot{padding:6px 9px;font-size:11.5px}.hero-box{border-radius:22px}.trust{grid-template-columns:1fr}.catalog-head{display:block}.catalog-head p{margin-top:7px}.tools{grid-template-columns:1fr}.tools input{grid-column:auto}.grid{grid-template-columns:1fr}.visual{height:195px}.footerin{flex-direction:column}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+.section-bar{display:flex;flex-wrap:wrap;gap:8px;padding:12px var(--pad);border-bottom:1px solid var(--line);background:rgba(6,16,29,.55);backdrop-filter:blur(12px)}
+.section-bar a{padding:8px 14px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:#c6d7e8;font-weight:700;font-size:.88rem;transition:all .2s ease;white-space:nowrap}
+.section-bar a:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(66,215,245,.08)}
+.section-bar a.active{border-color:var(--cyan);color:var(--cyan);background:rgba(66,215,245,.12)}
+@media(max-width:600px){.section-bar{gap:6px;padding:10px var(--pad)}.section-bar a{padding:7px 11px;font-size:.82rem}}
 </style>
 </head>
 <body>
 <header class="top"><div class="shell topin"><a class="brand" href="index.html"><img class="logo" src="assets/byromeh-logo.png" alt="BYRomeh logo" style="height:38px;width:auto;max-width:150px;object-fit:contain" /><span>BYROMEΗ STORE<small>ENIGMA2 · DREAMBOX · VU+</small></span></a><nav class="nav"><a href="index.html">الرئيسية</a><a href="#catalog">المنتجات</a><a href="#support">خدمة العملاء</a><a class="nav-hot" href="control-center/">لوحة التحكم</a><a class="back" href="https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh" target="_blank" rel="noopener">المستودع ↗</a></nav></div></header>
+<nav class="section-bar" aria-label="أقسام الموقع">
+  <a href="index.html#downloads">التحميلات</a>
+  <a href="index.html#features">المميزات</a>
+  <a href="index.html#install">التثبيت</a>
+  <a href="index.html#devices">الأجهزة</a>
+  <a href="products.html" aria-current="page">المتجر</a>
+  <a href="enigma2-center.html">مركز Enigma2</a>
+  <a href="control-center/">لوحة التحكم</a>
+  <a href="https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh" target="_blank" rel="noopener">GitHub</a>
+</nav>
 <main>
 <section class="hero"><div class="shell"><div class="hero-box"><span class="eyebrow">THE RECEIVER COLLECTION</span><h1>اختار جهازك.<br><span>واستمتع بتجربة مختلفة.</span></h1><p>اكتشف أجهزة Dreambox وVu+ والإكسسوارات المتوافقة مع عالم Enigma2. تفاصيل واضحة ومساعدة في اختيار الجهاز المناسب قبل الطلب.</p><div class="hero-actions"><a class="btn primary" href="#catalog">تصفح المنتجات ↓</a><a class="btn secondary" href="https://wa.me/201092978131?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D%D8%8C%20%D9%85%D8%AD%D8%AA%D8%A7%D8%AC%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%A7%D8%AE%D8%AA%D9%8A%D8%A7%D8%B1%20%D8%B1%D8%B3%D9%8A%D9%81%D8%B1" target="_blank" rel="noopener">اسأل عن اختيار جهازك</a></div></div><div class="trust"><div><b>Dreambox & Vu+</b><span>أجهزة ورسيفرات Enigma2</span></div><div><b>اختيار بمساعدة فنية</b><span>اسأل عن التوافق والتجهيز</span></div><div><b>طلب مباشر</b><span>تأكيد السعر والتوفر عبر واتساب</span></div></div></div></section>
 <section class="catalog shell" id="catalog"><div class="catalog-head"><div><span class="kicker">PRODUCT CATALOG</span><h2>اكتشف المنتجات</h2><p>اختار الفئة أو ابحث عن موديل معين.</p></div></div>

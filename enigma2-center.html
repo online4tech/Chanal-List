@@ -87,6 +87,11 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offse
 .nav a[aria-current="page"]{color:var(--cyan)}
 @media(max-width:760px){.topbar-inner{min-height:70px}.menu-toggle{display:inline-flex;align-items:center;gap:8px}.nav{display:none;position:absolute;top:calc(100% + 8px);right:var(--page-pad);left:var(--page-pad);padding:12px;flex-direction:column;align-items:stretch;gap:0;background:#0b1b2d;border:1px solid var(--line);border-radius:16px;box-shadow:0 24px 80px rgba(0,0,0,.35)}.nav.is-open{display:flex}.nav a{padding:12px;border-bottom:1px solid var(--line)}.nav a:last-child{border:0}.nav a.nav-hot{border-radius:0;border:0;border-bottom:1px solid var(--line);background:none;box-shadow:none}.nav a.nav-hot::after{top:50%;left:12px;transform:translateY(-50%)}}
 @media(max-width:560px){.brand-logo{height:36px}.brand-copy{font-size:.92rem}}
+.section-bar{display:flex;flex-wrap:wrap;gap:8px;padding:12px var(--page-pad);border-bottom:1px solid var(--line);background:rgba(6,16,29,.55);backdrop-filter:blur(12px)}
+.section-bar a{padding:8px 14px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:#c0d2e5;font-weight:700;font-size:.88rem;transition:all .2s ease;white-space:nowrap}
+.section-bar a:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(66,215,245,.08)}
+.section-bar a.active{border-color:var(--cyan);color:var(--cyan);background:rgba(66,215,245,.12)}
+@media(max-width:760px){.section-bar{gap:6px;padding:10px var(--page-pad)}.section-bar a{padding:7px 11px;font-size:.82rem}}
 </style>
 </head>
 <body>
@@ -102,6 +107,16 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offse
     </nav>
   </div>
 </header>
+<nav class="section-bar" aria-label="أقسام الموقع">
+  <a href="index.html#downloads">التحميلات</a>
+  <a href="index.html#features">المميزات</a>
+  <a href="index.html#install">التثبيت</a>
+  <a href="index.html#devices">الأجهزة</a>
+  <a href="products.html">المتجر</a>
+  <a href="enigma2-center.html" aria-current="page">مركز Enigma2</a>
+  <a href="control-center/">لوحة التحكم</a>
+  <a href="https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh" target="_blank" rel="noopener">GitHub</a>
+</nav>
 <main class="wrap">
 <section class="hero"><span class="eyebrow">📡 دليل Enigma2</span><h1>كل إضافة وثيم وقائمة قنوات، جاهزين للنسخ</h1><p class="lead">ابحث بالاسم، وبعدين انسخ الأمر أو ثبّته على الرسيفر مباشرة من الصفحة.</p>
 <div class="stats"><span><b id="totalCount">—</b> أمر</span><i>·</i><span><b id="groupCount">6</b> أقسام</span><i>·</i><span>نسخ أو تثبيت تلقائي بضغطة واحدة</span></div></section>

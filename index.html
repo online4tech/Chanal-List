@@ -119,6 +119,11 @@
       .footer-inner{align-items:flex-start;flex-direction:column}
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+    .section-bar{display:flex;flex-wrap:wrap;gap:8px;padding:12px var(--page-pad);border-bottom:1px solid var(--line);background:rgba(6,16,29,.55);backdrop-filter:blur(12px)}
+    .section-bar a{padding:8px 14px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:#c0d2e5;font-weight:700;font-size:.88rem;transition:all .2s ease;white-space:nowrap}
+    .section-bar a:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(66,215,245,.08)}
+    .section-bar a.active{border-color:var(--cyan);color:var(--cyan);background:rgba(66,215,245,.12)}
+    @media(max-width:760px){.section-bar{gap:6px;padding:10px var(--page-pad)}.section-bar a{padding:7px 11px;font-size:.82rem}}
   </style>
 </head>
 <body>
@@ -134,6 +139,16 @@
       </nav>
     </div>
   </header>
+  <nav class="section-bar" aria-label="أقسام الموقع">
+    <a href="#downloads">التحميلات</a>
+    <a href="#features">المميزات</a>
+    <a href="#install">التثبيت</a>
+    <a href="#devices">الأجهزة</a>
+    <a href="products.html">المتجر</a>
+    <a href="enigma2-center.html">مركز Enigma2</a>
+    <a href="control-center/">لوحة التحكم</a>
+    <a href="https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh" target="_blank" rel="noopener">GitHub</a>
+  </nav>
 
   <main id="top">
     <section class="hero">
