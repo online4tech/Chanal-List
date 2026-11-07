@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#07111f">
+<link rel="icon" type="image/png" href="assets/byromeh-logo.png" />
+<link rel="apple-touch-icon" href="assets/byromeh-logo.png" />
 <meta name="description" content="Online4Tech Enigma2 Center — فهرس منظم لإضافات وثيمات وقوائم وأدوات Enigma2.">
 <title>Online4Tech | Enigma2 Center</title>
 <style>
@@ -73,7 +75,7 @@ footer{margin-top:55px;padding:25px 0;border-top:1px solid var(--line);color:var
 .topbar{position:sticky;top:0;z-index:50;background:rgba(6,16,29,.86);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
 .topbar-inner{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:28px}
 .brand{display:flex;align-items:center;gap:13px;font-weight:900;letter-spacing:.02em;white-space:nowrap}
-.brand-symbol{width:46px;height:46px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(145deg,var(--cyan),var(--blue));box-shadow:0 0 30px rgba(66,215,245,.22);color:#061523;font-size:22px}
+.brand-logo{height:44px;width:auto;max-width:180px;object-fit:contain;display:block;filter:drop-shadow(0 0 12px rgba(66,215,245,.25))}
 .brand-copy{display:grid;line-height:1.25}.brand-copy small{color:var(--muted);font-size:.72rem;font-weight:600;margin-top:5px}
 .nav{display:flex;align-items:center;gap:clamp(12px,1.7vw,30px);color:#c0d2e5;font-weight:700;font-size:.94rem}
 .nav a{transition:color .2s ease}.nav a:hover{color:var(--cyan)}
@@ -84,14 +86,14 @@ footer{margin-top:55px;padding:25px 0;border-top:1px solid var(--line);color:var
 a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
 .nav a[aria-current="page"]{color:var(--cyan)}
 @media(max-width:760px){.topbar-inner{min-height:70px}.menu-toggle{display:inline-flex;align-items:center;gap:8px}.nav{display:none;position:absolute;top:calc(100% + 8px);right:var(--page-pad);left:var(--page-pad);padding:12px;flex-direction:column;align-items:stretch;gap:0;background:#0b1b2d;border:1px solid var(--line);border-radius:16px;box-shadow:0 24px 80px rgba(0,0,0,.35)}.nav.is-open{display:flex}.nav a{padding:12px;border-bottom:1px solid var(--line)}.nav a:last-child{border:0}.nav a.nav-hot{border-radius:0;border:0;border-bottom:1px solid var(--line);background:none;box-shadow:none}.nav a.nav-hot::after{top:50%;left:12px;transform:translateY(-50%)}}
-@media(max-width:560px){.brand-symbol{width:40px;height:40px}.brand-copy{font-size:.92rem}}
+@media(max-width:560px){.brand-logo{height:36px}.brand-copy{font-size:.92rem}}
 </style>
 </head>
 <body>
 <header class="topbar">
   <div class="shell topbar-inner">
     <a class="brand" href="index.html" aria-label="Enigma2 BYRomeh - الصفحة الرئيسية">
-      <span class="brand-symbol" aria-hidden="true">◉</span>
+      <img class="brand-logo" src="assets/byromeh-logo.png" alt="BYRomeh logo" />
       <span class="brand-copy">ENIGMA2 <small>CHANNEL LIST · BYROMEH</small></span>
     </a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">☰ <span>القائمة</span></button>
