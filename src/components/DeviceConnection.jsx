@@ -22,7 +22,7 @@ function readXmlSummary(xmlText) {
 
 export default function DeviceConnection() {
   const [address, setAddress] = useState("");
-  const [username, setUsername] = useState("root");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState(null);

@@ -204,6 +204,7 @@ const Header = memo(function Header({ query, setQuery, results, onPick, onHome }
             onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
             onFocus={() => setOpen(true)}
             placeholder="Search categories, sub categories and tools…"
+            autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck={false}
             className="h-12 w-full rounded-2xl border border-white/10 bg-white/[0.06] pl-11 pr-10 text-sm text-white placeholder-slate-500 outline-none backdrop-blur-xl transition focus:border-cyan-400/50 focus:shadow-[0_0_0_4px_rgba(34,211,238,0.12)]"
           />
           {query && (

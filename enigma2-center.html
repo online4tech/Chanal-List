@@ -120,7 +120,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offse
 <main class="wrap">
 <section class="hero"><span class="eyebrow">📡 دليل Enigma2</span><h1>كل إضافة وثيم وقائمة قنوات، جاهزين للنسخ</h1><p class="lead">ابحث بالاسم، وبعدين انسخ الأمر أو ثبّته على الرسيفر مباشرة من الصفحة.</p>
 <div class="stats"><span><b id="totalCount">—</b> أمر</span><i>·</i><span><b id="groupCount">6</b> أقسام</span><i>·</i><span>نسخ أو تثبيت تلقائي بضغطة واحدة</span></div></section>
-<section><div class="toolbar"><input id="search" class="field" type="search" placeholder="ابحث عن إضافة أو ثيم أو قمر صناعي..." aria-label="ابحث في الفهرس"><select id="sectionFilter" class="field" aria-label="فلترة حسب القسم"><option value="">كل الأقسام الفرعية</option></select></div><div id="groups" class="groups" aria-label="الأقسام"></div></section>
+<section><div class="toolbar"><input id="search" class="field" type="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="ابحث عن إضافة أو ثيم أو قمر صناعي..." aria-label="ابحث في الفهرس"><select id="sectionFilter" class="field" aria-label="فلترة حسب القسم"><option value="">كل الأقسام الفرعية</option></select></div><div id="groups" class="groups" aria-label="الأقسام"></div></section>
 <section><div class="section-head"><div><h2 id="resultsTitle">كل العناصر</h2><p id="resultsMeta">جاري تحميل الفهرس...</p></div></div><div id="results" class="results"><div class="empty">جاري تحميل البيانات...</div></div><div class="more"><button id="loadMore" class="btn" hidden>عرض المزيد</button></div></section>
 <div class="notice"><b>ملاحظة مهمة:</b> الأوامر مأخوذة من ملف الفهرسة الأولي وتُنسخ فقط — الصفحة لا تنفّذ شيئاً على جهازك. لم يتم اختبار الروابط ولا توافق كل أمر مع موديل الجهاز أو صورة Enigma2، فراجع المصدر قبل التثبيت وشغّل الأمر على مسؤوليتك. لو عايز تنفذ الأمر مباشرة على الرسيفر من المتصفح استخدم <a href="control-center/" style="color:var(--cyan);font-weight:800">لوحة التحكم</a>.</div>
 </main>
@@ -155,7 +155,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offse
       </div>
       <div class="modal-row3" style="margin-top:4px">
         <input type="number" id="runPort" placeholder="Port" value="23" dir="ltr">
-        <input type="text" id="runUser" placeholder="User" value="root" dir="ltr">
+        <input type="text" id="runUser" placeholder="User" value="" dir="ltr" autocomplete="off">
         <input type="password" id="runPass" placeholder="Password" dir="ltr">
       </div>
       <pre class="log-box" id="runLog">Output will appear here…</pre>
@@ -236,7 +236,7 @@ function setTab(mode){runMode=mode;$("tabBridge").classList.toggle("active",mode
 function updateManual(){const host=$("runHost").value.trim();$("manHost").textContent=host||"IP";$("telnetLink").href=host?"telnet://"+host+":23":"#";}
 function openRunner(it){if(!it||!it.cmd)return;runItem=it;runFinished=false;if(runWs){try{runWs.close()}catch(e){}runWs=null;}
   $("runName").textContent=it.name;$("runCmd").textContent=it.cmd;
-  const saved=loadReceiver();$("runHost").value=saved.host||"";$("runPort").value=saved.port||23;$("runUser").value=saved.user||"root";$("runPass").value="";
+  const saved=loadReceiver();$("runHost").value=saved.host||"";$("runPort").value=saved.port||23;$("runUser").value=saved.user||"";$("runPass").value="";
   $("runLog").textContent="Output will appear here…";$("runStatus").textContent="جاهز";$("runStatus").className="modal-status";$("runGo").disabled=false;$("runGo").innerHTML="⬇ نفّذ على الرسيفر";
   updateManual();setTab(IS_MOBILE?"manual":"bridge");$("runOverlay").classList.add("open");document.body.style.overflow="hidden";}
 function closeRunner(){$("runOverlay").classList.remove("open");document.body.style.overflow="";if(runWs){try{runWs.close()}catch(e){}runWs=null;}}
