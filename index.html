@@ -81,53 +81,37 @@
     .file-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:22px;padding:13px;border:1px solid var(--line);border-radius:14px;background:rgba(3,14,26,.42)}
     .file-meta{min-width:0}.file-meta strong,.file-meta small{display:block;overflow-wrap:anywhere}.file-meta small{color:#8fa9c2;font-size:.78rem;margin-top:3px}
     .download{flex:none;padding:9px 13px;border-radius:10px;background:rgba(85,224,193,.1);border:1px solid rgba(85,224,193,.25);color:var(--mint);font-weight:850;font-size:.87rem}
-    .feature-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
-    .feature{padding:22px;border-radius:18px;border:1px solid var(--line);background:rgba(13,32,52,.72)}
-    .feature b{display:block;margin-bottom:5px}.feature span{color:var(--muted);font-size:.92rem}
-    .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;counter-reset:step}
-    .step{counter-increment:step;padding:22px;border-radius:18px;border:1px solid var(--line);background:var(--surface)}
-    .step:before{content:"0" counter(step);display:inline-flex;color:var(--cyan);font-size:.82rem;font-weight:900;letter-spacing:.1em;margin-bottom:14px}
-    .step strong{display:block;margin-bottom:7px}.step p{margin:0;color:var(--muted);font-size:.92rem}
     .notice{padding:20px 23px;border:1px solid rgba(255,201,107,.25);border-radius:18px;background:rgba(255,201,107,.055);color:var(--muted);margin-top:18px}
     .notice strong{color:var(--gold)}
-    .device-panel{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;padding:clamp(24px,4vw,48px);border-radius:var(--radius);border:1px solid var(--line);background:linear-gradient(120deg,rgba(17,39,62,.9),rgba(9,25,42,.95))}
-    .device-panel h3{font-size:1.5rem;margin:0 0 10px}.device-panel p{color:var(--muted);margin:0}
-    .device-list{display:flex;flex-wrap:wrap;gap:10px;align-content:center}
+    .quick-facts{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 26px}
     .device-tag{padding:11px 17px;border:1px solid rgba(66,215,245,.2);border-radius:13px;background:rgba(66,215,245,.06);font-weight:800;color:#d8f5ff}
-    .help-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-    .help-card{display:flex;align-items:flex-start;gap:16px;padding:23px;border:1px solid var(--line);border-radius:18px;background:var(--surface)}
-    .help-card .card-icon{flex:none;margin:0}
-    .help-card h3{margin:0 0 5px;font-size:1.1rem}.help-card p{margin:0;color:var(--muted);font-size:.93rem}
-    .help-card .btn{margin-top:15px;min-height:42px;padding:8px 14px;font-size:.88rem}
+    .checklist{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:ck}
+    .checklist li{counter-increment:ck;display:flex;align-items:flex-start;gap:14px;padding:16px 18px;border:1px solid var(--line);border-radius:16px;background:var(--surface);color:var(--muted);font-size:.93rem}
+    .checklist li:before{content:counter(ck);flex:none;width:28px;height:28px;border-radius:50%;background:rgba(66,215,245,.12);border:1px solid rgba(66,215,245,.3);color:var(--cyan);font-weight:900;font-size:.8rem;display:grid;place-items:center}
+    .checklist li strong{color:var(--text)}
     .footer{margin-top:42px;padding-block:30px 42px;border-top:1px solid var(--line);background:rgba(4,12,22,.5)}
     .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;color:var(--muted);font-size:.9rem}
     .footer strong{color:var(--text)}
     .footer-links{display:flex;flex-wrap:wrap;gap:18px}.footer-links a:hover{color:var(--cyan)}
-    @media(max-width:1050px){.hero-panel{grid-template-columns:minmax(0,1.2fr) minmax(220px,.8fr)}.feature-grid,.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.cards .card:last-child{grid-column:1/-1}}
+    @media(max-width:1050px){.hero-panel{grid-template-columns:minmax(0,1.2fr) minmax(220px,.8fr)}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.cards .card:last-child{grid-column:1/-1}}
     @media(max-width:760px){
       .topbar-inner{min-height:70px}.menu-toggle{display:inline-flex;align-items:center;gap:8px}
       .nav{display:none;position:absolute;top:calc(100% + 8px);right:var(--page-pad);left:var(--page-pad);padding:12px;flex-direction:column;align-items:stretch;gap:0;background:#0b1b2d;border:1px solid var(--line);border-radius:16px;box-shadow:var(--glow)}
       .nav.is-open{display:flex}.nav a{padding:12px;border-bottom:1px solid var(--line)}.nav a:last-child{border:0}.nav a.nav-hot{border-radius:0;border:0;border-bottom:1px solid var(--line);background:none;box-shadow:none}.nav a.nav-hot::after{top:50%;left:12px;transform:translateY(-50%)}
       .hero-panel{grid-template-columns:1fr;min-height:0}.hero-art{min-height:240px}.orbit{width:230px}
       .section-head{align-items:flex-start;flex-direction:column}
-      .device-panel{grid-template-columns:1fr}
     }
     @media(max-width:560px){
       .brand-logo{height:36px}.brand-copy{font-size:.92rem}
       .hero{padding-top:26px}.hero-panel{padding:25px 21px;border-radius:22px}
       h1{font-size:clamp(2.05rem,11vw,3rem)}
       .actions{flex-direction:column}.actions .btn{width:100%}
-      .cards,.feature-grid,.steps,.help-grid{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr}
       .cards .card:last-child{grid-column:auto}
       .file-row{align-items:stretch;flex-direction:column}.download{text-align:center}
       .footer-inner{align-items:flex-start;flex-direction:column}
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
-    .section-bar{display:flex;flex-wrap:wrap;gap:8px;padding:12px var(--page-pad);border-bottom:1px solid var(--line);background:rgba(6,16,29,.55);backdrop-filter:blur(12px)}
-    .section-bar a{padding:8px 14px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:#c0d2e5;font-weight:700;font-size:.88rem;transition:all .2s ease;white-space:nowrap}
-    .section-bar a:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(66,215,245,.08)}
-    .section-bar a.active{border-color:var(--cyan);color:var(--cyan);background:rgba(66,215,245,.12)}
-    @media(max-width:760px){.section-bar{gap:6px;padding:10px var(--page-pad)}.section-bar a{padding:7px 11px;font-size:.82rem}}
   </style>
 </head>
 <body>
@@ -148,17 +132,6 @@
       </nav>
     </div>
   </header>
-  <nav class="section-bar" aria-label="أقسام الموقع">
-    <a href="#downloads">التحميلات</a>
-    <a href="#features">المميزات</a>
-    <a href="#install">التثبيت</a>
-    <a href="#devices">الأجهزة</a>
-    <a href="products.html">المتجر</a>
-    <a href="enigma2-center.html">مركز Enigma2</a>
-    <a href="control-center/">لوحة التحكم</a>
-    <a href="https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh" target="_blank" rel="noopener">GitHub</a>
-  </nav>
-
   <main id="top">
     <section class="hero">
       <div class="shell">
@@ -210,46 +183,15 @@
 
     <section class="section" id="features">
       <div class="shell">
-        <div class="section-head"><div><span class="section-kicker">REPOSITORY HIGHLIGHTS</span><h2>مصادر منظمة ووصول أسهل</h2><p>واجهة موحدة تسهّل الوصول للملفات الأساسية من غير تغيير محتوياتها أو روابطها.</p></div></div>
-        <div class="feature-grid">
-          <div class="feature"><b>روابط مباشرة</b><span>الوصول لملفات المستودع الأصلية.</span></div>
-          <div class="feature"><b>ملفات XML</b><span>بيانات الأقمار والكابلات.</span></div>
-          <div class="feature"><b>واجهة عربية</b><span>اتجاه RTL ومحتوى واضح.</span></div>
-          <div class="feature"><b>تصميم متجاوب</b><span>تجربة مناسبة للشاشات المختلفة.</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="install">
-      <div class="shell">
-        <div class="section-head"><div><span class="section-kicker">BEFORE YOU RESTORE</span><h2>قبل استعادة أي ملف</h2><p>إرشادات عامة لتقليل احتمالات استبدال إعداداتك بملف غير مناسب.</p></div></div>
-        <div class="steps">
-          <div class="step"><strong>راجع صورة النظام</strong><p>الأرشيف الرئيسي موصوف بأنه OpenATV. لا تفترض توافقه مع صور أنظمة أخرى.</p></div>
-          <div class="step"><strong>تحقق من موديل الجهاز</strong><p>تأكد من موديل جهازك وإصدار Enigma2 ومتطلبات صورة النظام.</p></div>
-          <div class="step"><strong>احتفظ بنسخة احتياطية</strong><p>أنشئ نسخة حديثة من إعداداتك الحالية قبل إجراء أي استعادة أو استبدال.</p></div>
-          <div class="step"><strong>اتبع دليل النظام</strong><p>استخدم تعليمات الاستعادة الرسمية الخاصة بصورة النظام الموجودة على جهازك.</p></div>
-        </div>
+        <div class="section-head"><div><span class="section-kicker">BEFORE YOU RESTORE</span><h2>قبل ما تستخدم الملفات</h2><p>ملخص سريع: الأجهزة المتوافقة، والخطوات المهمة قبل أي استعادة.</p></div></div>
+        <div class="quick-facts" id="devices"><span class="device-tag">Vu+</span><span class="device-tag">Dreambox</span><span class="device-tag">Enigma2</span><span class="device-tag">OpenATV*</span></div>
+        <ol class="checklist" id="install">
+          <li><div><strong>راجع صورة النظام —</strong> الأرشيف الرئيسي OpenATV، متفترضش توافقه مع صور أنظمة تانية.</div></li>
+          <li><div><strong>اتأكد من موديل جهازك —</strong> ومن إصدار Enigma2 ومتطلبات صورة النظام.</div></li>
+          <li><div><strong>اعمل نسخة احتياطية —</strong> من إعداداتك الحالية قبل أي استعادة أو استبدال.</div></li>
+          <li><div><strong>اتبع دليل النظام الرسمي —</strong> الخاص بصورة النظام الموجودة على جهازك.</div></li>
+        </ol>
         <div class="notice"><strong>تنبيه:</strong> وجود رابط تحميل لا يعني أن الملف مناسب لكل الأجهزة. راجع التوافق وخذ نسخة احتياطية من إعداداتك قبل أي تغيير.</div>
-      </div>
-    </section>
-
-    <section class="section" id="devices">
-      <div class="shell">
-        <div class="section-head"><div><span class="section-kicker">DEVICE COMPATIBILITY</span><h2>الأجهزة والأنظمة</h2><p>التوافق يتحدد حسب موديل الجهاز وصورة النظام ومحتويات الملف، وليس اسم العائلة التجارية فقط.</p></div></div>
-        <div class="device-panel">
-          <div><h3>منصة Enigma2</h3><p>تعمل عائلات متعددة من أجهزة الاستقبال بمنصة Enigma2. راجع دائمًا تفاصيل النسخة قبل تحميلها أو استعادتها على جهازك.</p></div>
-          <div class="device-list"><span class="device-tag">Vu+</span><span class="device-tag">Dreambox</span><span class="device-tag">Enigma2</span><span class="device-tag">OpenATV*</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="help">
-      <div class="shell">
-        <div class="section-head"><div><span class="section-kicker">HELP & UPDATES</span><h2>المساعدة ومتابعة التحديثات</h2><p>روابط المشروع الرسمية لمراجعة التغييرات أو الإبلاغ عن مشكلة.</p></div></div>
-        <div class="help-grid">
-          <article class="help-card"><div class="card-icon" aria-hidden="true">↻</div><div><h3>سجل التحديثات</h3><p>تابع التغييرات والملفات التي تمت إضافتها أو تحديثها داخل المستودع.</p><a class="btn btn-secondary" href="https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh/commits/main/" target="_blank" rel="noopener noreferrer">عرض سجل التحديثات ↗</a></div></article>
-          <article class="help-card"><div class="card-icon" aria-hidden="true">?</div><div><h3>الإبلاغ عن مشكلة</h3><p>أرسل تفاصيل المشكلة مع موديل الجهاز واسم صورة النظام وإصدارها.</p><a class="btn btn-secondary" href="https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh/issues" target="_blank" rel="noopener noreferrer">فتح Issue ↗</a></div></article>
-        </div>
       </div>
     </section>
   </main>
@@ -257,7 +199,7 @@
   <footer class="footer">
     <div class="shell footer-inner">
       <div><strong>Enigma2 Channel List · BYRomeh</strong><div>ملفات وموارد مساندة لمنصة Enigma2</div></div>
-      <div class="footer-links"><a href="#top">العودة للأعلى ↑</a><a href="https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+      <div class="footer-links"><a href="https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh/commits/main/" target="_blank" rel="noopener noreferrer">سجل التحديثات</a><a href="https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh/issues" target="_blank" rel="noopener noreferrer">الإبلاغ عن مشكلة</a><a href="https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh" target="_blank" rel="noopener noreferrer">GitHub</a><a href="#top">العودة للأعلى ↑</a></div>
     </div>
   </footer>
   <script>
