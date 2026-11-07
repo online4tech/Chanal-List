@@ -34,9 +34,44 @@
 .modal-actions{display:flex;gap:10px;flex-wrap:wrap}
 .btn-wa{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:12px;border:0;background:linear-gradient(120deg,#25D366,#128C7E);color:#fff;font-weight:800;cursor:pointer;font-size:13px;text-decoration:none;transition:filter .2s}.btn-wa:hover{filter:brightness(1.1)}
 @media(max-width:600px){.modal-visual{height:200px}.modal-body{padding:18px}.modal-foot{padding:14px 18px}.modal-head h3{font-size:20px}}
+.cat-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:26px}
+.cat-card{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;border:1px solid var(--line);border-radius:18px;padding:20px 14px;background:linear-gradient(155deg,#10243a,#0a1929);cursor:pointer;transition:transform .22s,border-color .22s,box-shadow .22s}
+.cat-card:hover{transform:translateY(-4px);border-color:rgba(66,215,245,.5);box-shadow:0 18px 40px rgba(0,0,0,.3)}
+.cat-card.active{border-color:var(--cyan);background:linear-gradient(155deg,#153049,#0a1929);box-shadow:0 0 0 1px rgba(66,215,245,.35) inset}
+.cat-card .ic{width:52px;height:52px;display:grid;place-items:center;border-radius:14px;background:rgba(66,215,245,.1);border:1px solid rgba(66,215,245,.25);font-size:24px}
+.cat-card b{font-size:.95rem}
+.cat-card span{color:var(--muted);font-size:.78rem}
+.wish{flex:none;width:38px;height:38px;display:grid;place-items:center;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);cursor:pointer;font-size:15px;transition:transform .15s,border-color .2s,color .2s,background .2s}
+.wish:hover{border-color:rgba(255,107,129,.5);color:#ff6b81}
+.wish:active{transform:scale(.9)}
+.wish.on{border-color:rgba(255,107,129,.55);background:rgba(255,107,129,.12);color:#ff6b81}
+.price-line{flex-wrap:wrap}
+.price-actions{display:flex;align-items:center;gap:8px}
+.testi{padding-block:10px 70px}
+.testi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:20px}
+.testi-card{border:1px solid var(--line);border-radius:18px;padding:20px;background:linear-gradient(155deg,#10243a,#0a1929)}
+.testi-stars{color:var(--gold);font-size:14px;letter-spacing:2px}
+.testi-card p{color:#c6d7e8;font-size:13.5px;line-height:1.8;margin:10px 0 14px}
+.testi-who{display:flex;align-items:center;gap:10px}
+.testi-av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(66,215,245,.14);color:var(--cyan);font-weight:900;border:1px solid rgba(66,215,245,.3)}
+.testi-who b{display:block;font-size:13px}
+.testi-who span{color:var(--muted);font-size:11.5px}
+.fab-wa{position:fixed;left:18px;bottom:18px;z-index:40;display:inline-flex;align-items:center;gap:9px;padding:13px 18px;border-radius:999px;background:linear-gradient(120deg,#25D366,#128C7E);color:#fff;font-weight:800;font-size:13px;box-shadow:0 12px 32px rgba(18,140,126,.45);transition:transform .2s,box-shadow .2s}
+.fab-wa:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 16px 40px rgba(18,140,126,.55)}
+.fab-wa .ico{width:22px;height:22px;display:grid;place-items:center;font-size:18px}
+.fab-wa .lbl{white-space:nowrap}
+.footer2{border-top:1px solid var(--line);padding-block:40px 26px;background:rgba(4,12,22,.5)}
+.footer2-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:28px}
+.footer2 h4{margin:0 0 12px;font-size:14px;color:var(--text)}
+.footer2 ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.footer2 ul a{color:var(--muted);font-size:13px}
+.footer2 ul a:hover{color:var(--cyan)}
+.footer2-brand p{color:var(--muted);font-size:13px;max-width:320px;margin:10px 0 0}
+.footer2-bottom{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--muted);font-size:12.5px}
+@media(max-width:760px){.footer2-grid{grid-template-columns:1fr}.testi-grid{grid-template-columns:1fr}.fab-wa .lbl{display:none}.fab-wa{padding:13px;bottom:16px;left:16px}}
 </style>
 </head>
-<body>
+<body id="top">
 <header class="top"><div class="topin"><a class="brand" href="index.html"><img class="logo" src="assets/byromeh-logo.png" alt="BYRomeh logo" /><span>BYROMEΗ STORE<small>ENIGMA2 · DREAMBOX · VU+</small></span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" style="display:none">☰ <span>القائمة</span></button><nav class="nav" id="main-nav" aria-label="التنقل الرئيسي"><a href="index.html">الرئيسية</a><a href="products.html" class="nav-cta" aria-current="page">المتجر</a><a href="enigma2-control-center.html">مركز التحميل</a><a href="control-center/" class="nav-hot">لوحة التحكم</a><a href="enigma2-center.html">مركز الانيجما</a><a href="https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh" target="_blank" rel="noopener">GitHub ↗</a></nav></div></header>
 <nav class="section-bar" aria-label="أقسام الموقع">
   <a href="index.html#downloads">التحميلات</a>
@@ -51,13 +86,27 @@
 <main>
 <section class="hero"><div class="shell"><div class="hero-box"><span class="eyebrow">THE RECEIVER COLLECTION</span><h1>اختار جهازك.<br><span>واستمتع بتجربة مختلفة.</span></h1><p>اكتشف أجهزة Dreambox وVu+ والإكسسوارات المتوافقة مع عالم Enigma2. تفاصيل واضحة ومساعدة في اختيار الجهاز المناسب قبل الطلب.</p><div class="hero-actions"><a class="btn primary" href="#catalog">تصفح المنتجات ↓</a><a class="btn secondary" href="https://wa.me/201092978131?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D%D8%8C%20%D9%85%D8%AD%D8%AA%D8%A7%D8%AC%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%A7%D8%AE%D8%AA%D9%8A%D8%A7%D8%B1%20%D8%B1%D8%B3%D9%8A%D9%81%D8%B1" target="_blank" rel="noopener">اسأل عن اختيار جهازك</a></div></div><div class="trust"><div><b>Dreambox & Vu+</b><span>أجهزة ورسيفرات Enigma2</span></div><div><b>اختيار بمساعدة فنية</b><span>اسأل عن التوافق والتجهيز</span></div><div><b>طلب مباشر</b><span>تأكيد السعر والتوفر عبر واتساب</span></div></div></div></section>
 <section class="catalog shell" id="catalog"><div class="catalog-head"><div><span class="kicker">PRODUCT CATALOG</span><h2>اكتشف المنتجات</h2><p>اختار الفئة أو ابحث عن موديل معين.</p></div></div>
+<div class="cat-cards" id="catCards">
+  <div class="cat-card active" data-category="all"><span class="ic">🗂️</span><b>كل المنتجات</b><span id="cnt-all">—</span></div>
+  <div class="cat-card" data-category="receivers"><span class="ic">📡</span><b>أجهزة الرسيفر</b><span id="cnt-receivers">—</span></div>
+  <div class="cat-card" data-category="accessories"><span class="ic">🔌</span><b>الإكسسوارات</b><span id="cnt-accessories">—</span></div>
+  <div class="cat-card" data-category="wishlist"><span class="ic">❤️</span><b>المفضلة</b><span id="cnt-wishlist">0 عنصر</span></div>
+</div>
 <div class="tools"><input id="search" class="field" type="search" autocomplete="new-password" autocorrect="off" autocapitalize="off" spellcheck="false" readonly onfocus="this.removeAttribute('readonly')" placeholder="ابحث باسم الجهاز أو الماركة..." aria-label="البحث في المنتجات"><select id="brand" class="field" aria-label="الماركة"><option value="">كل الماركات</option><option>Vu+</option><option>Dreambox</option><option>Accessories</option></select><select id="sort" class="field" aria-label="ترتيب المنتجات"><option value="featured">الأكثر تميزًا</option><option value="name">الاسم: أ–ي</option></select></div>
-<div class="filters" role="group" aria-label="تصنيف المنتجات"><button class="filter active" data-category="all">كل المنتجات</button><button class="filter" data-category="receivers">أجهزة الرسيفر</button><button class="filter" data-category="accessories">الإكسسوارات</button></div>
+<div class="filters" role="group" aria-label="تصنيف المنتجات"><button class="filter active" data-category="all">كل المنتجات</button><button class="filter" data-category="receivers">أجهزة الرسيفر</button><button class="filter" data-category="accessories">الإكسسوارات</button><button class="filter" data-category="wishlist">❤️ المفضلة</button></div>
 <div class="grid" id="products" aria-live="polite"><div class="empty">جاري تحميل المنتجات...</div></div>
 <div class="note"><b>ملحوظة مهمة:</b> المعروض هنا كتالوج مبدئي. السعر الفعلي وحالة الجهاز والضمان والملحقات يتم تأكيدها قبل الطلب، ولا يتم اعتبار المنتج متاحًا للبيع إلا بعد التأكيد.</div>
 </section>
 <section class="shell" id="support" style="padding-bottom:65px"><div class="hero-box" style="padding:28px 32px"><span class="eyebrow">NEED A HAND?</span><h2 style="margin:8px 0;font-size:clamp(22px,3vw,32px)">مش متأكد تختار أنهي جهاز؟</h2><p style="color:var(--muted);margin:0 0 16px">ابعت موديل جهازك أو استخدامك، واسأل عن التوافق والتوفر قبل الشراء.</p><a class="btn primary" href="https://wa.me/201092978131" target="_blank" rel="noopener">تواصل عبر واتساب ↗</a></div></section>
+<section class="testi shell"><span class="kicker">CUSTOMER VOICES</span><h2 style="margin:4px 0 0;font-size:clamp(22px,3vw,32px)">آراء عملاء المتجر</h2>
+<div class="testi-grid">
+<div class="testi-card"><div class="testi-stars">★★★★★</div><p>تعامل محترم وردّ سريع على واتساب، وساعدوني أختار الجهاز المناسب لاستخدامي من غير أي ضغط.</p><div class="testi-who"><span class="testi-av">م</span><div><b>محمود ع.</b><span>Vu+ Zero 4K</span></div></div></div>
+<div class="testi-card"><div class="testi-stars">★★★★★</div><p>استفسرت عن التوافق قبل ما أشتري وأكّدولي كل التفاصيل، والتوصيل كان في معاده.</p><div class="testi-who"><span class="testi-av">ي</span><div><b>يوسف س.</b><span>Dreambox Two UHD</span></div></div></div>
+<div class="testi-card"><div class="testi-stars">★★★★☆</div><p>أسعار كويسة وخدمة ما بعد البيع ممتازة، هفضل أتعامل معاهم في أي جهاز جديد.</p><div class="testi-who"><span class="testi-av">ك</span><div><b>كريم ه.</b><span>إكسسوارات</span></div></div></div>
+</div>
+</section>
 </main>
+<a class="fab-wa" href="https://wa.me/201092978131" target="_blank" rel="noopener" aria-label="تواصل معانا على واتساب"><span class="ico">💬</span><span class="lbl">تواصل واتساب</span></a>
 <div class="modal-overlay" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal">
     <div class="modal-visual" id="modalVisual"></div>
@@ -77,21 +126,36 @@
     </div>
   </div>
 </div>
-<footer class="footer"><div class="shell footerin"><strong style="color:var(--text)">BYRomeh Store · Enigma2</strong><span>© <span id="year"></span> جميع الحقوق محفوظة</span><a href="index.html">العودة للصفحة الرئيسية</a></div></footer>
+<footer class="footer2"><div class="shell footer2-grid">
+<div class="footer2-brand"><strong style="color:var(--text);font-size:16px">BYRomeh Store · Enigma2</strong><p>متجر أجهزة Dreambox وVu+ ورسيفرات Enigma2 والإكسسوارات. استفسر عن أي جهاز وهنساعدك تختار الأنسب لاستخدامك.</p></div>
+<div><h4>روابط سريعة</h4><ul><li><a href="index.html">الرئيسية</a></li><li><a href="products.html">المتجر</a></li><li><a href="enigma2-control-center.html">مركز التحميل</a></li><li><a href="control-center/">لوحة التحكم</a></li><li><a href="enigma2-center.html">مركز Enigma2</a></li></ul></div>
+<div><h4>تواصل معانا</h4><ul><li><a href="https://wa.me/201092978131" target="_blank" rel="noopener">💬 واتساب: 01092978131</a></li><li><a href="tel:+201092978131">📞 اتصال مباشر</a></li><li><a href="https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh" target="_blank" rel="noopener">GitHub ↗</a></li></ul></div>
+</div>
+<div class="shell footer2-bottom"><span>© <span id="year"></span> BYRomeh Store · جميع الحقوق محفوظة</span><a href="#top">العودة للأعلى ↑</a></div>
+</footer>
 <script>
 const state={items:[],category:"all"};
 const wa="201092978131";
 const $=s=>document.querySelector(s);
 function safe(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function card(p){const visual=p.image?'<img src="'+safe(p.image)+'" alt="'+safe(p.name)+'" loading="lazy" onerror="this.style.display=\'none\';this.parentElement.classList.add(\'img-fallback\')" style="width:calc(100% - 32px);height:calc(100% - 32px);object-fit:contain;position:relative;z-index:1;padding:14px;background:#f4f6f8;border-radius:14px;transition:transform .4s ease">':(p.category==="accessories"?'<div class="accessory" aria-hidden="true">📦</div>':'<div class="device" aria-hidden="true"><i></i><em>'+safe(p.brand.toUpperCase())+'</em></div>');const featured=p.featured?'<span class="featured-badge">⭐ مميز</span>':'';const msg=encodeURIComponent("مرحبا، أحتاج مساعدة في اختيار "+p.name+" (Enigma2 receiver).");return '<article class="product" data-id="'+safe(p.id)+'" onclick="openModalById(\''+safe(p.id)+'\')">'+featured+'<div class="visual"><span class="tag">'+safe(p.tag||"جديد")+'</span>'+visual+'</div><div class="product-body"><div class="meta"><span>'+safe(p.brand)+'</span><span>'+safe(p.availability||"متوفر للطلب")+'</span></div><h3>'+safe(p.name)+'</h3><p class="desc">'+safe(p.description)+'</p><div class="price-line"><span class="price">'+(p.price?Number(p.price).toLocaleString("ar-EG")+" ج.م":"السعر عند الاستفسار")+'</span><a class="ask" href="https://wa.me/'+wa+'?text='+msg+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">استفسر عن المنتج ↗</a></div></div></article>';}
+let wish=new Set();
+try{wish=new Set(JSON.parse(localStorage.getItem("byromeh_wishlist")||"[]"));}catch(e){wish=new Set();}
+function saveWish(){try{localStorage.setItem("byromeh_wishlist",JSON.stringify([...wish]));}catch(e){}}
+function toggleWish(id){wish.has(id)?wish.delete(id):wish.add(id);saveWish();updateWishUI();render();}
+function updateWishUI(){const el=document.getElementById("cnt-wishlist");if(el)el.textContent=wish.size+(wish.size===1?" عنصر":" عناصر");}
+function card(p){const visual=p.image?'<img src="'+safe(p.image)+'" alt="'+safe(p.name)+'" loading="lazy" onerror="this.style.display=\'none\';this.parentElement.classList.add(\'img-fallback\')" style="width:calc(100% - 32px);height:calc(100% - 32px);object-fit:contain;position:relative;z-index:1;padding:14px;background:#f4f6f8;border-radius:14px;transition:transform .4s ease">':(p.category==="accessories"?'<div class="accessory" aria-hidden="true">📦</div>':'<div class="device" aria-hidden="true"><i></i><em>'+safe(p.brand.toUpperCase())+'</em></div>');const featured=p.featured?'<span class="featured-badge">⭐ مميز</span>':'';const msg=encodeURIComponent("مرحبا، أحتاج مساعدة في اختيار "+p.name+" (Enigma2 receiver).");const isWish=wish.has(p.id);return '<article class="product" data-id="'+safe(p.id)+'" onclick="openModalById(\''+safe(p.id)+'\')">'+featured+'<div class="visual"><span class="tag">'+safe(p.tag||"جديد")+'</span>'+visual+'</div><div class="product-body"><div class="meta"><span>'+safe(p.brand)+'</span><span>'+safe(p.availability||"متوفر للطلب")+'</span></div><h3>'+safe(p.name)+'</h3><p class="desc">'+safe(p.description)+'</p><div class="price-line"><span class="price">'+(p.price?Number(p.price).toLocaleString("ar-EG")+" ج.م":"السعر عند الاستفسار")+'</span><div class="price-actions"><button type="button" class="wish'+(isWish?" on":"")+'" data-wish="'+safe(p.id)+'" aria-pressed="'+isWish+'" aria-label="أضف للمفضلة" title="أضف للمفضلة" onclick="event.stopPropagation();toggleWish(\''+safe(p.id)+'\')">'+(isWish?"❤️":"🤍")+'</button><a class="ask" href="https://wa.me/'+wa+'?text='+msg+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">استفسر عن المنتج ↗</a></div></div></div></article>';}
 function openModalById(id){const p=state.items.find(x=>x.id===id);if(!p)return;document.getElementById('modalTitle').textContent=p.name;document.getElementById('modalDesc').textContent=p.description||'';const visual=document.getElementById('modalVisual');visual.innerHTML=p.image?'<img src="'+safe(p.image)+'" alt="'+safe(p.name)+'" onerror="this.style.display=\'none\'">':(p.category==="accessories"?'<div class="accessory" aria-hidden="true">📦</div>':'<div class="device" aria-hidden="true"><i></i><em>'+safe(p.brand.toUpperCase())+'</em></div>');const meta=document.getElementById('modalMeta');meta.innerHTML='<span class="chip brand">'+safe(p.brand)+'</span>'+(p.category?'<span class="chip">'+(p.category==='receivers'?'Empfänger':'Zubehör')+'</span>':'')+(p.condition?'<span class="chip">'+safe(p.condition)+'</span>':'')+(p.tag?'<span class="chip">'+safe(p.tag)+'</span>':'')+(p.availability?'<span class="chip">'+safe(p.availability)+'</span>':'');document.getElementById('modalPrice').textContent=p.price?Number(p.price).toLocaleString('ar-EG')+' ج.م':'السعر عند الاستفسار';const msg=encodeURIComponent('مرحبا، أحتاج مساعدة في اختيار '+p.name+' (Enigma2 receiver).');document.getElementById('modalWa').href='https://wa.me/'+wa+'?text='+msg;document.getElementById('productModal').classList.add('open');document.body.style.overflow='hidden';}
 function closeModal(){document.getElementById('productModal').classList.remove('open');document.body.style.overflow='';}
-function render(){const q=$("#search").value.trim().toLowerCase(),brand=$("#brand").value,sort=$("#sort").value;let list=state.items.filter(p=>(state.category==="all"||p.category===state.category)&&(!brand||p.brand===brand)&&(!q||(p.name+" "+p.brand+" "+p.description).toLowerCase().includes(q)));if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name,"ar"));else list.sort((a,b)=>Number(b.featured)-Number(a.featured));$("#products").innerHTML=list.length?list.map(card).join(""):'<div class="empty">مفيش منتجات مطابقة للبحث. جرّب كلمة أو تصنيف تاني.</div>';}
-document.querySelectorAll(".filter").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");state.category=b.dataset.category;render();}));
+function setActiveCategory(cat){state.category=cat;document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x.dataset.category===cat));document.querySelectorAll(".cat-card").forEach(x=>x.classList.toggle("active",x.dataset.category===cat));render();}
+function render(){const q=$("#search").value.trim().toLowerCase(),brand=$("#brand").value,sort=$("#sort").value;let list=state.items.filter(p=>(state.category==="all"||(state.category==="wishlist"?wish.has(p.id):p.category===state.category))&&(!brand||p.brand===brand)&&(!q||(p.name+" "+p.brand+" "+p.description).toLowerCase().includes(q)));if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name,"ar"));else list.sort((a,b)=>Number(b.featured)-Number(a.featured));$("#products").innerHTML=list.length?list.map(card).join(""):(state.category==="wishlist"?'<div class="empty">لسه مفيش منتجات في المفضلة. دوس على 🤍 في أي كارت تضيفه.</div>':'<div class="empty">مفيش منتجات مطابقة للبحث. جرّب كلمة أو تصنيف تاني.</div>');}
+function updateCounts(){const by=c=>state.items.filter(p=>c==="all"||p.category===c).length;const set=(id,n)=>{const el=document.getElementById(id);if(el)el.textContent=n+(n===1?" منتج":" منتجات");};set("cnt-all",by("all"));set("cnt-receivers",by("receivers"));set("cnt-accessories",by("accessories"));updateWishUI();}
+document.querySelectorAll(".filter").forEach(b=>b.addEventListener("click",()=>setActiveCategory(b.dataset.category)));
+document.querySelectorAll(".cat-card").forEach(c=>c.addEventListener("click",()=>{setActiveCategory(c.dataset.category);document.getElementById("catalog").scrollIntoView({behavior:"smooth",block:"start"});}));
 $("#search").addEventListener("input",render);$("#brand").addEventListener("change",render);$("#sort").addEventListener("change",render);$("#year").textContent=new Date().getFullYear();
 document.getElementById('modalClose').addEventListener('click',closeModal);
 document.getElementById('productModal').addEventListener('click',e=>{if(e.target.id==='productModal')closeModal();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
-fetch("data/products.json").then(r=>{if(!r.ok)throw Error("catalog");return r.json()}).then(d=>{state.items=Array.isArray(d.products)?d.products:[];render()}).catch(()=>{$("#products").innerHTML='<div class="empty">تعذر تحميل المنتجات حاليًا. حاول تحديث الصفحة.</div>';});
+updateWishUI();
+fetch("data/products.json").then(r=>{if(!r.ok)throw Error("catalog");return r.json()}).then(d=>{state.items=Array.isArray(d.products)?d.products:[];updateCounts();render()}).catch(()=>{$("#products").innerHTML='<div class="empty">تعذر تحميل المنتجات حاليًا. حاول تحديث الصفحة.</div>';});
 </script>
 </body></html>
