@@ -266,7 +266,7 @@ a{color:inherit;text-decoration:none}
       const stop = () => {session.current++; clearInterval(poll.current); if(abort.current){try{abort.current.abort()}catch(e){} abort.current=null;}};
       const close = () => {stop(); onClose();};
 
-      function showSetup(m){setSetupMsg(m||""); setWaitMsg("في انتظار تشغيل الجسر…"); setView("setup");}
+      function showSetup(m,w){setSetupMsg(m||""); setWaitMsg(w||"في انتظار تشغيل الجسر…"); setView("setup");}
       function showForm(){
         clearInterval(poll.current); store.set(SEEN_KEY,"1");
         if(!item){setView("ready"); return;}
@@ -298,7 +298,7 @@ a{color:inherit;text-decoration:none}
         if(my!==session.current) return;
         if(canInstallCommands(h)) return showForm();
         if(h){
-          showSetup("نسخة الجسر اللي شغالة على جهازك قديمة ومش بتدعم تثبيت أوامر المركز. اقفلها وشغّل النسخة الجديدة من الزر تحت، وهنكمل لوحدنا.");
+          showSetup("الجسر شغال على جهازك لكن نسخته قديمة ومش بتدعم تثبيت أوامر المركز. نزّل النسخة الجديدة من الزر تحت وشغّلها (هتحل محل القديمة)، وهنكمل لوحدنا.","الجسر الحالي نسخة قديمة (v"+(h.version||"?")+") — في انتظار النسخة الجديدة…");
           return waitForBridge(my);
         }
         if(store.get(SEEN_KEY)==="1"){
@@ -570,7 +570,7 @@ a{color:inherit;text-decoration:none}
         {item.description ? <p className="c-desc">{item.description}</p> : src && <p className="c-desc">المصدر: <bdi dir="ltr" className="src">{src.host}{src.owner ? " / "+src.owner : ""}</bdi></p>}
         <div className="c-tags">
           <span className="tag accent">{item.sectionTitle || item.groupTitle || "عام"}</span>
-          {support.ok ? <span className="tag ok">● تثبيت من المتصفح</span> : item.installCommand ? <span className="tag">نسخ الأمر فقط</span> : <span className="tag">بدون أمر</span>}
+          {support.ok ? <span className="tag ok">● تثبيت من المتصفح</span> : item.installCommand ? <span className="tag" title={support.reason}>نسخ فقط · {support.reason}</span> : <span className="tag">بدون أمر</span>}
         </div>
         <div className="c-actions">
           {support.ok
