@@ -168,6 +168,7 @@ a{color:inherit;text-decoration:none}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 .search .ico svg{width:19px;height:19px}
 .c-desc .src{color:#b4c3de;font-weight:600}
+.btn.primary.off{background:var(--surface-3);color:var(--muted);box-shadow:none;border:1px dashed var(--line-strong);cursor:help}.btn.primary.off:hover{filter:none;background:var(--surface-3)}
   </style>
 </head>
 <body>
@@ -572,10 +573,8 @@ a{color:inherit;text-decoration:none}
           {support.ok ? <span className="tag ok">● تثبيت من المتصفح</span> : item.installCommand ? <span className="tag" title={support.reason}>نسخ فقط · {support.reason}</span> : <span className="tag">بدون أمر</span>}
         </div>
         <div className="c-actions">
-          {support.ok
-            ? <><button className="btn primary" onClick={()=>onInstall(item)}><Icon name="download"/> تثبيت</button>
-                <button className="btn sq" title="نسخ الأمر" aria-label={"نسخ أمر "+item.name} onClick={()=>onCopy(item.installCommand)}><Icon name="copy"/></button></>
-            : <button className="btn wide" disabled={!item.installCommand} title={support.reason} onClick={()=>onCopy(item.installCommand)}><Icon name="copy"/> {item.installCommand ? "نسخ الأمر" : "مفيش أمر متاح"}</button>}
+          <button className={"btn primary"+(support.ok?"":" off")} aria-disabled={!support.ok} title={support.ok?"تثبيت تلقائي عبر الجسر":support.reason} onClick={()=>support.ok?onInstall(item):showToast("التثبيت التلقائي غير متاح: "+support.reason+" — تقدر تنسخ الأمر.")}><Icon name="download"/> {support.ok?"تثبيت تلقائي":"غير متاح"}</button>
+          <button className="btn sq" title={item.installCommand?"نسخ الأمر":"مفيش أمر متاح"} aria-label={"نسخ أمر "+item.name} disabled={!item.installCommand} onClick={()=>onCopy(item.installCommand)}><Icon name="copy"/></button>
           {item.url && <a className="btn sq" href={item.url} target="_blank" rel="noopener noreferrer" title="فتح الرابط" aria-label={"فتح رابط "+item.name}><Icon name="link"/></a>}
         </div>
       </article>;
