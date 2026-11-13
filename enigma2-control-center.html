@@ -184,7 +184,6 @@ a{color:inherit;text-decoration:none}
     const EXE_URL = "https://github.com/online4tech/online4Tech/releases/download/bridge-latest/O4T-Bridge.exe";
     const PROFILE_KEY = "online4tech-ssh-profile-v1";   /* نفس مفتاح AllBlugin و Enigma2 Manager */
     const SEEN_KEY = "o4t-bridge-seen";
-    const OWNERS = ["online4tech","emilnabil"];
     const SOFT_RE = /cccam|oscam|\bncam|mgcamd|camd3|gcam|newcamd|gbox|softcam|emulator|card[-_ ]?shar|\bc[-_ ]?line\b|keys?[-_ ]?updater|constant[-_ ]?cw/i;
     const store = {
       get(k){try{return localStorage.getItem(k)}catch(e){return null}},
@@ -201,9 +200,8 @@ a{color:inherit;text-decoration:none}
       const urls = t.filter(x=>/^https?:\/\//.test(x));
       if(t[0] !== "wget" || t[t.length-2] !== "|" || !/^(\/bin\/)?(sh|bash)$/.test(t[t.length-1]) || urls.length !== 1) return {ok:false,reason:"شكل الأمر مش مدعوم في الجسر"};
       let u; try{u = new URL(urls[0]);}catch(e){return {ok:false,reason:"رابط غير صالح"};}
-      if(u.protocol !== "https:") return {ok:false,reason:"المصدر http غير مشفّر"};
-      if(!["github.com","raw.githubusercontent.com"].includes(u.hostname) || !OWNERS.includes((u.pathname.split("/")[1]||"").toLowerCase())) return {ok:false,reason:"المصدر غير معتمد في الجسر"};
-      return {ok:true,reason:""};
+      if(!/^[a-z0-9-]+(\.[a-z0-9-]+)+$/i.test(u.hostname) || /^\d+(\.\d+){3}$/.test(u.hostname)) return {ok:false,reason:"رابط المصدر غير مدعوم"};
+      return {ok:true,reason:"",insecure:u.protocol !== "https:"};
     }
 
     async function bridgeHealth(ms){
@@ -401,6 +399,7 @@ a{color:inherit;text-decoration:none}
 
           {view==="form" && <form onSubmit={e=>{e.preventDefault();run(false)}} style={{display:"grid",gap:14}}>
             <p className="note">اكتب بيانات الرسيفر وهنكمل التثبيت لوحدنا.</p>
+            {item && bridgeSupport(item).insecure && <p className="note small">⚠ مصدر السكربت ده بيستخدم http غير مشفّر. كمّل بس لو واثق في المصدر.</p>}
             <div className="row2">
               <div className="field"><label htmlFor="cc-host">IP الرسيفر</label><input id="cc-host" ref={hostRef} type="text" inputMode="decimal" autoComplete="off" placeholder="192.168.1.120" value={host} onChange={e=>setHost(e.target.value)}/></div>
               <div className="field"><label htmlFor="cc-user">المستخدم</label><input id="cc-user" type="text" autoComplete="off" value={user} onChange={e=>setUser(e.target.value)}/></div>
