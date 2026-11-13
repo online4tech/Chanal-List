@@ -196,6 +196,8 @@ a{color:inherit;text-decoration:none}
       const cmd = item.installCommand || "";
       if(!cmd || item.commandIndex == null || item.commandIndex < 0) return {ok:false,reason:"مفيش أمر متاح للعنصر ده"};
       if(SOFT_RE.test([item.name,cmd,item.commandSource,item.sectionId].join(" "))) return {ok:false,reason:"النوع ده مش مدعوم في الجسر"};
+      const flat = cmd.trim().replace(/\s+/g," ");
+      if(flat==="opkg install /tmp/*.ipk" || flat==="rm -rf /var/cache/opkg/* && opkg update" || /^opkg install [a-z0-9][a-z0-9+._-]{0,63}$/.test(flat)) return {ok:true,reason:""};
       if(/[;&$`<>(){}\\]/.test(cmd)) return {ok:false,reason:"الأمر مركّب ومش مدعوم في الجسر"};
       const t = cmd.replace(/"/g,"").trim().split(/\s+/);
       const urls = t.filter(x=>/^https?:\/\//.test(x));
