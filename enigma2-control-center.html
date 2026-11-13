@@ -169,6 +169,27 @@ a{color:inherit;text-decoration:none}
 .search .ico svg{width:19px;height:19px}
 .c-desc .src{color:#b4c3de;font-weight:600}
 .btn.primary.off{background:var(--surface-3);color:var(--muted);box-shadow:none;border:1px dashed var(--line-strong);cursor:help}.btn.primary.off:hover{filter:none;background:var(--surface-3)}
+
+/* ---------- هيدر المستودع الموحد ---------- */
+.repo-header{flex:none;position:relative;z-index:20;background:rgba(6,16,29,.94);border-bottom:1px solid rgba(173,207,238,.13);box-shadow:0 4px 24px rgba(0,0,0,.22);backdrop-filter:blur(18px)}
+.repo-header-inner{display:flex;flex-direction:column;align-items:center;gap:10px;padding:10px clamp(14px,3vw,28px)}
+.repo-brand{display:flex;align-items:center;justify-content:center;gap:12px;min-width:0}
+.repo-brand-logo{display:block;width:auto;height:48px;max-width:220px;object-fit:contain;filter:drop-shadow(0 0 14px rgba(66,215,245,.28))}
+.repo-brand-copy{display:grid;line-height:1.2;text-align:center;font-size:14px;font-weight:900;letter-spacing:.06em;color:#f1f7ff}
+.repo-brand-copy small{margin-top:4px;color:#8fa1c0;font-size:10px;font-weight:700;letter-spacing:.12em}
+.repo-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:7px;max-width:100%}
+.repo-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:6px 13px;border:1px solid rgba(66,215,245,.25);border-radius:11px;background:linear-gradient(135deg,rgba(66,215,245,.10),rgba(57,140,255,.10));color:#e8f6ff;font-size:12px;font-weight:700;white-space:nowrap;transition:border-color .2s,background .2s,transform .2s}
+.repo-nav a:hover{border-color:#42d7f5;background:linear-gradient(135deg,rgba(66,215,245,.22),rgba(57,140,255,.22));transform:translateY(-1px)}
+.repo-nav a[aria-current=page]{border-color:#ffc96b;background:linear-gradient(135deg,rgba(255,201,107,.18),rgba(255,146,60,.16));color:#fff}
+@media(max-width:700px){
+  .repo-header-inner{gap:8px;padding:8px 12px}
+  .repo-brand-logo{height:38px;max-width:160px}
+  .repo-brand-copy{font-size:12px}
+  .repo-brand-copy small{font-size:9px}
+  .repo-nav{width:100%;justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;padding:1px 0 3px}
+  .repo-nav::-webkit-scrollbar{display:none}
+  .repo-nav a{flex:none;min-height:32px;padding:5px 11px;font-size:11.5px}
+}
   </style>
 </head>
 <body>
@@ -643,6 +664,22 @@ a{color:inherit;text-decoration:none}
       if(!dataset) return <div className="loading"><div><div className="spinner"></div>جاري تجهيز مركز التحكم...</div></div>;
 
       return <div className="app">
+        <header className="repo-header">
+          <div className="repo-header-inner">
+            <a className="repo-brand" href="index.html" aria-label="BYRomeh - الصفحة الرئيسية">
+              <img className="repo-brand-logo" src="assets/byromeh-logo.png" alt="BYRomeh logo"/>
+              <span className="repo-brand-copy">ENIGMA2<small>CHANNEL LIST · BYROMEH</small></span>
+            </a>
+            <nav className="repo-nav" aria-label="التنقل الرئيسي">
+              <a href="index.html">الرئيسية</a>
+              <a href="products.html">المتجر</a>
+              <a href="enigma2-control-center.html" aria-current="page">مركز التحميل</a>
+              <a href="control-center/">لوحة التحكم</a>
+              <a href="enigma2-center.html">مركز الانيجما</a>
+              <a href="https://github.com/online4tech/Enigma2-Chanal-List-BYRomeh" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            </nav>
+          </div>
+        </header>
         <header className="top">
           <div className="brand">
             <span className="mark">O4T</span>
