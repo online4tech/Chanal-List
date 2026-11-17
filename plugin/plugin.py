@@ -22,132 +22,205 @@ def getIconPath():
 
 class Online4TechPanel(Screen):
     skin = """
-    <screen name="Online4TechPanel" position="0,0" size="1920,1080" title="Online4Tech Command Center v5.1" backgroundColor="#060d1f" flags="wfNoBorder">
+    <screen name="Online4TechPanel" position="0,0" size="1920,1080" title="Online4Tech Command Dashboard v6.0" backgroundColor="#040b1c" flags="wfNoBorder">
         <!-- Top Header Bar -->
-        <eLabel position="0,0" size="1920,105" backgroundColor="#0a1633" zPosition="-1" />
-        <eLabel position="0,103" size="1920,3" backgroundColor="#00d4ff" zPosition="1" />
-        <widget name="logo" position="45,32" size="100,40" alphatest="blend" zPosition="2" />
-        <eLabel text="ONLINE4TECH COMMAND CENTER" position="170,18" size="850,42" font="Regular;34" foregroundColor="#ffffff" backgroundColor="#0a1633" transparent="1" zPosition="2" />
-        <eLabel text="Dreambox  •  Vu+  •  Novaler  •  Enigma2 Online Suite" position="170,62" size="850,30" font="Regular;22" foregroundColor="#00d4ff" backgroundColor="#0a1633" transparent="1" zPosition="2" />
-        <widget name="status_top" position="1200,35" size="670,36" font="Regular;24" halign="right" foregroundColor="#38bdf8" backgroundColor="#0a1633" transparent="1" zPosition="2" />
+        <eLabel position="0,0" size="1920,105" backgroundColor="#081533" zPosition="-10" />
+        <eLabel position="0,103" size="1920,3" backgroundColor="#00d4ff" zPosition="-5" />
+        <widget name="logo" position="40,32" size="100,40" alphatest="blend" zPosition="5" />
+        <eLabel text="ONLINE4TECH" position="155,15" size="420,45" font="Regular;36" foregroundColor="#ffffff" backgroundColor="#081533" transparent="1" zPosition="5" />
+        <eLabel text="Dreambox • Vu+ • Enigma2" position="155,62" size="420,30" font="Regular;21" foregroundColor="#38bdf8" backgroundColor="#081533" transparent="1" zPosition="5" />
 
-        <!-- Left Column: System Info, Description & Command Box (x: 40..480) -->
-        <eLabel position="40,130" size="440,840" backgroundColor="#0b1736" zPosition="-1" />
-        <eLabel position="40,130" size="440,4" backgroundColor="#00d4ff" zPosition="1" />
-        <eLabel text="بيانات النظام الحية" position="60,148" size="400,38" font="Regular;27" halign="center" foregroundColor="#00d4ff" backgroundColor="#0b1736" transparent="1" zPosition="2" />
-        <eLabel position="60,195" size="400,2" backgroundColor="#1e3a8a" zPosition="1" />
-        <widget name="sys_info" position="60,210" size="400,290" font="Regular;22" foregroundColor="#e2e8f0" backgroundColor="#0b1736" transparent="1" zPosition="2" />
+        <!-- Top Navigation Bar (Visual Tabs matching Dashboard) -->
+        <eLabel text="الرئيسية    •    البلجنات    •    الأدوات    •    النسخ الاحتياطية    •    الأقسام    •    الإعدادات" position="580,35" size="880,40" font="Regular;23" halign="center" foregroundColor="#cbd5e1" backgroundColor="#081533" transparent="1" zPosition="5" />
 
-        <eLabel position="60,510" size="400,2" backgroundColor="#1e3a8a" zPosition="1" />
-        <eLabel text="تفاصيل العنصر المختار" position="60,525" size="400,36" font="Regular;26" halign="center" foregroundColor="#38bdf8" backgroundColor="#0b1736" transparent="1" zPosition="2" />
-        <widget name="item_desc" position="60,575" size="400,230" font="Regular;23" halign="center" foregroundColor="#cbd5e1" backgroundColor="#0b1736" transparent="1" zPosition="2" />
+        <!-- Top Right Search / Status Pill -->
+        <eLabel position="1490,26" size="390,52" backgroundColor="#050e24" zPosition="-5" />
+        <eLabel position="1490,26" size="390,2" backgroundColor="#0284c7" zPosition="-4" />
+        <widget name="status_top" position="1505,36" size="360,34" font="Regular;22" halign="center" foregroundColor="#38bdf8" backgroundColor="#050e24" transparent="1" zPosition="5" />
 
-        <!-- Command Preview Box -->
-        <eLabel text="ملف التنفيذ السحابي (GitHub)" position="60,820" size="400,30" font="Regular;20" halign="center" foregroundColor="#94a3b8" backgroundColor="#0b1736" transparent="1" zPosition="2" />
-        <eLabel position="60,858" size="400,85" backgroundColor="#050b1a" zPosition="0" />
-        <widget name="cmd_preview" position="70,872" size="380,60" font="Regular;21" halign="center" foregroundColor="#00d4ff" backgroundColor="#050b1a" transparent="1" zPosition="2" />
+        <!-- LEFT COLUMN: Categories Sidebar (x: 35..445) -->
+        <eLabel position="35,125" size="410,920" backgroundColor="#091738" zPosition="-10" />
+        <eLabel position="35,125" size="410,4" backgroundColor="#00d4ff" zPosition="-5" />
+        <eLabel position="50,140" size="380,55" backgroundColor="#061029" zPosition="-8" />
+        <eLabel text="الأقسام" position="65,148" size="350,42" font="Regular;30" halign="right" foregroundColor="#ffffff" backgroundColor="#061029" transparent="1" zPosition="5" />
+        <eLabel position="50,202" size="380,2" backgroundColor="#1d4ed8" zPosition="-5" />
 
-        <!-- Center Column: Tools & Scripts List (x: 510..1430) -->
-        <eLabel position="510,130" size="920,840" backgroundColor="#0b1736" zPosition="-1" />
-        <eLabel position="510,130" size="920,4" backgroundColor="#3b82f6" zPosition="1" />
-        <widget name="cat_counter" position="540,150" size="250,42" font="Regular;24" halign="left" foregroundColor="#38bdf8" backgroundColor="#0b1736" transparent="1" zPosition="2" />
-        <widget name="cat_header" position="800,150" size="600,42" font="Regular;30" halign="right" foregroundColor="#ffffff" backgroundColor="#0b1736" transparent="1" zPosition="2" />
-        <eLabel position="540,200" size="860,2" backgroundColor="#1e3a8a" zPosition="1" />
-        <widget name="menu" position="540,220" size="860,720" scrollbarMode="showOnDemand" font="Regular;27" itemHeight="60" foregroundColor="#f8fafc" backgroundColor="#0b1736" backgroundColorSelected="#0284c7" foregroundColorSelected="#ffffff" transparent="1" zPosition="2" />
+        <widget name="cat_menu" position="50,218" size="380,680" scrollbarMode="showNever" font="Regular;26" itemHeight="68" foregroundColor="#cbd5e1" backgroundColor="#091738" backgroundColorSelected="#0284c7" foregroundColorSelected="#ffffff" transparent="1" zPosition="5" />
 
-        <!-- Right Column: Categories Sidebar (x: 1460..1880) -->
-        <eLabel position="1460,130" size="420,840" backgroundColor="#0b1736" zPosition="-1" />
-        <eLabel position="1460,130" size="420,4" backgroundColor="#00d4ff" zPosition="1" />
-        <eLabel text="الأقسام الرئيسية" position="1480,150" size="380,42" font="Regular;30" halign="center" foregroundColor="#00d4ff" backgroundColor="#0b1736" transparent="1" zPosition="2" />
-        <eLabel position="1480,200" size="380,2" backgroundColor="#1e3a8a" zPosition="1" />
-        <widget name="cat_menu" position="1480,220" size="380,560" scrollbarMode="showNever" font="Regular;26" itemHeight="62" foregroundColor="#cbd5e1" backgroundColor="#0b1736" backgroundColorSelected="#1d4ed8" foregroundColorSelected="#ffffff" transparent="1" zPosition="2" />
-        <eLabel text="أسهم يمين / يسار أو CH+/CH-\nللتنقل السريع بين الأقسام" position="1480,835" size="380,90" font="Regular;21" halign="center" foregroundColor="#64748b" backgroundColor="#0b1736" transparent="1" zPosition="2" />
+        <eLabel position="50,915" size="380,110" backgroundColor="#061029" zPosition="-8" />
+        <widget name="sys_mini" position="65,922" size="350,96" font="Regular;20" halign="center" foregroundColor="#94a3b8" backgroundColor="#061029" transparent="1" zPosition="5" />
 
-        <!-- Bottom Action Bar -->
-        <eLabel position="0,995" size="1920,85" backgroundColor="#0a1633" zPosition="-1" />
-        <eLabel position="0,995" size="1920,2" backgroundColor="#1e3a8a" zPosition="1" />
-        <ePixmap pixmap="buttons/red.png" position="80,1022" size="35,35" alphatest="on" zPosition="2" />
-        <widget name="key_red" position="130,1020" size="220,40" font="Regular;26" foregroundColor="#ffffff" backgroundColor="#0a1633" transparent="1" zPosition="2" />
-        <ePixmap pixmap="buttons/green.png" position="480,1022" size="35,35" alphatest="on" zPosition="2" />
-        <widget name="key_green" position="530,1020" size="300,40" font="Regular;26" foregroundColor="#ffffff" backgroundColor="#0a1633" transparent="1" zPosition="2" />
-        <ePixmap pixmap="buttons/yellow.png" position="950,1022" size="35,35" alphatest="on" zPosition="2" />
-        <widget name="key_yellow" position="1000,1020" size="320,40" font="Regular;26" foregroundColor="#ffffff" backgroundColor="#0a1633" transparent="1" zPosition="2" />
-        <ePixmap pixmap="buttons/blue.png" position="1440,1022" size="35,35" alphatest="on" zPosition="2" />
-        <widget name="key_blue" position="1490,1020" size="350,40" font="Regular;26" foregroundColor="#ffffff" backgroundColor="#0a1633" transparent="1" zPosition="2" />
+        <!-- CENTER COLUMN: Commands & Plugins List (x: 470..1240) -->
+        <eLabel position="470,125" size="770,920" backgroundColor="#091738" zPosition="-10" />
+        <eLabel position="470,125" size="770,4" backgroundColor="#3b82f6" zPosition="-5" />
+        <eLabel position="490,140" size="730,60" backgroundColor="#061029" zPosition="-8" />
+        <eLabel text="[-_-]" position="505,148" size="70,42" font="Regular;26" halign="center" foregroundColor="#00d4ff" backgroundColor="#061029" transparent="1" zPosition="5" />
+        <widget name="cat_header" position="585,148" size="420,42" font="Regular;30" halign="right" foregroundColor="#ffffff" backgroundColor="#061029" transparent="1" zPosition="5" />
+        <widget name="cat_counter" position="1020,152" size="185,36" font="Regular;22" halign="center" foregroundColor="#38bdf8" backgroundColor="#061029" transparent="1" zPosition="5" />
+        <eLabel position="490,208" size="730,2" backgroundColor="#1d4ed8" zPosition="-5" />
+
+        <widget name="menu" position="490,222" size="730,795" scrollbarMode="showOnDemand" font="Regular;26" itemHeight="56" foregroundColor="#f8fafc" backgroundColor="#091738" backgroundColorSelected="#0284c7" foregroundColorSelected="#ffffff" transparent="1" zPosition="5" />
+
+        <!-- RIGHT COLUMN: Item Details & Command Execution Box (x: 1265..1885) -->
+        <eLabel position="1265,125" size="620,920" backgroundColor="#091738" zPosition="-10" />
+        <eLabel position="1265,125" size="620,4" backgroundColor="#00d4ff" zPosition="-5" />
+        <eLabel position="1285,140" size="580,55" backgroundColor="#061029" zPosition="-8" />
+        <eLabel text="(i)  تفاصيل العنصر" position="1300,148" size="550,42" font="Regular;28" halign="right" foregroundColor="#ffffff" backgroundColor="#061029" transparent="1" zPosition="5" />
+        <eLabel position="1285,202" size="580,2" backgroundColor="#1d4ed8" zPosition="-5" />
+
+        <!-- Big Terminal Icon Box inside Details -->
+        <eLabel position="1305,235" size="135,125" backgroundColor="#040b1c" zPosition="-8" />
+        <eLabel position="1305,235" size="135,3" backgroundColor="#00d4ff" zPosition="-5" />
+        <eLabel text=">_" position="1305,260" size="135,75" font="Regular;50" halign="center" foregroundColor="#00d4ff" backgroundColor="#040b1c" transparent="1" zPosition="5" />
+
+        <!-- Selected Item Title & Category Subtitle -->
+        <widget name="detail_title" position="1460,240" size="395,70" font="Regular;28" halign="right" foregroundColor="#ffffff" backgroundColor="#091738" transparent="1" zPosition="5" />
+        <widget name="detail_cat" position="1460,315" size="395,38" font="Regular;23" halign="right" foregroundColor="#00d4ff" backgroundColor="#091738" transparent="1" zPosition="5" />
+
+        <!-- Item Description Text -->
+        <widget name="item_desc" position="1300,390" size="555,180" font="Regular;25" halign="right" foregroundColor="#cbd5e1" backgroundColor="#091738" transparent="1" zPosition="5" />
+
+        <!-- Command Execution Box (أمر التنفيذ) -->
+        <eLabel position="1290,590" size="570,220" backgroundColor="#061029" zPosition="-8" />
+        <eLabel position="1290,590" size="570,2" backgroundColor="#1e3a8a" zPosition="-5" />
+        <eLabel text="أمر التنفيذ" position="1680,605" size="160,36" font="Regular;24" halign="right" foregroundColor="#ffffff" backgroundColor="#061029" transparent="1" zPosition="5" />
+        <eLabel position="1310,605" size="120,36" backgroundColor="#1d4ed8" zPosition="-6" />
+        <eLabel text="جاهز للتنفيذ" position="1310,609" size="120,30" font="Regular;19" halign="center" foregroundColor="#ffffff" backgroundColor="#1d4ed8" transparent="1" zPosition="5" />
+
+        <eLabel position="1310,655" size="530,135" backgroundColor="#030814" zPosition="-6" />
+        <widget name="cmd_preview" position="1325,668" size="500,110" font="Regular;21" halign="left" foregroundColor="#38bdf8" backgroundColor="#030814" transparent="1" zPosition="5" />
+
+        <!-- Action Buttons inside Right Column (Matching Dashboard Buttons) -->
+        <!-- Green Button: Direct Run -->
+        <eLabel position="1290,840" size="275,75" backgroundColor="#15803d" zPosition="-8" />
+        <ePixmap pixmap="buttons/green.png" position="1305,860" size="35,35" alphatest="on" zPosition="5" />
+        <widget name="key_green" position="1345,858" size="210,40" font="Regular;24" halign="center" foregroundColor="#ffffff" backgroundColor="#15803d" transparent="1" zPosition="5" />
+
+        <!-- Blue Button: Cloud / Repo -->
+        <eLabel position="1585,840" size="275,75" backgroundColor="#1d4ed8" zPosition="-8" />
+        <ePixmap pixmap="buttons/blue.png" position="1600,860" size="35,35" alphatest="on" zPosition="5" />
+        <widget name="key_blue" position="1640,858" size="210,40" font="Regular;24" halign="center" foregroundColor="#ffffff" backgroundColor="#1d4ed8" transparent="1" zPosition="5" />
+
+        <!-- Yellow Button: Restart GUI -->
+        <eLabel position="1290,935" size="275,75" backgroundColor="#a16207" zPosition="-8" />
+        <ePixmap pixmap="buttons/yellow.png" position="1305,955" size="35,35" alphatest="on" zPosition="5" />
+        <widget name="key_yellow" position="1345,953" size="210,40" font="Regular;24" halign="center" foregroundColor="#ffffff" backgroundColor="#a16207" transparent="1" zPosition="5" />
+
+        <!-- Red Button: Exit -->
+        <eLabel position="1585,935" size="275,75" backgroundColor="#b91c1c" zPosition="-8" />
+        <ePixmap pixmap="buttons/red.png" position="1600,955" size="35,35" alphatest="on" zPosition="5" />
+        <widget name="key_red" position="1640,953" size="210,40" font="Regular;24" halign="center" foregroundColor="#ffffff" backgroundColor="#b91c1c" transparent="1" zPosition="5" />
     </screen>"""
 
     def __init__(self, session):
         Screen.__init__(self, session)
-        self.github_base_url = "https://raw.githubusercontent.com/online4tech/Chanal-List/main/scripts/"
+        self.github_base = "https://raw.githubusercontent.com/online4tech/Chanal-List/main/scripts/"
 
+        # Format: ("Display Name", "Direct Shell Command", ask_restart_bool, "Arabic Description")
         self.categories = [
-            ("القنوات والبيكونات", [
-                ("تحديث ملف القنوات الشامل (Online4Tech)", "update_channels.sh", True, "تحميل وتثبيت أحدث ملف قنوات مرتب للنايل سات وكافة الأقمار من سيرفر Online4Tech."),
-                ("تثبيت حزمة البيكونات الشفافة (Picons)", "install_picons.sh", False, "تحميل وتثبيت شعارات القنوات الحديثة عالية الجودة في المسار القياسي."),
-                ("تثبيت بلجن Chocholousek Picons", "install_chocholousek.sh", True, "تثبيت البلجن الشهير لتحميل وتحديث بيكونات جميع الأقمار تلقائياً."),
-                ("تحديث الدليل الإلكتروني (EPG Import)", "update_epg.sh", False, "تثبيت وتحديث مصادر الدليل الإلكتروني للبرامج والقنوات العربية والعالمية.")
+            (">_  أوامر النظام", [
+                ("show system info", "uname -a && echo '' && cat /etc/issue && echo '' && free -m && echo '' && df -h", False, "عرض معلومات النظام الأساسية مثل النسخة والذاكرة والمعالج والمساحة."),
+                ("uptime", "uptime", False, "عرض مدة تشغيل الريسفر المتواصلة منذ آخر إعادة تشغيل."),
+                ("reboot now", "reboot", False, "إعادة تشغيل الريسفر بالكامل فوراً (Full Reboot)."),
+                ("shutdown", "init 0", False, "إيقاف تشغيل الريسفر بالكامل (Deep Standby / Shutdown)."),
+                ("mount", "mount", False, "عرض جميع وحدات التخزين المربوطة بالنظام (HDD / USB / Network)."),
+                ("umount /media/hdd", "umount /media/hdd 2>/dev/null || umount /media/usb 2>/dev/null || echo 'Nothing to unmount'", False, "فصل وحدة التخزين الخارجية بأمان قبل إزالتها."),
+                ("df -h", "df -h", False, "عرض المساحة الكلية والمستخدمة والمتبقية في الفلاشة الداخلية والهارد."),
+                ("free -m", "free -m", False, "عرض حالة الذاكرة العشوائية (RAM) بالميجابايت."),
+                ("top (snapshot)", "top -b -n 1 | head -n 25", False, "عرض أكثر العمليات استهلاكاً للمعالج والذاكرة في الوقت الحالي."),
+                ("ps aux", "ps aux || ps", False, "عرض قائمة بجميع العمليات والخدمات النشطة في الخلفية."),
+                ("killall enigma2 (Restart GUI)", "killall -9 enigma2", False, "إعادة تشغيل واجهة Enigma2 الرسومية فوراً."),
+                ("sync", "sync && echo 'Filesystem buffers synced successfully!'", False, "حفظ ومزامنة جميع البيانات المعلقة في الذاكرة إلى وحدة التخزين."),
+                ("date", "date", False, "عرض التاريخ والوقت الحاليين للنظام."),
+                ("hwclock", "hwclock -r 2>/dev/null || date", False, "فحص توقيت الساعة الداخلية للهاردوير."),
+                ("cat /proc/version", "cat /proc/version && echo '' && cat /proc/cpuinfo | head -n 20", False, "عرض إصدار نواة لينكس (Kernel) وتفاصيل معالج الريسفر.")
             ]),
-            ("الإيموهات والسوفتكام", [
-                ("تثبيت محاكي OSCam-icam (أحدث إصدار)", "install_oscam.sh", True, "تثبيت أحدث إصدار من محاكي OSCam الداعم لباقات Sky والشفرات الحديثة."),
-                ("تثبيت محاكي NCam الرسمي", "install_ncam.sh", True, "تثبيت محاكي NCam السريع والمستقر لتشغيل سطر الشيرنج والـ CCcam/MGcamd."),
-                ("تحديث مفاتيح SoftCam.Key أونلاين", "softcam_update.sh", False, "جلب أحدث ملف شفرات BISS و PowerVU وتفعيله داخل مسار الإيمو."),
-                ("إعادة تشغيل الإيمو النشط (Restart Softcam)", "restart_emu.sh", False, "إعادة تشغيل فورية لمحاكي OSCam أو NCam لتنشيط السيرفر.")
+            ("أوامر الشبكات", [
+                ("show network info (ifconfig)", "ip addr 2>/dev/null || ifconfig", False, "عرض عنوان الـ IP الداخلي وبطاقات الشبكة المتصلة (LAN / WiFi)."),
+                ("ping google dns (8.8.8.8)", "ping -c 4 8.8.8.8", False, "اختبار سرعة واستقرار الاتصال بالإنترنت عبر خوادم جوجل."),
+                ("ping github server", "ping -c 4 raw.githubusercontent.com", False, "اختبار الاتصال المباشر بمستودع Online4Tech على GitHub."),
+                ("netstat active ports", "netstat -tulnp 2>/dev/null || netstat -tuln", False, "عرض المنافذ المفتوحة والاتصالات النشطة على الريسفر."),
+                ("restart network service", "/etc/init.d/networking restart && echo 'Network restarted!'", False, "إعادة تشغيل خدمة الشبكة وتجديد عنوان الـ IP."),
+                ("show public IP & ISP", "wget -qO- http://ip-api.com/line?fields=query,country,isp || echo 'Offline'", False, "عرض الـ IP الخارجي والدولة ومزود خدمة الإنترنت.")
             ]),
-            ("البلجنات الأساسية", [
-                ("تثبيت لوحة التحكم AJPanel", "install_ajpanel.sh", True, "تثبيت العملاق AJPanel لإدارة القنوات، السيرفرات، الـ IPTV، والنسخ الاحتياطي."),
-                ("تثبيت مشغل الترجمة SubsSupport", "install_subssupport.sh", True, "تثبيت بلجن الترجمة العربية الاحترافي للأفلام والقنوات الأجنبية."),
-                ("تثبيت بلجن جدول المباريات FootOnSat", "install_footonsat.sh", True, "عرض مواعيد المباريات اليومية والقنوات الناقلة والترددات مباشرة على الشاشة."),
-                ("تثبيت بلجن KeyAdder لإدخال الشفرات", "install_keyadder.sh", True, "إضافة وتعديل شفرات BISS بسهولة عبر الريموت دون الحاجة للكمبيوتر."),
-                ("تثبيت لوحة المفاتيح NewVirtualKeyBoard", "install_virtualkb.sh", True, "كيبورد افتراضي حديث يدعم الكتابة بالعربية والإنجليزية والبحث السريع.")
+            ("أوامر القنوات", [
+                ("تحديث ملف قنوات Online4Tech", "wget -q --no-check-certificate -O /tmp/ch.sh '" + self.github_base + "update_channels.sh' && chmod 755 /tmp/ch.sh && sh /tmp/ch.sh", True, "تحميل وتثبيت أحدث ملف قنوات متحرك ونايل سات من مستودع Online4Tech."),
+                ("reload bouquets & channels", "wget -qO - http://127.0.0.1/web/servicelistreload?mode=0 && echo 'Channels Reloaded!'", False, "تحديث وإعادة قراءة ملفات القنوات والباقات بدون إعادة تشغيل الريسفر."),
+                ("تثبيت بيكونات Chocholousek", "wget -q --no-check-certificate https://raw.githubusercontent.com/biko-73/ChocholousekPicons/main/installer.sh -O - | /bin/sh", True, "تثبيت بلجن تحميل وتحديث شعارات القنوات (Picons) لجميع الأقمار."),
+                ("تثبيت البيكون الافتراضي O4T", "wget -q --no-check-certificate -O /usr/share/enigma2/picon_default.png 'https://raw.githubusercontent.com/online4tech/Chanal-List/main/assets/picon_default.png' && echo 'Default Picon Updated!'", True, "تركيب شعار Online4Tech كبيكون افتراضي للقنوات."),
+                ("تثبيت وتحديث EPGImport", "opkg update && opkg install enigma2-plugin-extensions-epgimport", True, "تثبيت أداة جلب الدليل الإلكتروني للبرامج والقنوات.")
             ]),
-            ("بلجنات IPTV والميديا", [
-                ("تثبيت مشغل E2iPlayer + TSIPlayer", "install_e2iplayer.sh", True, "أقوى مشغل للمنصات والأفلام والمسلسلات العربية والعالمية أونلاين."),
-                ("تثبيت مشغل MultiStalker Pro", "install_multistalker.sh", True, "تشغيل بورتالات الماك أدريس (Stalker MAC Portals) بواجهة عصرية."),
-                ("تثبيت مشغل XStreamity IPTV", "install_xstreamity.sh", True, "مشغل اشتراكات Xtream Codes IPTV الرسمي مع دعم VOD و Catchup."),
-                ("تثبيت بلجن JediMakerXtream", "install_jedimaker.sh", True, "تحويل اشتراكات الـ IPTV إلى باقات قنوات مدمجة داخل قائمة قنوات الريسفر."),
-                ("تثبيت بلجن IPAudio Pro (التعليق العربي)", "install_ipaudio.sh", True, "تركيب الصوتيات والتعليق العربي على القنوات الرياضية الأجنبية بدقة عالية.")
+            ("أوامر التحديث", [
+                ("opkg update (تحديث الفيدات)", "opkg update", False, "تحديث قوائم الحزم والمستودعات الخاصة بصورة الريسفر."),
+                ("opkg upgrade (ترقية النظام)", "opkg update && opkg upgrade", True, "ترقية حزم النظام والبلجنات المثبتة إلى أحدث إصدار."),
+                ("تحديث مفاتيح SoftCam.Key", "mkdir -p /usr/keys /etc/tuxbox/config && wget -q --no-check-certificate -O /usr/keys/SoftCam.Key 'https://raw.githubusercontent.com/MOHAMED19OS/SoftCam_Emu/main/SoftCam.Key' && cp -f /usr/keys/SoftCam.Key /etc/tuxbox/config/SoftCam.Key && echo 'SoftCam.Key Updated!'", False, "تحديث أحدث شفرات BISS و PowerVU تلقائياً."),
+                ("تحديث لوحة Online4Tech Panel", "wget -q --no-check-certificate -O /usr/lib/enigma2/python/Plugins/Extensions/Online4Tech/plugin.py 'https://raw.githubusercontent.com/online4tech/Chanal-List/main/plugin/plugin.py' && echo 'Online4Tech Panel Updated!'", True, "جلب أحدث إصدار من لوحة تحكم Online4Tech مباشرة من GitHub."),
+                ("تثبيت ServiceApp + Exteplayer3", "opkg update && opkg install ffmpeg exteplayer3 gstplayer enigma2-plugin-systemplugins-serviceapp", True, "تحديث مشغلات الميديا والـ IPTV لمنع التقطيع.")
             ]),
-            ("السكينات والمظهر", [
-                ("تثبيت سكين Aglare FHD العصري", "skin_aglare.sh", True, "تثبيت سكين Aglare Full HD الاحترافي المتوافق مع أغلب صور Enigma2."),
-                ("تثبيت سكين Nitro Advance FHD", "skin_nitro.sh", True, "تثبيت سكين نيترو السريع والخفيف بواجهة رياضية أنيقة."),
-                ("تثبيت سكين BlackSpirit / Pro FHD", "skin_blackspirit.sh", True, "تثبيت سكين داكن فخم يدعم إظهار البوسترات وحالة التشفير والطقس."),
-                ("تثبيت سكين MetrixHD القياسي", "skin_metrix.sh", True, "تثبيت سكين MetrixHD من فيد الصورة الرسمي."),
-                ("تثبيت الخطوط العربية الاحترافية", "install_fonts.sh", True, "تحديث خطوط النظام لتحسين قراءة القوائم والـ EPG والترجمة."),
-                ("تثبيت بوت لوجو Online4Tech الرسمي", "bootlogo_online4tech.sh", True, "تطبيق شعار Online4Tech كشاشة إقلاع للريسفر وتحديث البيكون الافتراضي.")
+            ("أوامر الصيانة", [
+                ("تنظيف الرام والكاش (Drop Cache)", "sync && echo 3 > /proc/sys/vm/drop_caches && rm -rf /tmp/*.ipk /tmp/*.tar.gz && free -m", False, "تفريغ الذاكرة العشوائية ومسح الملفات المؤقتة لتسريع الجهاز."),
+                ("إعادة تشغيل الإيمو OSCam / NCam", "killall -9 oscam ncam 2>/dev/null; sleep 1; /etc/init.d/softcam restart 2>/dev/null || /usr/bin/oscam -b 2>/dev/null; echo 'Emulator Restarted!'", False, "إعادة تشغيل محاكي الشيرنج لتنشيط السيرفرات والقنوات المشفرة."),
+                ("تثبيت محاكي OSCam-icam الحديث", "wget -q --no-check-certificate https://raw.githubusercontent.com/biko-73/OsCam_emu/main/installer.sh -O - | /bin/sh", True, "تثبيت أحدث إصدار من محاكي OSCam الداعم لكافة الباقات."),
+                ("تثبيت محاكي NCam الرسمي", "wget -q --no-check-certificate https://raw.githubusercontent.com/biko-73/Ncam_emu/main/installer.sh -O - | /bin/sh", True, "تثبيت محاكي NCam السريع والمستقر."),
+                ("تثبيت بوت لوجو Online4Tech", "wget -q --no-check-certificate -O /tmp/b.sh '" + self.github_base + "bootlogo_online4tech.sh' && chmod 755 /tmp/b.sh && sh /tmp/b.sh", True, "تعيين شعار Online4Tech كشاشة إقلاع رسمية للريسفر.")
             ]),
-            ("أدوات النظام والصيانة", [
-                ("تثبيت حزمة ServiceApp + Exteplayer3", "install_serviceapp.sh", True, "تثبيت مشغلات الميديا الضرورية لتسريع قنوات الـ IPTV ومنع التقطيع."),
-                ("تحديث فيدات الصورة (opkg update)", "opkg_update.sh", False, "تحديث مستودعات الصورة الرسمية لإصلاح مشاكل تثبيت الحزم."),
-                ("تنظيف الرام والملفات المؤقتة (Deep Clean)", "clean_system.sh", False, "مسح الكاش وملفات /tmp وتفريغ الرام لتسريع استجابة الريسفر."),
-                ("فحص المساحة وحالة الاتصال بالشبكة", "check_net_disk.sh", False, "عرض تقرير مفصل عن مساحة الفلاشة، الهارد، واستقرار الإنترنت."),
-                ("استعادة اختصارات الريموت القياسية", "restore_hotkeys.sh", True, "إعادة ضبط أزرار الريموت السريعة للوضع المثالي.")
+            ("أوامر النسخ الاحتياطية", [
+                ("نسخ احتياطي للقنوات على /hdd", "mkdir -p /media/hdd/backup_o4t && tar -czf /media/hdd/backup_o4t/channels_backup.tar.gz /etc/enigma2/*bouquet* /etc/enigma2/lamedb* /etc/enigma2/settings && echo 'Saved to /media/hdd/backup_o4t/channels_backup.tar.gz'", False, "حفظ نسخة احتياطية كاملة من ملف القنوات والإعدادات على الهارد."),
+                ("استعادة القنوات من /hdd", "tar -xzf /media/hdd/backup_o4t/channels_backup.tar.gz -C / && wget -qO - http://127.0.0.1/web/servicelistreload?mode=0 && echo 'Channels Restored!'", False, "استرجاع ملف القنوات المحفوظ مسبقاً على الهارد."),
+                ("نسخ احتياطي لإعدادات الإيمو", "mkdir -p /media/hdd/backup_o4t && tar -czf /media/hdd/backup_o4t/emu_keys_backup.tar.gz /etc/tuxbox/config /usr/keys 2>/dev/null && echo 'Emulator configs backed up!'", False, "حفظ نسخة احتياطية من ملفات سيرفرات OSCam / NCam والشفرات."),
+                ("استعادة إعدادات الإيمو", "tar -xzf /media/hdd/backup_o4t/emu_keys_backup.tar.gz -C / && echo 'Emulator configs restored!'", False, "استرجاع ملفات السيرفرات والشفرات المحفوظة.")
+            ]),
+            ("أوامر الإصلاح", [
+                ("إصلاح الحزم المعلقة (opkg configure)", "opkg configure && opkg update", False, "إصلاح مشاكل توقف مدير الحزم opkg عن تثبيت الإضافات."),
+                ("فحص وإصلاح أخطاء الشبكة (DNS Fix)", "echo -e 'nameserver 8.8.8.8\nnameserver 1.1.1.1' > /etc/resolv.conf && echo 'DNS Fixed to 8.8.8.8 & 1.1.1.1!'", False, "ضبط خوادم DNS على جوجل وكلاودفلير لحل مشكلة انقطاع السيرفرات والتحميل."),
+                ("ضبط الوقت تلقائياً من الإنترنت", "ntpd -q -p pool.ntp.org 2>/dev/null || rdate -s time.nist.gov 2>/dev/null; date", False, "مزامنة وإصلاح ساعة وتاريخ الريسفر عبر الإنترنت لتشغيل الشيرنج والـ EPG."),
+                ("إصلاح صلاحيات مجلد الإيمو (/usr/bin)", "chmod 755 /usr/bin/*cam* /etc/init.d/softcam* 2>/dev/null; echo 'Permissions 755 applied!'", False, "منح تصاريح التشغيل 755 لملفات الإيمو المتوقفة.")
+            ]),
+            ("البلجنات والسكينات", [
+                ("تثبيت لوحة التحكم AJPanel", "wget -q --no-check-certificate https://raw.githubusercontent.com/biko-73/AjPanel/main/installer.sh -O - | /bin/sh", True, "تثبيت أحدث إصدار من العملاق AJPanel."),
+                ("تثبيت مشغل E2iPlayer + TSIPlayer", "wget -q --no-check-certificate http://www.e2iplayer.gitlab.io/online.sh -O - | /bin/sh", True, "تثبيت مشغل الأفلام والمسلسلات والمنصات أونلاين."),
+                ("تثبيت MultiStalker Pro", "wget -q --no-check-certificate https://raw.githubusercontent.com/biko-73/MultiStalkerPro/main/installer.sh -O - | /bin/sh", True, "تثبيت مشغل بورتالات Stalker IPTV."),
+                ("تثبيت XStreamity IPTV", "wget -q --no-check-certificate https://raw.githubusercontent.com/biko-73/XStreamity/main/installer.sh -O - | /bin/sh", True, "تثبيت مشغل اشتراكات Xtream Codes IPTV."),
+                ("تثبيت الترجمة SubsSupport", "wget -q --no-check-certificate https://raw.githubusercontent.com/biko-73/SubsSupport/main/installer.sh -O - | /bin/sh", True, "تثبيت بلجن الترجمة العربية للأفلام والقنوات."),
+                ("تثبيت جدول المباريات FootOnSat", "wget -q --no-check-certificate https://raw.githubusercontent.com/ziko-ZR1/FootOnsat/main/Download/install.sh -O - | /bin/sh", True, "عرض جدول المباريات اليومية والقنوات الناقلة."),
+                ("تثبيت IPAudio Pro (التعليق العربي)", "wget -q --no-check-certificate https://raw.githubusercontent.com/biko-73/IPAudioPro/main/installer.sh -O - | /bin/sh", True, "تشغيل التعليق العربي على القنوات الرياضية."),
+                ("تثبيت سكين Aglare FHD", "wget -q --no-check-certificate https://raw.githubusercontent.com/biko-73/Aglare-FHD/main/installer.sh -O - | /bin/sh", True, "تثبيت سكين Aglare Full HD العصري."),
+                ("تثبيت سكين Nitro Advance FHD", "wget -q --no-check-certificate https://raw.githubusercontent.com/biko-73/Nitro-FHD/main/installer.sh -O - | /bin/sh", True, "تثبيت سكين Nitro FHD الرياضي السريع."),
+                ("تثبيت سكين BlackSpirit FHD", "wget -q --no-check-certificate https://raw.githubusercontent.com/biko-73/BlackSpirit.FHD/main/installer.sh -O - | /bin/sh", True, "تثبيت سكين BlackSpirit الداكن الاحترافي.")
             ])
         ]
 
         self.current_cat = 0
         self.pending_restart = False
 
+        first_cat_name, first_items = self.categories[0]
+        first_item = first_items[0]
+
         self["logo"] = Pixmap()
-        self["status_top"] = Label("Online4Tech Cloud  •  25 Tools Ready  •  v5.1")
-        self["sys_info"] = Label(self.getSystemInfo())
-        self["item_desc"] = Label(self.categories[0][1][0][3])
-        self["cmd_preview"] = Label("scripts/" + self.categories[0][1][0][1])
-        self["cat_header"] = Label("قسم: " + self.categories[0][0])
-        self["cat_counter"] = Label("%d عناصر  |  1/%d" % (len(self.categories[0][1]), len(self.categories)))
+        self["status_top"] = Label("البحث في... Online4Tech v6.0")
+        self["sys_mini"] = Label(self.getSystemMiniInfo())
+
+        self["cat_header"] = Label(first_cat_name)
+        self["cat_counter"] = Label("جميع العناصر (%d)" % len(first_items))
+
+        self["detail_title"] = Label(first_item[0])
+        self["detail_cat"] = Label(first_cat_name)
+        self["item_desc"] = Label(first_item[3])
+        self["cmd_preview"] = Label(first_item[1])
 
         self["cat_menu"] = MenuList([c[0] for c in self.categories])
-        self["menu"] = MenuList([x[0] for x in self.categories[0][1]])
+        self["menu"] = MenuList([x[0] for x in first_items])
 
-        self["key_red"] = Label("خروج")
-        self["key_green"] = Label("تثبيت / تشغيل")
-        self["key_yellow"] = Label("إعادة تشغيل الواجهة")
-        self["key_blue"] = Label("إعادة تشغيل الجهاز")
+        self["key_green"] = Label("تحميل / تنفيذ")
+        self["key_blue"] = Label("المستودع")
+        self["key_yellow"] = Label("إعادة الواجهة")
+        self["key_red"] = Label("إغلاق")
 
         self["actions"] = ActionMap(["OkCancelActions", "ColorActions", "DirectionActions", "ChannelSelectBaseActions"], {
             "ok": self.runSelectedTool,
             "green": self.runSelectedTool,
+            "blue": self.checkRepoConnection,
             "yellow": self.confirmRestartGUI,
-            "blue": self.confirmRebootBox,
             "red": self.close,
             "cancel": self.close,
             "up": self.keyUp,
@@ -170,8 +243,8 @@ class Online4TechPanel(Screen):
         except Exception:
             pass
 
-    def getSystemInfo(self):
-        py_ver = "%d.%d.%d" % (sys.version_info[0], sys.version_info[1], sys.version_info[2])
+    def getSystemMiniInfo(self):
+        py_ver = "%d.%d" % (sys.version_info[0], sys.version_info[1])
         try:
             s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
             s.connect(("8.8.8.8", 80))
@@ -179,59 +252,27 @@ class Online4TechPanel(Screen):
             s.close()
         except Exception:
             ip = "Offline"
-
-        img_name = "Enigma2"
-        if os.path.exists("/etc/issue"):
-            try:
-                with open("/etc/issue", "r") as f:
-                    img_name = f.readline().strip().replace("\n", "").replace("\l", "")[:22]
-            except Exception:
-                pass
-
-        ram_info = "N/A"
-        try:
-            with open("/proc/meminfo", "r") as f:
-                lines = f.readlines()
-                total = int(lines[0].split()[1]) // 1024
-                free = int(lines[1].split()[1]) // 1024
-                ram_info = "%dMB Free / %dMB" % (free, total)
-        except Exception:
-            pass
-
-        flash_info = "N/A"
-        try:
-            st = os.statvfs("/")
-            free_f = (st.f_bavail * st.f_frsize) // (1024 * 1024)
-            total_f = (st.f_blocks * st.f_frsize) // (1024 * 1024)
-            flash_info = "%dMB Free / %dMB" % (free_f, total_f)
-        except Exception:
-            pass
-
-        return (
-            "Image: %s\n"
-            "Python: %s\n"
-            "IP: %s\n"
-            "RAM: %s\n"
-            "Flash: %s\n"
-            "Server: Online4Tech GitHub"
-        ) % (img_name, py_ver, ip, ram_info, flash_info)
+        return "IP: %s  |  Python: %s\nأسهم يمين/يسار لتغيير القسم\nزر OK أو الأخضر للتنفيذ الفوري" % (ip, py_ver)
 
     def loadCategory(self, cat_idx):
         self.current_cat = cat_idx
         self["cat_menu"].moveToIndex(cat_idx)
         cat_name, items = self.categories[cat_idx]
-        self["cat_header"].setText("قسم: " + cat_name)
-        self["cat_counter"].setText("%d عناصر  |  %d/%d" % (len(items), cat_idx + 1, len(self.categories)))
+        self["cat_header"].setText(cat_name)
+        self["cat_counter"].setText("جميع العناصر (%d)" % len(items))
         self["menu"].setList([x[0] for x in items])
         self["menu"].moveToIndex(0)
         self.updateDescription()
 
     def updateDescription(self):
-        items = self.categories[self.current_cat][1]
+        cat_name, items = self.categories[self.current_cat]
         idx = self["menu"].getSelectedIndex()
         if 0 <= idx < len(items):
-            self["item_desc"].setText(items[idx][3])
-            self["cmd_preview"].setText("scripts/" + items[idx][1])
+            title, cmd_str, _, desc = items[idx]
+            self["detail_title"].setText(title)
+            self["detail_cat"].setText(cat_name)
+            self["item_desc"].setText(desc)
+            self["cmd_preview"].setText(cmd_str[:110])
 
     def keyUp(self):
         self["menu"].up()
@@ -250,32 +291,19 @@ class Online4TechPanel(Screen):
         self.loadCategory(prv)
 
     def runSelectedTool(self):
-        items = self.categories[self.current_cat][1]
+        _, items = self.categories[self.current_cat]
         idx = self["menu"].getSelectedIndex()
         if 0 <= idx < len(items):
-            name, filename, restart_flag, _ = items[idx]
+            name, cmd_str, restart_flag, _ = items[idx]
             self.pending_restart = restart_flag
-            raw_url = self.github_base_url + filename
-            tmp_script = "/tmp/online4tech_run.sh"
+            self.session.openWithCallback(self.onToolFinished, Console, title="Online4Tech - " + name, cmdlist=[cmd_str])
 
-            cmd = (
-                "echo '==========================================' && "
-                "echo '  Online4Tech Cloud Server Connecting...  ' && "
-                "echo '==========================================' && "
-                "rm -f {tmp} && "
-                "wget -q --no-check-certificate -O {tmp} '{url}' && "
-                "if [ -s {tmp} ]; then "
-                "sed -i 's/\r$//' {tmp} && "
-                "chmod 755 {tmp} && "
-                "sh {tmp}; "
-                "rm -f {tmp}; "
-                "else echo 'Error: Script not found on GitHub: {url}'; fi"
-            ).format(tmp=tmp_script, url=raw_url)
-
-            self.session.openWithCallback(self.onToolFinished, Console, title="Online4Tech - " + name, cmdlist=[cmd])
+    def checkRepoConnection(self):
+        cmd = "echo 'Checking Online4Tech GitHub Repository...' && ping -c 2 raw.githubusercontent.com && echo 'Repository Status: ONLINE (https://github.com/online4tech/Chanal-List)'"
+        self.session.open(Console, title="Online4Tech GitHub Cloud Status", cmdlist=[cmd])
 
     def onToolFinished(self, result=None):
-        self["sys_info"].setText(self.getSystemInfo())
+        self["sys_mini"].setText(self.getSystemMiniInfo())
         if self.pending_restart:
             self.session.openWithCallback(
                 self.restartCallback,
@@ -287,16 +315,9 @@ class Online4TechPanel(Screen):
     def confirmRestartGUI(self):
         self.session.openWithCallback(self.restartCallback, MessageBox, "إعادة تشغيل واجهة Enigma2 الآن؟", MessageBox.TYPE_YESNO)
 
-    def confirmRebootBox(self):
-        self.session.openWithCallback(self.rebootBoxCallback, MessageBox, "إعادة تشغيل الريسفر بالكامل الآن؟", MessageBox.TYPE_YESNO)
-
     def restartCallback(self, answer):
         if answer:
             os.system("killall -9 enigma2")
-
-    def rebootBoxCallback(self, answer):
-        if answer:
-            os.system("reboot")
 
 
 def main(session, **kwargs):
@@ -308,7 +329,7 @@ def Plugins(**kwargs):
     return [
         PluginDescriptor(
             name="Online4Tech Panel",
-            description="Online4Tech Command Center v5.1 (Plugins, Skins, Softcams)",
+            description="Online4Tech Command Dashboard v6.0",
             where=PluginDescriptor.WHERE_PLUGINMENU,
             icon=LoadPixmap(icon_path) if icon_path else None,
             fnc=main
