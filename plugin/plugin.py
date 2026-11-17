@@ -22,7 +22,7 @@ def getIconPath():
 
 class Online4TechPanel(Screen):
     skin = """
-    <screen name="Online4TechPanel" position="0,0" size="1920,1080" title="Online4Tech Command Dashboard v6.0" backgroundColor="#040b1c" flags="wfNoBorder">
+    <screen name="Online4TechPanel" position="0,0" size="1920,1080" title="Online4Tech Command Dashboard v7.0" backgroundColor="#040b1c" flags="wfNoBorder">
         <!-- Top Header Bar -->
         <eLabel position="0,0" size="1920,105" backgroundColor="#081533" zPosition="-10" />
         <eLabel position="0,103" size="1920,3" backgroundColor="#00d4ff" zPosition="-5" />
@@ -118,7 +118,7 @@ class Online4TechPanel(Screen):
 
         # Format: ("Display Name", "Direct Shell Command", ask_restart_bool, "Arabic Description")
         self.categories = [
-            (">_  أوامر النظام", [
+            ("💻  أوامر النظام", [
                 ("show system info", "uname -a && echo '' && cat /etc/issue && echo '' && free -m && echo '' && df -h", False, "عرض معلومات النظام الأساسية مثل النسخة والذاكرة والمعالج والمساحة."),
                 ("uptime", "uptime", False, "عرض مدة تشغيل الريسفر المتواصلة منذ آخر إعادة تشغيل."),
                 ("reboot now", "reboot", False, "إعادة تشغيل الريسفر بالكامل فوراً (Full Reboot)."),
@@ -135,7 +135,7 @@ class Online4TechPanel(Screen):
                 ("hwclock", "hwclock -r 2>/dev/null || date", False, "فحص توقيت الساعة الداخلية للهاردوير."),
                 ("cat /proc/version", "cat /proc/version && echo '' && cat /proc/cpuinfo | head -n 20", False, "عرض إصدار نواة لينكس (Kernel) وتفاصيل معالج الريسفر.")
             ]),
-            ("أوامر الشبكات", [
+            ("🌐 أوامر الشبكات", [
                 ("show network info (ifconfig)", "ip addr 2>/dev/null || ifconfig", False, "عرض عنوان الـ IP الداخلي وبطاقات الشبكة المتصلة (LAN / WiFi)."),
                 ("ping google dns (8.8.8.8)", "ping -c 4 8.8.8.8", False, "اختبار سرعة واستقرار الاتصال بالإنترنت عبر خوادم جوجل."),
                 ("ping github server", "ping -c 4 raw.githubusercontent.com", False, "اختبار الاتصال المباشر بمستودع Online4Tech على GitHub."),
@@ -143,40 +143,40 @@ class Online4TechPanel(Screen):
                 ("restart network service", "/etc/init.d/networking restart && echo 'Network restarted!'", False, "إعادة تشغيل خدمة الشبكة وتجديد عنوان الـ IP."),
                 ("show public IP & ISP", "wget -qO- http://ip-api.com/line?fields=query,country,isp || echo 'Offline'", False, "عرض الـ IP الخارجي والدولة ومزود خدمة الإنترنت.")
             ]),
-            ("أوامر القنوات", [
+            ("📺 أوامر القنوات", [
                 ("تحديث ملف قنوات Online4Tech", "wget -q --no-check-certificate -O /tmp/ch.sh '" + self.github_base + "update_channels.sh' && chmod 755 /tmp/ch.sh && sh /tmp/ch.sh", True, "تحميل وتثبيت أحدث ملف قنوات متحرك ونايل سات من مستودع Online4Tech."),
                 ("reload bouquets & channels", "wget -qO - http://127.0.0.1/web/servicelistreload?mode=0 && echo 'Channels Reloaded!'", False, "تحديث وإعادة قراءة ملفات القنوات والباقات بدون إعادة تشغيل الريسفر."),
                 ("تثبيت بيكونات Chocholousek", "wget -q --no-check-certificate https://raw.githubusercontent.com/biko-73/ChocholousekPicons/main/installer.sh -O - | /bin/sh", True, "تثبيت بلجن تحميل وتحديث شعارات القنوات (Picons) لجميع الأقمار."),
                 ("تثبيت البيكون الافتراضي O4T", "wget -q --no-check-certificate -O /usr/share/enigma2/picon_default.png 'https://raw.githubusercontent.com/online4tech/Chanal-List/main/assets/picon_default.png' && echo 'Default Picon Updated!'", True, "تركيب شعار Online4Tech كبيكون افتراضي للقنوات."),
                 ("تثبيت وتحديث EPGImport", "opkg update && opkg install enigma2-plugin-extensions-epgimport", True, "تثبيت أداة جلب الدليل الإلكتروني للبرامج والقنوات.")
             ]),
-            ("أوامر التحديث", [
+            ("🔄 أوامر التحديث", [
                 ("opkg update (تحديث الفيدات)", "opkg update", False, "تحديث قوائم الحزم والمستودعات الخاصة بصورة الريسفر."),
                 ("opkg upgrade (ترقية النظام)", "opkg update && opkg upgrade", True, "ترقية حزم النظام والبلجنات المثبتة إلى أحدث إصدار."),
                 ("تحديث مفاتيح SoftCam.Key", "mkdir -p /usr/keys /etc/tuxbox/config && wget -q --no-check-certificate -O /usr/keys/SoftCam.Key 'https://raw.githubusercontent.com/MOHAMED19OS/SoftCam_Emu/main/SoftCam.Key' && cp -f /usr/keys/SoftCam.Key /etc/tuxbox/config/SoftCam.Key && echo 'SoftCam.Key Updated!'", False, "تحديث أحدث شفرات BISS و PowerVU تلقائياً."),
                 ("تحديث لوحة Online4Tech Panel", "wget -q --no-check-certificate -O /usr/lib/enigma2/python/Plugins/Extensions/Online4Tech/plugin.py 'https://raw.githubusercontent.com/online4tech/Chanal-List/main/plugin/plugin.py' && echo 'Online4Tech Panel Updated!'", True, "جلب أحدث إصدار من لوحة تحكم Online4Tech مباشرة من GitHub."),
                 ("تثبيت ServiceApp + Exteplayer3", "opkg update && opkg install ffmpeg exteplayer3 gstplayer enigma2-plugin-systemplugins-serviceapp", True, "تحديث مشغلات الميديا والـ IPTV لمنع التقطيع.")
             ]),
-            ("أوامر الصيانة", [
+            ("🛠️ أوامر الصيانة", [
                 ("تنظيف الرام والكاش (Drop Cache)", "sync && echo 3 > /proc/sys/vm/drop_caches && rm -rf /tmp/*.ipk /tmp/*.tar.gz && free -m", False, "تفريغ الذاكرة العشوائية ومسح الملفات المؤقتة لتسريع الجهاز."),
                 ("إعادة تشغيل الإيمو OSCam / NCam", "killall -9 oscam ncam 2>/dev/null; sleep 1; /etc/init.d/softcam restart 2>/dev/null || /usr/bin/oscam -b 2>/dev/null; echo 'Emulator Restarted!'", False, "إعادة تشغيل محاكي الشيرنج لتنشيط السيرفرات والقنوات المشفرة."),
                 ("تثبيت محاكي OSCam-icam الحديث", "wget -q --no-check-certificate https://raw.githubusercontent.com/biko-73/OsCam_emu/main/installer.sh -O - | /bin/sh", True, "تثبيت أحدث إصدار من محاكي OSCam الداعم لكافة الباقات."),
                 ("تثبيت محاكي NCam الرسمي", "wget -q --no-check-certificate https://raw.githubusercontent.com/biko-73/Ncam_emu/main/installer.sh -O - | /bin/sh", True, "تثبيت محاكي NCam السريع والمستقر."),
                 ("تثبيت بوت لوجو Online4Tech", "wget -q --no-check-certificate -O /tmp/b.sh '" + self.github_base + "bootlogo_online4tech.sh' && chmod 755 /tmp/b.sh && sh /tmp/b.sh", True, "تعيين شعار Online4Tech كشاشة إقلاع رسمية للريسفر.")
             ]),
-            ("أوامر النسخ الاحتياطية", [
+            ("📂 النسخ الاحتياطية", [
                 ("نسخ احتياطي للقنوات على /hdd", "mkdir -p /media/hdd/backup_o4t && tar -czf /media/hdd/backup_o4t/channels_backup.tar.gz /etc/enigma2/*bouquet* /etc/enigma2/lamedb* /etc/enigma2/settings && echo 'Saved to /media/hdd/backup_o4t/channels_backup.tar.gz'", False, "حفظ نسخة احتياطية كاملة من ملف القنوات والإعدادات على الهارد."),
                 ("استعادة القنوات من /hdd", "tar -xzf /media/hdd/backup_o4t/channels_backup.tar.gz -C / && wget -qO - http://127.0.0.1/web/servicelistreload?mode=0 && echo 'Channels Restored!'", False, "استرجاع ملف القنوات المحفوظ مسبقاً على الهارد."),
                 ("نسخ احتياطي لإعدادات الإيمو", "mkdir -p /media/hdd/backup_o4t && tar -czf /media/hdd/backup_o4t/emu_keys_backup.tar.gz /etc/tuxbox/config /usr/keys 2>/dev/null && echo 'Emulator configs backed up!'", False, "حفظ نسخة احتياطية من ملفات سيرفرات OSCam / NCam والشفرات."),
                 ("استعادة إعدادات الإيمو", "tar -xzf /media/hdd/backup_o4t/emu_keys_backup.tar.gz -C / && echo 'Emulator configs restored!'", False, "استرجاع ملفات السيرفرات والشفرات المحفوظة.")
             ]),
-            ("أوامر الإصلاح", [
+            ("🩹 أوامر الإصلاح", [
                 ("إصلاح الحزم المعلقة (opkg configure)", "opkg configure && opkg update", False, "إصلاح مشاكل توقف مدير الحزم opkg عن تثبيت الإضافات."),
                 ("فحص وإصلاح أخطاء الشبكة (DNS Fix)", "echo -e 'nameserver 8.8.8.8\nnameserver 1.1.1.1' > /etc/resolv.conf && echo 'DNS Fixed to 8.8.8.8 & 1.1.1.1!'", False, "ضبط خوادم DNS على جوجل وكلاودفلير لحل مشكلة انقطاع السيرفرات والتحميل."),
                 ("ضبط الوقت تلقائياً من الإنترنت", "ntpd -q -p pool.ntp.org 2>/dev/null || rdate -s time.nist.gov 2>/dev/null; date", False, "مزامنة وإصلاح ساعة وتاريخ الريسفر عبر الإنترنت لتشغيل الشيرنج والـ EPG."),
                 ("إصلاح صلاحيات مجلد الإيمو (/usr/bin)", "chmod 755 /usr/bin/*cam* /etc/init.d/softcam* 2>/dev/null; echo 'Permissions 755 applied!'", False, "منح تصاريح التشغيل 755 لملفات الإيمو المتوقفة.")
             ]),
-            ("البلجنات والسكينات", [
+            ("🎨 البلجنات والسكينات", [
                 ("تثبيت لوحة التحكم AJPanel", "wget -q --no-check-certificate https://raw.githubusercontent.com/biko-73/AjPanel/main/installer.sh -O - | /bin/sh", True, "تثبيت أحدث إصدار من العملاق AJPanel."),
                 ("تثبيت مشغل E2iPlayer + TSIPlayer", "wget -q --no-check-certificate http://www.e2iplayer.gitlab.io/online.sh -O - | /bin/sh", True, "تثبيت مشغل الأفلام والمسلسلات والمنصات أونلاين."),
                 ("تثبيت MultiStalker Pro", "wget -q --no-check-certificate https://raw.githubusercontent.com/biko-73/MultiStalkerPro/main/installer.sh -O - | /bin/sh", True, "تثبيت مشغل بورتالات Stalker IPTV."),
@@ -197,7 +197,7 @@ class Online4TechPanel(Screen):
         first_item = first_items[0]
 
         self["logo"] = Pixmap()
-        self["status_top"] = Label("البحث في... Online4Tech v6.0")
+        self["status_top"] = Label("البحث في... Online4Tech v7.0")
         self["sys_mini"] = Label(self.getSystemMiniInfo())
 
         self["cat_header"] = Label(first_cat_name)
@@ -252,7 +252,34 @@ class Online4TechPanel(Screen):
             s.close()
         except Exception:
             ip = "Offline"
-        return "IP: %s  |  Python: %s\nأسهم يمين/يسار لتغيير القسم\nزر OK أو الأخضر للتنفيذ الفوري" % (ip, py_ver)
+        
+        # Calculate RAM & Storage to show on progress bars inside mini console!
+        ram_gauge = "[■■■■■□□□□□]"
+        flash_gauge = "[■■■■□□□□□□]"
+        try:
+            with open("/proc/meminfo", "r") as f:
+                lines = f.readlines()
+                total = int(lines[0].split()[1])
+                free = int(lines[1].split()[1])
+                used_p = int(round((total - free) / float(total) * 10))
+                ram_gauge = "[" + "■" * used_p + "□" * (10 - used_p) + "]"
+        except Exception:
+            pass
+        try:
+            st = os.statvfs("/")
+            free_f = st.f_bavail
+            total_f = st.f_blocks
+            used_p = int(round((total_f - free_f) / float(total_f) * 10))
+            flash_gauge = "[" + "■" * used_p + "□" * (10 - used_p) + "]"
+        except Exception:
+            pass
+
+        return (
+            "IP: %s  |  Python: %s\n"
+            "RAM  %s\n"
+            "Flash %s\n"
+            "تنقل بالأسهم يمين/يسار أو CH+/CH-"
+        ) % (ip, py_ver, ram_gauge, flash_gauge)
 
     def loadCategory(self, cat_idx):
         self.current_cat = cat_idx
@@ -329,7 +356,7 @@ def Plugins(**kwargs):
     return [
         PluginDescriptor(
             name="Online4Tech Panel",
-            description="Online4Tech Command Dashboard v6.0",
+            description="Online4Tech Command Dashboard v7.0",
             where=PluginDescriptor.WHERE_PLUGINMENU,
             icon=LoadPixmap(icon_path) if icon_path else None,
             fnc=main
