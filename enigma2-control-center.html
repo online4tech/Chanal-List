@@ -214,6 +214,40 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
+<div id="o4t-v75-copy-bar" style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:10px 16px;background:#131a29;border-bottom:1px solid rgba(245,196,66,0.22);direction:rtl;">
+  <span style="color:#f5c442;font-weight:700;font-size:13px;">تثبيت Online4Tech v7.5 Gold:</span>
+  <button id="o4tCopyV75Btn" type="button" onclick="o4tCopyV75Cmd()" style="background:#f5c442;color:#0e131f;border:none;border-radius:8px;padding:7px 14px;font-weight:700;font-size:13px;cursor:pointer;">
+    نسخ أمر التثبيت v7.5
+  </button>
+  <span id="o4tCopyV75Status" style="color:#cbd5e1;font-size:12px;"></span>
+</div>
+<script id="o4t-v75-copy-script">
+function o4tCopyV75Cmd() {
+  var cmd = 'opkg install --force-reinstall "https://raw.githubusercontent.com/online4tech/Online4Tech-Panel1/main/enigma2-plugin-extensions-online4tech_7.5_all.ipk"';
+  var statusEl = document.getElementById("o4tCopyV75Status");
+  function done() {
+    if (statusEl) statusEl.textContent = "تم نسخ أمر التثبيت v7.5 بنجاح";
+  }
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(cmd).then(done).catch(function() { fallbackCopy(cmd, done); });
+  } else {
+    fallbackCopy(cmd, done);
+  }
+  function fallbackCopy(text, cb) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try { document.execCommand("copy"); } catch (e) {}
+    document.body.removeChild(ta);
+    cb();
+  }
+}
+</script>
+
   <div id="root"><div class="loading"><div><div class="spinner"></div>جاري تجهيز مركز التحكم...</div></div></div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
