@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Online4Tech Panel v8.1 — Enigma2 command dashboard
+# Online4Tech Panel v8.1.1 — Enigma2 command dashboard
 # Visual style: ElieSatPanel-like dark/gold theme (very dark background,
 # dark cards, gold titles and selected rows). Layout like the ElieSatPanel
 # screenshots: categories sidebar on the LEFT (icons + name + count),
@@ -28,7 +28,7 @@ import threading
 import time
 import urllib.request
 
-VERSION = "8.1"
+VERSION = "8.1.1"
 VERSION_URL = "https://raw.githubusercontent.com/online4tech/Chanal-List/main/plugin/version.txt"
 PLUGIN_URL = "https://raw.githubusercontent.com/online4tech/Chanal-List/main/plugin/plugin.py"
 PLUGIN_DIR = "/usr/lib/enigma2/python/Plugins/Extensions/Online4Tech"
@@ -62,7 +62,7 @@ def _isNewer(remote, local):
         return False
     return r > l
 
-# --- Embedded icons (v8.1) ---
+# --- Embedded icons (v8.1.1) ---
 # 16 gold line pictograms (64x64 PNG, transparent background) generated
 # with PIL. They are embedded as base64 text so plugin.py stays a plain
 # UTF-8 file (the GitHub push route accepts text files only). On first run
@@ -143,7 +143,7 @@ def _loadIcon(name):
 
 class Online4TechPanel(Screen):
     skin = """
-    <screen name="Online4TechPanel" position="0,0" size="1920,1080" title="Online4Tech Command Dashboard v8.1" backgroundColor="#0d1117" flags="wfNoBorder">
+    <screen name="Online4TechPanel" position="0,0" size="1920,1080" title="Online4Tech Command Dashboard v8.1.1" backgroundColor="#0d1117" flags="wfNoBorder">
         <!-- Top bar: clock/date (left) — status pill (center) — gold title (right) -->
         <widget name="clock" position="40,12" size="220,58" font="Regular;48" foregroundColor="#ffffff" backgroundColor="#0d1117" halign="left" transparent="1" zPosition="5" />
         <widget name="date" position="40,70" size="340,30" font="Regular;22" foregroundColor="#9aa0a6" backgroundColor="#0d1117" halign="left" transparent="1" zPosition="5" />
@@ -151,7 +151,7 @@ class Online4TechPanel(Screen):
         <widget name="status_top" position="770,38" size="380,34" font="Regular;22" halign="center" foregroundColor="#f5c518" backgroundColor="#161b22" transparent="1" zPosition="5" />
         <widget name="logo" position="1300,26" size="64,54" alphatest="blend" zPosition="5" />
         <eLabel text="Online4Tech" position="1370,10" size="510,56" font="Regular;44" foregroundColor="#f5c518" backgroundColor="#0d1117" halign="right" transparent="1" zPosition="5" />
-        <eLabel text="Online4Tech | الإصدار 8.1" position="1370,66" size="510,32" font="Regular;22" foregroundColor="#9aa0a6" backgroundColor="#0d1117" halign="right" transparent="1" zPosition="5" />
+        <eLabel text="Online4Tech | الإصدار 8.1.1" position="1370,66" size="510,32" font="Regular;22" foregroundColor="#9aa0a6" backgroundColor="#0d1117" halign="right" transparent="1" zPosition="5" />
         <eLabel position="0,106" size="1920,2" backgroundColor="#21262d" zPosition="-5" />
 
         <!-- LEFT: system info panel -->
@@ -168,7 +168,7 @@ class Online4TechPanel(Screen):
         <widget name="cat_counter" position="490,190" size="730,30" font="Regular;22" halign="center" foregroundColor="#9aa0a6" backgroundColor="#161b22" transparent="1" zPosition="5" />
         <eLabel position="490,228" size="730,2" backgroundColor="#2a2f38" zPosition="-5" />
         <widget source="menu" render="Listbox" position="490,240" size="730,500" scrollbarMode="showOnDemand" backgroundColor="#161b22" backgroundColorSelected="#26221a" foregroundColor="#e6e6e6" foregroundColorSelected="#f5c518" transparent="1" zPosition="5">
-            <convert type="TemplatedMultiContent">{"template": [MultiContentEntryPixmapAlphaTest(pos = (656, 10), size = (52, 52), png = 0), MultiContentEntryText(pos = (12, 4), size = (632, 36), font = 0, flags = RT_HALIGN_RIGHT | RT_VALIGN_CENTER, text = 1, color = 0xe6e6e6, colorSelected = 0xf5c518), MultiContentEntryText(pos = (12, 40), size = (632, 26), font = 1, flags = RT_HALIGN_RIGHT | RT_VALIGN_CENTER, text = 2, color = 0x9aa0a6, colorSelected = 0xf5c518)], "fonts": [gFont("Regular", 28), gFont("Regular", 22)], "itemHeight": 72}</convert>
+            <convert type="TemplatedMultiContent">{"template": [MultiContentEntryPixmapAlphaTest(pos = (656, 10), size = (52, 52), png = 0), MultiContentEntryText(pos = (12, 4), size = (632, 36), font = 0, flags = RT_HALIGN_RIGHT | RT_VALIGN_CENTER, text = 1, color = 0xe6e6e6), MultiContentEntryText(pos = (12, 40), size = (632, 26), font = 1, flags = RT_HALIGN_RIGHT | RT_VALIGN_CENTER, text = 2, color = 0x9aa0a6)], "fonts": [gFont("Regular", 28), gFont("Regular", 22)], "itemHeight": 72}</convert>
         </widget>
 
         <!-- CENTER: item details strip -->
@@ -188,12 +188,12 @@ class Online4TechPanel(Screen):
         <eLabel text="الأقسام" position="1285,138" size="580,44" font="Regular;30" halign="center" foregroundColor="#f5c518" backgroundColor="#161b22" transparent="1" zPosition="5" />
         <eLabel position="1285,190" size="580,2" backgroundColor="#2a2f38" zPosition="-5" />
         <widget source="cat_menu" render="Listbox" position="1285,200" size="580,760" scrollbarMode="showNever" backgroundColor="#161b22" backgroundColorSelected="#26221a" foregroundColor="#cbd5e1" foregroundColorSelected="#f5c518" transparent="1" zPosition="5">
-            <convert type="TemplatedMultiContent">{"template": [MultiContentEntryPixmapAlphaTest(pos = (504, 14), size = (64, 64), png = 0), MultiContentEntryText(pos = (12, 8), size = (480, 44), font = 0, flags = RT_HALIGN_RIGHT | RT_VALIGN_CENTER, text = 1, color = 0xcbd5e1, colorSelected = 0xf5c518), MultiContentEntryText(pos = (12, 54), size = (480, 30), font = 1, flags = RT_HALIGN_RIGHT | RT_VALIGN_CENTER, text = 2, color = 0x9aa0a6, colorSelected = 0xf5c518)], "fonts": [gFont("Regular", 28), gFont("Regular", 22)], "itemHeight": 92}</convert>
+            <convert type="TemplatedMultiContent">{"template": [MultiContentEntryPixmapAlphaTest(pos = (504, 14), size = (64, 64), png = 0), MultiContentEntryText(pos = (12, 8), size = (480, 44), font = 0, flags = RT_HALIGN_RIGHT | RT_VALIGN_CENTER, text = 1, color = 0xcbd5e1), MultiContentEntryText(pos = (12, 54), size = (480, 30), font = 1, flags = RT_HALIGN_RIGHT | RT_VALIGN_CENTER, text = 2, color = 0x9aa0a6)], "fonts": [gFont("Regular", 28), gFont("Regular", 22)], "itemHeight": 92}</convert>
         </widget>
 
         <!-- Bottom bar: colored buttons -->
         <eLabel position="35,1002" size="1850,64" backgroundColor="#161b22" zPosition="-10" />
-        <eLabel text="Online4Tech Panel v8.1" position="55,1018" size="320,34" font="Regular;24" halign="left" foregroundColor="#f5c518" backgroundColor="#161b22" transparent="1" zPosition="5" />
+        <eLabel text="Online4Tech Panel v8.1.1" position="55,1018" size="320,34" font="Regular;24" halign="left" foregroundColor="#f5c518" backgroundColor="#161b22" transparent="1" zPosition="5" />
         <eLabel position="1845,1022" size="26,26" backgroundColor="#ff3b30" zPosition="5" />
         <eLabel text="إغلاق" position="1755,1018" size="85,34" font="Regular;24" halign="right" foregroundColor="#ffffff" backgroundColor="#161b22" transparent="1" zPosition="5" />
         <eLabel position="1705,1022" size="26,26" backgroundColor="#34c759" zPosition="5" />
@@ -1065,7 +1065,7 @@ class Online4TechPanel(Screen):
         self["logo"] = Pixmap()
         self["clock"] = Label("")
         self["date"] = Label("")
-        self["status_top"] = Label("Online4Tech Panel v8.1")
+        self["status_top"] = Label("Online4Tech Panel v8.1.1")
         self["sys_info"] = Label("")
 
         self["cat_header"] = Label(first_cat_name)
@@ -1108,8 +1108,8 @@ class Online4TechPanel(Screen):
             pass
         self["sys_info"].setText(self.getSystemInfo())
         try:
-            self["cat_menu"].moveToIndex(0)
-            self["menu"].moveToIndex(0)
+            self["cat_menu"].index = 0
+            self["menu"].index = 0
         except Exception:
             pass
         self._startBackgroundTasks()
@@ -1210,7 +1210,7 @@ class Online4TechPanel(Screen):
     def _backgroundTasks(self):
         # 1) Version check (short timeout; any failure just means "no update").
         try:
-            req = urllib.request.Request(VERSION_URL, headers={"User-Agent": "Online4TechPanel/8.1"})
+            req = urllib.request.Request(VERSION_URL, headers={"User-Agent": "Online4TechPanel/8.1.1"})
             with urllib.request.urlopen(req, timeout=5) as resp:
                 remote = resp.read().decode("utf-8", "ignore").strip()
             if remote and _isNewer(remote, VERSION):
@@ -1237,7 +1237,7 @@ class Online4TechPanel(Screen):
         url = "https://speed.cloudflare.com/__down?bytes=1000000"
         try:
             start = time.time()
-            req = urllib.request.Request(url, headers={"User-Agent": "Online4TechPanel/8.1"})
+            req = urllib.request.Request(url, headers={"User-Agent": "Online4TechPanel/8.1.1"})
             with urllib.request.urlopen(req, timeout=6) as resp:
                 total = 0
                 while True:
@@ -1258,7 +1258,7 @@ class Online4TechPanel(Screen):
         try:
             data = b"0" * 200000
             start = time.time()
-            req = urllib.request.Request(url, data=data, headers={"User-Agent": "Online4TechPanel/8.1", "Content-Type": "application/octet-stream"})
+            req = urllib.request.Request(url, data=data, headers={"User-Agent": "Online4TechPanel/8.1.1", "Content-Type": "application/octet-stream"})
             with urllib.request.urlopen(req, timeout=6) as resp:
                 resp.read()
             elapsed = time.time() - start
@@ -1325,12 +1325,12 @@ class Online4TechPanel(Screen):
     # ---------- navigation / actions (unchanged behavior from v7.0) ----------
     def loadCategory(self, cat_idx):
         self.current_cat = cat_idx
-        self["cat_menu"].moveToIndex(cat_idx)
+        self["cat_menu"].index = cat_idx
         cat_name, items = self.categories[cat_idx]
         self["cat_header"].setText(cat_name)
         self["cat_counter"].setText("جميع العناصر (%d)" % len(items))
         self["menu"].setList(self._menuEntries(cat_name, items))
-        self["menu"].moveToIndex(0)
+        self["menu"].index = 0
         self.updateDescription()
 
     def updateDescription(self):
@@ -1398,7 +1398,7 @@ def Plugins(**kwargs):
     return [
         PluginDescriptor(
             name="Online4Tech Panel",
-            description="Online4Tech Command Dashboard v8.1",
+            description="Online4Tech Command Dashboard v8.1.1",
             where=PluginDescriptor.WHERE_PLUGINMENU,
             icon=LoadPixmap(icon_path) if icon_path else None,
             fnc=main
